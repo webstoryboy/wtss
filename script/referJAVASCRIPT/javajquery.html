@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript VS jQuery</title>
+
+    <link rel="stylesheet" href="prism.css">
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'TmonMonsori';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        hr {
+            border:0;
+            border-bottom: 1px dashed #0E43F1;
+            margin: 50px 0 30px;
+        }
+        body {
+            box-sizing: border-box;
+        }
+        #wrap {
+            margin: 3vh;
+            border: 8px solid #0E43F1;
+            box-sizing: border-box;
+            border-radius: 20px;
+        }
+        #contents {
+            border: 8px solid #50B5F9;
+            box-sizing: border-box;
+            border-radius: 12px;
+            padding: 6vmin;
+            height: 100%;
+        }
+        #header p {
+            font-size: 1.3em;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            padding: 2vw 0;
+            color: #0E43F1;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            border-bottom: 1px solid #0E43F1
+        }
+        .header h1 {
+            color : #0E43F1;
+            font-family: 'TmonMonsori';
+            font-size: 90px;
+            line-height: 1.1;
+            padding-bottom: 0.5vw;
+        }
+        .header h1 a {
+            color : #0E43F1;
+            text-decoration: none;
+        }
+        .header h1 em {
+            font-size: .2em;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            font-style: normal;
+            font-weight: normal;
+            text-transform: uppercase;
+            vertical-align: -12px;
+        }
+        .nav li {
+            font-size: 1rem;
+            line-height: 1.4;
+            list-style: none;
+            display: inline;
+        }
+        .nav li a {
+            text-decoration: none;
+            color: #0E43F1;
+            border: 1px dashed #0E43F1;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 27px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-bottom: 2px;
+            font-family: 'NEXON Lv1 Gothic OTF';
+        }
+        .nav li a.active {
+            background: #0E43F1;
+            color: #fff;
+        }
+        .nav li a:hover {
+            border-style: solid;
+        }
+        .content {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-family: 'NEXON Lv1 Gothic OTF';
+        }
+        .content h2 {
+            width: 100%;
+            margin: 30px 0 10px;
+            color: #0E43F1;
+        }
+        .content .javascript {
+            flex: 0 0 48%;
+            background: #C0EBFD;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .content .jquery {
+            flex: 0 0 48%;
+            background: #f1f1f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 1200px){
+            .content {
+                flex-direction: column;
+                display: block;
+            }
+            .content .javascript {
+                margin-bottom: 20px;
+            }
+        }
+        
+
+        /* prime */
+        .javascript :not(pre) > code[class*="language-"],
+        pre[class*="language-"] {
+            background: transparent;
+        }
+        .content code[class*="language-"],
+        .content pre[class*="language-"] {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            margin: 0;
+            text-shadow: none;
+        }
+        .content pre[class*="language-"] {
+            padding: 20px;
+        }
+        .content .token.operator {
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="wrap">
+        <main id="contents">
+            <header id="header">
+                <div class="header">
+                    <h1><a href="menuEffect-cover.html">자바스크립트 VS 제이쿼리</a> <em>문법 비교</em></h1>
+                </div>
+                <p>제이쿼리 문법과 자바스크립 문법을 비교합니다.</p>
+            </header>
+            <section class="content">
+                <h2><span>01.</span> 문서 로딩</h2>
+                <div class="javascript">
+<pre class="language-js"><code>window.onload = function(){
+    //실행 코드
+}
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(document).ready(function(){
+    //실행 코드
+});
+</pre></code>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="content">
+                <h2><span>01.</span> id 선택자</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.getElementById("id").style.color = "red";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$("#id").css("color","red");
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>02.</span> class 선택자</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").style.color = "red";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").css("color","red");
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>03.</span> 다중 선택자</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelectorAll(".class").style.color = "red";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").css("color","red");
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>04.</span> 자식 선택자</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class .child").style.color = "red";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class .child").css("color","red");
+</pre></code>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="content">
+                <h2><span>01.</span> 스타일</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").style.color = "red";
+document.querySelector(".class").style.transform = "translate(100px)";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").css("color","red");
+$(".class").css("transform","translate(100px");
+</pre></code>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="content">
+                <h2><span>01.</span> 클래스 추가</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").classList.add("show");
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").addClass("show");
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>02.</span> 클래스 삭제</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").classList.remove("show");
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").removeClass("show");
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>03.</span> 클래스 토글</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").classList.toggle("show");
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").toggleClass("show");
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>04.</span> 클래스 확인하기</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").contain("show");
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").hasClass("show");
+</pre></code>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="content">
+                <h2><span>01.</span> 텍스트 삽입</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").textContent = "글자를 추가합니다."; 
+document.querySelector(".class").innerText = "글자를 추가합니다.";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").text("글자를 추가합니다.");
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>02.</span> 태그 & 텍스트 삽입</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").innerHTML = "<div>글자를 추가합니다.</div>";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").html("태그를 추가합니다.");
+</pre></code>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="content">
+                <h2><span>01.</span> show</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").style.display = "block";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").show();
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>02.</span> hide</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").style.display = "none";
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").hide();
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>03.</span> fadeOut</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").addEventListener("click", function(){
+    document.querySelector(".class").style.opacity = "0";
+    document.querySelector(".class").style.transition = "400ms";
+})
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").fadeOut();
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>04.</span> fadeIn</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").addEventListener("click", function(){
+    document.querySelector(".class").style.opacity = "1";
+    document.querySelector(".class").style.transition = "400ms";
+})
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").fadeIn();
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>05.</span> slideUp</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").addEventListener("click", function(){
+    document.querySelector(".class").style.height = "0";
+    document.querySelector(".class").style.transition = "400ms";
+})
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").slideUp();
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>06.</span> slideDown</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").addEventListener("click", function(){
+    document.querySelector(".class").style.height = "100px";
+    document.querySelector(".class").style.transition = "400ms";
+})
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").slideDown();
+</pre></code>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="content">
+                <h2><span>01.</span> width</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").clientWidth; //패딩 포함
+document.querySelector(".class").offsetWidth; //패딩 포함
+document.querySelector(".class").getBoundingClientRect();
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").width()      
+$(".class").innerWidth() //패딩 포함
+$(".class").outerWidth() //패딩 포함 보더 포함
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>02.</span> height</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").clientHeight; //패딩 포함
+document.querySelector(".class").offsetHeight; //패딩 포함
+document.querySelector(".class").getBoundingClientRect();
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").Height()      
+$(".class").innerHeight() //패딩 포함
+$(".class").outerHeight() //패딩 포함 보더 포함
+</pre></code>
+                </div>
+            </section>
+            
+            <hr>
+
+            <section class="content">
+                <h2><span>01.</span> clone</h2>
+                <div class="javascript">
+<pre class="language-js"><code>document.querySelector(".class").cloneNode(true);
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>$(".class").clone();
+</pre></code>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="content">
+                <h2><span>01.</span> before</h2>
+                <div class="javascript">
+<pre class="language-js"><code>let clone = document.querySelector(".class").cloneNode(true);
+document.querySelector(".class").insertAdjacentElement("beforebegin", clone);
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>let clone = $(".class").clone();
+$(".class").before(clone)
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>02.</span> after</h2>
+                <div class="javascript">
+<pre class="language-js"><code>let clone = document.querySelector(".class").cloneNode(true);
+document.querySelector(".class").insertAdjacentElement("afterend", clone);
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>let clone = $(".class").clone();
+$(".class").after(clone)
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>03.</span> prepend</h2>
+                <div class="javascript">
+<pre class="language-js"><code>let clone = document.querySelector(".class").cloneNode(true);
+document.querySelector(".class").insertAdjacentElement("afterbegin", clone); 
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>let clone = $(".class").clone();
+$(".class").prepend(clone)
+</pre></code>
+                </div>
+            </section>
+
+            <section class="content">
+                <h2><span>04.</span> append</h2>
+                <div class="javascript">
+<pre class="language-js"><code>let clone = document.querySelector(".class").cloneNode(true);
+document.querySelector(".class").insertAdjacentElement("beforeend", clone);
+</pre></code>
+                </div>
+                <div class="jquery">
+<pre class="language-js"><code>let clone = $(".class").clone();
+$(".class").append(clone)
+</pre></code>
+                </div>
+            </section>
+
+            <hr>
+
+
+            <style>
+                .class {
+                    width: 100px; height: 100px;
+                    background: red;
+                    padding: 10px;
+                    /* margin: 10px;
+                    border: 10px solid #000 */
+                }
+            </style>
+            <div class="class">1</div>
+            <div class="class class1">b</div>
+            <div class="class">c</div>
+        </main>
+    </div>
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="prism.js"></script>
+    <script>
+  
+       
+        
+        // let first = document.querySelector(".class").firstElementChild
+        // first.style.color = "black"
+
+        // let last = document.querySelector(".class").lastElementChild
+        // last.style.color = "black"
+
+        // let previous = document.querySelector(".class1").previousElementSibling
+        // previous.style.color = "white"
+
+        // let next = document.querySelector(".class1").nextElementSibling
+        // next.style.color = "white"
+
+
+        //appendChild
+        
+
+        
+        //firstElementChild
+        //lastElementChild
+        //previousElementSibling
+        //nextElementSibling
+        //parentElement
+
+        //childNodes
+        //parentNodes
+
+        //insertAdjacentHTML()
+        //insertAdjacentText()
+        
+        //window.innerWidth 
+        //window.outerWidth 
+
+       
+
+    </script>
+    
+</body>
+</html>

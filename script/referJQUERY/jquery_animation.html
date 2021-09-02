@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery | animaition</title>
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+        }
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+        h1 {
+            padding-bottom: 20px;
+        }
+        hr {
+            margin: 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            width: 100%;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        em {
+            font-style: normal;
+        }
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+        .sample h2 {
+            position: relative;
+            font-size: 14px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px; 
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        .red {background-color: #ffebee;}
+        .blue {background-color: #e3f2fd;}
+
+        /* option */
+        .ex1 ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .ex1 li {
+            flex: 0 0 23%;
+            margin: 1%;
+        }
+
+        .ex2 ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .ex2 li {
+            flex: 0 0 23%;
+            margin: 1%;
+        }
+
+        .ex3 ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .ex3 li {
+            flex: 0 0 23%;
+            margin: 1%;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>jQuery animation()</h1>
+
+    <div id="sample1" class="sample">
+        <h2>Sample01 : 숨기기, 보이기 <span class="dot"></span></h2>
+        <div class="ex ex1">
+            <ul>
+                <li><img src="../assets/img/images13.jpg" alt="이미지13"></li>
+                <li><img src="../assets/img/images14.jpg" alt="이미지14"></li>
+                <li><img src="../assets/img/images15.jpg" alt="이미지15"></li>
+                <li><img src="../assets/img/images16.jpg" alt="이미지16"></li>
+            </ul>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn1-1">클릭 : 이미지가 사라집니다.</a>
+            <a href="#c" class="btn1-2">클릭 : 이미지가 나타납니다.</a>
+            <a href="#c" class="btn1-3">클릭 : 이미지가 나타나고/사라집니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample2" class="sample">
+        <h2>Sample02 : 페이드 효과 : 숨기기, 보이기 <span class="dot"></span></h2>
+        <div class="ex ex2">
+            <ul>
+                <li><img src="../assets/img/images10.jpg" alt="이미지10"></li>
+                <li><img src="../assets/img/images11.jpg" alt="이미지11"></li>
+                <li><img src="../assets/img/images12.jpg" alt="이미지12"></li>
+                <li><img src="../assets/img/images13.jpg" alt="이미지13"></li>
+            </ul>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn2-1">클릭 : 이미지가 사라집니다.</a>
+            <a href="#c" class="btn2-2">클릭 : 이미지가 나타납니다.</a>
+            <a href="#c" class="btn2-3">클릭 : 이미지가 나타나고/사라집니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample3" class="sample">
+        <h2>Sample03 : 슬라이드 효과 : 숨기기, 보이기 <span class="dot"></span></h2>
+        <div class="ex ex3">
+            <ul>
+                <li><img src="../assets/img/images01.jpg" alt="이미지10"></li>
+                <li><img src="../assets/img/images02.jpg" alt="이미지11"></li>
+                <li><img src="../assets/img/images03.jpg" alt="이미지12"></li>
+                <li><img src="../assets/img/images04.jpg" alt="이미지13"></li>
+            </ul>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn3-1">클릭 : 이미지가 사라집니다.</a>
+            <a href="#c" class="btn3-2">클릭 : 이미지가 나타납니다.</a>
+            <a href="#c" class="btn3-3">클릭 : 이미지가 나타나고/사라집니다.</a>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        //sample01
+        $(".btn1-1").click(function(){
+            //$(".ex1 ul li").hide();
+            //$(".ex1 ul li").hide("fast");
+            $(".ex1 ul li").hide();
+        });
+        $(".btn1-2").click(function(){
+            $(".ex1 ul li").show();
+        });
+        $(".btn1-3").click(function(){
+            $(".ex1 ul li").toggle();
+        });
+
+        //sample02
+        $(".btn2-1").click(function(){
+            $(".ex2 ul li").fadeOut();
+        });
+        $(".btn2-2").click(function(){
+            $(".ex2 ul li").fadeIn();
+        });
+        $(".btn2-3").click(function(){
+            $(".ex2 ul li").fadeToggle();
+        });
+
+        //sample03
+        $(".btn3-1").click(function(){
+            $(".ex3 ul li").slideUp();
+        });
+        $(".btn3-2").click(function(){
+            $(".ex3 ul li").slideDown();
+        });
+        $(".btn3-3").click(function(){
+            $(".ex3 ul li").slideToggle();
+        });
+
+
+
+    </script>
+</body>
+</html>

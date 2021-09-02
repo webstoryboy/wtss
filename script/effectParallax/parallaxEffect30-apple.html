@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF Bold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        img {width: 100%; vertical-align: top;}
+        #contents {position: relative;}
+        #section1 {height: 5000px;}
+        #section2 {height: 100vh; background: gainsboro;}
+        #section3 {height: 100vh; background: gold;}
+        #section4 {height: 100vh; background: greenyellow;}
+        #section5 {height: 100vh; background: navajowhite;}
+        #section6 {height: 100vh; background: navy;}
+
+        .scroll {
+            position: fixed;
+            left: 10px; top: 10px;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            z-index: 10000;
+            font-family: 'NEXON Lv1 Gothic OTF Bold';
+            font-size: 14px;
+        }
+        .fixed {
+            position: fixed;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        /* sec1 */
+        .sec1__text1 {
+            font-size: 6vw;
+            font-family: 'NEXON Lv1 Gothic OTF Bold';
+        }
+        .sec1__text2 {
+            font-size: 6vw;
+            font-family: 'NEXON Lv1 Gothic OTF Bold';
+            white-space: nowrap;
+        }
+        .sec1__text3 {
+            width: 0vw;
+            height: 0vh;
+            overflow: hidden;
+        }
+        .sec1__text4 {
+            display: block;
+            width: 30vw;
+            height: 30vw;
+            background-color: #000;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30vw;
+        }
+        .sec1__text5 {
+            font-size: 6vw;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll">0</div>
+
+    <div id="contents">
+        <section id="section1" 
+            data-0 = "display: block"
+            data-7000 = "display: block"
+            data-7001 = "display: none">
+            <div class="sec1">
+                <div class="sec1__text1 fixed"
+                    data-0 = "transform: translate(-50%, -50%); opacity: 1;"
+                    data-500 = "transform: translate(-50%, -100%); opacity: 0;"
+                >안녕하세요!!</div>
+                <div class="sec1__text2 fixed"
+                    data-500 = "transform: translate(-50%, 50%) scale(1); opacity: 0;"
+                    data-1000 = "transform: translate(-50%, -50%) scale(1); opacity: 1;"
+                    data-1500 = "transform: translate(-50%, -50%) scale(0); opacity: 1;"
+                >프론트앤드 개발자입니다!!</div>
+                <div class="sec1__text3 fixed"
+                    data-1500 = " width: 0vw; height: 0vh; border-radius: 100px"
+                    data-2500 = " width: 100vw; height: 100vh;  border-radius: 0px">
+                    <img src="https://images.unsplash.com/photo-1622405628511-9c00362b187b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80" alt="111">
+                </div>
+                <div class="sec1__text4 fixed"
+                    data-2000 = "transform: translate(-50%, -50%) scale(0) rotate(-720deg)"
+                    data-3000 = "transform: translate(-50%, -50%) scale(1) rotate(0deg)"
+                    data-4000 = "transform: translate(-50%, -50%) scale(10) rotate(0deg)">
+                </div>
+                <div class="sec1__text5 fixed"
+                    data-3000 = "transform: translate(-50%, -50%) scale(0); opacity: 1; display: block;"
+                    data-4000 = "transform: translate(-50%, -50%) scale(1); opacity: 1; display: block;"
+                    data-4500 = "transform: translate(-50%, -50%) scale(1); opacity: 0; display: block;"
+                    data-4501 = "transform: translate(-50%, -50%) scale(1); opacity: 0; display: none;"
+                >Hello!</div>
+            </div>
+        </section>
+        <!-- //section1 -->
+        <section id="section2"></section><!-- //section2 -->
+        <section id="section3"></section><!-- //section3 -->
+        <section id="section4"></section><!-- //section4 -->
+        <section id="section5"></section><!-- //section5 -->
+        <section id="section6"></section><!-- //section6 -->
+    </div>
+    <!-- //contents -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js"></script>
+    <script>
+        var s = skrollr.init();
+
+        window.addEventListener("scroll", function(){
+            let scroll = document.documentElement.scrollTop || window.scrollY || window.pageYOffset;
+            document.querySelector(".scroll").innerText = parseInt(scroll);
+        })
+    </script>
+</body>
+</html>

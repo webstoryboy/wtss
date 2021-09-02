@@ -1,0 +1,28 @@
+//container
+.container {
+    width: 1400px;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+//title__wrap
+.title__wrap {
+    padding: 300px 0 250px;
+    background: #000;
+}
+.title__wrap h1 {
+    color: #fff;
+    font-size: 200px;
+    line-height: 0.85;
+    letter-spacing: -0.0275em;
+    text-transform: uppercase;
+    font-family: var(--fontMain);
+
+    strong {
+        display: block;
+    }
+    em {
+        display: block;
+    }
+}

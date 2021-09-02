@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="large">
+        <div class="timer">
+            <div class="second">0:00</div>
+        </div>
+        <button class="start">start</button>
+    </main>
+    <script>
+        const secondElement = document.querySelector('.second');
+        const goalTime = new Date().getTime() + 15 * 1000;
+
+        document.querySelector(".start").addEventListener('click', () => {
+            update();
+        });
+
+        function update() {
+            const currentTime = new Date().getTime();
+            const leftTime = goalTime - currentTime;
+
+            if (leftTime <= 0) {
+                secondElement.innerText = '15초가 지났습니다.';
+                return;
+            }
+            secondElement.innerText = (leftTime / 1000).toFixed(4);
+            requestAnimationFrame(update);
+        }
+    </script>
+</body>
+
+</html>

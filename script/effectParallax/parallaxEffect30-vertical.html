@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical</title>
+    <style>
+        @font-face {
+            font-family: 'WandohopeB';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeB.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+
+        #contents {
+            overflow: hidden;
+            width: 900vw;
+            height: 100vh;
+            position: fixed;
+            left: 0; top: 0;
+        }
+        #contents > section {
+            float: left;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #contents > section h1 {
+            color: #fff;
+            font-family: 'WandohopeB';
+            font-size: 8vw;
+        }
+        #section1 {background: #111;}
+        #section2 {background: #222;}
+        #section3 {background: #333;}
+        #section4 {background: #444;}
+        #section5 {background: #555;}
+        #section6 {background: #666;}
+        #section7 {background: #777;}
+        #section8 {background: #888;}
+        #section9 {background: #999;}
+
+        .scroll {
+            position: fixed;
+            left: 10px; top: 10px;
+            width: 50px; height: 50px;
+            background: rgba(255,255,255,0.5);
+            text-align: center;
+            line-height: 50px;
+            color: #000;
+            z-index: 1000;
+        }
+        .character {
+            position: fixed;
+            left: 50%; bottom: 0;
+            width: 200px; height: 200px;
+            transform: translatex(-50%);
+            background: url(http://richclub9.dothome.co.kr/effect/img/robby.png);
+            background-size: 1800px;
+            z-index: 1000;
+        }
+        .character.walking {
+            animation: walk 0.8s steps(9, start) infinite;
+        }
+        .character.back {
+            background-position: 0 -200px;
+        }
+        .character.back.walking {
+            animation: backWalk 0.8s steps(9, start) infinite;
+        }
+        @keyframes walk {
+            0%   {background-position: 0px 0px;}
+            100% {background-position: -1800px 0px;}
+        }
+        @keyframes backWalk {
+            0%   {background-position: 0px -200px;}
+            100% {background-position: -1800px -200px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll">0</div>
+
+    <div class="character"></div>
+
+    <div id="contents">
+        <section id="section1"><h1>section1</h1></section><!-- //section1 -->
+        <section id="section2"><h1>section2</h1></section><!-- //section2 -->
+        <section id="section3"><h1>section3</h1></section><!-- //section3 -->
+        <section id="section4"><h1>section4</h1></section><!-- //section4 -->
+        <section id="section5"><h1>section5</h1></section><!-- //section5 -->
+        <section id="section6"><h1>section6</h1></section><!-- //section6 -->
+        <section id="section7"><h1>section7</h1></section><!-- //section7 -->
+        <section id="section8"><h1>section8</h1></section><!-- //section8 -->
+        <section id="section9"><h1>section9</h1></section><!-- //section9 -->
+    </div>
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        const totalWidth = $("#contents").width();
+        let lastScrollTop = 0;
+
+        $("body").css("height", totalWidth);
+
+        $(window).scroll(function(){
+            let scroll = $(this).scrollTop();
+
+            $(".scroll").text(scroll);
+            $("#contents").css("left", -scroll);
+
+            clearTimeout($.data(this, "scrollCheck"));
+
+            $.data(this, "scrollCheck", setTimeout(function(){
+                $(".character").removeClass("walking");
+            },100));
+
+            if( scroll > lastScrollTop ) {
+                $(".character").removeClass("back");
+                $(".character").addClass("walking");
+            } else {
+                $(".character").addClass("back");
+                $(".character").addClass("walking");
+            }
+            lastScrollTop = scroll;
+        });
+
+       
+    </script>
+</body>
+</html>

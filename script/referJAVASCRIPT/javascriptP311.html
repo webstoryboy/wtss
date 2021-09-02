@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font.css">
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism-okaidia.min.css"
+        integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            line-height: 1.6;
+        }
+
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+
+        h1 {
+            padding-bottom: 20px;
+        }
+
+        hr {
+            margin: 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+
+        .sample h2 {
+            position: relative;
+            font-size: 16px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px;
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .sample .problem {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+            line-height: 1.6;
+        }
+
+        .sample pre {
+            margin: 0 !important;
+            border-radius: 0;
+            ;
+        }
+
+        .sample .desc {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .sample .desc dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+
+        .sample .desc dd {
+            padding: 3px 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .sample .sam {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .sample .sam dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+
+        .sample .sam dd {
+            padding: 3px 0 16px 0;
+        }
+
+        ol {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        ol li {
+            display: inline;
+            text-align: center;
+            line-height: 40px;
+            margin-bottom: 5px;
+        }
+
+        ol li a {
+            display: inline-block;
+            border-radius: 30px;
+            padding: 2px 20px 0px 20px;
+            border: 1px solid #000;
+        }
+
+        ol li a:hover {
+            background: #000;
+            color: #fff;
+        }
+        ol li.active a {
+            color: #fff;
+            background: #000;
+        }
+        .mt20 {margin-top: 20px;}
+        .all {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .all > div {
+            margin-right: 10%;
+            margin-bottom: 3%;
+        }
+
+        .all > div.active h2 a {
+            text-decoration: underline;
+            background: #000;
+            color: #fff;
+        }
+        .view {
+            padding: 20px;
+        }
+        .view table {
+            width: 100%;
+            border: 1px solid #e6e6e6; 
+            text-align: center;
+            vertical-align: middle;
+            border-collapse: collapse;
+        }
+        .view table th {
+            padding: 13px 5px 11px 5px;
+        }
+        .view table td {
+            border: 1px solid #e6e6e6; 
+            padding: 13px 5px 11px 5px;
+        }
+        .view table td.result {
+            color: #fff;
+            transition: all 0.3s;
+            cursor: zoom-in;
+        }
+        .view table td.result:hover {
+            color: #000;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1><a href="javascriptP300.html">Javascript 문법 정리</a></h1>
+    <ol>
+        <li><a href="javascriptP301.html">데이터 저장하기</a></li>
+        <li><a href="javascriptP302.html">데이터 불러오기</a></li>
+        <li><a href="javascriptP303.html">데이터 실행하기</a></li>
+        <li><a href="javascriptP307.html">데이터 제어하기</a><br></li>
+        <li><a href="javascriptP304.html">배열 메서드</a></li>
+        <li><a href="javascriptP305.html">문자열 메서드</a></li>
+        <li><a href="javascriptP309.html">날짜 메서드</a></li>
+        <li><a href="javascriptP310.html">브라우저 메서드</a></li>
+        <li class="active"><a href="javascriptP311.html">수학 메서드</a></li>
+        <li><a href="javascriptP314.html">숫자 메서드</a></li>
+        <li><a href="javascriptP312.html">요소 메서드</a></li>
+        <li><a href="javascriptP313.html">이벤트 메서드</a><br></li>
+        <!-- <li><a href="javascriptP306.html">알고리즘</a></li>
+        <li><a href="javascriptA.html">알고리즘2</a></li>
+        <li><a href="javascriptQ.html">퀴즈</a></li>
+        <li><a href="javascriptS.html">예제</a></li> -->
+    </ol>
+
+    <div class="all">
+        <div class="active">
+            <h2><a href="javascriptP311.html">수학 메서드</a></h2>
+            <ul>
+                <li>01. 수학 메서드 : Math.round() : 반올림 : 반환(숫자)</li>
+                <li>01. 수학 메서드 : Math.floor() : 버림 : 반환(숫자)</li>
+                <li>01. 수학 메서드 : Math.ceil() : 올림 : 반환(숫자)</li>
+                <li>01. 수학 메서드 : Math.trunc() : 값의 정수 부분만 반환 : 반환(숫자)</li>
+                <li>02. 수학 메서드 : Math.random() : 0과 1사이의 난수 값을 반환 : 반환(숫자)</li>
+                
+                <li>03. 수학 메서드 : Math.max() : 가장 큰 값을 반환 : 반환(숫자)</li>
+                <li>03. 수학 메서드 : Math.min() : 가장 작은 값을 반환 : 반환(숫자)</li>
+                
+                <li>03. 수학 메서드 : Math.abs() : 절대값을 반환 반환 : 반환(숫자)</li>
+                <li>03. 수학 메서드 : Math.pow() : x의 y제곱을 반환</li>
+                <li>01. 수학 메서드 : Math.sign() : 사인 값을 반환</li>
+                <li>01. 수학 메서드 : Math.sqrt() : 제곱근을 반환</li>
+                <li>01. 수학 메서드 : Math.log() : 자연로그를 반환합니다.</li>
+                <li>01. 수학 메서드 : Math.exp() : 지수 함수를 반환합니다.</li>
+                
+                <li>01. 수학 메서드 : Math.cos() : 코사인 값을 반환</li>
+                <li>01. 수학 메서드 : Math.sin() : 사인 값을 반환</li>
+                <li>01. 수학 메서드 : Math.tan() : 탄젠트 값을 반환</li>
+                <li>01. 수학 메서드 : Math.acos() : 아크 코사인 값을 반환</li>
+                <li>01. 수학 메서드 : Math.asin() : 아크사인 값을 반환</li>
+                <li>01. 수학 메서드 : Math.atan() : 아크탄젠트 값을 반환</li>
+                <li>01. 수학 메서드 : Math.atan2() : 아크탄젠트 값을 반환</li>
+
+                <br>
+            </ul>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <!-- sample01 -->
+    <div id="sample01" class="sample">
+        <h2>01. 수학 메서드 : Math.round() / Math.floor() <span class="dot"></span></h2>
+        <div class="view">
+            <table>
+                <colgroup>
+                    <col style="width: 4%">
+                    <col style="width: 32%">
+                    <col style="width: 22%">
+                    <col style="width: 42%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>기본값</th>
+                        <th>메서드</th>
+                        <th>결과값</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="sample01_N1"></td>
+                        <td class="sample01_Q1"></td>
+                        <td class="sample01_M1"></td>
+                        <td class="sample01_R1 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N2"></td>
+                        <td class="sample01_Q2"></td>
+                        <td class="sample01_M2"></td>
+                        <td class="sample01_R2 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N3"></td>
+                        <td class="sample01_Q3"></td>
+                        <td class="sample01_M3"></td>
+                        <td class="sample01_R3 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N4"></td>
+                        <td class="sample01_Q4"></td>
+                        <td class="sample01_M4"></td>
+                        <td class="sample01_R4 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N5"></td>
+                        <td class="sample01_Q5"></td>
+                        <td class="sample01_M5"></td>
+                        <td class="sample01_R5 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N6"></td>
+                        <td class="sample01_Q6"></td>
+                        <td class="sample01_M6"></td>
+                        <td class="sample01_R6 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N7"></td>
+                        <td class="sample01_Q7"></td>
+                        <td class="sample01_M7"></td>
+                        <td class="sample01_R7 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N8"></td>
+                        <td class="sample01_Q8"></td>
+                        <td class="sample01_M8"></td>
+                        <td class="sample01_R8 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N9"></td>
+                        <td class="sample01_Q9"></td>
+                        <td class="sample01_M9"></td>
+                        <td class="sample01_R9 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N10"></td>
+                        <td class="sample01_Q10"></td>
+                        <td class="sample01_M10"></td>
+                        <td class="sample01_R10 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N11"></td>
+                        <td class="sample01_Q11"></td>
+                        <td class="sample01_M11"></td>
+                        <td class="sample01_R11 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N12"></td>
+                        <td class="sample01_Q12"></td>
+                        <td class="sample01_M12"></td>
+                        <td class="sample01_R12 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N13"></td>
+                        <td class="sample01_Q13"></td>
+                        <td class="sample01_M13"></td>
+                        <td class="sample01_R13 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N14"></td>
+                        <td class="sample01_Q14"></td>
+                        <td class="sample01_M14"></td>
+                        <td class="sample01_R14 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N15"></td>
+                        <td class="sample01_Q15"></td>
+                        <td class="sample01_M15"></td>
+                        <td class="sample01_R15 result"></td>
+                    </tr>
+                    <tr>
+                        <td class="sample01_N16"></td>
+                        <td class="sample01_Q16"></td>
+                        <td class="sample01_M16"></td>
+                        <td class="sample01_R16 result"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    document.querySelector(".sample01_R1").innerHTML = Math.round(1.34);
+    document.querySelector(".sample01_R2").innerHTML = Math.round(1.64);
+    document.querySelector(".sample01_R3").innerHTML = Math.round(1.5);
+    document.querySelector(".sample01_R4").innerHTML = Math.round(-1.34);
+    document.querySelector(".sample01_R5").innerHTML = Math.round(-1.64);
+    document.querySelector(".sample01_R6").innerHTML = Math.round(-1.5);
+    document.querySelector(".sample01_R7").innerHTML = Math.floor(1.34);
+    document.querySelector(".sample01_R8").innerHTML = Math.floor(1.64);
+    document.querySelector(".sample01_R9").innerHTML = Math.floor(-1.34);
+    document.querySelector(".sample01_R10").innerHTML = Math.floor(-1.64);
+    document.querySelector(".sample01_R11").innerHTML = Math.ceil(1.34);
+    document.querySelector(".sample01_R12").innerHTML = Math.ceil(1.64);
+    document.querySelector(".sample01_R13").innerHTML = Math.ceil(-1.34);
+    document.querySelector(".sample01_R14").innerHTML = Math.ceil(-1.64);
+    document.querySelector(".sample01_R15").innerHTML = Math.trunc(1.64);
+    document.querySelector(".sample01_R16").innerHTML = Math.trunc(-1.64);
+}
+</code></pre>
+        </div>
+    </div>
+    <hr>
+    <!-- //sample01 -->
+
+    <!-- sample02 -->
+    <div id="sample02" class="sample">
+        <h2>02. 수학 메서드 : Math.random() <span class="dot"></span></h2>
+        <div class="view">
+            <table>
+                <colgroup>
+                    <col style="width: 4%">
+                    <col style="width: 22%">
+                    <col style="width: 32%">
+                    <col style="width: 37%">
+                    <col style="width: 5%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>기본값</th>
+                        <th>메서드</th>
+                        <th>결과값</th>
+                        <th>클릭</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="sample02_N1"></td>
+                        <td class="sample02_Q1"></td>
+                        <td class="sample02_M1"></td>
+                        <td class="sample02_R1"></td>
+                        <td class="sample02_B1"><button>클릭</button></td>
+                    </tr>
+                    <tr>
+                        <td class="sample02_N2"></td>
+                        <td class="sample02_Q2"></td>
+                        <td class="sample02_M2"></td>
+                        <td class="sample02_R2"></td>
+                        <td class="sample02_B2"><button>클릭</button></td>
+                    </tr>
+                    <tr>
+                        <td class="sample02_N3"></td>
+                        <td class="sample02_Q3"></td>
+                        <td class="sample02_M3"></td>
+                        <td class="sample02_R3"></td>
+                        <td class="sample02_B3"><button>클릭</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    document.querySelector(".sample02_B1 button").addEventListener("click", mathRandom1);
+    function mathRandom1(){
+        document.querySelector(".sample02_R1").innerHTML = Math.random();
+    }
+
+    document.querySelector(".sample02_B2 button").addEventListener("click", mathRandom2);
+    function mathRandom2(){
+        document.querySelector(".sample02_R2").innerHTML = Math.floor(Math.random() * 10);
+    }
+
+    document.querySelector(".sample02_B3 button").addEventListener("click", mathRandom3);
+    function mathRandom3(){
+        document.querySelector(".sample02_R3").innerHTML = 10 + Math.floor(Math.random() * 10);
+    }
+}
+</code></pre>
+        </div>
+    </div>
+    <hr>
+    <!-- //sample02 -->
+
+    
+
+    <hr>
+    <hr>
+    <hr>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/prism.min.js"></script>
+    <script>
+        //01. 수학 메서드 : Math.round() : 반올림
+        //01. 수학 메서드 : Math.floor() : 버림
+        //01. 수학 메서드 : Math.ceil() : 올림
+        //01. 수학 메서드 : Math.trunc() : 값의 정수 부분만 반환
+        {
+            document.querySelector(".sample01_N1").innerHTML = "1";
+            document.querySelector(".sample01_Q1").innerHTML = "1.34";
+            document.querySelector(".sample01_M1").innerHTML = ".round()";
+            document.querySelector(".sample01_R1").innerHTML = Math.round(1.34);
+
+            document.querySelector(".sample01_N2").innerHTML = "2";
+            document.querySelector(".sample01_Q2").innerHTML = "1.64";
+            document.querySelector(".sample01_M2").innerHTML = ".round()";
+            document.querySelector(".sample01_R2").innerHTML = Math.round(1.64);
+
+            document.querySelector(".sample01_N3").innerHTML = "3";
+            document.querySelector(".sample01_Q3").innerHTML = "1.5";
+            document.querySelector(".sample01_M3").innerHTML = ".round()";
+            document.querySelector(".sample01_R3").innerHTML = Math.round(1.5);
+
+            document.querySelector(".sample01_N4").innerHTML = "4";
+            document.querySelector(".sample01_Q4").innerHTML = "-1.34";
+            document.querySelector(".sample01_M4").innerHTML = ".round()";
+            document.querySelector(".sample01_R4").innerHTML = Math.round(-1.34);
+
+            document.querySelector(".sample01_N5").innerHTML = "5";
+            document.querySelector(".sample01_Q5").innerHTML = "-1.64";
+            document.querySelector(".sample01_M5").innerHTML = ".round()";
+            document.querySelector(".sample01_R5").innerHTML = Math.round(-1.64);
+
+            document.querySelector(".sample01_N6").innerHTML = "6";
+            document.querySelector(".sample01_Q6").innerHTML = "-1.5";
+            document.querySelector(".sample01_M6").innerHTML = ".round()";
+            document.querySelector(".sample01_R6").innerHTML = Math.round(-1.5);
+
+            document.querySelector(".sample01_N7").innerHTML = "7";
+            document.querySelector(".sample01_Q7").innerHTML = "1.34";
+            document.querySelector(".sample01_M7").innerHTML = ".floor()";
+            document.querySelector(".sample01_R7").innerHTML = Math.floor(1.34);
+
+            document.querySelector(".sample01_N8").innerHTML = "8";
+            document.querySelector(".sample01_Q8").innerHTML = "1.64";
+            document.querySelector(".sample01_M8").innerHTML = ".floor()";
+            document.querySelector(".sample01_R8").innerHTML = Math.floor(1.64);
+
+            document.querySelector(".sample01_N9").innerHTML = "9";
+            document.querySelector(".sample01_Q9").innerHTML = "-1.34";
+            document.querySelector(".sample01_M9").innerHTML = ".floor()";
+            document.querySelector(".sample01_R9").innerHTML = Math.floor(-1.34);
+
+            document.querySelector(".sample01_N10").innerHTML = "10";
+            document.querySelector(".sample01_Q10").innerHTML = "-1.64";
+            document.querySelector(".sample01_M10").innerHTML = ".floor()";
+            document.querySelector(".sample01_R10").innerHTML = Math.floor(-1.64);
+
+            document.querySelector(".sample01_N11").innerHTML = "11";
+            document.querySelector(".sample01_Q11").innerHTML = "1.34";
+            document.querySelector(".sample01_M11").innerHTML = ".ceil()";
+            document.querySelector(".sample01_R11").innerHTML = Math.ceil(1.34);
+
+            document.querySelector(".sample01_N12").innerHTML = "12";
+            document.querySelector(".sample01_Q12").innerHTML = "1.64";
+            document.querySelector(".sample01_M12").innerHTML = ".ceil()";
+            document.querySelector(".sample01_R12").innerHTML = Math.ceil(1.64);
+
+            document.querySelector(".sample01_N13").innerHTML = "13";
+            document.querySelector(".sample01_Q13").innerHTML = "-1.34";
+            document.querySelector(".sample01_M13").innerHTML = ".ceil()";
+            document.querySelector(".sample01_R13").innerHTML = Math.ceil(-1.34);
+
+            document.querySelector(".sample01_N14").innerHTML = "14";
+            document.querySelector(".sample01_Q14").innerHTML = "-1.64";
+            document.querySelector(".sample01_M14").innerHTML = ".ceil()";
+            document.querySelector(".sample01_R14").innerHTML = Math.ceil(-1.64);
+
+            document.querySelector(".sample01_N15").innerHTML = "15";
+            document.querySelector(".sample01_Q15").innerHTML = "1.64";
+            document.querySelector(".sample01_M15").innerHTML = ".trunc()";
+            document.querySelector(".sample01_R15").innerHTML = Math.trunc(1.64);
+
+            document.querySelector(".sample01_N16").innerHTML = "16";
+            document.querySelector(".sample01_Q16").innerHTML = "-1.64";
+            document.querySelector(".sample01_M16").innerHTML = ".trunc()";
+            document.querySelector(".sample01_R16").innerHTML = Math.trunc(-1.64);
+        }
+
+
+        //02. 수학 메서드 : Math.random() : 0과 1사이의 난수 값을 반환 : 반환(숫자)
+        {
+            document.querySelector(".sample02_N1").innerHTML = "1";
+            document.querySelector(".sample02_Q1").innerHTML = "0 ~ 1";
+            document.querySelector(".sample02_M1").innerHTML = "Math.random()";
+            document.querySelector(".sample02_R1").innerHTML = Math.random();
+
+            document.querySelector(".sample02_N2").innerHTML = "2";
+            document.querySelector(".sample02_Q2").innerHTML = "0 ~ 10";
+            document.querySelector(".sample02_M2").innerHTML = "Math.floor(Math.random() * 10)";
+            document.querySelector(".sample02_R2").innerHTML = Math.floor(Math.random() * 10);
+
+            document.querySelector(".sample02_N3").innerHTML = "3";
+            document.querySelector(".sample02_Q3").innerHTML = "10 ~ 20";
+            document.querySelector(".sample02_M3").innerHTML = "10 + Math.floor(Math.random() * 10)";
+            document.querySelector(".sample02_R3").innerHTML = 10 + Math.floor(Math.random() * 10);
+
+            document.querySelector(".sample02_B1 button").addEventListener("click", mathRandom1);
+            function mathRandom1(){
+                document.querySelector(".sample02_R1").innerHTML = Math.random();
+            }
+
+            document.querySelector(".sample02_B2 button").addEventListener("click", mathRandom2);
+            function mathRandom2(){
+                document.querySelector(".sample02_R2").innerHTML = Math.floor(Math.random() * 10);
+            }
+
+            document.querySelector(".sample02_B3 button").addEventListener("click", mathRandom3);
+            function mathRandom3(){
+                document.querySelector(".sample02_R3").innerHTML = 10 + Math.floor(Math.random() * 10);
+            }
+        }
+       
+
+    </script>
+</body>
+
+</html>

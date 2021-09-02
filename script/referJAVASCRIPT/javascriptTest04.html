@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font.css">
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism-okaidia.min.css">
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            line-height: 1.6;
+        }
+
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+
+        h1 {
+            padding-bottom: 40px;
+        }
+
+        hr {
+            margin: 10% 0 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+
+        .sample h2 {
+            position: relative;
+            font-size: 16px;
+            background-color: #f2f2f2;
+            padding: 15px 15px 12px 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px;
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .sample .problem {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+            line-height: 1.6;
+        }
+
+        .sample pre {
+            margin: 0 !important;
+            border-radius: 0;
+            ;
+        }
+
+        .sample .desc {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .sample .desc dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+
+        .sample .desc dd {
+            padding: 3px 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .sample .sam {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .sample .sam dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+
+        .sample .sam dd {
+            padding: 3px 0 16px 0;
+        }
+
+        ol {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        ol li {
+            display: inline;
+            text-align: center;
+            line-height: 40px;
+            margin-bottom: 5px;
+        }
+
+        ol li a {
+            display: inline-block;
+            border-radius: 30px;
+            padding: 2px 20px 0px 20px;
+            border: 1px solid #000;
+        }
+
+        ol li a:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        ol li.active {
+            background: #000;
+        }
+
+        ol li.active a {
+            color: #fff;
+        }
+        .mt20 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Javascript Test04</h1>
+
+    <div id="sample1" class="sample">
+        <h2>01. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func(){
+        document.write(__________________);
+    }
+    func();
+    //함수가 실행되었습니다.
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample2" class="sample">
+        <h2>02. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    ______ func = function(){
+        document.write("함수가 실행되었습니다.");
+    }
+    func();
+    //함수가 실행되었습니다.
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample3" class="sample">
+        <h2>03. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func(str){
+        document.write(_______);
+    }
+    func("함수가 실행되었습니다.");
+    //함수가 실행되었습니다.
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample4" class="sample">
+        <h2>04. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func(){
+        const str = "함수가 실행되었습니다.";
+        __________
+    }
+    document.write(func());
+    //함수가 실행되었습니다.
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample5" class="sample">
+        <h2>05. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    func = ______ => {
+        document.write("함수가 실행되었습니다.!");
+    }
+    func();
+    //함수가 실행되었습니다.
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample6" class="sample">
+        <h2>06. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const func = () => {
+        document.write("함수가 실행되었습니다.");
+    }
+    _________
+    //함수가 실행되었습니다
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample7" class="sample">
+        <h2>07. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    func = () => {
+        const str = "함수가 실행되었습니다.";
+        __________
+    }
+    document.write(func());
+    //함수가 실행되었습니다
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample8" class="sample">
+        <h2>08. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const func = (_______) => {
+        return str;
+    }
+    document.write(func("함수가 실행되었습니다."));
+    //함수가 실행되었습니다
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample9" class="sample">
+        <h2>09. 다음의 결과를 보고 빈 칸을 채우시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const func = str => {
+        return str;
+    }
+    document.write(func(______));
+    //함수가 실행되었습니다.
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample10" class="sample">
+        <h2>10. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func(){
+        function funA(){
+            document.write("함수A가 실행되었습니다.");
+        }
+        funA();
+        function funB(){
+            document.write("함수B가 실행되었습니다.");
+        }
+        funB();
+    }
+    func();
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample11" class="sample">
+        <h2>11. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    (function (){
+        document.write("함수가 실행되었습니다.");
+    })();
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample12" class="sample">
+        <h2>12. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func(str = "함수가 실행되었습니다."){
+        document.write(str);
+    }
+    func();
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample13" class="sample">
+        <h2>13. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func1(a, b) {
+        document.write(arguments[0]);
+        document.write(arguments[1]);
+    }
+
+    func1("함수A가 실행되었습니다.", "함수B가 실행되었습니다.");
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample14" class="sample">
+        <h2>14. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func(num){
+        if( num &lt;= 1 ){
+            document.write("함수가 실행되었습니다.");
+        } else {
+            document.write("함수가 실행되었습니다.");
+            func( num - 1 );
+        }
+    }
+    func(5);
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample15" class="sample">
+        <h2>15. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let sum = 0;
+    for(var i=1; i&lt;=100; i++) {
+        sum += i;
+    };
+    document.write(sum);
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample16" class="sample">
+        <h2>16. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func(){
+        document.write("함수2가 실행되었습니다.");
+    }
+    function callback(str){
+        document.write("함수1가 실행되었습니다.");
+        str();
+    }
+    callback(func);
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+
+    <div id="sample17" class="sample">
+        <h2>17. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    function func(){
+        document.write("함수가 실행되었습니다.");
+    }
+    function callblack(num){
+        for( let i=1; i&lt;=5; i++ ){
+            num();
+        }
+    }
+    callblack(func);
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample18" class="sample">
+        <h2>18. 다음의 결과 값을 보고 빈칸을 작성하시오!<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = {
+        a: 100,
+        b: 200,
+        c: "javascript"
+    }
+    const { a:_____, b:_____, c:_____ } = obj;
+
+    document.write(name1);
+    document.write(name2);
+    document.write(name3);
+
+    //100
+    //200
+    //javascript
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample19" class="sample">
+        <h2>19. 다음의 결과 값을 보고 빈칸을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = {
+        a: 100,
+        b: 200,
+        c: "javascript"
+    }
+    const { a, b, c } = _______;
+
+    document.write(a);
+    document.write(b);
+    document.write(c);
+
+    //100
+    //200
+    //javascript
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample20" class="sample">
+        <h2>20. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const objA = {
+        a: 100,
+        b: 200
+    }
+    const objB = {
+        c: "javascript",
+        d: "jquery"
+    }
+    const spread = {...objA, ...objB}
+
+    document.write(spread.a);
+    document.write(spread.b);
+    document.write(spread.c);
+    document.write(spread.d);
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/prism.min.js"></script>
+</body>
+
+</html>

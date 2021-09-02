@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+            position: relative;
+            transition-property: transform, opacity, filter;
+            transition-duration: 600ms, 600ms, 600ms;
+            transition-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
+        }
+
+        .slider {
+            position: relative;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slider .status {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+        }
+
+        .slider .status .stat {
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+            border-radius: 50%;
+            z-index: 11;
+            margin: 0px 5px;
+            border: 2px solid #fff;
+        }
+
+        .slider .status .stat[data-active] {
+            background-color: #fff;
+        }
+
+        .slider img {
+            object-fit: cover;
+            object-position: center 80%;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .slider .image {
+            width: 100%;
+            margin-right: -100%;
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        .slider .image img {
+            transform: scale(0.8);
+        }
+
+        .slider .image[data-active] {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slider .image[data-active] img {
+            transform: scale(1.4);
+        }
+
+        .slider .image[data-active]~.image {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+
+        .slider svg {
+            height: 60px;
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .slider svg path {
+            stroke: #fff;
+            stroke-width: 3px;
+            fill: transparent;
+        }
+
+        .slider svg#next {
+            right: 10px;
+        }
+
+        .slider svg#prev {
+            left: 10px;
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider" data-state="0">
+
+        <svg id="prev" viewBox="0 0 31 101" version="1.1" class="pfeil prev left">
+            <path d="M 0,0 30,50 0,100"></path>
+        </svg>
+        <svg id="next" viewBox="0 0 31 101" version="1.1" class="pfeil next left">
+            <path d="M 0,0 30,50 0,100"></path>
+        </svg>
+
+        <div class="status">
+            <div class="stat" data-key="0"></div>
+            <div class="stat" data-key="1"></div>
+            <div class="stat" data-key="2"></div>
+            <div class="stat" data-key="3"></div>
+            <div class="stat" data-key="4"></div>
+            <div class="stat" data-key="5"></div>
+        </div>
+        <div class="image" data-key="0">
+            <img src="https://picsum.photos/1200/1200/?image=299" alt="" />
+        </div>
+        <div class="image" data-key="1">
+            <img src="https://picsum.photos/1200/1200/?image=398" alt="" />
+        </div>
+        <div class="image" data-key="2">
+            <img src="https://picsum.photos/1200/1200/?image=377" alt="" />
+        </div>
+        <div class="image" data-key="3">
+            <img src="https://picsum.photos/1200/1200/?image=196" alt="" />
+        </div>
+        <div class="image" data-key="4" data-active>
+            <img src="https://picsum.photos/1200/1200/?image=296" alt="" />
+        </div>
+        <div class="image" data-key="5">
+            <img src="https://picsum.photos/1200/1200/?image=274" alt="" />
+        </div>
+    </div>
+
+    <script>
+        console.clear();
+        initslider();
+
+        function initslider() {
+            const elPrevButton = document.querySelector('.slider #prev');
+            const elNextButton = document.querySelector('.slider #next');
+
+            const elImages = Array.from(document.querySelectorAll('.slider .image'));
+
+            let state = {
+                photo: 0
+            };
+
+            function send(event) {
+
+                const elActives = document.querySelectorAll('.slider [data-active]');
+
+                Array.from(elActives)
+                    .forEach(el => el.removeAttribute('data-active'));
+
+                switch (event) {
+                    case 'PREV':
+                        state.photo--;
+                        // Math.max(state.photo - 1, 0);
+                        break;
+                    case 'NEXT':
+                        state.photo++;
+                        // Math.min(state.photo + 1, elImages.length - 1);
+                        break;
+                    default:
+                        state.photo = +event;
+                        break;
+                }
+
+                var len = elImages.length;
+                // Loop Around
+                //state.photo = ( ( state.photo % len) + len ) % len;
+                state.photo = Math.max(0, Math.min(state.photo, len - 1));
+
+                Array.from(document.querySelectorAll(`.slider [data-key="${state.photo}"]`))
+                    .forEach(el => {
+                        el.setAttribute('data-active', true);
+                    });
+
+
+            }
+            elPrevButton.addEventListener('click', () => {
+                send('PREV');
+            });
+
+            elNextButton.addEventListener('click', () => {
+                send('NEXT');
+            });
+
+            const elStatus = Array.from(document.querySelectorAll('.slider .stat'));
+            elStatus.forEach(stat => {
+                stat.addEventListener('click', () => {
+                    send(stat.dataset.key);
+                });
+            });
+            send(0);
+        };
+    </script>
+</body>
+
+</html>

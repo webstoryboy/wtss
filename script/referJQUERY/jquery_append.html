@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery | append()</title>
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+        }
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+        h1 {
+            padding-bottom: 20px;
+        }
+        hr {
+            margin: 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            margin: 5px;
+            width: 100%;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        em {
+            font-style: normal;
+        }
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+        .sample h2 {
+            position: relative;
+            font-size: 14px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px; 
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        .red {background-color: #ffebee;}
+        .blue {background-color: #e3f2fd;}
+
+        /* option */
+        .ex1 ul {
+            display: flex;
+        }
+        .ex1 li {
+            width: 20%;
+            padding: 1%;
+        }
+        .ex2 ul {
+            display: flex;
+        }
+        .ex2 li {
+            width: 20%;
+            padding: 1%;
+        }
+        .ex3 ul {
+            display: flex;
+            justify-content: center;
+        }
+        .ex3 li {
+            width: 20%;
+            padding: 1%;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>jQuery append()</h1>
+
+    <div id="sample1" class="sample">
+        <h2>Sample01 : 요소 추가하기 <span class="dot"></span></h2>
+        <div class="ex ex1">
+           <ul>
+               <li><img src="../assets/img/images13.jpg" alt="이미지13"></li>
+               <li><img src="../assets/img/images14.jpg" alt="이미지14"></li>
+               <li><img src="../assets/img/images15.jpg" alt="이미지15"></li>
+               <li><img src="../assets/img/images16.jpg" alt="이미지16"></li>
+           </ul>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn1-1">클릭 : 이미지가 뒤에 추가됩니다.</a>
+            <a href="#c" class="btn1-2">클릭 : 이미지가 앞에 추가됩니다.</a>
+            <a href="#c" class="btn1-3">클릭 : 앞쪽에 있는 이미지를 삭제합니다.</a>
+            <a href="#c" class="btn1-4">클릭 : 뒷쪽에 있는 이미지를 삭제합니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample2" class="sample">
+        <h2>Sample02 : 이미지 랜덤으로 추가하기 <span class="dot"></span></h2>
+        <div class="ex ex2">
+           <ul>
+               <li><img src="../assets/img/images18.jpg" alt="이미지13"></li>
+           </ul>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn2-1">클릭 : 이미지가 랜덤으로 뒤에 추가됩니다.</a>
+            <a href="#c" class="btn2-2">클릭 : 이미지가 랜덤으로 앞에 추가됩니다.</a>
+            <a href="#c" class="btn2-3">클릭 : 앞쪽에 있는 이미지를 삭제합니다.</a>
+            <a href="#c" class="btn2-4">클릭 : 뒷쪽에 있는 이미지를 삭제합니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample3" class="sample">
+        <h2>Sample03 : 2초에 한번씩 이미지 이동하기 <span class="dot"></span></h2>
+        <div class="ex ex3">
+           <ul>
+               <li><img src="../assets/img/images01.jpg" alt="이미지01"></li>
+               <li><img src="../assets/img/images02.jpg" alt="이미지02"></li>
+               <li><img src="../assets/img/images03.jpg" alt="이미지03"></li>
+           </ul>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn3-1">클릭 : 이미지가 2초에 한번씩 이동합니다.</a>
+            <a href="#c" class="btn3-2">클릭 : 이미지가 멈춥니다.</a>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+
+        //sample01
+        $(".btn1-1").click(function(){
+            $(".ex1 ul").append("<li><img src='../assets/img/images17.jpg' alt='이미지17'></li>")
+        });
+
+        $(".btn1-2").click(function(){
+            $(".ex1 ul").prepend("<li><img src='../assets/img/images12.jpg' alt='이미지12'></li>")
+        });
+
+        $(".btn1-3").click(function(){
+            $(".ex1 ul li:first").remove();
+        });
+
+        $(".btn1-4").click(function(){
+            $(".ex1 ul li:last").remove();
+        });
+
+        //sample02
+        // $(".btn2-1").click(function(){
+        //     let random = Math.ceil(Math.random()*9)
+        //     $(".ex2 ul").append("<li><img src='../assets/img/images0"+random+".jpg' alt='이미지12'></li>")
+        // });
+
+        // $(".btn2-2").click(function(){
+        //     let random = Math.ceil(Math.random()*9)
+        //     $(".ex2 ul").prepend("<li><img src='../assets/img/images0"+random+".jpg' alt='이미지12'></li>")
+        // });
+
+        //sample02
+        function random(){
+            let num = Math.ceil(Math.random()*9);
+            let imgPath = "<li><img src='../assets/img/images0"+num+".jpg' alt='이미지12'></li>";
+            return imgPath;
+        }
+
+        $(".btn2-1").click(function(){ 
+            $(".ex2 ul").append(random);
+        });
+        $(".btn2-2").click(function(){ 
+            $(".ex2 ul").prepend(random);
+        });
+        $(".btn2-3").click(function(){
+            $(".ex2 ul li:first").remove();
+        });
+        $(".btn2-4").click(function(){
+            $(".ex2 ul li:last").remove();
+        });
+
+
+        //sample03
+        let timer;
+
+        $(".btn3-1").click(function(){
+            timer = setInterval(function(){
+                //$(".ex3 ul").prepend($(".ex3 li:last"))
+                $(".ex3 li:last").prependTo(".ex3 ul");
+            }, 2000);
+        });
+
+        $(".btn3-2").click(function(){
+            clearInterval(timer)
+        });
+
+        
+
+        
+
+
+
+    </script>
+</body>
+</html>

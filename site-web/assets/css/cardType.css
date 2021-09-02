@@ -1,0 +1,76 @@
+/* 카드 타입 유형 CSS */
+
+/* cardType01 */
+body {
+    background-color: #f3f3f3;
+}
+.cardType {
+    margin: 100px 0;
+    background-color: #fff;
+    box-shadow: 0 0 50px rgba(0,0,0,0.11);
+}
+.cardType01 {
+    font-family: 'GmarketSans';
+    padding: 100px 0;
+}
+.cardType01 h2 {
+    font-weight: 500;
+    font-size: 50px;
+    margin-bottom: 7px;
+}
+.cardType01 p {
+    font-weight: 200;
+    font-size: 26px;
+    line-height: 1.28;
+    margin-bottom: 40px;
+}
+
+/* float을 이용한 레이아웃 */
+/* .card-wrap {
+    overflow: hidden;
+}
+.card-wrap > div {
+    float: left;
+    width: 387px;
+    margin-right: 19px;
+}
+.card-wrap > div:last-child {
+    margin-right: 0;
+} */
+
+/* flex를 이용한 레이아웃 */
+/* .card-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.card-wrap > div {
+    width: 387px;
+} */
+
+/* gird를 이용한 레이아웃 */
+.card-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    gap: 2%;
+}
+
+
+.card .card-img {
+    margin-bottom: 10px;
+}
+.card .card-title {
+    display: block;
+    font-size: 32px;
+}
+.card .card-desc {
+    display: block;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 300;
+    margin-bottom: 3px;
+}
+.card .card-keyword {
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0.6;
+}

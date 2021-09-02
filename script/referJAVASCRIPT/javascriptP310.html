@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font.css">
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism-okaidia.min.css"
+        integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            line-height: 1.6;
+        }
+
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+
+        h1 {
+            padding-bottom: 20px;
+        }
+
+        hr {
+            margin: 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+
+        .sample h2 {
+            position: relative;
+            font-size: 16px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px;
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .sample .problem {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+            line-height: 1.6;
+        }
+
+        .sample pre {
+            margin: 0 !important;
+            border-radius: 0;
+        }
+
+        .sample .desc {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .sample .desc dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+
+        .sample .desc dd {
+            padding: 3px 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .sample .sam {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .sample .sam dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+
+        .sample .sam dd {
+            padding: 3px 0 16px 0;
+        }
+        .example {
+            padding: 20px;
+        }
+        .btn {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+        .btn a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+        
+        ol {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        ol li {
+            display: inline;
+            text-align: center;
+            line-height: 40px;
+            margin-bottom: 5px;
+        }
+
+        ol li a {
+            display: inline-block;
+            border-radius: 30px;
+            padding: 2px 20px 0px 20px;
+            border: 1px solid #000;
+        }
+
+        ol li a:hover {
+            background: #000;
+            color: #fff;
+        }
+        ol li.active a {
+            color: #fff;
+            background: #000;
+        }
+        .mt20 {margin-top: 20px;}
+        .all {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .all > div {
+            margin-right: 10%;
+            margin-bottom: 3%;
+        }
+
+        .all > div.active h2 a {
+            text-decoration: underline;
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1><a href="javascriptP300.html">Javascript 문법 정리</a></h1>
+    <ol>
+        <li><a href="javascriptP301.html">데이터 저장하기</a></li>
+        <li><a href="javascriptP302.html">데이터 불러오기</a></li>
+        <li><a href="javascriptP303.html">데이터 실행하기</a></li>
+        <li><a href="javascriptP307.html">데이터 제어하기</a><br></li>
+        <li><a href="javascriptP304.html">배열 객체</a></li>
+        <li><a href="javascriptP305.html">문자열 객체</a></li>
+        <li><a href="javascriptP309.html">날짜 객체</a></li>
+        <li class="active"><a href="javascriptP310.html">브라우저 객체</a></li>
+        <li><a href="javascriptP311.html">수학 객체</a></li>
+        <li><a href="javascriptP314.html">숫자 객체</a></li>
+        <li><a href="javascriptP312.html">요소 객체</a></li>
+        <li><a href="javascriptP313.html">이벤트 객체</a><br></li>
+        <!-- <li><a href="javascriptP306.html">알고리즘</a></li>
+        <li><a href="javascriptA.html">알고리즘2</a></li>
+        <li><a href="javascriptQ.html">퀴즈</a></li>
+        <li><a href="javascriptS.html">예제</a></li> -->
+    </ol>
+
+    <div class="all">
+        <div class="active">
+            <h2><a href="javascriptP310.html">브라우저 메서드</a></h2>
+            <ul>
+                <li>01. 브라우저 객체 : window 객체 메서드 : window.alert() : 알림창 표시하기</li>
+                <li>02. 브라우저 객체 : window 객체 메서드 : window.confirm() : 확인창 표시하기</li>
+                <li>03. 브라우저 객체 : window 객체 메서드 : window.prompt() : 입력창 표시하기</li>
+                <li>01. 브라우저 객체 : window 객체 메서드 : window.open() : 새로운 창 열기</li>
+                <li>01. 브라우저 객체 : window 객체 메서드 : window.close() : 새로운 창 닫기</li>
+                <li>01. 브라우저 객체 : window 객체 메서드 : window.focus() : 페이지 포커스 설정</li>
+                <li>01. 브라우저 객체 : window 객체 메서드 : window.blur() : 페이지 포커스 벗어났을 때 설정</li>
+                <br>
+
+                <li>04. 브라우저 객체 : window 객체 메서드 : window.innerWidth() : 브라우저 화면의 가로 값</li>
+                <li>04. 브라우저 객체 : window 객체 메서드 : window.innerHeight() : 브라우저 화면의 세로 값</li>
+                <li>04. 브라우저 객체 : window 객체 메서드 : window.outerWidth() : 브라우저 전체의 가로 값</li>
+                <li>04. 브라우저 객체 : window 객체 메서드 : window.outerHeight() : 브라우저 전체의 세로 값</li>
+                <li>04. 브라우저 객체 : window 객체 메서드 : window.screenTop() : 브라우저 위쪽 위치 값</li>
+                <li>04. 브라우저 객체 : window 객체 메서드 : window.screenLeft() : 브라우저 왼쪽 위치 값</li>
+                <li>04. 브라우저 객체 : window 객체 메서드 : Window.screenY : 브라우저 위쪽 위치 값</li>
+                <li>04. 브라우저 객체 : window 객체 메서드 : Window.screenX : 브라우저 왼쪽 위치 값</li>
+
+                <br>
+                <li>05. 브라우저 객체 : window 객체 메서드 : window.moveBy() : 브라우저 위치를 상대적으로 이동</li>
+                <li>05. 브라우저 객체 : window 객체 메서드 : window.moveTo() : 브라우저 위치를 절대적으로 이동</li>
+                <li>05. 브라우저 객체 : window 객체 메서드 : window.resizeBy() : 브라우저 크기를 상대적으로 조절</li>
+                <li>05. 브라우저 객체 : window 객체 메서드 : window.resizeTo() : 브라우저 크기를 절대적으로 조절</li>
+                <li>05. 브라우저 객체 : window 객체 메서드 : window.scrollBy() : 브라우저 스크롤 위치를 상대적으로 조절</li>
+                <li>05. 브라우저 객체 : window 객체 메서드 : window.scrollTo() : 브라우저 스크롤 위치를 절대적으로 조절</li>
+                <li>05. 브라우저 객체 : window 객체 속성 : window.scrollX : 브라우저 가로 스크롤 크기</li>
+                <li>05. 브라우저 객체 : window 객체 속성 : window.scrollY : 브라우저 세로 스크롤 크기</li>
+                
+                <br>
+                <li>05. 브라우저 객체 : screen 객체 속성 : window.screen.width : 화면의 가로 값</li>
+                <li>05. 브라우저 객체 : screen 객체 속성 : window.screen.height : 화면의 세로 값</li>
+                <li>05. 브라우저 객체 : screen 객체 속성 : window.screen.availWidth : 실제 이용 가능한 화면의 가로 값</li>
+                <li>05. 브라우저 객체 : screen 객체 속성 : window.screen.availHeight : 실제 이용 가능한 화면의 세로 값</li>
+                <li>05. 브라우저 객체 : screen 객체 속성 : window.screen.colorDepth : 사용 가능한 색상 수</li>
+                <li>05. 브라우저 객체 : screen 객체 속성 : window.screen.pixelDepth : 한 픽실당 비트 수</li>
+
+                <br>
+                <li>06. 브라우저 객체 : location 객체 메서드 : location.assign() : 현재 위치를 이동</li>
+                <li>06. 브라우저 객체 : location 객체 메서드 : location.reload() : 새로 고침</li>
+                <li>06. 브라우저 객체 : location 객체 메서드 : location.replace() : 위치 이동</li>
+                <li>06. 브라우저 객체 : location 객체 메서드 : location.toString() : 주소 문자열 반환</li>
+                <li>06. 브라우저 객체 : location 객체 속성 : location.href : 주소</li>
+                <li>06. 브라우저 객체 : location 객체 속성 : location.host : 호스트 이름</li>
+                <li>06. 브라우저 객체 : location 객체 속성 : location.hostname : 호스트 이름</li>
+                <li>06. 브라우저 객체 : location 객체 속성 : location.port : 포트 번호</li>
+                <li>06. 브라우저 객체 : location 객체 속성 : location.pathname : 디렉토리 경로</li>
+                <li>06. 브라우저 객체 : location 객체 속성 : location.hash : 앵커이름</li>
+                <li>06. 브라우저 객체 : location 객체 속성 : location.search : 요청 매개변수</li>
+                <li>06. 브라우저 객체 : location 객체 속성 : location.protocol : 프로토콜 종류</li>
+
+                <br>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.appCodeName : 브라우저의 코드명을 반환</li>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.appName : 브라우저의 이름을 반환</li>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.appVersion : 브라우저의 버전을 반환</li>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.cookieEnabled : 브라우저의 쿠키 사용 가능 여부를 반환</li>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.language : 브라우저에서 사용되는 언어를 반환</li>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.onLine : 브라우저가 온라인인지 여부를 반환</li>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.platform : 브라우저가 실행되는 플랫폼 정보를 반환</li>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.product : 브라우저에서 사용되는 엔진 이름을 반환</li>
+                <li>07. 브라우저 객체 : navigator 객체 속성 : navigator.userAgent : 브라우저와 운영체제 정보를 반환</li>
+                <li>01. 브라우저 객체 : navigator 객체 속성 : navigator.onLine : 네트워크 상태 가져오기(225)</li>
+
+                <br>
+                <li>08. 브라우저 객체 : history 객체 속성 : history.length : URL 개수를 반환</li>
+                <li>08. 브라우저 객체 : history 객체 메서드 : history.back() : 페이지 뒤로 가기 </li>
+                <li>08. 브라우저 객체 : history 객체 메서드 : history.forward() : 페이지 앞으로 가기</li>
+                <li>08. 브라우저 객체 : history 객체 메서드 : history.go() : 원하는 페이지로 이동</li>
+
+                <br><br>
+                
+
+                <li>01. 브라우저 객체 : document.title : 페이지 타이틀 설정</li>
+                <li>01. 요소 객체 : element.requestFullscreen() : 전체 화면으로 표시</li>
+                <li>01. 문서 객체 : document.exitFullscreen() : 전체 화면 해제</li>
+                <li>01. 브라우저 메서드 : window.devicePixelRatio() : 브라우저 화소 비율의 값</li>
+            
+                
+                
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+
+    
+
+    <hr>
+    <!-- sample01 -->
+    <div id="sample01" class="sample">
+        <h2>01. 브라우저 객체 : window 객체 메서드 : window.alert() : 알림창 표시하기 <span class="dot"></span></h2>
+        <div class="btn">
+            <a href="#c" class="btn1-1">클릭 : 알림창을 표시합니다.</a>
+        </div>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const btn1 = document.querySelector(".btn1-1");
+
+    btn1.addEventListener("click", () => {
+        alert("알림창");
+    });
+}
+</code></pre>
+        </div>
+    </div>
+    <hr>
+    <!-- //sample01 -->
+
+    <!-- sample02 -->
+    <div id="sample02" class="sample">
+        <h2>02. 브라우저 객체 : window 객체 메서드 : window.confirm() : 확인창 표시하기 <span class="dot"></span></h2>
+        <div class="example">
+            <div class="result result2"></div>
+        </div>
+        <div class="btn">
+            <a href="#c" class="btn2-1">클릭 : 확인창을 표시합니다.</a>
+        </div>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const btn = document.querySelector(".btn2-1");
+
+    btn.addEventListener("click", () => {
+        const con = confirm("오늘 공부할 준비가 되었나요?");
+
+        document.querySelector(".result2").innerHTML = con
+    });
+}
+</code></pre>
+        </div>
+    </div>
+    <hr>
+    <!-- //sample2 -->
+
+    <!-- sample03 -->
+    <div id="sample03" class="sample">
+        <h2>03. 브라우저 객체 : window 객체 메서드 : window.prompt() : 입력창 표시하기 <span class="dot"></span></h2>
+        <div class="example">
+            <div class="result result3"></div>
+        </div>
+        <div class="btn">
+            <a href="#c" class="btn3-1">클릭 : 입력창을 표시합니다.</a>
+        </div>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const btn = document.querySelector(".btn3-1");
+
+    btn.addEventListener("click", () => {
+        const con = prompt("오늘 공부할 준비가 되었나요?");
+
+        document.querySelector(".result3").innerHTML = con
+    });
+}
+</code></pre>
+        </div>
+    </div>
+    <hr>
+    <!-- //sample3 -->
+
+
+    <!-- sample04 -->
+    <div id="sample04" class="sample">
+        <h2>01. 브라우저 객체 : window 객체 메서드 : window.innerWidth() / window.innerHeight() : 브라우저 가로/세로 값<span class="dot"></span></h2>
+        <div class="example">
+            <div class="result result4-1"></div>
+            <div class="result result4-2"></div>
+            <div class="result result4-3"></div>
+            <div class="result result4-4"></div>
+            <div class="result result4-5"></div>
+            <div class="result result4-6"></div>
+        </div>
+        <div class="btn">
+            <a href="#c" class="btn4-1">클릭 : 브라우저 화면의 가로 값을 가져옵니다.</a>
+            <a href="#c" class="btn4-2">클릭 : 브라우저 화면의 세로 값을 가져옵니다.</a>
+            <a href="#c" class="btn4-3">클릭 : 브라우저 전체의 가로 값을 가져옵니다.</a>
+            <a href="#c" class="btn4-4">클릭 : 브라우저 전체의 가로 값을 가져옵니다.</a>
+            <a href="#c" class="btn4-5">클릭 : 브라우저 위쪽 위치 값을 가져옵니다.</a>
+            <a href="#c" class="btn4-6">클릭 : 브라우저 왼쪽 위치 값을 가져옵니다.</a>
+        </div>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const btn1 = document.querySelector(".btn4-1");
+    const btn2 = document.querySelector(".btn4-2");
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    btn1.addEventListener("click", () => {
+        document.querySelector(".result4-1").innerHTML = width + "px";
+    })
+    btn2.addEventListener("click", () => {
+        document.querySelector(".result4-2").innerHTML = height + "px";
+    })
+
+    window.addEventListener("resize", () => {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        document.querySelector(".result4-1").innerHTML = `이 브라우저의 가로 값은 ${width}px 입니다.`;
+        document.querySelector(".result4-2").innerHTML = `이 브라우저의 가로 값은 ${height}px 입니다.`;
+    })
+}
+</code></pre>
+        </div>
+    </div>
+    <hr>
+    <!-- //sample4 -->
+
+    <!-- sample05 -->
+    <div id="sample05" class="sample">
+        <h2>05. 브라우저 객체 : screen 객체 속성 : window.screen.width : 화면의 가로 값<span class="dot"></span></h2>
+        <div class="example">
+            <div class="result result5-1"></div>
+            <div class="result result5-2"></div>
+            <div class="result result5-3"></div>
+            <div class="result result5-4"></div>
+            <div class="result result5-5"></div>
+            <div class="result result5-6"></div>
+        </div>
+        <div class="btn">
+            <a href="#c" class="btn5-1">클릭 : 브라우저 화면의 가로 값을 가져옵니다.</a>
+            <a href="#c" class="btn5-2">클릭 : 브라우저 화면의 세로 값을 가져옵니다.</a>
+            <a href="#c" class="btn5-3">클릭 : 브라우저 전체의 가로 값을 가져옵니다.</a>
+            <a href="#c" class="btn5-4">클릭 : 브라우저 전체의 가로 값을 가져옵니다.</a>
+            <a href="#c" class="btn5-5">클릭 : 브라우저 위쪽 위치 값을 가져옵니다.</a>
+            <a href="#c" class="btn5-6">클릭 : 브라우저 왼쪽 위치 값을 가져옵니다.</a>
+        </div>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+
+}
+</code></pre>
+        </div>
+    </div>
+    <hr>
+    <!-- //sample5 -->
+
+    
+
+    <hr>
+    <hr>
+    <hr>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/prism.min.js"></script>
+    <script>
+        //01. alert()
+        {
+            const btn = document.querySelector(".btn1-1");
+
+            btn.addEventListener("click", () => {
+                alert("알림창");
+            });
+        }
+
+        //02. confirm()
+        {
+            const btn = document.querySelector(".btn2-1");
+
+            btn.addEventListener("click", () => {
+                const con = confirm("오늘 공부할 준비가 되었나요?");
+
+                document.querySelector(".result2").innerHTML = con
+            });
+        }
+
+        //03. prompt()
+        {
+            const btn = document.querySelector(".btn3-1");
+
+            btn.addEventListener("click", () => {
+                const con = prompt("오늘 공부할 준비가 되었나요?");
+
+                document.querySelector(".result3").innerHTML = con
+            });
+        }
+
+        //innerWidth
+        {
+            const btn1 = document.querySelector(".btn4-1");
+            const btn2 = document.querySelector(".btn4-2");
+            const btn3 = document.querySelector(".btn4-3");
+            const btn4 = document.querySelector(".btn4-4");
+            const btn5 = document.querySelector(".btn4-5");
+            const btn6 = document.querySelector(".btn4-6");
+
+            const width1 = window.innerWidth;
+            const height1 = window.innerHeight;
+            const width2 = window.outerWidth;
+            const height2 = window.outerHeight;
+            const width3 = window.screenTop;
+            const height3 = window.screenLeft;
+            const width4 = window.screenY;
+            const height4 = window.screenX;
+
+            btn1.addEventListener("click", () => {
+                document.querySelector(".result4-1").innerHTML = "당신이 보고 있는 브라우저의 화면 가로 값은 " + width1 + "px 입니다.";
+            })
+            btn2.addEventListener("click", () => {
+                document.querySelector(".result4-2").innerHTML = "당신이 보고 있는 브라우저의 화면 가로 값은 " + height1 + "px 입니다.";
+            })
+            btn3.addEventListener("click", () => {
+                document.querySelector(".result4-3").innerHTML = "당신이 보고 있는 브라우저의 전체 가로 값은 " + width2 + "px 입니다.";
+            })
+            btn4.addEventListener("click", () => {
+                document.querySelector(".result4-4").innerHTML = "당신이 보고 있는 브라우저의 전체 가로 값은 " + height2 + "px 입니다.";
+            })
+            btn5.addEventListener("click", () => {
+                document.querySelector(".result4-5").innerHTML = "당신이 보고 있는 브라우저의 위쪽 위치 값은 " + width3 + "px 입니다.";
+            })
+            btn6.addEventListener("click", () => {
+                document.querySelector(".result4-6").innerHTML = "당신이 보고 있는 브라우저의 왼쪽 위치 값은 " + height3 + "px 입니다.";
+            })
+
+            window.addEventListener("resize", () => {
+                const width1 = window.innerWidth;
+                const height1 = window.innerHeight;
+                const width2 = window.outerWidth;
+                const height2 = window.outerHeight;
+                const width3 = window.screenTop;
+                const height3 = window.screenLeft;
+                const width4 = window.screenY;
+                const height4 = window.screenX;
+
+                document.querySelector(".result4-1").innerHTML = `이 브라우저의 가로 값은 ${width1}px 입니다.`;
+                document.querySelector(".result4-2").innerHTML = `이 브라우저의 가로 값은 ${height1}px 입니다.`;
+                document.querySelector(".result4-3").innerHTML = `이 브라우저의 가로 값은 ${width2}px 입니다.`;
+                document.querySelector(".result4-4").innerHTML = `이 브라우저의 가로 값은 ${height2}px 입니다.`;
+                document.querySelector(".result4-5").innerHTML = `이 브라우저의 가로 값은 ${width3}px 입니다.`;
+                document.querySelector(".result4-6").innerHTML = `이 브라우저의 가로 값은 ${height3}px 입니다.`;
+            })
+        }
+        
+
+       
+
+    </script>
+</body>
+
+</html>

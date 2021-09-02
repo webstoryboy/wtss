@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="웹스토리보이와 함께 예제를 통해 배우는 스크립트 튜토리얼">
+	<meta name="keywords" content="mouse, animation, parallax, menu, slider, canvas, javascript, text, webs">
+    <meta name="author" content="webstoryboy">
+    <title>Menu Effect - jQuery</title>
+    <style>
+        /* reset */
+        @font-face { 
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal; 
+            font-style: normal; 
+        }
+        *, *::before, *::after {
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+        a {text-decoration: none; color: #fff;}
+        img {width: 100%; vertical-align: top;}
+        ul {list-style: none;}
+        body {
+            background: url(../assets/img/su09.jpg) no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            transition: all 0.2s;
+            overflow: hidden;
+            font-size: 16px;
+            line-height: 1.5;
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(11, 50, 47, 0.7);
+            z-index: -1;
+        }
+
+        /* info */
+        .info {
+            position: absolute;
+            z-index: 1000;
+        }
+        .info h1 {
+            font-size: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 8px;
+        }
+        .info p, .info li {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 3px;
+        }
+        .info ul {
+            position: relative;
+            margin-bottom: 3px;
+        }
+        .info ul:first-child::before {
+            content: 'jQuery';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info ul:last-child::before {
+            content: 'JavaScript';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info li {
+            display: inline;
+        }
+        .info li.active a:first-child {
+            background: #fff;
+            color: #000;
+        }
+        .info.left {
+            left: 20px;
+            top: 20px;
+        }
+        .info.right {
+            right: 20px;
+            top: 20px;
+        }
+        .info.right a {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .info.right a:hover {
+            background: #fff;
+            color: #000;
+        }
+        .info.bottom {
+            left: 10px;
+            bottom: 10px;
+        }
+        .info.view {
+            right: 20px;
+            bottom: 20px;
+        }
+        .info.view a {
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 30px;
+            padding: 5px 30px;
+        }
+
+        @media (max-width: 800px){
+            .info.bottom {display: none;}
+            .info.right {display: none;}
+        }
+
+        /* main */
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #accordion {
+            width: 400px;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            margin: 10px;
+        }
+        #accordion .title {
+            display: block;
+            background: #319c71;
+            padding: 15px;
+            color: #fff;
+            font-size: 16px;
+            border-bottom: 1px solid #257a58;
+        }
+        #accordion .title:hover {
+            background: #257a58;
+        }
+        #accordion .title .fa {float: right;}
+        #accordion .title.active .fa {transform: rotate(180deg);}
+        #accordion .desc {
+            background: #fff;
+            padding: 10px 20px;
+            color: #222;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        #accordion .desc {display: none;}
+
+        /* accordion2 */
+        #accordion2 {
+            width: 400px;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            margin: 10px;
+        }
+        #accordion2 .title {
+            display: block;
+            background: #319c71;
+            border-bottom: 1px solid #257a58;
+            padding: 15px;
+            color: #fff;
+            font-size: 16px;
+        }
+        #accordion2 .title:hover {
+            background: #257a58;
+        }
+        #accordion2 .title .fa {float: right;}
+        #accordion2 .title.active .fa {transform: rotate(180deg);}
+        #accordion2 .desc {
+            background: #fff;
+            padding: 10px 20px;
+            color: #222;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        #accordion2 .desc {display: none;}
+    </style>
+</head>
+
+<body>
+    <!-- main -->
+    <main>
+        <div id="accordion">
+            <ul>
+                <li> 
+                    <div class="title">웹 디자인이란?<i class="fa fa-chevron-down"></i></div>
+                    <div class="desc">
+                        1. 에버기븐호 복구작업에 정통한 복수의 소식통은 이날 오전 로이터에 수에즈 운하에 좌초해 일주일째 운하를 가로막고 
+                        있던 에버기븐호가 운하의 양쪽 제방과 평행하게 위치해 ‘정상 항로’로 복귀했다고 전했다.
+                    </div>
+                </li>
+                <li>
+                    <div class="title">웹 퍼블리셔란?<i class="fa fa-chevron-down"></i></div>
+                    <div class="desc">
+                        2. 앞서 AP통신은 운하 통항 서비스 업체인 레스 에이전시스를 인용, 에버기븐호 일부 부양 소식을 보도했다. 
+                        10척의 예인선과 모래를 빼내기 위한 준설기 등이 동원된 끝에 약간의 돌파구가 마련됐다고 전했다.
+                    </div>
+                </li>
+                <li>
+                    <div class="title">프론트앤드 개발자란?<i class="fa fa-chevron-down"></i></div>
+                    <div class="desc">
+                        3. 수에즈 운하가 미국 뉴욕의 엠파이어 스테이트 빌딩보다 큰 대형 화물선에 막히면서 화장지, 커피, 가구 등의 
+                        물량 공급 차질이 우려된다. 22만 4000t의 화물선 에버그린사의 에버기븐호는 지난 23일 중국에서 출발해 네덜란드 
+                        로테르담으로 향하던 중 수에즈 운하에서 좌초했다.
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- //accordion -->
+
+        <div id="accordion2">
+            <ul>
+                <li> 
+                    <div class="title">웹 디자인이란?<i class="fa fa-chevron-down"></i></div>
+                    <div class="desc">
+                        1. 에버기븐호 복구작업에 정통한 복수의 소식통은 이날 오전 로이터에 수에즈 운하에 좌초해 일주일째 운하를 가로막고 
+                        있던 에버기븐호가 운하의 양쪽 제방과 평행하게 위치해 ‘정상 항로’로 복귀했다고 전했다.
+                    </div>
+                </li>
+                <li>
+                    <div class="title">웹 퍼블리셔란?<i class="fa fa-chevron-down"></i></div>
+                    <div class="desc">
+                        2. 앞서 AP통신은 운하 통항 서비스 업체인 레스 에이전시스를 인용, 에버기븐호 일부 부양 소식을 보도했다. 
+                        10척의 예인선과 모래를 빼내기 위한 준설기 등이 동원된 끝에 약간의 돌파구가 마련됐다고 전했다.
+                    </div>
+                </li>
+                <li>
+                    <div class="title">프론트앤드 개발자란?<i class="fa fa-chevron-down"></i></div>
+                    <div class="desc">
+                        3. 수에즈 운하가 미국 뉴욕의 엠파이어 스테이트 빌딩보다 큰 대형 화물선에 막히면서 화장지, 커피, 가구 등의 
+                        물량 공급 차질이 우려된다. 22만 4000t의 화물선 에버그린사의 에버기븐호는 지난 23일 중국에서 출발해 네덜란드 
+                        로테르담으로 향하던 중 수에즈 운하에서 좌초했다.
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- //accordion -->
+
+        
+    </main>
+    <!-- //main -->
+
+    <!-- info -->
+    <div class="info left">
+        <h1><a href="menuEffect-cover.html">jQuery Menu Effect02</a></h1>
+        <p>메뉴 이펙트 - 아코디언 메뉴</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li><a href="menuEffect01-jquery.html">1</a></li>
+            <li class="active"><a href="menuEffect02-jquery.html">2</a></li>
+            <li><a href="menuEffect03-jquery.html">3</a></li>
+            <li><a href="menuEffect04-jquery.html">4</a></li>
+        </ul>
+        <ul>
+            <li><a href="menuEffect01-javascript.html">1</a></li>
+        </ul>
+    </div>
+
+    <div class="info view">
+        <a href="#" target="_blank">소스보기</a>
+    </div>
+    <!-- //info -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        //sample
+        $("#accordion .title").click(function () {
+            $(this).toggleClass("active").next().slideToggle();
+        });
+
+        //sample2
+        let target = "";
+        $("#accordion2 .title").click(function () {
+            
+            if (target != ""){
+                target.toggleClass("active").next().slideToggle();
+            } 
+
+            if(!$(this).hasClass("active")){
+                $(this).toggleClass("active").next().slideToggle();
+                target = $(this);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'Cafe24SsurroundAir';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Cafe24Ssurround';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #E5F2FE;
+            background-image: url(../assets/img/bgc1.png);
+            background-size: 500px;
+            background-position: right bottom -110px;
+            background-repeat: no-repeat;
+        }
+        
+
+        main {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            border: 6px solid #000;
+            background-color: #D8F2EA;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 20px;
+            padding: 20px;
+            perspective: 600px;
+        }
+        .card {
+            width: 8vw;
+            height: 20vh;
+            border-radius: 5px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: all 0.6s;
+        }
+        .card > div {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+            background-color: #bee2d7;
+            border-radius: 5px;
+        }
+        .card .front {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(0deg);
+            z-index: 1;
+            backface-visibility: hidden;
+        }
+        .card .back {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(-180deg);
+            backface-visibility: hidden;
+        }
+
+        /* 카드를 클릭할 때 */
+        .card.is-selected,
+        [data-matched=true] {
+            transform: translate3d(0, 0, 0) rotateY(-180deg);
+        }
+        /* 카드가 일치할 때 */
+        [data-matched=true] {
+            animation: matchSuccess 0.4s ease-out 3;
+        }
+        @keyframes matchSuccess {
+            0% {transform: rotateY(180deg) scale(1);}
+            50% {transform: rotateY(180deg) scale(1.05);}
+            100% {transform: rotateY(180deg) scale(1);}
+        }
+
+        /* 카드 이미지 */
+        .card .front {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/egg.png);
+        }
+        .card:nth-child(1) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/squirtle.png);
+        }
+        .card:nth-child(2) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/squirtle.png);
+        }
+        .card:nth-child(3) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/psyduck.png);
+        }
+        .card:nth-child(4) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/psyduck.png);
+        }
+        .card:nth-child(5) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/jigglypuff.png);
+        }
+        .card:nth-child(6) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/jigglypuff.png);
+        }
+        .card:nth-child(7) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/eevee.png);
+        }
+        .card:nth-child(8) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/eevee.png);
+        }
+        .card:nth-child(9) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/dratini.png);
+        }
+        .card:nth-child(10) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/dratini.png);
+        }
+        .card:nth-child(11) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/caterpie.png);
+        }
+        .card:nth-child(12) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/caterpie.png);
+        }
+        .card:nth-child(13) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/bellsprout.png);
+        }
+        .card:nth-child(14) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/bellsprout.png);
+        }
+        .card:nth-child(15) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/meowth.png);
+        }
+        .card:nth-child(16) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/meowth.png);
+        }
+        .card:nth-child(17) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/rattata.png);
+        }
+        .card:nth-child(18) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/rattata.png);
+        }
+
+        /* title */
+        .title {
+            padding: 20px;
+            font-family: 'Cafe24SsurroundAir';
+        }
+        .title h1 {
+            font-family: 'Cafe24Ssurround';
+            padding-bottom: 20px;
+            font-size: 40px;
+        }
+
+        /* audio */
+        .audio {
+            position: absolute;
+            right: 20px; top: 20px;
+        }
+        .audio .btn-sound {
+            width: 24px; height: 24px;
+            border: 0;
+            background-image: url(../assets/audio/icon-sound-on.svg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            position: relative;
+            cursor: pointer;
+        }
+        .audio .btn-sound:active {
+            transform: translateY(1px);
+        }
+        .audio .btn-sound::before {
+            content: '';
+            position: absolute;
+            top: 8px; left: -3px;
+            width: 120%;
+            height: 2px;
+            background: #000;
+            transform: rotate(35deg);
+        }
+        .audio .btn-sound.is-playing::before {
+            display: none;
+        }
+
+        /* score */
+        .score {
+            font-size: 24px;
+            line-height: 1.6;
+        }
+        .score .turns {}
+        .score .turns span.is-updating {
+            animation: bounce 1s;
+            display: inline-block;
+        }
+        .score .turns span.last-turn {
+            color: red;
+        }
+        
+        .score .attempts {}
+        .score .wins {}
+
+        @keyframes bounce {
+            0% {transform: scale(0.1);}
+            20% {transform: scale(1.4);}
+            40% {transform: scale(0.8);}
+            60% {transform: scale(1.1);}
+            80% {transform: scale(0.9);}
+            100% {transform: scale(1);}
+        }
+
+        .success {
+            display: none;
+        }
+    </style>
+</head>
+<body> 
+
+    <article class="audio">
+        <button class="btn-sound"></button>
+        <audio id="theme-song" src="../assets/audio/main.mp3" loop="loop"></audio>
+    </article>
+
+    <article class="title">
+        <h1>카드 뒤집기</h1>
+        <div class="score">
+            <p class="turns">기회: <span>5</span>번</p>
+            <p class="attempts">시도: <span>0</span></p>
+            <p class="wins">우승: <span>0</span></p>
+        </div>
+    </article>
+
+    <article class="success">
+        <h2>굳잡!!!! 상위급 실력이네요~~~</h2>
+    </article>
+    
+    <main>
+        <div class="card" data-type="img1" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img1" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img2" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img2" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img3" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img3" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img4" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img4" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img5" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img5" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img6" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img6" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img7" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img7" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img8" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img8" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img9" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img9" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+    </main>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        const $main = $("main"),
+              $card = $(".card"),
+              $btnSound = $(".btn-sound"),
+              $turns = $(".turns span"),
+              $attempts = $(".attempts span"),
+              $wins = $(".wins span"),
+              $themeSong = $("#theme-song")[0],
+
+              dataMatch = "data-matched",
+              dataType = "data-type",
+              selectedClass = "is-selected",
+              playSoundClass = "is-playing",
+              scoreUpdateClass = 'is-updating',
+              lastTurnClass = 'last-turn',
+              timeoutLength = 900;
+
+        let sound = [
+            "../assets/audio/match2.mp3",
+            "../assets/audio/match.mp3",
+            "../assets/audio/up.mp3"],
+            soundMatch = new Audio(sound[0]),
+            soundNoMatch = new Audio(sound[1]),
+            soundSuccess = new Audio(sound[2]),
+            turnsCount = 5,     //기회 횟수
+            attempsCount = 0,   //시도 횟수
+            winCount = 0,       //우승 횟수
+            card1, card2, msg;
+
+
+        //음악 아이콘
+        $btnSound.on("click",function(){
+            $(this).toggleClass(playSoundClass);
+            if( $(this).hasClass(playSoundClass) ){
+                $themeSong.play();
+            } else {
+                $themeSong.pause();
+            }
+        });
+
+        //카드를 클릭하면 is-selected를 추가
+        $card.click(function(){
+            if( $(this).attr(dataMatch) == "false" ){
+                $(this).addClass(selectedClass);
+            }
+            let selectedCards = $("."+selectedClass); //선택된 카드를 클래스로 변경
+
+            //만약에 카드1과 카드2가 같다면
+            if(selectedCards.length == 2){
+                card1 = selectedCards.eq(0).attr(dataType);
+                card2 = selectedCards.eq(1).attr(dataType);
+
+                //만약에 카드1과 카드2가 같으면 그대로~~~(dataMatch->ture), 음악재생
+                if( card1 == card2 ){
+                    selectedCards.attr(dataMatch, true).removeClass(selectedClass)
+                } else {
+                    //만약에 카드1과 카드2가 다르면 원래 상태로~~~(selectedClass 제거), 음악재생, 기회감소
+                    setTimeout(function(){
+                        turnsCount--;
+                        $turns.addClass(scoreUpdateClass).html(turnsCount);
+                        selectedCards.removeClass(selectedClass);  
+                    }, timeoutLength);
+
+                    //기회가 1번 남았을 때 주의 표시
+                    if(turnsCount === 1) {
+                        setTimeout(function() {
+                            $turns.addClass(lastTurnClass);
+                        }, timeoutLength);
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        @font-face { 
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal; 
+            font-style: normal; 
+        }
+        *, *::before, *::after {
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+        a {text-decoration: none; color: #fff; transition: all 0.2s;}
+        a:hover {border-bottom: 1px dashed #fff;}
+        img {width: 100%; vertical-align: top;}
+        li {list-style: none;}
+        body {
+            width: 100%;
+            overflow: hidden;
+        }
+        .quiz-wrap {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: 
+                url(quizImg/stars.png) no-repeat center,
+                url(quizImg/bg.jpg) no-repeat center;
+            background-size: cover
+        }
+        .bearQuiz {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .bear {
+            width: 25vw;
+            height: 30vw;
+            background: url(quizImg/bear.png) no-repeat center center;
+            background-size: contain;
+        }
+        .leaves1 {
+            position: absolute;
+            left: -5%; top: -5vh;
+            width: 110%;
+            height: 110vh;
+            pointer-events: none;
+            background: url(quizImg/leaves1.png) no-repeat center center;
+            background-size: cover;
+        }
+        .leaves2 {
+            position: absolute;
+            left: -5%; top: -5vh;
+            width: 110%;
+            height: 110vh;
+            pointer-events: none;
+            background: url(quizImg/leaves2.png) no-repeat center center;
+            background-size: cover
+        }
+        /* quiz */
+        .quiz {
+            width: 40vw;
+            height: 30vw;
+            background: #1b1f21;
+            border-radius: 10px;
+            box-shadow: 0 16px 40px -5px rgb(0 0 0 / 50%);
+            padding: 40px;
+            color: #fff;
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            position: relative;
+            z-index: 1000;
+            overflow-y: scroll;
+        }
+        .quiz h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .quiz em {
+            font-style: normal;
+        }
+        .info {
+            position: absolute;
+            right: 10px; top: 10px;
+            width: 150px; height: 150px;
+            color: #fff;
+            text-align: center;
+            color: #1b1f21;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 16px 40px -5px rgb(255 255 255 / 50%);
+            padding-top: 42px;
+            z-index: 1000;
+        }
+        .info span {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .quiz .last-info {
+            margin-bottom: 10px;
+            display: none;
+        }
+        .quiz .start {
+            margin: 40px 0;
+            position: relative;
+        }
+        .quiz .start .start-input {
+            padding: 15px 20px;
+            font-size: 28px;
+            width: 100%;
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            border-radius: 10px;
+            border: 0;
+            outline: 0;
+        }
+        .quiz .start .start-btn {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            font-size: 28px;
+            background: red;
+            border-radius: 10px;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            cursor: pointer;
+        }
+        .quiz .start button:active {
+            opacity: 0.8;
+        }
+        .quiz .start .again-btn {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            font-size: 28px;
+            background: red;
+            border-radius: 10px;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+        }
+        .quiz .answers span {
+            border: 1px solid #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 3px;
+        }
+        .bear {
+            overflow-y: scroll;
+        }
+        .bear span { 
+            background: #1b1f21;
+            color: #fff;
+            padding: 7px 10px 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 3px;
+        }
+
+        @media (max-width: 800px) {
+            .bearQuiz {flex-direction: column-reverse;}
+            .quiz {width: 90vw; height: auto; padding: 20px;}
+            .quiz-wrap {height: auto;}
+            .quiz .info {right: 10px; top: 10px; position: fixed;}
+            .quiz h2 {font-size: 30px;}
+            .quiz .start {margin: 20px 0;}
+            .quiz .start .start-btn {font-size: 20px}
+            .quiz .start .start-input {font-size: 16px;}
+            .bear {left: 10px; top: 10px; position: fixed; width: 50vw; height: 50vw;}
+
+            .leaves1 {display: none;}
+            .leaves2 {display: none;}
+        }
+    </style>
+</head>
+<body>
+    
+    <main>
+        <div class="quiz-wrap">
+            <div class="bearQuiz">
+                <div class="bear"></div>
+                <!-- quiz -->
+                <div class="quiz">
+                    <h2><em>CSS</em> 속성 맞추기</h2>
+                    <p>알고 있는 <em>CSS</em> 속성을 1분안에 적어주세요!</p>
+                    <div class="start">
+                        <input type="text" class="start-input" placeholder="여기에 작성해주세요!!">
+                        <button class="start-btn">게임 시작하기</button>
+                        <button class="again-btn">다시 도전하기</button>
+                    </div>
+                    <div class="last-info">
+                        당신은 <span class="total">0</span> 개중에 <span class="score">0</span> 개를 맞추었습니다.
+                    </div>
+                    <div class="answers"></div>
+                </div>
+                <!-- //quiz -->
+            </div>
+            <div class="info">
+                남은 시간 <span class="time-remaining">1:00</span><br>
+                현재 점수 <span class="score">0</span><br>
+                전체 점수 <span class="total">0</span>
+            </div>
+            <div class="leaves1"></div>
+            <div class="leaves2"></div>
+        </div>
+    </main>
+
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script>
+
+        const QuizAnswers = ['align-content', 'align-items', 'align-self', 'alignment-adjust', 'alignment-baseline',
+            'all', 'anchor-point', 'animation', 'animation-delay', 'animation-direction', 'animation-duration',
+            'animation-fill-mode', 'animation-iteration-count', 'animation-name', 'animation-play-state',
+            'animation-timing-function', 'appearance', 'azimuth', 'backface-visibility', 'background',
+            'background-attachment', 'background-clip', 'background-color', 'background-image', 'background-origin',
+            'background-position', 'background-repeat', 'background-size', 'baseline-shift', 'binding', 'bleed',
+            'bookmark-label', 'bookmark-level', 'bookmark-state', 'bookmark-target', 'border', 'border-bottom',
+            'border-bottom-color', 'border-bottom-left-radius', 'border-bottom-right-radius', 'border-bottom-style',
+            'border-bottom-width', 'border-collapse', 'border-color', 'border-image', 'border-image-outset',
+            'border-image-repeat', 'border-image-slice', 'border-image-source', 'border-image-width', 'border-left',
+            'border-left-color', 'border-left-style', 'border-left-width', 'border-radius', 'border-right',
+            'border-right-color', 'border-right-style', 'border-right-width', 'border-spacing', 'border-style',
+            'border-top', 'border-top-color', 'border-top-left-radius', 'border-top-right-radius',
+            'border-top-style', 'border-top-width', 'border-width', 'bottom', 'box-decoration-break', 'box-shadow',
+            'box-sizing', 'break-after', 'break-before', 'break-inside', 'caption-side', 'chains', 'clear', 'clip',
+            'clip-path', 'clip-rule', 'color', 'color-interpolation-filters', 'color-profile', 'column-count',
+            'column-fill', 'column-gap', 'column-rule', 'column-rule-color', 'column-rule-style',
+            'column-rule-width', 'column-span', 'column-width', 'columns', 'contain', 'content',
+            'counter-increment', 'counter-reset', 'crop', 'cue', 'cue-after', 'cue-before', 'cursor', 'direction',
+            'display', 'dominant-baseline', 'drop-initial-after-adjust', 'drop-initial-after-align',
+            'drop-initial-before-adjust', 'drop-initial-before-align', 'drop-initial-size', 'drop-initial-value',
+            'elevation', 'empty-cells', 'filter', 'flex', 'flex-basis', 'flex-direction', 'flex-flow', 'flex-grow',
+            'flex-shrink', 'flex-wrap', 'float', 'float-offset', 'flood-color', 'flood-opacity', 'flow-from',
+            'flow-into', 'font', 'font-family', 'font-feature-settings', 'font-kerning', 'font-language-override',
+            'font-size', 'font-size-adjust', 'font-stretch', 'font-style', 'font-synthesis', 'font-variant',
+            'font-variant-alternates', 'font-variant-caps', 'font-variant-east-asian', 'font-variant-ligatures',
+            'font-variant-numeric', 'font-variant-position', 'font-weight', 'grid', 'grid-area',
+            'grid-auto-columns', 'grid-auto-flow', 'grid-auto-position', 'grid-auto-rows', 'grid-column',
+            'grid-column-end', 'grid-column-start', 'grid-row', 'grid-row-end', 'grid-row-start', 'grid-template',
+            'grid-template-areas', 'grid-template-columns', 'grid-template-rows', 'hanging-punctuation', 'height',
+            'hyphens', 'icon', 'image-orientation', 'image-resolution', 'ime-mode', 'inline-box-align',
+            'justify-content', 'justify-items', 'justify-self', 'left', 'letter-spacing', 'lighting-color',
+            'line-break', 'line-height', 'line-stacking', 'line-stacking-ruby', 'line-stacking-shift',
+            'line-stacking-strategy', 'list-style', 'list-style-image', 'list-style-position', 'list-style-type',
+            'margin', 'margin-bottom', 'margin-left', 'margin-right', 'margin-top', 'marks', 'mask', 'mask-box',
+            'mask-box-outset', 'mask-box-repeat', 'mask-box-slice', 'mask-box-source', 'mask-box-width',
+            'mask-clip', 'mask-image', 'mask-origin', 'mask-position', 'mask-repeat', 'mask-size',
+            'mask-source-type', 'mask-type', 'max-height', 'max-lines', 'max-width', 'min-height', 'min-width',
+            'move-to', 'nav-down', 'nav-index', 'nav-left', 'nav-right', 'nav-up', 'object-fit', 'object-position',
+            'opacity', 'order', 'orphans', 'outline', 'outline-color', 'outline-offset', 'outline-style',
+            'outline-width', 'overflow', 'overflow-wrap', 'overflow-x', 'overflow-y', 'padding', 'padding-bottom',
+            'padding-left', 'padding-right', 'padding-top', 'page', 'page-break-after', 'page-break-before',
+            'page-break-inside', 'page-policy', 'pause', 'pause-after', 'pause-before', 'perspective',
+            'perspective-origin', 'pitch', 'pitch-range', 'play-during', 'position', 'presentation-level', 'quotes',
+            'region-fragment', 'rendering-intent', 'resize', 'rest', 'rest-after', 'rest-before', 'richness',
+            'right', 'rotation', 'rotation-point', 'ruby-align', 'ruby-overhang', 'ruby-position', 'ruby-span',
+            'shape-image-threshold', 'shape-outside', 'shape-margin', 'size', 'speak', 'speak-as', 'speak-header',
+            'speak-numeral', 'speak-punctuation', 'speech-rate', 'stress', 'string-set', 'tab-size', 'table-layout',
+            'target', 'target-name', 'target-new', 'target-position', 'text-align', 'text-align-last',
+            'text-combine-horizontal', 'text-decoration', 'text-decoration-color', 'text-decoration-line',
+            'text-decoration-skip', 'text-decoration-style', 'text-emphasis', 'text-emphasis-color',
+            'text-emphasis-position', 'text-emphasis-style', 'text-height', 'text-indent', 'text-justify',
+            'text-orientation', 'text-outline', 'text-overflow', 'text-shadow', 'text-space-collapse',
+            'text-transform', 'text-underline-position', 'text-wrap', 'top', 'transform', 'transform-origin',
+            'transform-style', 'transition', 'transition-delay', 'transition-duration', 'transition-property',
+            'transition-timing-function', 'unicode-bidi', 'vertical-align', 'visibility', 'voice-balance',
+            'voice-duration', 'voice-family', 'voice-pitch', 'voice-range', 'voice-rate', 'voice-stress',
+            'voice-volume', 'volume', 'white-space', 'widows', 'width', 'word-break', 'word-spacing', 'word-wrap',
+            'wrap-flow', 'wrap-through', 'writing-mode', 'z-index'];
+
+        const $totalCount = $(".total"),
+              $scoreCount = $(".score"),
+              $timeRemain = $(".time-remaining"),
+              $startBtn = $(".start-btn"),
+              $againBtn = $(".again-btn"),
+              $startInput = $(".start-input"),
+              $answers = $(".answers"),
+              $lastInfo = $(".last-info"),
+              $bear = $(".bear");
+              
+            
+        let timeRemaining = 60, //남은 시간
+            score = 0,          //점수
+            timeInterval;       //시간
+
+        //게임 시작
+        $startBtn.on("click", startQuiz);
+        $startInput.on("input", checkInput);
+        $againBtn.on("click", reset);
+
+        function startQuiz(){
+            $startBtn.remove();
+            $scoreCount.text(score);
+            $totalCount.text(QuizAnswers.length);
+
+            //시간 시작
+            timeInterval = setInterval(reduceTime, 1000);
+
+            //정답 체크
+            initAnswers();
+        }
+
+        function checkInput(){
+            let input = event.currentTarget.value.trim().toLowerCase();
+            if( answers.hasOwnProperty(input) && !answers[input] ){
+                
+                answers[input] = true;
+
+                //점수 반영
+                score++;
+                $scoreCount.text(score);
+                //정답 표기
+                $answers.prepend("<span>"+input+"</span>");
+
+                //인풋 초기화
+                $startInput.val('');
+
+                //완성하였을 경우
+                if( score === QuizAnswers.length ){
+                    endQuiz();
+                }
+            }
+            console.log(input)
+        }
+
+        function initAnswers(){
+            answers = {};
+            QuizAnswers.forEach(function(item){
+                let answer = item.trim().toLowerCase();
+                answers[answer] = false;
+            });
+            console.log(answers)
+        }
+
+        function missAnswers(){
+            QuizAnswers.forEach(function(item){
+                let answer = item.trim().toLowerCase();
+                if(!answers[answer]){
+                    $bear.append("<span>"+answer+"</span>");
+                }
+            });
+        }
+
+        function reduceTime(){
+            timeRemaining--;
+            if( timeRemaining === 0 ){
+                endQuiz();
+            } else {
+                $timeRemain.text(getTimeString());
+            }
+        }
+
+        function getTimeString(){
+            if( timeRemaining <= 0 ){
+                return "0:00";
+            } else {
+                let minutes = Math.floor(timeRemaining / 60)
+                let seconds = timeRemaining % 60;
+
+                if( seconds < 10 ) {
+                    seconds =  "0" + seconds;
+                }
+                return minutes + ":" + seconds;
+            }
+        }
+
+        function endQuiz(){
+            alert("게임 끝났지롱~~~~");
+            $againBtn.show();
+            $lastInfo.show();
+
+            //맞추지 못한거 보여주기
+            missAnswers();
+
+            clearInterval(timeInterval)
+        }
+
+        function reset(){
+            $bear.find("span").hide();
+            $answers.empty();
+            $lastInfo.hide();
+            $againBtn.hide();
+            startQuiz();
+            timeRemaining = 60;
+            $scoreCount.text(0);
+        }
+
+
+        //마우스 효과
+        const leaves = document.querySelector(".leaves1");
+
+        const mouseMove = e => {
+            const { x, y }  = e;
+            const rect = leaves.getBoundingClientRect();
+            const mouseX = (x - rect.left - rect.width/2) / rect.width * 20
+            const mouseY = (y - rect.top - rect.height/2) / rect.height * 20
+
+            gsap.to(".leaves1", {duration: 0.3, x : mouseX, y: mouseY})
+            gsap.to(".leaves2", {duration: 0.3, x : mouseX * 2, y: mouseY * 2})
+            gsap.to(".bear", {duration: 0.3, x : mouseX, y: mouseY})
+        }
+
+        window.addEventListener("mousemove", mouseMove);
+    </script>
+</body>
+</html>

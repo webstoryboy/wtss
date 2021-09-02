@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font.css">
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism-okaidia.min.css">
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            line-height: 1.6;
+        }
+
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+
+        h1 {
+            padding-bottom: 40px;
+        }
+
+        hr {
+            margin: 10% 0 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+
+        .sample h2 {
+            position: relative;
+            font-size: 16px;
+            background-color: #f2f2f2;
+            padding: 15px 15px 12px 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px;
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .sample .problem {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+            line-height: 1.6;
+        }
+
+        .sample pre {
+            margin: 0 !important;
+            border-radius: 0;
+            ;
+        }
+
+        .sample .desc {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .sample .desc dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+
+        .sample .desc dd {
+            padding: 3px 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .sample .sam {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .sample .sam dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+
+        .sample .sam dd {
+            padding: 3px 0 16px 0;
+        }
+
+        ol {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        ol li {
+            display: inline;
+            text-align: center;
+            line-height: 40px;
+            margin-bottom: 5px;
+        }
+
+        ol li a {
+            display: inline-block;
+            border-radius: 30px;
+            padding: 2px 20px 0px 20px;
+            border: 1px solid #000;
+        }
+
+        ol li a:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        ol li.active {
+            background: #000;
+        }
+
+        ol li.active a {
+            color: #fff;
+        }
+        .mt20 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Javascript Test03</h1>
+
+    <div id="sample1" class="sample">
+        <h2>01. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    if( null ){
+        document.write("조건문이 실행되었습니다.(true)");
+    } else {
+        document.write("조건문이 실행되었습니다.(false)");
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample2" class="sample">
+        <h2>02. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    if( 0 ){
+        document.write("조건문이 실행되었습니다.(true)");
+    } else {
+        document.write("조건문이 실행되었습니다.(false)");
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample3" class="sample">
+        <h2>03. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = 10;
+
+    if( num == 100 ){
+        document.write("조건문이 실행되었습니다.(1)");
+        if( num == 100 ){
+            document.write("조건문이 실행되었습니다.(2)");
+            if( num == 100){
+                document.write("조건문이 실행되었습니다.(3)");
+            }
+        }
+    } else {
+        document.write("조건문이 실행되었습니다.(4)");
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample4" class="sample">
+        <h2>04. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = 10;
+
+    (num == 100) ? document.write("true") : document.write("false");
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample5" class="sample">
+        <h2>05. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = 0;
+    while( num &lt;= 5 ){
+        document.write( num + ". 반복문이 실행되었습니다.");  
+        num++;
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample6" class="sample">
+        <h2>06. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = 2;
+    do {
+        document.write(num + ". 반복문이 실행되었습니다.");
+        num++;
+    } while (num &lt= 3);
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample7" class="sample">
+        <h2>07. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    for( let i=1; i&lt;=2; i++ ){
+        document.write(i + ". 반복문이 실행되었습니다.");
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample8" class="sample">
+        <h2>08. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    for(var i=1; i&lt;=1; i++){
+        document.write(i + ". A가 실행되었습니다.");
+        for(var j=1; j&lt;=3; j++){
+            document.write(j + ". B가 실행되었습니다.");
+        }
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample9" class="sample">
+        <h2>09. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const str = [100, 200, 300, 400, 500];
+
+    str.forEach(function(i){
+        document.write(i + ". 반복문이 실행되었습니다.");
+    });
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample10" class="sample">
+        <h2>10. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const str = [100, 200, 300, 400, 500];
+
+    str.forEach((element, index, array) => {
+        document.write(element);
+        document.write(index);
+        document.write(array);
+    });
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample11" class="sample">
+        <h2>11. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const str = [100, 200];
+
+    for ( let i of str ){
+        document.write( i + ". 반복문이 실행되었습니다.");
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample12" class="sample">
+        <h2>12. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const str = [100, 200, 600];
+
+    for ( let i in str ){
+        document.write( str[i] + ". 반복문이 실행되었습니다.");
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample13" class="sample">
+        <h2>13. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = {
+        a: 100, 
+        b: 200
+    };
+
+    for(let key in obj) { 
+        document.write(key);
+        document.write(obj[key]);
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample14" class="sample">
+        <h2>14. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = 0;
+
+    while( true ){
+        num++;
+        if( num == 3 ){
+            continue;
+        }
+        if( num > 6 ){
+            break;
+        }
+        document.write(num);
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample15" class="sample">
+        <h2>15. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    for( let i=1; i&lt=10; i++ ){
+        document.write(i);
+        if( i == 10 ){
+            break;
+        }
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample16" class="sample">
+        <h2>16. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = 0;
+
+    while (num &lt; 20){
+        num++;
+        document.write(num);
+        if( num == 10 ){
+            break;
+        }
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+
+    <div id="sample17" class="sample">
+        <h2>17. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = 100;
+
+    if( num == 100 ) document.write("true");
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample18" class="sample">
+        <h2>18. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = 100;
+
+    switch( num ){
+        case 100 : 
+            document.write("100)");
+        break;
+        case 200 : 
+            document.write("200)");
+        break;
+        default :
+            document.write("값이 없음)");
+        break;
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample19" class="sample">
+        <h2>19. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    func = () => {
+        const str = "함수가 실행되었습니다.";
+        return str;
+    }
+
+    document.write(func());
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample20" class="sample">
+        <h2>20. 다음을 보고 결과 값을 작성하시오.<span class="dot"></span></h2>
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let num = "1";
+
+    function gallery(num){
+        if(num){
+            if(num == 2) direct++;
+        } else {
+            if(num == 1) direct--;
+        }
+    }
+    gallery(8);
+
+    document.write(num);
+}
+</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/prism.min.js"></script>
+    <script>
+        // {
+        //     document.write("****** 정답1 ******<br>")
+
+        //     if( null ){
+        //         document.write("조건문이 실행되었습니다.(true)<br><br>");
+        //     } else {
+        //         document.write("조건문이 실행되었습니다.(false)<br><br>");
+        //     }
+        // }
+        
+
+        // {
+        //     document.write("****** 정답2 ******<br>")
+
+        //     if( 0 ){
+        //         document.write("조건문이 실행되었습니다.(true)<br><br>");
+        //     } else {
+        //         document.write("조건문이 실행되었습니다.(false)<br><br>");
+        //     }
+        // }
+        
+        // {
+        //     document.write("****** 정답3 ******<br>")
+
+        //     let num = 10;
+
+        //     if( num == 100 ){
+        //         document.write("조건문이 실행되었습니다.(1)");
+        //         if( num == 100 ){
+        //             document.write("조건문이 실행되었습니다.(2)");
+        //             if( num == 100){
+        //                 document.write("조건문이 실행되었습니다.(3)");
+        //             }
+        //         }
+        //     } else {
+        //         document.write("조건문이 실행되었습니다.(4)<br><br>");
+        //     }
+        // }
+
+        // {
+        //     document.write("****** 정답4 ******<br>");
+
+        //     let num = 10;
+
+        //     (num == 100) ? document.write("true<br>") : document.write("false<br>");
+        // }
+
+        // {
+        //     document.write("<br>****** 정답5 ******<br>");
+
+        //     let num = 0;
+        //     while( num <= 5 ){
+        //         document.write( num + ". 반복문이 실행되었습니다.<br>");  
+        //         num++;
+        //     }
+        // }
+
+        // {
+        //     document.write("<br>****** 정답6 ******<br>");
+
+        //     let num = 2;
+        //     do {
+        //         document.write(num + ". 반복문이 실행되었습니다.<br>");
+        //         num++;
+        //     } while (num <= 3);
+        // }
+
+        // {
+        //     document.write("<br>****** 정답7 ******<br>");
+        //     for( let i=1; i<=2; i++ ){
+        //         document.write(i + ". 반복문이 실행되었습니다.<br>");
+        //     }
+            
+        // }
+
+        // {
+        //     document.write("<br>****** 정답8 ******<br>");
+        //     for(var i=1; i<=1; i++){
+        //         document.write(i + ". A가 실행되었습니다.<br>");
+        //         for(var j=1; j<=3; j++){
+        //             document.write(j + ". B가 실행되었습니다.<br>");
+        //         }
+        //     }
+        // }
+
+        // {
+        //     document.write("<br>****** 정답9 ******<br>");
+        //     const str = [100, 200, 300, 400, 500];
+
+        //     str.forEach(function(i){
+        //         document.write(i + ". 반복문이 실행되었습니다.<br>");
+        //     });
+            
+        // }
+
+        // {
+        //     document.write("<br>****** 정답10 ******<br>");
+        //     const str = [100, 200, 300, 400, 500];
+
+        //     str.forEach((element, index, array) => {
+        //         document.write(element, "<br>");
+        //         document.write(index, "<br>");
+        //         document.write(array, "<br>");
+        //     });
+        //     document.write("<br>");
+        // }
+
+        // {
+        //     document.write("<br>****** 정답11 ******<br>");
+
+        //     const str = [100, 200];
+
+        //     for ( let i of str ){
+        //         document.write( i + ". 반복문이 실행되었습니다.<br>");
+        //     }
+            
+        // }
+
+        // {
+        //     document.write("<br>****** 정답12 ******<br>");
+
+        //     const str = [100, 200, 600];
+
+        //     for ( let i in str ){
+        //         document.write( str[i] + ". 반복문이 실행되었습니다.<br>");
+        //     }
+        // }
+
+        // {
+        //     document.write("<br>****** 정답13 ******<br>");
+
+        //     const obj = {
+        //         a: 100, 
+        //         b: 200
+        //     };
+
+        //     for(let key in obj) { 
+        //         document.write(key,"<br>");
+        //         document.write(obj[key],"<br>");
+        //     }
+            
+        // }
+
+        // {
+        //     document.write("<br>****** 정답14 ******<br>");
+
+        //     let num = 0;
+
+        //     while( true ){
+        //         num++;
+        //         if( num == 3 ){
+        //             continue;
+        //         }
+        //         if( num > 6 ){
+        //             break;
+        //         }
+        //         document.write(num);
+        //     }
+        //     document.write("<br>");
+            
+        // }
+
+        // {
+        //     document.write("<br>****** 정답15 ******<br>");
+
+        //     for( let i=1; i<=10; i++ ){
+        //         document.write(i);
+        //         if( i == 10 ){
+        //             break;
+        //         }
+        //     }
+        //     document.write("<br>");
+        // }
+
+        // {
+        //     document.write("<br>****** 정답16 ******<br>");
+        //     let num = 0;
+
+        //     while (num < 20){
+        //         num++;
+        //         document.write(num);
+        //         if( num == 10 ){
+        //             break;
+        //         }
+        //     }
+        //     document.write("<br>");
+        // }
+
+        // {
+        //     document.write("<br>****** 정답17 ******<br>");
+
+        //     let num = 100;
+
+        //     if( num == 100 ) document.write("true<br>");
+        // }
+
+        // {
+        //     document.write("<br>****** 정답18 ******<br>");
+
+        //     let num = 100;
+
+        //     switch( num ){
+        //         case 100 : 
+        //             document.write("100");
+        //         break;
+        //         case 200 : 
+        //             document.write("200");
+        //         break;
+        //         default :
+        //             document.write("값이 없음");
+        //         break;
+        //     }
+        //     document.write("<br>");
+        // }
+
+        // {
+        //     document.write("<br>****** 정답19 ******<br>");
+        //     func = () => {
+        //         const str = "함수가 실행되었습니다.<br>";
+        //         return str;
+        //     }
+
+        //     document.write(func());
+        //     document.write("<br>");
+        // }
+
+        // {
+        //     document.write("<br>****** 정답20 ******<br>");
+
+        //     let num = "1";
+
+        //     function gallery(num){
+        //         if(num){
+        //             if(num == 2) num++;
+        //         } else {
+        //             if(num == 1) num--;
+        //         }
+        //     }
+        //     gallery(8);
+
+        //     document.write(num);
+        // }
+       
+
+    </script>
+</body>
+
+</html>

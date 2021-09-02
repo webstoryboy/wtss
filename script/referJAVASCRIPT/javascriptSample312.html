@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카운트 다운</title>
+    <style>
+        #log {
+          font-size: 60px;
+        }
+      </style>
+</head>
+
+<body>
+    <main class="centering">
+        <p id="log"></p>
+      </main>
+
+    <script>
+        const totalTime = 10000; // 10초
+        const oldTime = Date.now();
+
+        const timerId = setInterval(() => {
+            const currentTime = Date.now();
+            const diff = currentTime - oldTime;
+
+            const remainMSec = totalTime - diff;
+            const remainSec = Math.ceil(remainMSec / 1000);
+
+            let label = `남은 시간 ${remainSec}초`;
+
+            // 0초 이하의 처리 작업
+            if (remainMSec <= 0) {
+                clearInterval(timerId);
+                label = '종료';
+            }
+
+            // 화면에 표시
+            document.querySelector('#log').innerHTML = label;
+        }, 1000);
+    </script>
+</body>
+
+</html>

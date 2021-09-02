@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding-top: 20vh;
+        }
+
+        #slider {
+            height: 200px;
+            width: 100%;
+        }
+
+        .item:nth-child(1) {
+            background-color: rgb(152, 255, 121);
+        }
+
+        .item:nth-child(2) {
+            background-color: rgb(121, 255, 237);
+        }
+
+        .item:nth-child(3) {
+            background-color: rgb(121, 168, 255);
+        }
+
+        .item:nth-child(4) {
+            background-color: rgb(195, 121, 255);
+        }
+
+        .item:nth-child(5) {
+            background-color: rgb(255, 121, 222);
+        }
+
+        .item:nth-child(6) {
+            background-color: rgb(255, 121, 121);
+        }
+
+        .item:nth-child(7) {
+            background-color: rgb(255, 253, 121);
+        }
+
+        .button-box {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            display: inline-block;
+            background-color: #585858;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        a:last-child {
+            margin-right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slider">
+        <div class="item"><img src="../assets/img/su01.jpg" alt="이미지1"></div>
+        <div class="item"><img src="../assets/img/su02.jpg" alt="이미지1"></div>
+        <div class="item"><img src="../assets/img/su03.jpg" alt="이미지1"></div>
+        <div class="item"><img src="../assets/img/su04.jpg" alt="이미지1"></div>
+        <div class="item"><img src="../assets/img/su05.jpg" alt="이미지1"></div>
+        <div class="item"><img src="../assets/img/su06.jpg" alt="이미지1"></div>
+        <div class="item"><img src="../assets/img/su07.jpg" alt="이미지1"></div>
+    </div>
+    <div class="button-box">
+        <a href="#" onclick="slider.next()"><i class="fas fa-chevron-left"></i></a>
+        <a href="#" onclick="slider.prev()"><i class="fas fa-chevron-right"></i></a>
+        <a href="#" onclick="slider.auto()"><i class="fas fa-play"></i></a>
+        <a href="#" onclick="slider.stop()"><i class="fas fa-stop"></i></a>
+    </div>
+
+    <script>
+        var Slider = function (id, _web, _tab, _mobile, spacing) {
+            var containerWidth = 0;
+            var sliderItemWidth = 0;
+            var totalCount = 0;
+            var spacing = spacing || 10;
+            var display = _web;
+            var left = 0;
+            var interval;
+
+            var DOM = {
+                container: function (id) {
+                    var dom = document.querySelector('#' + id);
+                    dom.className = 's-container';
+                    dom.style.position = 'relative';
+                    dom.style.overflow = 'hidden';
+                    return dom;
+                },
+                slider: function (container) {
+                    totalCount = container.children.length;
+
+                    var dom = document.createElement('div');
+                    dom.className = 'slider'
+                    dom.style.position = 'relative';
+                    dom.style.overflow = 'hidden';
+                    dom.style.height = '100%';
+                    dom.style.left = 0;
+                    dom.style.transition = 'left .5s';
+                    return dom;
+                }
+            }
+
+            // DOM 만들기
+            var container = DOM.container(id);
+            var slider = DOM.slider(container);
+            var temp = container.innerHTML;
+            container.innerHTML = '';
+            slider.innerHTML = temp;
+            container.appendChild(slider);
+            var items = document.querySelector('#' + id + ' .slider').children;
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.float = 'left';
+                items[i].style.height = '100%';
+                items[i].style.width = (sliderItemWidth - spacing) + 'px';
+                items[i].style['margin-right'] = spacing + 'px'; // 간격
+            }
+
+            // 화면 사이즈 수정시 발생하는 이벤트
+            function resize() {
+                left = 0;
+                document.querySelector('#' + id + ' .slider').style.left = left + 'px';
+
+                var innerWidth = window.innerWidth;
+                if (innerWidth >= 1000) {
+                    setDisplayCount(_web);
+                } else if (innerWidth < 1000 && innerWidth >= 768) {
+                    setDisplayCount(_tab);
+                } else if (innerWidth < 768) {
+                    setDisplayCount(_mobile);
+                }
+
+                if (display === 1) {
+                    spacing = 0;
+                    var items = document.querySelector('#' + id + ' .slider').children;
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].style.width = sliderItemWidth + 'px';
+                        items[i].style['margin-right'] = 0 + 'px'; // 간격
+                    }
+                }
+            }
+
+            // 디스플레이 갯수 설정 함수
+            function setDisplayCount(count) {
+                display = count;
+
+                containerWidth = container.offsetWidth + spacing;
+                sliderItemWidth = containerWidth / display;
+
+                document.querySelector('#' + id + ' .slider').style.width = totalCount * sliderItemWidth + spacing *
+                    totalCount + 'px';
+                var items = document.querySelector('#' + id + ' .slider').children;
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.width = (sliderItemWidth - spacing) + 'px';
+                }
+            }
+
+            // 반응형 디스플레이 갯수 조절
+            var isResponsive = _tab != undefined && _mobile != undefined;
+            if (isResponsive) {
+                window.onresize = resize;
+            }
+            resize();
+
+
+            return {
+                setDisplayCount: setDisplayCount,
+                move: function (index) {
+                    left = (-1) * sliderItemWidth * index;
+                    document.querySelector('#' + id + ' .slider').style.left = left + 'px';
+                },
+                prev: function () {
+                    left += sliderItemWidth;
+                    var limit = 0;
+                    if (left > limit) {
+                        left = limit;
+                    }
+                    document.querySelector('#' + id + ' .slider').style.left = left + 'px';
+                },
+                next: function () {
+                    left -= sliderItemWidth;
+                    var limit = (-1) * sliderItemWidth * (totalCount - display);
+                    if (left < limit) {
+                        left = limit;
+                    }
+                    document.querySelector('#' + id + ' .slider').style.left = left + 'px';
+                },
+                auto: function () {
+                    clearInterval(interval);
+                    interval = setInterval(function () {
+                        left -= sliderItemWidth;
+                        var limit = (-1) * sliderItemWidth * (totalCount - display);
+                        if (left < limit) {
+                            left = 0;
+                        }
+                        document.querySelector('#' + id + ' .slider').style.left = left + 'px';
+                    }, 2000)
+                },
+                stop: function () {
+                    clearInterval(interval);
+                }
+            }
+        }
+
+        var slider = new Slider('slider', 4, 3, 1, 20);
+        slider.auto();
+    </script>
+</body>
+
+</html>

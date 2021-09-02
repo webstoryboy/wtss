@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery | animaition</title>
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+        }
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+        h1 {
+            padding-bottom: 20px;
+        }
+        hr {
+            margin: 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            width: 100%;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        em {
+            font-style: normal;
+        }
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+        .sample h2 {
+            position: relative;
+            font-size: 14px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px; 
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        .red {background-color: #ffebee;}
+        .blue {background-color: #e3f2fd;}
+
+        /* option */
+        .ex1 {
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle1 {
+            width: 80px;
+            height: 80px;
+            background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+            border-radius: 50%;
+            display: block;
+            text-align: center;
+            line-height: 80px;
+            color: #fff;
+            padding: 5px;
+            margin: 5px;
+            border: 5px solid #ffebee;
+        }
+        .text1 {
+            position: absolute;
+            left: 20px;
+            bottom: 15px;
+        }
+
+        .ex2 {
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle2 {
+            width: 80px;
+            height: 80px;
+            background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+            border-radius: 50%;
+            display: block;
+            text-align: center;
+            line-height: 80px;
+            color: #fff;
+            padding: 5px;
+            margin: 5px;
+        }
+        .text2 {
+            position: absolute;
+            left: 20px;
+            bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>jQuery dimenstions</h1>
+
+    <div id="sample1" class="sample">
+        <h2>Sample01 : 애니메이션01 <span class="dot"></span></h2>
+        <div class="ex ex1">
+            <span class="circle circle1">01</span>
+
+            <p class="text text1">여기에 표시됩니다.</p>
+        </div>
+        <div class="re">
+            <a href="#" class="btn1-1">클릭 : 원을 가로(width) 값을 구합니다.</a>
+            <a href="#" class="btn1-2">클릭 : 원을 세로(hegiht) 값을 구합니다.</a>
+            <a href="#" class="btn1-3">클릭 : 원을 가로(innerWidth) 값을 구합니다.</a>
+            <a href="#" class="btn1-4">클릭 : 원을 세로(innerHeight) 값을 구합니다.</a>
+            <a href="#" class="btn1-5">클릭 : 원을 가로(OuterWidth) 값을 구합니다.</a>
+            <a href="#" class="btn1-6">클릭 : 원을 세로(OuterHeight) 값을 구합니다.</a>
+        </div>
+        <div class="re">
+            <a href="#" class="btn1-7">클릭 : 샘플 박스의 가로 값을 구합니다.</a>
+            <a href="#" class="btn1-8">클릭 : 이 문서의 가로 값을 구합니다.</a>
+            <a href="#" class="btn1-9">클릭 : 이 브라우저의 가로 값을 구합니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample2" class="sample">
+        <h2>Sample02 : 애니메이션02 <span class="dot"></span></h2>
+        <div class="ex ex2">
+            <span class="circle circle2">02</span>
+
+            <p class="text text2">여기에 표시됩니다.</p>
+        </div>
+        <div class="re">
+            <a href="#" class="btn2-0">리셋</a>
+            <a href="#" class="btn2-1">클릭 : 가로 값을 300px로 변경합니다.</a>
+            <a href="#" class="btn2-2">클릭 : 세로 값을 300px로 변경합니다.</a>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+
+        $(".re a").on("click", function(e){
+            e.preventDefault();
+        });
+
+        function demensiton(name, num){
+            $(".text1").text("이 원의 "+ name +" 값은 " + num + "px입니다.");
+        }
+        $(".btn1-1").on("click", function(){
+            demensiton( "가로" , $(".circle1").width() );
+        });
+        $(".btn1-2").on("click", function(e){
+            demensiton( "세로" , $(".circle1").height() );
+        });
+        $(".btn1-3").on("click", function(){
+            demensiton( "가로" , $(".circle1").innerWidth() );
+        });
+        $(".btn1-4").on("click", function(e){
+            demensiton( "세로" , $(".circle1").innerHeight() );
+        });
+        $(".btn1-5").on("click", function(){
+            demensiton( "가로" , $(".circle1").outerWidth() );
+        });
+        $(".btn1-6").on("click", function(e){
+            demensiton( "세로" , $(".circle1").outerHeight() );
+        });
+
+        $(".btn1-7").on("click", function(e){
+            $(".text1").text("이 샘플 박스의 가로 값은 " + $("#sample1").width() + "px 입니다.");
+        });
+        $(".btn1-8").on("click", function(e){
+            $(".text1").text("이 문서의 가로 값은 " + $(document).width() + "px 입니다.");
+        });
+        $(".btn1-9").on("click", function(e){
+            $(".text1").text("이 브라우저 가로 값은 " + $(window).width() + "px 입니다.");
+        });
+
+        // $(".btn1-3").on("click", function(e){
+        //     e.preventDefault();
+        //     $(".text1").text( $(".circle1").innerWidth() );
+        // });
+        // $(".btn1-4").on("click", function(e){
+        //     e.preventDefault();
+        //     $(".text1").text( $(".circle1").innerHeight() );
+        // });
+        // $(".btn1-5").on("click", function(e){
+        //     e.preventDefault();
+        //     $(".text1").text( $(".circle1").outerWidth() );
+        // });
+        // $(".btn1-6").on("click", function(e){
+        //     e.preventDefault();
+        //     $(".text1").text( $(".circle1").outerHeight() );
+        // });
+        
+
+        //sample2
+        $(".btn2-0").click(function(){
+            $(".circle2").width("80").height("80");
+        });
+        $(".btn2-1").click(function(){
+            $(".circle2").width("300");
+        });
+        $(".btn2-2").click(function(){
+            $(".circle2").height("300");
+        });
+    </script>
+</body>
+</html>

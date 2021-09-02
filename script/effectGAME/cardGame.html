@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'Cafe24SsurroundAir';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Cafe24Ssurround';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #E5F2FE;
+            background-image: url(../assets/img/bgc1.png);
+            background-size: 500px;
+            background-position: right bottom -110px;
+            background-repeat: no-repeat;
+        }
+        
+
+        main {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            border: 6px solid #000;
+            background-color: #D8F2EA;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 20px;
+            padding: 20px;
+            perspective: 600px;
+        }
+        .card {
+            width: 8vw;
+            height: 20vh;
+            border-radius: 5px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: all 0.6s;
+        }
+        .card > div {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+            background-color: #bee2d7;
+            border-radius: 5px;
+        }
+        .card .front {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(0deg);
+            z-index: 1;
+            backface-visibility: hidden;
+        }
+        .card .back {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(-180deg);
+            backface-visibility: hidden;
+        }
+
+        /* 카드를 클릭할 때 */
+        .card.is-selected,
+        [data-matched=true] {
+            transform: translate3d(0, 0, 0) rotateY(-180deg);
+        }
+        /* 카드가 일치할 때 */
+        [data-matched=true] {
+            animation: matchSuccess 0.4s ease-out 3;
+        }
+        @keyframes matchSuccess {
+            0% {transform: rotateY(180deg) scale(1);}
+            50% {transform: rotateY(180deg) scale(1.05);}
+            100% {transform: rotateY(180deg) scale(1);}
+        }
+
+        /* 카드 이미지 */
+        .card .front {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/egg.png);
+        }
+        [data-type=img1] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/squirtle.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+        [data-type=img2] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/psyduck.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+        [data-type=img3] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/jigglypuff.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+        [data-type=img4] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/eevee.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+        [data-type=img5] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/dratini.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+        [data-type=img6] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/caterpie.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+        [data-type=img7] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/bellsprout.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+        [data-type=img8] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/meowth.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+        [data-type=img9] .back{
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/rattata.png);
+            background-position: center;
+            background-size: 90%;
+            background-repeat: no-repeat;
+        }
+
+
+        /* .card:nth-child(1) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/squirtle.png);
+        }
+        .card:nth-child(2) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/squirtle.png);
+        }
+        .card:nth-child(3) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/psyduck.png);
+        }
+        .card:nth-child(4) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/psyduck.png);
+        }
+        .card:nth-child(5) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/jigglypuff.png);
+        }
+        .card:nth-child(6) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/jigglypuff.png);
+        }
+        .card:nth-child(7) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/eevee.png);
+        }
+        .card:nth-child(8) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/eevee.png);
+        }
+        .card:nth-child(9) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/dratini.png);
+        }
+        .card:nth-child(10) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/dratini.png);
+        }
+        .card:nth-child(11) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/caterpie.png);
+        }
+        .card:nth-child(12) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/caterpie.png);
+        }
+        .card:nth-child(13) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/bellsprout.png);
+        }
+        .card:nth-child(14) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/bellsprout.png);
+        }
+        .card:nth-child(15) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/meowth.png);
+        }
+        .card:nth-child(16) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/meowth.png);
+        }
+        .card:nth-child(17) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/rattata.png);
+        }
+        .card:nth-child(18) .back {
+            background-image: url(http://inyoung2200.dothome.co.kr/assets/img/rattata.png);
+        } */
+
+        /* title */
+        .title {
+            padding: 20px;
+            font-family: 'Cafe24SsurroundAir';
+        }
+        .title h1 {
+            font-family: 'Cafe24Ssurround';
+            padding-bottom: 20px;
+            font-size: 46px;
+        }
+
+        /* audio */
+        .audio {
+            position: absolute;
+            right: 20px; top: 20px;
+        }
+        .audio .btn-sound {
+            width: 24px; height: 24px;
+            border: 0;
+            background-image: url(../assets/audio/icon-sound-on.svg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            position: relative;
+            cursor: pointer;
+        }
+        .audio .btn-sound:active {
+            transform: translateY(1px);
+        }
+        .audio .btn-sound::before {
+            content: '';
+            position: absolute;
+            top: 8px; left: -3px;
+            width: 120%;
+            height: 2px;
+            background: #000;
+            transform: rotate(35deg);
+        }
+        .audio .btn-sound.is-playing::before {
+            display: none;
+        }
+
+        /* score */
+        .score {
+            font-size: 24px;
+            line-height: 1.6;
+        }
+        .score .turns {}
+        .score .turns span.last-turn {
+            color: red;
+        }
+        .score .attempts {}
+        .score .wins {}
+
+        /* success */
+        .success {
+            position: fixed;
+            left: 0; top: 0;
+            width: 100%; height: 100vh;
+            background: rgba(0,0,0,0.6);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        .success h2 {
+            font-size: 6vw;
+            font-family: 'Cafe24Ssurround';
+            color: #fff;
+            text-align: center;
+            padding: 10%;
+            padding-bottom: 2%;
+        }
+        .success.is-visible {
+            display: flex;
+        }
+        .success .btn-continue {
+            background: #000;
+            color: #fff;
+            border-radius: 50%;
+            width: 160px; height: 160px;
+            font-family: 'Cafe24SsurroundAir';
+            border-width: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+        .success .btn-continue:hover {
+            transform: rotate(-35deg);
+        }
+        .success .core {
+            color: #fff;
+            font-family: 'Cafe24SsurroundAir';
+            padding-bottom: 2%;
+        }
+    </style>
+</head>
+<body> 
+
+    <article class="audio">
+        <button class="btn-sound"></button>
+        <audio id="theme-song" src="../assets/audio/main.mp3" loop="loop"></audio>
+    </article>
+
+    <article class="title">
+        <h1>카드 뒤집기</h1>
+        <div class="score">
+            <p class="turns">기회: <span>5</span>번</p>
+            <p class="attempts">시도: <span>0</span></p>
+            <p class="wins">우승: <span>0</span></p>
+        </div>
+    </article>
+
+    <article class="success">
+        <h2 class="msg">굳잡!!!! 상위급 실력이네요~~~</h2>
+        <div class="score core">
+            <p class="turns">기회: <span>5</span>번</p>
+            <p class="attempts">시도: <span>0</span></p>
+            <p class="wins">우승: <span>0</span></p>
+        </div>
+        <button class="btn-continue">다시 도전하기</button>
+    </article>
+    
+    <main>
+        <div class="card" data-type="img1" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img1" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img2" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img2" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img3" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img3" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img4" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img4" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img5" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img5" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img6" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img6" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img7" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img7" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img8" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img8" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img9" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+        <div class="card" data-type="img9" data-matched="false">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+    </main>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        const $main = $("main"),
+              $card = $(".card"),
+              $btnSound = $(".btn-sound"),
+              $turns = $(".turns span"),
+              $attempts = $(".attempts span"),
+              $wins = $(".wins span"),
+              $themeSong = $("#theme-song")[0],
+              $success = $(".success"),
+              $successMsg = $(".success .msg"),
+              $btnContinue = $(".btn-continue"),
+
+              dataMatch = "data-matched",
+              dataType = "data-type",
+              selectedClass = "is-selected",
+              playSoundClass = "is-playing",
+              scoreUpdataClass = "is-updating",
+              lastTurnClass = "last-turn",
+              visibleClass = "is-visible",
+              timeoutLength = 900;
+
+        let sound = [
+            "../assets/audio/match2.mp3",
+            "../assets/audio/match.mp3",
+            "../assets/audio/up.mp3"],
+            soundMatch = new Audio(sound[0]),
+            soundNoMatch = new Audio(sound[1]),
+            soundSuccess = new Audio(sound[2]),
+            turnsCount = 5,     //기회 횟수
+            attempsCount = 0,   //시도 횟수
+            winCount = 0,       //우승 횟수
+            card1, card2, msg;
+
+        //카드 섞기 및 시작하기
+        shuffleCards();
+
+        //음악 아이콘
+        $btnSound.on("click",function(){
+            $(this).toggleClass(playSoundClass);
+            if( $(this).hasClass(playSoundClass) ){
+                $themeSong.play();
+            } else {
+                $themeSong.pause();
+            }
+        });
+
+        //카드를 클릭하면 is-selected를 추가
+        $card.click(function(){
+            if( $(this).attr(dataMatch) == "false" ){
+                $(this).addClass(selectedClass);
+            }
+            let selectedCards = $("."+selectedClass); //선택된 카드를 클래스로 변경
+
+            //만약에 카드1과 카드2가 같다면
+            if(selectedCards.length == 2){
+                card1 = selectedCards.eq(0).attr(dataType);
+                card2 = selectedCards.eq(1).attr(dataType);
+
+                //만약에 카드1과 카드2가 같으면 그대로~~~(dataMatch->ture), 음악재생
+                if( card1 == card2 ){
+                    selectedCards.attr(dataMatch, true).removeClass(selectedClass);
+                    
+                    //성공 음악 재생
+                    if( $btnSound.hasClass(playSoundClass) ){
+                        soundMatch.play();
+                    }
+                } else {
+                    //실패 음악 재생
+                    if( $btnSound.hasClass(playSoundClass) ){
+                        soundNoMatch.play();
+                    }
+                    //만약에 카드1과 카드2가 다르면 원래 상태로~~~(selectedClass 제거), 음악재생
+                    setTimeout(function(){
+                        turnsCount--;
+                        $turns.addClass(scoreUpdataClass).html(turnsCount);
+                        selectedCards.removeClass(selectedClass);  
+                    }, timeoutLength);
+
+                    //기회가 1번 남았을 때 주의 표시
+                    if( turnsCount === 1 ){
+                        setTimeout(function(){
+                            $turns.addClass(lastTurnClass)
+                        }, timeoutLength)
+                    }
+                    //기회가 없을 때 시도+1 기회+5
+                    if( turnsCount <= 0 ){
+                        setTimeout(function(){
+                            turnsCount = 5;
+                            $turns.removeClass(lastTurnClass).html(turnsCount);
+                            $card.attr(dataMatch, false); //모든 카드를 초기화
+                            attempsCount += 1;            //시도 +1
+                            $attempts.html(attempsCount); //시도 출력
+                        }, timeoutLength);
+                    }
+                }
+            }
+
+            //완성했을 때 : dataMatch가 true 갯수 == 전체 카드 갯수 : 음악 추가, 우승+1, 성공 메세지
+            if( $('['+ dataMatch +'="true"]').length == $card.length ){
+                setTimeout(function(){
+                    //성공 메세지
+                    $success.addClass(visibleClass);
+
+                    //완성 음악 추가
+                    soundSuccess.play();
+                    winCount += 1;
+                    $wins.html(winCount);
+                }, timeoutLength)
+
+                //완성 메세지
+                switch(true){
+                    case (attempsCount == 0) :
+                        msg = "레벨1...최고의 실력입니다. 머리가 좋네요!!";
+                        break;
+                    case (attempsCount == 1) :
+                        msg = "레벨2...그럭저럭 하네요! ";
+                        break;
+                    case (attempsCount == 2) :
+                        msg = "레벨3...머리가 나쁘네요~~~  ";
+                        break;
+                    case (attempsCount > 2) :
+                        msg = "레벨4...진짜 못하네~~~ 하지마~~~";
+                        break;
+                }
+                $successMsg.text(msg);
+            }
+        });
+
+        //게임 다시 시작할 때
+        $btnContinue.on("click",function(){
+            $success.removeClass(visibleClass);
+            shuffleCards();     //카드 섞기
+            turnsCount = 5;
+            $turns.removeClass(lastTurnClass).html(turnsCount);
+            attempsCount = 0;           
+            $attempts.html(attempsCount); 
+        });
+
+        //카드 섞기
+        function shuffleCards(){
+            $card.attr(dataMatch, false); //모든 카드를 초기화
+
+            //splice
+            // var num = [1,2,3,4,5,6];
+            // var remove = num.splice(3,1);
+            // alert(num)
+            
+
+            let cards = $main.children(); 
+            while (cards.length) {
+                $main.append(cards.splice( Math.floor(Math.random() * cards.length), 1)[0])
+            }
+            //console.log(cards)
+
+            $card.each(function(index){
+                setTimeout(() => {
+                    $(this).addClass(selectedClass);
+                }, 50 * index)
+            });
+
+            setTimeout(() => {
+                $card.removeClass(selectedClass);
+            }, 3000)
+        }
+        
+        
+    </script>
+</body>
+</html>

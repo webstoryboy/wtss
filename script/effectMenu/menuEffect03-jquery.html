@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="웹스토리보이와 함께 예제를 통해 배우는 스크립트 튜토리얼">
+	<meta name="keywords" content="mouse, animation, parallax, menu, slider, canvas, javascript, text, webs">
+    <meta name="author" content="webstoryboy">
+    <title>Menu Effect - jQuery</title>
+    <style>
+        /* reset */
+        @font-face { 
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal; 
+            font-style: normal; 
+        }
+        *, *::before, *::after {
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+        a {text-decoration: none; color: #fff;}
+        img {width: 100%; vertical-align: top;}
+        ul {list-style: none;}
+        body {
+            background: url(../assets/img/su09.jpg) no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            transition: all 0.2s;
+            overflow: hidden;
+            font-size: 16px;
+            line-height: 1.5;
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(11, 50, 47, 0.7);
+            z-index: -1;
+        }
+
+        /* info */
+        .info {
+            position: absolute;
+            z-index: 1000;
+        }
+        .info h1 {
+            font-size: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 8px;
+        }
+        .info p, .info li {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 3px;
+        }
+        .info ul {
+            position: relative;
+            margin-bottom: 3px;
+        }
+        .info ul:first-child::before {
+            content: 'jQuery';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info ul:last-child::before {
+            content: 'JavaScript';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info li {
+            display: inline;
+        }
+        .info li.active a:first-child {
+            background: #fff;
+            color: #000;
+        }
+        .info.left {
+            left: 20px;
+            bottom: 20px;
+        }
+        .info.right {
+            right: 20px;
+            bottom: 20px;
+        }
+        .info.right a {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .info.right a:hover {
+            background: #fff;
+            color: #000;
+        }
+        .info.bottom {
+            left: 10px;
+            bottom: 10px;
+        }
+        .info.view {
+            right: 20px;
+            bottom: 20px;
+        }
+        .info.view a {
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 30px;
+            padding: 5px 30px;
+        }
+
+        @media (max-width: 800px){
+            .info.bottom {display: none;}
+            .info.right {display: none;}
+        }
+
+        /* main */
+        #nav1 {
+            position: fixed;
+            left: 0; top: 0px;
+            width: 100%;
+            background: #48cfad;
+        }
+        #nav1 ul {
+            text-align: center;
+        }
+        #nav1 ul li {
+            display: inline; position: relative;
+            
+        }
+        #nav1 ul li a {
+            font-weight: bold;
+            display: inline-block; 
+            padding: 15px 40px;
+            color: #fff;
+            transition: all 0.2s;
+            background: #48cfad;
+        }
+        #nav1 ul li:hover {
+            background: #37bc9b;
+        }
+        #nav1 ul li ul.subMenu {
+            display: none;
+            position: absolute;
+            left: 50%; top: 36px;
+            transform: translatex(-50%);
+            color: #000;
+            
+        }
+        #nav1 ul li ul.subMenu li {
+            background: #3a3a3a;
+        }
+        #nav1 ul li ul.subMenu li a {
+            padding: 10px 31px;
+            color: #fff;
+            white-space: nowrap;
+            border-left: 3px solid transparent;
+        }
+        #nav1 ul li ul.subMenu li:hover a {
+            border-left: 3px solid #48cfad;
+        }
+
+        #nav2 {
+            position: fixed;
+            left: 0; top: 300px;
+            width: 100%;
+            background: rgba(0,57,11,1);
+        }
+        #nav2 ul {
+            text-align: center;
+        }
+        #nav2 ul li {
+            display: inline;
+        }
+        #nav2 ul li a {
+            font-weight: bold;
+            display: inline-block; 
+            padding: 15px 40px;
+            color: #fff;
+            transition: all 0.2s;
+        }
+        #nav2 ul li a:hover {
+            color: #F8A714;
+        }
+        #nav2 ul li .subMenu {
+            display: none;
+            position: absolute;
+            left: 50%; top: 52px;
+            transform: translatex(-50%);
+            color: #000;
+            background: rgba(0,0,0,0.4);
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- main -->
+    <main>
+        <nav id="nav1">
+            <ul>
+                <li>
+                    <a href="#">Menu1</a>
+                    <ul class="subMenu">
+                        <li><a href="#">Sub Menu1</a></li>
+                        <li><a href="#">Sub Menu1</a></li>
+                        <li><a href="#">Sub Menu1</a></li>
+                        <li><a href="#">Sub Menu1</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Menu2</a>
+                    <ul class="subMenu">
+                        <li><a href="#">Sub Menu2</a></li>
+                        <li><a href="#">Sub Menu2</a></li>
+                        <li><a href="#">Sub Menu2</a></li>
+                        <li><a href="#">Sub Menu2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Menu3</a>
+                    <ul class="subMenu">
+                        <li><a href="#">Sub Menu3</a></li>
+                        <li><a href="#">Sub Menu3</a></li>
+                        <li><a href="#">Sub Menu3</a></li>
+                        <li><a href="#">Sub Menu3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Menu4</a>
+                    <ul class="subMenu">
+                        <li><a href="#">Sub Menu4</a></li>
+                        <li><a href="#">Sub Menu4</a></li>
+                        <li><a href="#">Sub Menu4</a></li>
+                        <li><a href="#">Sub Menu4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Menu5</a>
+                    <ul class="subMenu">
+                        <li><a href="#">Sub Menu5</a></li>
+                        <li><a href="#">Sub Menu5</a></li>
+                        <li><a href="#">Sub Menu5</a></li>
+                        <li><a href="#">Sub Menu5</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <nav id= nav2>
+            <ul>
+                <li>
+                    <a href="#">Menu1</a>
+                    <div class="subMenu">
+                        <ul>
+                            <li><a href="#">Sub Menu1</a></li>
+                            <li><a href="#">Sub Menu1</a></li>
+                            <li><a href="#">Sub Menu1</a></li>
+                            <li><a href="#">Sub Menu1</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Menu2</a>
+                    <div class="subMenu">
+                        <ul>
+                            <li><a href="#">Sub Menu2</a></li>
+                            <li><a href="#">Sub Menu2</a></li>
+                            <li><a href="#">Sub Menu2</a></li>
+                            <li><a href="#">Sub Menu2</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Menu3</a>
+                    <div class="subMenu">
+                        <ul>
+                            <li><a href="#">Sub Menu3</a></li>
+                            <li><a href="#">Sub Menu3</a></li>
+                            <li><a href="#">Sub Menu3</a></li>
+                            <li><a href="#">Sub Menu3</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Menu4</a>
+                    <div class="subMenu">
+                        <ul>
+                            <li><a href="#">Sub Menu4</a></li>
+                            <li><a href="#">Sub Menu4</a></li>
+                            <li><a href="#">Sub Menu4</a></li>
+                            <li><a href="#">Sub Menu4</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Menu5</a>
+                    <div class="subMenu">
+                        <ul>
+                            <li><a href="#">Sub Menu5</a></li>
+                            <li><a href="#">Sub Menu5</a></li>
+                            <li><a href="#">Sub Menu5</a></li>
+                            <li><a href="#">Sub Menu5</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </main>
+    <!-- //main -->
+
+    <!-- info -->
+    <div class="info left">
+        <h1><a href="menuEffect-cover.html">jQuery Menu Effect03</a></h1>
+        <p>메뉴 이펙트 - 전체 메뉴</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li><a href="menuEffect01-jquery.html">1</a></li>
+            <li><a href="menuEffect02-jquery.html">2</a></li>
+            <li class="active"><a href="menuEffect03-jquery.html">3</a></li>
+            <li><a href="menuEffect04-jquery.html">4</a></li>
+        </ul>
+        <ul>
+            <li><a href="menuEffect01-javascript.html">1</a></li>
+        </ul>
+    </div>
+    <!-- //info -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        //https://codepen.io/webstoryboy/pen/LqoVxV
+        // $("nav > ul > li").mouseover(function(){
+        //     $(this).find(".subMenu").stop().slideDown(200);
+        // });
+        // $("nav > ul > li").mouseout(function(){
+        //     $(this).find(".subMenu").stop().slideUp(200);
+        // });
+
+        $("#nav1 > ul > li").mouseover(function(){
+            $(this).find(".subMenu").stop().show();
+        });
+        $("#nav1 > ul > li").mouseout(function(){
+            $(this).find(".subMenu").stop().hide();
+        });
+
+        $("#nav2 > ul > li").mouseover(function(){
+		    $(this).find(".subMenu").stop().show();
+        });
+        $("#nav2 > ul > li").mouseout(function(){
+            $(this).find(".subMenu").stop().hide();
+        });
+    </script>
+
+</body>
+
+</html>

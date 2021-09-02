@@ -1,0 +1,66 @@
+@font-face {
+    font-family: KakaoSmall;
+    font-weight: 300;
+    src: local("☺"), url(../fonts/1ec4116.woff2) format("woff2"), url(../fonts/8ae4712.woff) format("woff")
+}
+
+@font-face {
+    font-family: KakaoSmall;
+    font-weight: 400;
+    src: local("☺"), url(../fonts/25e471a.woff2) format("woff2"), url(../fonts/fe6f124.woff) format("woff")
+}
+
+@font-face {
+    font-family: KakaoSmall;
+    font-weight: 700;
+    src: local("☺"), url(../fonts/690a113.woff2) format("woff2"), url(../fonts/4d688e7.woff) format("woff")
+}
+
+@font-face {
+    font-family: KakaoBig;
+    font-weight: 400;
+    src: local("☺"), url(../fonts/93b6a9f.woff2) format("woff2"), url(../fonts/aaf1e56.woff) format("woff")
+}
+
+@font-face {
+    font-family: KakaoBig;
+    font-weight: 700;
+    src: local("☺"), url(../fonts/9034912.woff2) format("woff2"), url(../fonts/fcd798c.woff) format("woff")
+}
+
+@font-face {
+    font-family: KakaoBig;
+    font-weight: 800;
+    src: local("☺"), url(../fonts/79a1789.woff2) format("woff2"), url(../fonts/67f2c54.woff) format("woff")
+}
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NEXON Lv2 Gothic Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NEXON Lv2 Gothic Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

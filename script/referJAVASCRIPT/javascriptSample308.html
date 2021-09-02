@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find()를 이용한 CSS 속성 검색하기</title>
+
+    <style>
+        @font-face {
+            font-family: 'GyeonggiBatang';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'TmonMonsori';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        body {
+            background-image: url(img/search_bg.jpg);
+            background-size: cover;
+            background-position: center bottom;
+            background-attachment: fixed;
+        }
+
+        .girl {
+            width: 250px;
+            position: fixed;
+            bottom: -60px;
+            right: 5%;
+        }
+
+        .dog {
+            width: 150px;
+            position: fixed;
+            bottom: -40px;
+            left: 5%;
+        }
+
+        .board {
+            margin: 5vw 10vw 10vw 10vw;
+            width: 80vw;
+            background-color: #f1f3f6;
+            border: 2px solid #000;
+            padding: 3%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .board h1 {
+            font-family: 'TmonMonsori';
+            color: #223547;
+            font-size: 60px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .board span {
+            font-family: 'GyeonggiBatang';
+            color: #223547;
+            font-size: 20px;
+        }
+
+        .board .search label {
+            font-family: 'GyeonggiBatang';
+            background-color: #bfe6fe;
+            font-size: 26px;
+            padding: 10px 30px;
+            border: 1px solid #000;
+            border-radius: 40px;
+            display: none;
+        }
+
+        .board .search input {
+            font-family: 'GyeonggiBatang';
+            font-size: 24px;
+            border: 1px solid #000;
+            padding: 10px 10px 10px 30px;
+            border-radius: 40px;
+            outline: none;
+        }
+
+        .board .list {
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .board .list ul li {
+            font-family: 'GyeonggiBatang';
+            line-height: 1.6;
+            list-style: none;
+            background-color: #bdd6e6;
+            margin: 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .board .list ul li.hide {
+            display: none;
+        }
+
+        @media (max-width: 800px) {
+            .board {
+                width: 92vw;
+                padding: 6% 3% 3% 3%;
+                margin: 4vw;
+            }
+
+            .board h1 {
+                font-size: 30px;
+                margin-top: 5px;
+            }
+
+            .board span {
+                font-size: 12px;
+            }
+
+            .board .search input {
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 16px;
+                padding: 10px 10px 10px 20px;
+            }
+
+            .board .list {
+                margin-top: 20px;
+            }
+
+            .girl {
+                width: 200px;
+            }
+
+            .dog {
+                width: 100px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="board">
+            <span>CSS 속성을 정렬하기</span>
+            <h1>CSS 속성 검색하기</h1>
+            <div class="button-wrap">
+                <button class="button" data-age="10">10</button>
+                <button class="button" data-age="20">20</button>
+                <button class="button" data-age="30">30</button>
+            </div>
+            <div>
+                <ul class="user_list">
+
+                </ul>
+            </div>
+        </div>
+        <div class="girl">
+            <img src="img/search_girl.png" alt="">
+        </div>
+        <div class="dog">
+            <img src="img/search_dog.png" alt="">
+        </div>
+    </div>
+
+    <script>
+        const userDataList = [{
+                id: 1,
+                name: "align-content",
+                desc: "align-content 속성은 콘텐츠의 상하관계 정렬 상태를 정의합니다.",
+                view: "10"
+            },
+            {
+                id: 2,
+                name: "align-items",
+                desc: "align-items 속성은 콘텐츠 내부의 정렬 상태를 정의합니다.",
+                view: "10"
+            },
+            {
+                id: 3,
+                name: "align-self",
+                desc: "align-self 속성은 콘텐츠의 정렬 상태를 정의합니다.",
+                view: "10"
+            },
+            {
+                id: 4,
+                name: "all",
+                desc: "all 속성은 요소의 속성을 초기화 또는 상속을 설정합니다.",
+                view: "10"
+            },
+            {
+                id: 5,
+                name: "animation",
+                desc: "animation 속성은 애니메이션을 정의합니다.",
+                view: "10"
+            },
+            {
+                id: 6,
+                name: "animation-delay",
+                desc: "animation-delay 속성은 요소가 로드된 후 애니메이션이 시작될 때 까지의 시간을 나타냅니다.",
+                view: "30"
+            },
+
+            {
+                id: 10,
+                name: "animation-iteration-count",
+                desc: "animation-iteration-count 속성은 애니메이션 반복 횟수 설정합니다.",
+                view: "30"
+            },
+            {
+                id: 7,
+                name: "fnimation-direction",
+                desc: "animation-direction 속성은 애니메이션 움직임 방향을 설정합니다.",
+                view: "40"
+            },
+            {
+                id: 8,
+                name: "enimation-duration",
+                desc: "백그라운드 속성을 일괄적으로 설정합니다.8",
+                view: "40"
+            },
+            {
+                id: 9,
+                name: "dnimation-fill-mode",
+                desc: "animation-fill-mode 속성은 애니메이션이 끝난 후의 상태를 설정합니다.",
+                view: "50"
+            },
+            {
+                id: 11,
+                name: "cnimation-name",
+                desc: "animation-name 속성은 애니메이션 keyframe 이름을 설정합니다.",
+                view: "50"
+            },
+            {
+                id: 12,
+                name: "bnimation-play-state",
+                desc: "animation-play-state 속성은 애니메이션 진행상태를 설정합니다.",
+                view: "10"
+            },
+        ]
+
+
+        document.querySelectorAll('.button').forEach((element) => {
+            element.addEventListener('click', (event) => {
+                onClickButton(event);
+            });
+        });
+
+        function onClickButton(event) {
+            // 클릭한 버튼의 요소
+            const button = event.target;
+            const targetAge = button.dataset.age;
+            const filterdList = userDataList.filter((data) => data.view >= targetAge);
+            // 배열을 출력
+            updateList(filterdList);
+        }
+
+        function updateList(filterdList) {
+            let listHtml = '';
+
+            for (const data of filterdList) {
+                listHtml += `<li>${data.name} : ${data.view}</li>`;
+            }
+
+            document.querySelector('.user_list').innerHTML = listHtml;
+        }
+    </script>
+</body>
+
+</html>

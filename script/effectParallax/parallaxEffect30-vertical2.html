@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'WandohopeB';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeB.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        #contents > section > div {
+            font-size: 8vw;
+            color: #fff;
+            font-family: 'WandohopeB';
+        }
+        #section1 {position: relative; z-index: 6000; background: #111; /* background: url(../assets/img/images01@2.jpg); background-size:cover; background-attachment: fixed; */}
+        #section2 {position: relative; z-index: 5000; background: #222; /* background: url(../assets/img/images02@2.jpg); background-size:cover; background-attachment: fixed; */}
+        #section3 {position: relative; z-index: 4000; height: 500vw; background: yellowgreen; /* background: url(../assets/img/images03@2.jpg); background-size:cover; background-attachment: fixed; */}
+        #section4 {padding-top: 100vh; position: relative; z-index: 5000; background: transparent; /* background: url(../assets/img/images04@2.jpg); background-size:cover; background-attachment: fixed; */}
+        #section5 {position: relative; z-index: 5000; background: #555; /* background: url(../assets/img/images05@2.jpg); background-size:cover; background-attachment: fixed; */}
+        #section6 {position: relative; z-index: 5000; background: #666; /* background: url(../assets/img/images06@2.jpg); background-size:cover; background-attachment: fixed; */}
+
+        .sec1 {position: relative; width: 100vw; height: 100vh;}
+        .sec2 {position: relative; width: 100vw; height: 100vh;}
+        .sec3 {position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;}
+        .sec4 {position: relative; width: 100vw; height: 100vh;}
+        .sec5 {position: relative; width: 100vw; height: 100vh;}
+        .sec6 {position: relative; width: 100vw; height: 100vh;}
+
+        .vertical-wrap {
+            overflow: hidden;
+            width: 500vw;
+        }
+        .vertical-wrap > div {
+            float: left;
+            width: 100vw; height: 100vh;
+        }
+        .vertical-wrap > div:nth-child(1) {background: #999;}
+        .vertical-wrap > div:nth-child(2) {background: #888;}
+        .vertical-wrap > div:nth-child(3) {background: #777;}
+        .vertical-wrap > div:nth-child(4) {background: #666;}
+        .vertical-wrap > div:nth-child(5) {background: #555;}
+
+        .scroll {
+            position: fixed;
+            right: 10px; top: 10px;
+            width: 50px; height: 50px;
+            background: rgba(255,255,255,0.5);
+            text-align: center;
+            line-height: 50px;
+            color: #000;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll">0</div>
+
+    <div id="contents">
+        <section id="section1"><div class="sec1"><h2>sec1</h2></div></section><!-- //section1 -->
+        <section id="section2"><div class="sec2"><h2>sec2</h2></div></section><!-- //section2 -->
+        <section id="section3">
+            <div class="sec3">
+                <div class="vertical-wrap">
+                    <div>11</div>
+                    <div>22</div>
+                    <div>33</div>
+                    <div>44</div>
+                    <div>55</div>
+                </div>
+            </div>
+        </section>
+        <!-- //section3 -->
+        <section id="section4"><div class="sec4"><h2>sec4</h2></div></section><!-- //section4 -->
+        <section id="section5"><div class="sec5"><h2>sec5</h2></div></section><!-- //section5 -->
+        <section id="section6"><div class="sec6"><h2>sec6</h2></div></section><!-- //section6 -->
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(window).scroll(function(){
+            let scrollTop = $(window).scrollTop();
+
+            $(".scroll").text(scrollTop);
+
+            let offset = (scrollTop - $("#section3").offset().top) - $(".vertical-wrap>div").width();
+
+            let last = $(".vertical-wrap>div:last-child").offset().left
+
+            if( scrollTop > $("#section3").offset().top && last >= 0 ){
+                $("#section3 .sec3").css("left", -offset);
+            } 
+
+            // console.log($(".vertical-wrap").width())
+            // console.log($("#section3").height())
+            console.log($(".vertical-wrap>div:last-child").offset().left)
+
+        });
+    </script>
+
+</body>
+</html>

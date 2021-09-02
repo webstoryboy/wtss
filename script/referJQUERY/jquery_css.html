@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery | addClass()</title>
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+        }
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+        h1 {
+            padding-bottom: 20px;
+        }
+        hr {
+            margin: 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+        .sample h2 {
+            position: relative;
+            font-size: 14px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px; 
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .red {background-color: #ffebee;}
+        .blue {background-color: #e3f2fd;}
+
+
+        /* option */
+        .ex1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .ex1 figure {
+            width: 49%;
+        }
+        .ex1 figure img {
+            width: 100%;
+            margin: 0;
+        }
+        .ex1 figcaption {
+            font-size: 20px;
+            color: #333;
+            padding: 10px 10px 10px 0;
+        }
+
+        .ex2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .ex2 figure {
+            width: 49%;
+        }
+        .ex2 figure img {
+            width: 100%;
+            margin: 0;
+        }
+        .ex2 figcaption {
+            font-size: 20px;
+            color: #333;
+            padding: 10px 10px 10px 0;
+        }
+
+        .ex3 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .ex3 figure {
+            width: 32%;
+        }
+        .ex3 figure img {
+            width: 100%;
+            margin: 0;
+        }
+        .ex3 figcaption {
+            font-size: 20px;
+            color: #333;
+            padding: 10px 10px 10px 0;
+        }
+        .ex3 .text3 {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h1>jQuery css()</h1>
+
+    <div id="sample1" class="sample">
+        <h2>Sample01 : CSS 속성 알아내기 <span class="dot"></span></h2>
+        <div class="ex ex1">
+            <figure>
+                <img src="../assets/img/images11.jpg" alt="샘플이미지" class="img1">
+                <figcaption>이 이미지는 바다에서 촬영했습니다.</figcaption>
+            </figure>
+            <figure>
+                <img src="../assets/img/images12.jpg" alt="샘플이미지" class="img1">
+                <figcaption>이 이미지는 바다에서 촬영했습니다.</figcaption>
+            </figure>
+            <p class="text text1">여기에 표시됩니다.</p>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn1-1">클릭 : 이미지의 width을 가져옵니다.</a>
+            <a href="#c" class="btn1-2">클릭 : 글씨의 폰트크기를 가져옵니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample2" class="sample">
+        <h2>Sample02 : CSS 속성 변경하기 <span class="dot"></span></h2>
+        <div class="ex ex2">
+            <figure>
+                <img src="../assets/img/images13.jpg" alt="샘플이미지" class="img2">
+                <figcaption>이 이미지는 바다에서 촬영했습니다.</figcaption>
+            </figure>
+            <figure>
+                <img src="../assets/img/images14.jpg" alt="샘플이미지" class="img2">
+                <figcaption>이 이미지는 바다에서 촬영했습니다.</figcaption>
+            </figure>
+            <p class="text text2">여기에 표시됩니다.</p>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn2-0">리셋</a>
+            <a href="#c" class="btn2-1">클릭 : 이미지의 width를 변경합니다.</a>
+            <a href="#c" class="btn2-2">클릭 : 글씨의 폰트크기를 변경합니다.</a>
+            <a href="#c" class="btn2-3">클릭 : 글씨의 색을 변경합니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample3" class="sample">
+        <h2>Sample03 : 글씨 크기 + / - <span class="dot"></span></h2>
+        <div class="ex ex3">
+            <figure>
+                <img src="../assets/img/images15.jpg" alt="샘플이미지" class="img2">
+                <figcaption>이 이미지는 바다에서 촬영했습니다.</figcaption>
+            </figure>
+            <figure>
+                <img src="../assets/img/images16.jpg" alt="샘플이미지" class="img2">
+                <figcaption>이 이미지는 바다에서 촬영했습니다.</figcaption>
+            </figure>
+            <figure>
+                <img src="../assets/img/images17.jpg" alt="샘플이미지" class="img3">
+                <figcaption>이 이미지는 바다에서 촬영했습니다.</figcaption>
+            </figure>
+            <p class="text text3">여기에 표시됩니다.</p>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn3-0">리셋</a>
+            <a href="#c" class="btn3-1">클릭 : 글씨가 조금씩 커집니다.</a>
+            <a href="#c" class="btn3-2">클릭 : 글씨가 조금씩 작아집니다.</a>
+            <a href="#c" class="btn3-3">클릭 : 이미지가 조금씩 커집니다.</a>
+            <a href="#c" class="btn3-4">클릭 : 이미지가 조금씩 작아집니다.</a>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        //sample01
+        $(".btn1-1").click(function(){
+            let width = $(".ex1 figure img").css("width");
+            $(".text1").html("이 사진의 width값은 <span class='blue'>"+ width +"</span>입니다.");
+        });
+        $(".btn1-2").click(function(){
+            let font = $(".ex1 figure img").css("font-size");
+            $(".text1").html("이 글씨의 크기는 <span class='red'>"+ font +"</span>입니다.");
+        });
+
+        //sample02
+        $(".btn2-0").click(function(){
+            $(".ex2 img").css("width","100%");
+            $(".ex2 figcaption").css({"font-size":"20px","color":"#333"});
+            $(".text2").text("여기에 표시됩니다.");
+        });
+        $(".btn2-1").click(function(){
+            $(".ex2 img").css("width","40%");
+            $(".text2").text( $(".ex2 img").css("width") )
+        });
+        $(".btn2-2").click(function(){
+            $(".ex2 figcaption").css("font-size","30px");
+            $(".text2").text( $(".ex2 figcaption").css("font-size") )
+        });
+        $(".btn2-3").click(function(){
+            $(".ex2 figcaption").css("color","red");
+            $(".text2").text( $(".ex2 figcaption").css("color") )
+        });
+
+        //sample3
+        $(".btn3-0").click(function(){
+            $(".ex3 figcaption").css({fontSize:"20px"});
+            $(".ex3 img").css({width:"100%"});
+            $(".text3").text("여기에 표시됩니다.");
+        });
+        $(".btn3-1").click(function(){
+            $(".ex3 figcaption").css({fontSize:"+=2"});
+            $(".text3").text( $(".ex3 figcaption").css("font-size") );
+        });
+        $(".btn3-2").click(function(){
+            $(".ex3 figcaption").css({fontSize:"-=2"});
+            $(".text3").text( $(".ex3 figcaption").css("font-size") );
+        });
+        $(".btn3-3").click(function(){
+            $(".ex3 img").css({width:"+=10"});
+            $(".text3").text( $(".ex3 img").css("width") );
+        });
+        $(".btn3-4").click(function(){
+            $(".ex3 img").css({width:"-=10"});
+            $(".text3").text( $(".ex3 img").css("width") );
+        });
+
+    </script>
+</body>
+</html>

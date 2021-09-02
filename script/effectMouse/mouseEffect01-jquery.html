@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Effect01 - jQuery</title>
+    <meta name="description" content="웹스토리보이와 함께 예제를 통해 배우는 스크립트 튜토리얼">
+	<meta name="keywords" content="mouse, animation, parallax, menu, slider, canvas, javascript, text, webs">
+    <meta name="author" content="webstoryboy">
+    
+    <style>
+        /* reset */
+        @font-face { 
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal; 
+            font-style: normal; 
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.2s;
+        }
+
+        a:hover {
+            border-bottom: 1px dashed #fff;
+        }
+
+        img {
+            width: 100%;
+            vertical-align: top;
+        }
+
+        ul {
+            padding: 10px 20px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            background: url(../assets/img/su02.jpg) no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            transition: all 0.2s;
+            overflow: hidden;
+            font-size: 16px;
+            line-height: 1.5;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            cursor: none;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(5, 36, 70, 0.9);
+            z-index: -1;
+        }
+
+        /* info */
+        .info {
+            position: absolute;
+            z-index: 1000;
+        }
+
+        .info h1 {
+            font-size: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 8px;
+        }
+
+        .info p, .info li {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 3px;
+        }
+
+        .info li.active a:first-child {
+            background: #fff;
+            color: #000;
+        }
+
+        .info.left {
+            left: 20px;
+            top: 20px;
+        }
+
+        .info.right {
+            right: 20px;
+            top: 20px;
+        }
+        .info.right ul {
+            display: block;
+            padding: 0;
+            position: relative;
+            margin-bottom: 3px;
+        }
+        .info.right li {
+            display: inline;
+        }
+        .info.right ul:first-child::before {
+            content: 'jQuery';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info.right ul:last-child::before {
+            content: 'JavaScript';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info.right a {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .info.right a:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .info.bottom {
+            left: 10px;
+            bottom: 10px;
+        }
+
+        .info.view {
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .info.view a {
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 30px;
+            padding: 5px 30px;
+        }
+
+        @media (max-width: 800px){
+            .info.bottom {display: none;}
+            .info.right {display: none;}
+        }
+
+        /* main */
+        .contents {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .contents p {
+            max-width: 70vw;
+            font-size: 3vw;
+            text-align: justify;
+        }
+
+        .contents p:first-child {
+            font-size: 2.5vw;
+            line-height: 2;
+        }
+
+        .contents p em {
+            color: orange;
+            border-bottom: 2px dashed orange;
+            font-style: normal;
+        }
+
+        .cursor {
+            position: absolute;
+            left: -100px;
+            top: -100px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.1);
+            user-select: none;
+            pointer-events: none;
+            transition: background-color .2s, border-color .2s;
+        }
+
+        .cursor.active {
+            background-color: rgba(255, 165, 0, 0.4);
+            border-color: orange;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- main -->
+    <main>
+        <div class="cursor"></div>
+
+        <div class="contents">
+            <p>To climb steep hills requires <em>slow</em> pace at first. </p>
+            <p>험준한 산을 오르기 위해선 먼저 <em>천천히</em> 걸어야 한다.</p>
+        </div>
+    </main>
+    <!-- main -->
+    
+
+    <!-- info -->
+    <div class="info left">
+        <h1><a href="mouseEffect-cover.html">jQuery Mouse Effect01</a></h1>
+        <p>마우스 따라다니기</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li class="active"><a href="mouseEffect01-jquery.html">1</a></li>
+            <li><a href="mouseEffect02-jquery.html">2</a></li>
+            <li><a href="mouseEffect03-jquery.html">3</a></li>
+            <li><a href="mouseEffect04-jquery.html">4</a></li>
+            <li><a href="mouseEffect05-jquery.html">5</a></li>
+            <li><a href="mouseEffect06-jquery.html">6</a></li>
+            <li><a href="mouseEffect07-jquery.html">7</a></li>
+        </ul>
+        <ul>
+            <li><a href="mouseEffect21-javascript.html">1</a></li>
+            <li><a href="mouseEffect22-javascript.html">2</a></li>
+            <li><a href="mouseEffect23-javascript.html">3</a></li>
+            <li><a href="mouseEffect24-javascript.html">4</a></li>
+            <li><a href="mouseEffect25-javascript.html">5</a></li>
+            <li><a href="mouseEffect26-javascript.html">6</a></li>
+            <li><a href="mouseEffect27-javascript.html">7</a></li>
+        </ul>
+    </div>
+
+    <div class="info bottom">
+        <ul>
+            <li>clientX : <span class="clientX">0</span></li>
+            <li>clientY : <span class="clientY">0</span></li>
+            <li>offsetX : <span class="offsetX">0</span></li>
+            <li>offsetY : <span class="offsetY">0</span></li>
+            <li>pageX : <span class="pageX">0</span></li>
+            <li>pageY : <span class="pageY">0</span></li>
+            <li>screenX : <span class="screenX">0</span></li>
+            <li>screenY : <span class="screenY">0</span></li>
+        </ul>
+    </div>
+
+    <div class="info view">
+        <a href="https://wtss.tistory.com/347" target="_blank" class="view">소스보기</a>
+    </div>
+    <!-- //info -->
+
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        //출력용
+        $(window).mousemove(function (event) {
+            $(".clientX").text(event.clientX);
+            $(".clientY").text(event.clientY);
+            $(".offsetX").text(event.offsetX);
+            $(".offsetY").text(event.offsetY);
+            $(".pageX").text(event.pageX);
+            $(".pageY").text(event.pageY);
+            $(".screenX").text(event.screenX);
+            $(".screenY").text(event.screenY);
+        });
+
+        //마우스 움직이기
+        $(window).mousemove(function (event) {
+            $(".cursor").css({ left: event.clientX - 25, top: event.clientY - 25 });
+
+            $(".contents em").hover(function () {
+                $(".cursor").addClass("active");
+            }, function () {
+                $(".cursor").removeClass("active");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="webstoryboy">
+    <meta name="description" content="웹 퍼블리셔를 위한 정보 공유 사이트입니다.">
+    <meta name="keywords"
+        content="웹스토리보이, 웹 퍼블리셔, 웹 표준, 웹 접근성, 화려한 디자인, webstoryboy, publisher, css3, html, markup, design, Webstoryboy">
+    <title>웹스토리보이 | Webstoryboy | Class</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../../assets/css/docs.min.css" rel="stylesheet">
+    <link href="../../assets/css/prism.css" rel="stylesheet">
+
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="../../assets/ico/favicon_114.png">
+    <link rel="icon" href="../../assets/ico/icon.png">
+    <link rel="icon" href="../../assets/ico/favicon_57.png" sizes="16x16">
+    <link rel="icon" href="../../assets/ico/favicon_72.png" sizes="32x32">
+    <link rel="icon" href="../../assets/ico/favicon_114.png" sizes="48x48">
+    <link rel="icon" href="../../assets/ico/favicon_114.png" sizes="64x64">
+    <link rel="icon" href="../../assets/ico/favicon_114.png" sizes="128x128">
+
+    <!-- Facebook meta tags -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="웹스토리보이" />
+    <meta property="og:url" content="https://webstoryboy.co.kr/" />
+    <meta property="og:image" content="http://richclub8.dothome.co.kr/assets/ico/icon.png" />
+    <meta property="og:site_name" content="웹스토리보이" />
+    <meta property="og:description" content="웹과 관련된 정보를 제공합니다." />
+
+    <!-- twitter meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@webstoryboy" />
+    <meta name="twitter:title" content="웹스토리보이" />
+    <meta name="twitter:description" content="웹과 관련된 정보를 제공합니다." />
+    <meta property="twitter:image" content="http://richclub8.dothome.co.kr/assets/ico/icon.png" />
+
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gaegu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.../../assets2/js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <a class="sr-only" href="#content">Skip to main content</a>
+
+    <header class="navbar navbar-inverse navbar-static-top bs-docs-nav" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="../index.html" class="navbar-brand">WEB'S &lt;/doc&gt;</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse pull-right" role="navigation">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://websinssa.tistory.com/">Tistory</a></li>
+                    <li><a href="https://codepen.io/webstoryboy">Codepen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="bs-header bgs1" id="content">
+        <div class="container">
+            <h1>border-radius Animation Reference v1.0 &lt;/doc&gt;</h1>
+            <p><a href="https://webstoryboy.co.kr" target="_blank">webstoryboy.co.kr</a></p>
+        </div>
+    </div>
+
+    <div class="container bs-docs-container">
+        <div class="row">
+
+            <div class="row" style="margin:10px 0 20px 15px">
+                <script src="https://ads-partners.coupang.com/g.js"></script>
+                <script>
+                    new PartnersCoupang.G({
+                        "id": 348397,
+                        "template": "carousel",
+                        "trackingCode": "AF4781241",
+                        "width": "1135",
+                        "height": "140"
+                    });
+                </script>
+            </div>
+
+            <div class="col-md-12">
+                <!-- Intro -->
+                <div class="bs-docs-section">
+                    <h2 id="intro" class="page-header">border-radius</h2>
+                    <p>border-radius 속성은 모서리 굴곡을 설정합니다.</p>
+                    <p class="bs-callout bs-callout-info"> border-radius: border-top-left-radius |
+                        border-top-right-radius | border-bottom-left-radius | border-bottom-right-raius; </p>
+                    <p class="bs-callout bs-callout-info"> 
+                        border-radius: 0px 0px 0px 0px / 0px 0px 0px 0px;<br>
+                        border-radius: 0px 0px 0px / 0px 0px 0px 0px;<br> border-radius: 0px 0px / 0px 0px 0px 0px;<br>
+                        border-radius: 0px / 0px 0px 0px 0px;<br> border-radius: 0px 0px 0px 0px<br> border-radius: 0px
+                        0px 0px<br> border-radius: 0px 0px<br> border-radius: 0px<br> 
+                        X축 / Y축<br> 
+                        top left, top right, bottom right, bottom left / top left, top right, bottom right, bottom left</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>종류</th>
+                                    <th>예시</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>border-top-left-radius</td>
+                                    <td>테두리 굴곡을 윗 부분 왼쪽에 설정합니다.</td>
+                                </tr>
+                                <tr>
+                                    <td>border-top-right-radius</td>
+                                    <td>테두리 굴곡을 윗 부분 오른쪽에 설정합니다.</td>
+                                </tr>
+                                <tr>
+                                    <td>border-bottom-right-radius</td>
+                                    <td>테두리 굴곡을 아래 오른쪽에 설정합니다.</td>
+                                </tr>
+                                <tr>
+                                    <td>border-bottom-left-radius</td>
+                                    <td>테두리 굴곡을 아래 왼쪽에 설정합니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- //Intro -->
+
+                <!-- div.radius$$*10>span{radius$$}
+                    div.radius$@21*10>span{radius$@21}
+                    div.radius$@31*10>span{radius$@31}
+                    div.radius$@41*10>span{radius$@41}
+                    div.radius$@51*10>span{radius$@51} -->
+
+                <style>
+                    .box-button {
+                        border-top: 1px solid #f1f1f1;
+                        padding: 20px;
+                    }
+                    .box-button > a {
+                        color: #333;
+                        text-decoration: none;
+                        border: 1px solid #333;
+                        border-radius: 30px;
+                        padding: 5px 30px;
+                        margin: 5px;
+                        display: inline-block;
+                    }
+                    .box-button > a:hover {
+                        background-color: #000;
+                        color: #fff;
+                    }
+
+
+                    .border-radius-wrap {
+                        overflow: hidden;
+                        padding: 20px;
+                    }
+                    .border-radius-wrap > div {
+                        float: left;
+                        width: 170px;
+                        height: 170px;
+                        background: #ccc;
+                        text-align: center;
+                        line-height: 170px;
+                        color: #fff;
+                        margin: 25px;
+                        transition: all 0.3s;
+                    }
+                    .border-radius-wrap > div:hover {
+                        border-radius: 0;
+                    }
+
+                    .border-radius-wrap.background1 > div {background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);}
+                    .border-radius-wrap.background2 > div {background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);}
+                    .border-radius-wrap.background3 > div {background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);}
+                    .border-radius-wrap.background4 > div {background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+                    .border-radius-wrap.background5 > div {background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);}
+                </style>
+
+
+                <style>
+                    .radius01 {border-radius: 0px;}
+                    .radius02 {border-radius: 10px;}
+                    .radius03 {border-radius: 20px;}
+                    .radius04 {border-radius: 30px;}
+                    .radius05 {border-radius: 40px;}
+                    .radius06 {border-radius: 50px;}
+                    .radius07 {border-radius: 60px;}
+                    .radius08 {border-radius: 70px;}
+                    .radius09 {border-radius: 80px;}
+                    .radius10 {border-radius: 90px;}
+
+                    .sample1 > div.show1 {border-radius: 90px;}
+                    .sample1 > div.show2 {border-radius: 60px;}
+                    .sample1 > div.show3 {border-radius: 40px;}
+                    .sample1 > div.show4 {border-radius: 0px;}
+                </style>
+                <!-- sample01 -->
+                <div class="bs-docs-section">
+                    <h2 id="intro1" class="page-header">Sample01</h2>
+                    <div class="sample">
+                        <h3><span></span><em class="sr-only">border-radius</em></h3>
+                        <div class="box-wrap border-radius-wrap background1 sample1">
+                            <div class="radius01"><span>radius01</span></div>
+                            <div class="radius02"><span>radius02</span></div>
+                            <div class="radius03"><span>radius03</span></div>
+                            <div class="radius04"><span>radius04</span></div>
+                            <div class="radius05"><span>radius05</span></div>
+                            <div class="radius06"><span>radius06</span></div>
+                            <div class="radius07"><span>radius07</span></div>
+                            <div class="radius08"><span>radius08</span></div>
+                            <div class="radius09"><span>radius09</span></div>
+                            <div class="radius10"><span>radius10</span></div>
+                        </div>
+                        <div class="box-button">
+                            <a href="#" class="rbtn1-0">리셋</a>   
+                            <a href="#" class="rbtn1-1">radius: 90px</a>   
+                            <a href="#" class="rbtn1-2">radius: 60px</a>   
+                            <a href="#" class="rbtn1-3">radius: 40px</a>   
+                            <a href="#" class="rbtn1-4">radius: 0px</a>   
+                        </div>
+                    </div>
+<pre class="line-numbers language-css"><code>.radius01 {border-radius: 0px;}
+.radius02 {border-radius: 10px;}
+.radius03 {border-radius: 20px;}
+.radius04 {border-radius: 30px;}
+.radius05 {border-radius: 40px;}
+.radius06 {border-radius: 50px;}
+.radius07 {border-radius: 60px;}
+.radius08 {border-radius: 70px;}
+.radius09 {border-radius: 80px;}
+.radius10 {border-radius: 90px;}
+</code></pre>
+                </div>
+                <!-- //sample01 -->
+
+
+
+                <style>
+                    .radius11 {border-radius: 0px 0px;}
+                    .radius12 {border-radius: 15px 0px;}
+                    .radius13 {border-radius: 30px 0px;}
+                    .radius14 {border-radius: 45px 0px;}
+                    .radius15 {border-radius: 60px 0px;}
+                    .radius16 {border-radius: 75px 0px;}
+                    .radius17 {border-radius: 90px 0px;}
+                    .radius18 {border-radius: 105px 0px;}
+                    .radius19 {border-radius: 120px 0px;}
+                    .radius20 {border-radius: 135px 0px;}
+                </style>
+                <!-- sample02 -->
+                <div class="bs-docs-section">
+                    <h2 id="intro2" class="page-header">Sample02</h2>
+                    <div class="sample">
+                        <h3><span></span><em class="sr-only">border-radius</em></h3>
+                        <div class="box-wrap border-radius-wrap background2 sample2">
+                            <div class="radius11"><span>radius11</span></div>
+                            <div class="radius12"><span>radius12</span></div>
+                            <div class="radius13"><span>radius13</span></div>
+                            <div class="radius14"><span>radius14</span></div>
+                            <div class="radius15"><span>radius15</span></div>
+                            <div class="radius16"><span>radius16</span></div>
+                            <div class="radius17"><span>radius17</span></div>
+                            <div class="radius18"><span>radius18</span></div>
+                            <div class="radius19"><span>radius19</span></div>
+                            <div class="radius20"><span>radius20</span></div>
+                        </div>
+                        <div class="box-button">
+                            <a href="#" class="rbtn2-0">리셋</a>   
+                            <a href="#" class="rbtn2-1">radius: 90px</a>   
+                            <a href="#" class="rbtn2-2">radius: 60px</a>   
+                            <a href="#" class="rbtn2-3">radius: 40px</a>   
+                            <a href="#" class="rbtn2-4">radius: 0px</a>   
+                        </div>
+                    </div>
+<pre class="line-numbers language-css"><code>.radius11 {border-radius: 0px 0px;}
+.radius12 {border-radius: 15px 0px;}
+.radius13 {border-radius: 30px 0px;}
+.radius14 {border-radius: 45px 0px;}
+.radius15 {border-radius: 60px 0px;}
+.radius16 {border-radius: 75px 0px;}
+.radius17 {border-radius: 90px 0px;}
+.radius18 {border-radius: 105px 0px;}
+.radius19 {border-radius: 120px 0px;}
+.radius20 {border-radius: 135px 0px;}
+</code></pre>
+                </div>
+                <!-- //sample02 -->
+
+
+                <style>
+                    .radius21 {border-radius: 10px / 55px;}
+                    .radius22 {border-radius: 20px / 55px;}
+                    .radius23 {border-radius: 30px / 55px;}
+                    .radius24 {border-radius: 40px / 55px;}
+                    .radius25 {border-radius: 50px / 55px;}
+                    .radius26 {border-radius: 55px / 50px;}
+                    .radius27 {border-radius: 55px / 40px;}
+                    .radius28 {border-radius: 55px / 30px;}
+                    .radius29 {border-radius: 55px / 20px;}
+                    .radius30 {border-radius: 55px / 10px;}
+                </style>
+                <!-- sample03 -->
+                <div class="bs-docs-section">
+                    <h2 id="intro3" class="page-header">Sample03</h2>
+                    <div class="sample">
+                        <h3><span></span><em class="sr-only">border-radius</em></h3>
+                        <div class="box-wrap border-radius-wrap background3 sample3">
+                            <div class="radius21"><span>radius21</span></div>
+                            <div class="radius22"><span>radius22</span></div>
+                            <div class="radius23"><span>radius23</span></div>
+                            <div class="radius24"><span>radius24</span></div>
+                            <div class="radius25"><span>radius25</span></div>
+                            <div class="radius26"><span>radius26</span></div>
+                            <div class="radius27"><span>radius27</span></div>
+                            <div class="radius28"><span>radius28</span></div>
+                            <div class="radius29"><span>radius29</span></div>
+                            <div class="radius30"><span>radius30</span></div>
+                        </div>
+                        <div class="box-button">
+                            <a href="#" class="rbtn3-0">리셋</a>   
+                            <a href="#" class="rbtn3-1">radius: 90px</a>   
+                            <a href="#" class="rbtn3-2">radius: 60px</a>   
+                            <a href="#" class="rbtn3-3">radius: 40px</a>   
+                            <a href="#" class="rbtn3-4">radius: 0px</a>   
+                        </div>
+                    </div>
+<pre class="line-numbers language-css"><code>.radius21 {border-radius: 10px / 55px;}
+.radius22 {border-radius: 20px / 55px;}
+.radius23 {border-radius: 30px / 55px;}
+.radius24 {border-radius: 40px / 55px;}
+.radius25 {border-radius: 50px / 55px;}
+.radius26 {border-radius: 55px / 50px;}
+.radius27 {border-radius: 55px / 40px;}
+.radius28 {border-radius: 55px / 30px;}
+.radius29 {border-radius: 55px / 20px;}
+.radius30 {border-radius: 55px / 10px;}
+</code></pre>
+                </div>
+                <!-- //sample03 -->
+
+
+
+
+
+                <style>
+                    .radius31 {border-radius: 0 30px 30px / 30px;}
+                    .radius32 {border-radius: 0 40px 40px / 40px;}
+                    .radius33 {border-radius: 0 50px 50px / 50px;}
+                    .radius34 {border-radius: 0 60px 60px / 60px;}
+                    .radius35 {border-radius: 0 70px 70px / 70px;}
+                    .radius36 {border-radius: 30px 30px 0px / 30px;}
+                    .radius37 {border-radius: 40px 40px 0px / 40px;}
+                    .radius38 {border-radius: 50px 50px 0px / 50px;}
+                    .radius39 {border-radius: 60px 60px 0px / 60px;}
+                    .radius40 {border-radius: 70px 70px 0px / 70px;}
+                </style>
+                <!-- sample04 -->
+                <div class="bs-docs-section">
+                    <h2 id="intro4" class="page-header">Sample04</h2>
+                    <div class="sample">
+                        <h3><span></span><em class="sr-only">border-radius</em></h3>
+                        <div class="box-wrap border-radius-wrap background4 sample4">
+                            <div class="radius31"><span>radius31</span></div>
+                            <div class="radius32"><span>radius32</span></div>
+                            <div class="radius33"><span>radius33</span></div>
+                            <div class="radius34"><span>radius34</span></div>
+                            <div class="radius35"><span>radius35</span></div>
+                            <div class="radius36"><span>radius36</span></div>
+                            <div class="radius37"><span>radius37</span></div>
+                            <div class="radius38"><span>radius38</span></div>
+                            <div class="radius39"><span>radius39</span></div>
+                            <div class="radius40"><span>radius40</span></div>
+                        </div>
+                        <div class="box-button">
+                            <a href="#" class="rbtn4-0">리셋</a>   
+                            <a href="#" class="rbtn4-1">radius: 90px</a>   
+                            <a href="#" class="rbtn4-2">radius: 60px</a>   
+                            <a href="#" class="rbtn4-3">radius: 40px</a>   
+                            <a href="#" class="rbtn4-4">radius: 0px</a>   
+                        </div>
+                    </div>
+<pre class="line-numbers language-css"><code>.radius31 {border-radius: 0 30px 30px / 30px;}
+.radius32 {border-radius: 0 40px 40px / 40px;}
+.radius33 {border-radius: 0 50px 50px / 50px;}
+.radius34 {border-radius: 0 60px 60px / 60px;}
+.radius35 {border-radius: 0 70px 70px / 70px;}
+.radius36 {border-radius: 30px 30px 0px / 30px;}
+.radius37 {border-radius: 40px 40px 0px / 40px;}
+.radius38 {border-radius: 50px 50px 0px / 50px;}
+.radius39 {border-radius: 60px 60px 0px / 60px;}
+.radius40 {border-radius: 70px 70px 0px / 70px;}
+</code></pre>
+                </div>
+                <!-- //sample04 -->
+
+
+
+
+                <style>
+                    .radius41 {border-radius: 0px 0px 10px 10px / 0px 0px 10px 10px;}
+                    .radius42 {border-radius: 0px 0px 30px 30px / 0px 0px 30px 30px;}
+                    .radius43 {border-radius: 0px 0px 50px 50px / 0px 0px 50px 50px;}
+                    .radius44 {border-radius: 0px 0px 70px 70px / 0px 0px 70px 70px;}
+                    .radius45 {border-radius: 0px 0px 90px 90px / 0px 0px 90px 90px;}
+                    .radius46 {border-radius: 10px 10px 0px 0px;}
+                    .radius47 {border-radius: 30px 30px 0px 0px;}
+                    .radius48 {border-radius: 50px 50px 0px 0px;}
+                    .radius49 {border-radius: 70px 70px 0px 0px;}
+                    .radius50 {border-radius: 90px 90px 0px 0px;}
+                </style>
+                <!-- sample05 -->
+                <div class="bs-docs-section">
+                    <h2 id="intro5" class="page-header">Sample05</h2>
+                    <div class="sample">
+                        <h3><span></span><em class="sr-only">border-radius</em></h3>
+                        <div class="box-wrap border-radius-wrap background5 sample5">
+                            <div class="radius41"><span>radius41</span></div>
+                            <div class="radius42"><span>radius42</span></div>
+                            <div class="radius43"><span>radius43</span></div>
+                            <div class="radius44"><span>radius44</span></div>
+                            <div class="radius45"><span>radius45</span></div>
+                            <div class="radius46"><span>radius46</span></div>
+                            <div class="radius47"><span>radius47</span></div>
+                            <div class="radius48"><span>radius48</span></div>
+                            <div class="radius49"><span>radius49</span></div>
+                            <div class="radius50"><span>radius50</span></div>
+                        </div>
+                        <div class="box-button">
+                            <a href="#" class="rbtn4-0">리셋</a>   
+                            <a href="#" class="rbtn4-1">radius: 90px</a>   
+                            <a href="#" class="rbtn4-2">radius: 60px</a>   
+                            <a href="#" class="rbtn4-3">radius: 40px</a>   
+                            <a href="#" class="rbtn4-4">radius: 0px</a>   
+                        </div>
+                    </div>
+<pre class="line-numbers language-css"><code>
+</code></pre>
+                </div>
+                <!-- //sample05 -->
+
+
+
+                <style>
+                    .radius51 {border-radius: 50% 70% 55% 65% / 50% 45% 60% 45%;}
+                    .radius52 {border-radius: 40% 40% 55% 65% / 30% 45% 60% 75%;}
+                    .radius53 {border-radius: 55% 50% 55% 65% / 50% 55% 60% 45%;}
+                    .radius54 {border-radius: 57% 60% 35% 75% / 60% 75% 60% 75%;}
+                    .radius55 {border-radius: 55% 70% 45% 65% / 80% 45% 70% 45%;}
+                    .radius56 {border-radius: 30% 50% 75% 55% / 40% 45% 50% 55%;}
+                    .radius57 {border-radius: 56% 60% 25% 65% / 50% 45% 80% 45%;}
+                    .radius58 {border-radius: 80% 70% 45% 45% / 30% 45% 60% 85%;}
+                    .radius59 {border-radius: 45% 40% 35% 75% / 60% 45% 90% 45%;}
+                    .radius60 {border-radius: 56% 50% 35% 85% / 40% 45% 60% 85%;}
+                </style>
+                <!-- sample06 -->
+                <div class="bs-docs-section">
+                    <h2 id="intro6" class="page-header">Sample06</h2>
+                    <div class="sample">
+                        <h3><span></span><em class="sr-only">border-radius</em></h3>
+                        <div class="box-wrap border-radius-wrap background1 sample6">
+                            <div class="radius51"><span>radius51</span></div>
+                            <div class="radius52"><span>radius52</span></div>
+                            <div class="radius53"><span>radius53</span></div>
+                            <div class="radius54"><span>radius54</span></div>
+                            <div class="radius55"><span>radius55</span></div>
+                            <div class="radius56"><span>radius56</span></div>
+                            <div class="radius57"><span>radius57</span></div>
+                            <div class="radius58"><span>radius58</span></div>
+                            <div class="radius59"><span>radius59</span></div>
+                            <div class="radius60"><span>radius60</span></div>
+                        </div>
+                        <div class="box-button">
+                            <a href="#" class="rbtn5-0">리셋</a>   
+                            <a href="#" class="rbtn5-1">radius: 90px</a>   
+                            <a href="#" class="rbtn5-2">radius: 60px</a>   
+                            <a href="#" class="rbtn5-3">radius: 40px</a>   
+                            <a href="#" class="rbtn5-4">radius: 0px</a>   
+                        </div>
+                    </div>
+<pre class="line-numbers language-css"><code>.radius51 {border-radius: 50% 70% 55% 65% / 50% 45% 60% 45%;}
+.radius52 {border-radius: 40% 40% 55% 65% / 30% 45% 60% 75%;}
+.radius53 {border-radius: 55% 50% 55% 65% / 50% 55% 60% 45%;}
+.radius54 {border-radius: 57% 60% 35% 75% / 60% 75% 60% 75%;}
+.radius55 {border-radius: 55% 70% 45% 65% / 80% 45% 70% 45%;}
+.radius56 {border-radius: 30% 50% 75% 55% / 40% 45% 50% 55%;}
+.radius57 {border-radius: 56% 60% 25% 65% / 50% 45% 80% 45%;}
+.radius58 {border-radius: 80% 70% 45% 45% / 30% 45% 60% 85%;}
+.radius59 {border-radius: 45% 40% 35% 75% / 60% 45% 90% 45%;}
+.radius60 {border-radius: 56% 50% 35% 85% / 40% 45% 60% 85%;}
+</code></pre>
+                </div>
+                <!-- //sample06 -->
+
+
+
+
+                <!-- codepen -->
+                <div class="bs-docs-section">
+                    <h2 class="page-header">border-radius learning</h2>
+                    <p class="codepen" data-height="400" data-theme-id="26135" data-default-tab="result" data-user="laviperchik" data-slug-hash="mAHwE" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="border-radius learning tool">
+                        <span>See the Pen <a href="https://codepen.io/laviperchik/pen/mAHwE">
+                        border-radius learning tool</a> by Lavi Perchik (<a href="https://codepen.io/laviperchik">@laviperchik</a>)
+                        on <a href="https://codepen.io">CodePen</a>.</span>
+                      </p>
+                      <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+                </div>
+                <!-- //codpen -->
+
+            </div>
+            <!-- //col-md-12 -->
+        </div>
+        <!-- //row -->
+    </div>
+    <!-- //container -->
+
+
+    <!-- Footer -->
+    <footer class="bs-footer" role="contentinfo">
+        <div class="container">
+            <ul class="footer-links muted">
+                <li>Currently v2.0</li>
+                <li>&middot;</li>
+                <li><a href="http://webstoryboy.co.kr">webstoryboy</a></li>
+                <li>&middot;</li>
+                <li><a href="http://cafe.naver.com/crossbrowsing" target="_blank">publisher cafe</a></li>
+                <li>&middot;</li>
+                <li><a href="http://cafe.daum.net/flairdesignlink" target="_blank">designer cafe</a></li>
+            </ul>
+        </div>
+    </footer>
+    <!-- //Footer -->
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../assets/js/jquery-1.9.1.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+    <script src="../../assets/js/prism.js"></script>
+    <script>
+        $(".rbtn1-0").click(function(){
+            $(".sample1 > div").removeClass("show1 show2 show3 show4");
+        });
+        $(".rbtn1-1").click(function(){
+            $(".sample1 > div").removeClass("show1 show2 show3 show4").addClass("show1");
+        });
+        $(".rbtn1-2").click(function(){
+            $(".sample1 > div").removeClass("show1 show2 show3 show4").addClass("show2");
+        });
+        $(".rbtn1-3").click(function(){
+            $(".sample1 > div").removeClass("show1 show2 show3 show4").addClass("show3");
+        });
+        $(".rbtn1-4").click(function(){
+            $(".sample1 > div").removeClass("show1 show2 show3 show4").addClass("show4");
+        });
+    </script>
+</body>
+
+</html>

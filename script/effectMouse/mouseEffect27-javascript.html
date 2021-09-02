@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Effect</title>
+    <meta name="description" content="웹스토리보이와 함께 예제를 통해 배우는 스크립트 튜토리얼">
+	<meta name="keywords" content="mouse, animation, parallax, menu, slider, canvas, javascript, text, webs">
+    <meta name="author" content="webstoryboy">
+    
+    <style>
+        /* reset */
+        @font-face { 
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal; 
+            font-style: normal; 
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.2s;
+        }
+
+        a:hover {
+            border-bottom: 1px dashed #fff;
+        }
+
+        img {
+            width: 100%;
+            vertical-align: top;
+        }
+
+        ul {
+            padding: 10px 20px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            background: url(../assets/img/sc11@2.jpg) no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            transition: all 0.2s;
+            overflow: hidden;
+            font-size: 16px;
+            line-height: 1.5;
+            font-family: 'NEXON Lv1 Gothic OTF';
+            /* cursor: none; */
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(13, 28, 3, 0.9);
+            z-index: -1;
+        }
+
+        /* info */
+        .info {
+            position: absolute;
+            z-index: 1000;
+        }
+
+        .info h1 {
+            font-size: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 8px;
+        }
+
+        .info p, .info li {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 3px;
+        }
+
+        .info li.active a:first-child {
+            background: #fff;
+            color: #000;
+        }
+
+        .info.left {
+            left: 20px;
+            top: 20px;
+        }
+
+        .info.right {
+            right: 20px;
+            top: 20px;
+        }
+        .info.right ul {
+            display: block;
+            padding: 0;
+            position: relative;
+            margin-bottom: 3px;
+        }
+        .info.right li {
+            display: inline;
+        }
+        .info.right ul:first-child::before {
+            content: 'jQuery';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info.right ul:last-child::before {
+            content: 'JavaScript';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info.right a {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .info.right a:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .info.bottom {
+            left: 10px;
+            bottom: 10px;
+        }
+
+        .info.bottom li {
+            display: block;
+            transition: all 0.2s;
+        }
+
+        .info.bottom li.active {
+            color: orange;
+        }
+
+        .info.bottom li:hover {
+            color: orange;
+        }
+
+        .info.view {
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .info.view a {
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 30px;
+            padding: 5px 30px;
+        }
+
+        @media (max-width: 800px){
+            .info.bottom {display: none;}
+            .info.right {display: none;}
+        }
+
+        /* main */
+        .textWrap {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -20%);
+        }
+        .textWrap .line {
+            width: 100%;
+            display: flex;
+        }
+        .textWrap .line .left {
+            width: 50vw; 
+            color: gold;
+            transform: skew(0deg, -15deg);
+            overflow: hidden;
+        }
+        .textWrap .line .left .spanWrap {
+            width: 100vw;
+            text-align: center;
+        }
+        .textWrap .line .right {
+            width: 50vw; 
+            transform: skew(0deg, 15deg);
+            overflow: hidden;
+        }
+        .textWrap .line .right .spanWrap {
+            width: 100vw;
+            text-align: center;
+            transform: translateX(-50vw);
+        }
+        .textWrap span {
+            font-size: 3vw;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .imgWrap {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <!-- main -->
+    <main>
+        <div class="cursor"></div>
+
+        <div class="contents">
+            <div class="move-image">
+                <div class="textWrap">
+                    <div class="line">
+                        <div class="left">
+                            <div class="spanWrap">
+                                <span class="spanSlow">Pain past</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="spanWrap">
+                                <span class="spanSlow">Pain past</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="left">
+                            <div class="spanWrap">
+                                <span class="spanFast">is pleasure.</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="spanWrap">
+                                <span class="spanFast">is pleasure.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="left">
+                            <div class="spanWrap">
+                                <span class="spanSlow">지나간 고통은</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="spanWrap">
+                                <span class="spanSlow">지나간 고통은</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="left">
+                            <div class="spanWrap">
+                                <span class="spanFast">쾌락이다.</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="spanWrap">
+                                <span class="spanFast">쾌락이다.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="imgWrap">
+                    <img src="../assets/img/sc11@2.jpg" alt="이미지">
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+    
+    <!-- info -->
+    <div class="info left">
+        <h1><a href="mouseEffect-cover.html">Javascript Mouse Effect07</a></h1>
+        <p>마우스 방향에 글씨 움직이기</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li><a href="mouseEffect01-jquery.html">1</a></li>
+            <li><a href="mouseEffect02-jquery.html">2</a></li>
+            <li><a href="mouseEffect03-jquery.html">3</a></li>
+            <li><a href="mouseEffect04-jquery.html">4</a></li>
+            <li><a href="mouseEffect05-jquery.html">5</a></li>
+            <li><a href="mouseEffect06-jquery.html">6</a></li>
+            <li><a href="mouseEffect07-jquery.html">7</a></li>
+        </ul>
+        <ul>
+            <li><a href="mouseEffect21-javascript.html">1</a></li>
+            <li><a href="mouseEffect22-javascript.html">2</a></li>
+            <li><a href="mouseEffect23-javascript.html">3</a></li>
+            <li><a href="mouseEffect24-javascript.html">4</a></li>
+            <li><a href="mouseEffect25-javascript.html">5</a></li>
+            <li><a href="mouseEffect26-javascript.html">6</a></li>
+            <li class="active"><a href="mouseEffect27-javascript.html">7</a></li>
+        </ul>
+    </div>
+
+    <div class="info bottom">
+        <ul>
+            <li>pageX : <span class="pageX">0</span></li>
+            <li>pageY : <span class="pageY">0</span></li>
+            <li>positionSlow : <span class="positionSlow">0</span></li>
+            <li>positionFast : <span class="positionFast">0</span></li>
+        </ul>
+    </div>
+
+    <div class="info view">
+        <a href="https://wtss.tistory.com/351" target="_blank">소스보기</a>
+    </div>
+    <!-- info -->
+
+    <!-- script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script>
+        const spanSlow = document.querySelectorAll(".spanSlow");
+        const spanFast = document.querySelectorAll(".spanFast");
+
+        const mouseMove = e => {
+            let positionSlow = (e.pageX - (window.innerWidth/2)) * 0.1;
+            let positionFast = (e.pageX - (window.innerWidth/2)) * 0.2;
+
+            //spanSlow.style.transform = `translateX(${positionSlow}px)`;
+            //spanFast.style.transform = `translateX(${-positionFast}px)`;
+
+            spanSlow.forEach(span => {
+                span.style.transform = `translateX(${positionSlow}px)`;
+            });
+            spanFast.forEach(span => {
+                span.style.transform = `translateX(${-positionFast}px)`;
+            });
+
+            //출력용
+            document.querySelector(".pageX").textContent = e.pageX;
+            document.querySelector(".pageY").textContent = e.pageY;
+            document.querySelector(".positionSlow").textContent = parseInt(positionSlow);
+            document.querySelector(".positionFast").textContent = parseInt(positionFast);
+        }
+
+        window.addEventListener("mousemove", mouseMove)
+    </script>
+</body>
+</html>

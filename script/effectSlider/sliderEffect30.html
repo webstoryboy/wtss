@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        a {text-decoration: none; color: #000;}
+        li {list-style: none;}
+
+        /* header */
+        #header {
+            position: fixed;
+            left: 0; top: 0;
+            width: 100%;
+            height: 100px;
+            background: #fff;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #header .link {
+            flex: 1 1 20%;
+            margin-left: 100px;
+        }
+        #header .link li {
+            display: inline-block;
+            padding-right: 10px;
+        }
+        #header .link li a {
+            font-family: 'Roboto';
+            text-transform: capitalize;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        #header .link li.active a {
+            font-weight: bold;
+        }
+        #header h1 {
+            flex: 1 1 60%;
+            font-family: 'Roboto';
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            text-align: center;
+        }
+        #header .nav {
+            flex: 1 1 20%;
+            margin-right: 100px;
+        }
+        #header .nav .ham {
+            width: 30px; height: 30px;
+            /* background: rgba(0,0,0,0.3); */
+            padding-top: 13px;
+            cursor: pointer;
+            float: right;
+        }
+        #header .nav .ham span {
+            width: 30px;
+            height: 3px;
+            background: #000;
+            display: block;
+            position: relative;
+        }
+        #header .nav .ham span::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            width: 15px;
+            height: 3px;
+            background: #000;
+        }
+        #header .nav .ham span::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: -10px;
+            width: 15px;
+            height: 3px;
+            background: #000;
+        }
+
+        /* slider */
+        .slider__wrap {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .slider__img {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            cursor: none;
+        }
+        .slider__item {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+        }
+        .slider__item.s1 {background: #fceff9;}
+        .slider__item.s2 {background: #e9effd;}
+        .slider__item.s3 {background: #fae3f5;}
+        .slider__item.s4 {background: #fbe368;}
+        .slider__item.s5 {background: #ccebea;}
+        .slider__item.s6 {background: #e9effd;}
+        .slider__item.s7 {background: #f4f2ec;}
+
+        .slider__item__txt {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 100%;
+            text-align: center;
+            font-size: 8vw;
+            letter-spacing: 1vw;
+            color: #fff;
+            font-family: 'Montserrat';
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+        .slider__item__txt h2 {
+            overflow: hidden;
+            line-height: 0.74;
+            padding-top: 30px;
+        }
+        .slider__item .slider__item__txt h2 span {
+            display: inline-block;
+            transform: translateY(200px) translateX(120px) rotate(30deg);
+            transition: transform 0.44s cubic-bezier(0, 0.68, 0.38, 1.42);
+        }
+        .slider__item .slider__item__txt h2 span:nth-child(1) {transition-delay: 0.1s;}
+        .slider__item .slider__item__txt h2 span:nth-child(2) {transition-delay: 0.15s;}
+        .slider__item .slider__item__txt h2 span:nth-child(3) {transition-delay: 0.2s;}
+        .slider__item .slider__item__txt h2 span:nth-child(4) {transition-delay: 0.25s;}
+        .slider__item .slider__item__txt h2 span:nth-child(5) {transition-delay: 0.3s;}
+        .slider__item .slider__item__txt h2 span:nth-child(6) {transition-delay: 0.35s;}
+        .slider__item .slider__item__txt h2 span:nth-child(7) {transition-delay: 0.4s;}
+        .slider__item .slider__item__txt h2 span:nth-child(8) {transition-delay: 0.45s;}
+        .slider__item .slider__item__txt h2 span:nth-child(9) {transition-delay: 0.5s;}
+        .slider__item .slider__item__txt h2 span:nth-child(10) {transition-delay: 0.55s;}
+
+        .slider__item.active .slider__item__txt h2 span {
+            transform: translateY(0px) translateX(0px) rotate(0deg);
+        }
+        .slider__item__img {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%) scale(0.2);
+            width: 100%;
+            transition: all 0.6s 0.1s ease;
+        }
+        .slider__item__img img {
+            max-width: 500px;
+            display: block;
+            margin: 0 auto;
+        }
+        .slider__item.active .slider__item__img {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .slider__item__count {
+            position: fixed;
+            position: absolute;
+            left: 130px;
+            top: 130px;
+            font-size: 90px;
+            color: #000;
+            font-family: 'Playfair Display';
+            font-style: italic;
+            font-weight: 400;
+            line-height: 0.4;
+            padding-bottom: 40px;
+            padding-right: 20px;
+        }
+        .slider__item__count .currentIndex {
+            margin-right: 90px;
+            position: relative;
+        }
+        .slider__item__count .currentIndex::before {
+            content: '';
+            position: absolute;
+            right: -85px;
+            top: 80px;
+            width: 60px;
+            height: 1px;
+            background: #000;
+        }
+        .slider__item__count .sliderCount { }
+
+        .slider__btn a {
+            position: absolute;
+            z-index: 2100;
+        }
+        .slider__btn .prev {
+            left: 0; top: 0;
+            width: 100px;
+            height: 100vh;
+            background-color: #fff;
+        }
+        .slider__btn .next {
+            right: 0; top: 0;
+            width: 100px;
+            height: 100vh;
+            background-color: #fff;
+        }
+        .slider__btn svg {
+            position: absolute;
+            bottom: 0;
+        }
+        .slider__btn .prev.lock {
+            pointer-events: none;
+        }
+        .slider__btn .prev.lock svg {
+            visibility: hidden;
+        }
+        .slider__btn .next.lock {
+            pointer-events: none;
+        }
+        .slider__btn .next.lock svg{
+            visibility: hidden;
+        }
+        .slider__dot {
+            position: fixed;
+            width: 100%;
+            height: 100px;
+            bottom: 0;
+            background-color: #fff;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider__dot a {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            font-style: italic;
+            font-weight: bold;
+            margin: 0 10px;
+            text-indent: -9999px;
+            font-family: 'Playfair Display';
+            text-align: center;
+            box-sizing: content-box;
+        }
+        .slider__dot a.active {
+            border: 0;
+            color: #333;
+            text-indent: 0;
+            margin-top: -16px;
+            padding-right: 10px;
+        }
+
+        .cursor {
+            position: absolute;
+            width: 10px; height: 10px;
+            background: #ffc4f1;
+            border-radius: 50%;
+            z-index: 1000;
+            user-select: none;
+            pointer-events: none;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+        }
+        .cursor.active {
+            opacity: .5;
+            transform: scale(0);
+        }
+        .cursor-follower {
+            position: absolute;
+            width: 30px; height: 30px;
+            background: #ffc4f1;
+            opacity: 0.5;
+            border-radius: 50%;
+            user-select: none;
+            pointer-events: none;
+            transition: transform 0.6s ease-in-out, opacity 0.2s ease-in-out;
+            z-index: 100;
+        }
+        .cursor-follower.active {
+            opacity: .7;
+            transform: scale(8);
+        }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <!-- //cursor -->
+
+    <header id="header">
+        <ul class="link">
+            <li class="active"><a href="#">work</a></li>
+            <li><a href="#">about</a></li>
+        </ul>
+        <h1>portfolio</h1>
+        <div class="nav">
+            <div class="ham">
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
+
+    <main>
+        <section class="slider__wrap">
+            <div class="slider__img">
+                <div class="slider__item s1">
+                    <div class="slider__item__txt">
+                        <h2>portfolio</h2>
+                    </div>
+                    <div class="slider__item__img">
+                        <img src="../assets/img/slider-img01.png" alt="이미지1">
+                    </div>
+                    <div class="slider__item__count">
+                        <!-- <span class="currentIndex"></span>
+                        <span class="sliderCount"></span> -->
+                    </div>
+                </div>
+                <div class="slider__item s2">
+                    <div class="slider__item__txt">
+                        <h2>website</h2>
+                    </div>
+                    <div class="slider__item__img">
+                        <img src="../assets/img/slider-img02.png" alt="이미지2">
+                    </div>
+                    <div class="slider__item__count">
+                        <!-- <span class="currentIndex"></span>
+                        <span class="sliderCount"></span> -->
+                    </div>
+                </div>
+                <div class="slider__item s3">
+                    <div class="slider__item__txt">
+                        <h2>portfolio</h2>
+                    </div>
+                    <div class="slider__item__img">
+                        <img src="../assets/img/slider-img03.png" alt="이미지1">
+                    </div>
+                    <div class="slider__item__count">
+                        <!-- <span class="currentIndex"></span>
+                        <span class="sliderCount"></span> -->
+                    </div>
+                </div>
+                <div class="slider__item s4">
+                    <div class="slider__item__txt">
+                        <h2>portfolio</h2>
+                    </div>
+                    <div class="slider__item__img">
+                        <img src="../assets/img/slider-img04.png" alt="이미지4">
+                    </div>
+                    <div class="slider__item__count">
+                        <!-- <span class="currentIndex"></span>
+                        <span class="sliderCount"></span> -->
+                    </div>
+                </div>
+                <div class="slider__item s5">
+                    <div class="slider__item__txt">
+                        <h2>portfolio</h2>
+                    </div>
+                    <div class="slider__item__img">
+                        <img src="../assets/img/slider-img01.png" alt="이미지1">
+                    </div>
+                    <div class="slider__item__count">
+                        <!-- <span class="currentIndex"></span>
+                        <span class="sliderCount"></span> -->
+                    </div>
+                </div>
+                <div class="slider__item s6">
+                    <div class="slider__item__txt">
+                        <h2>portfolio</h2>
+                    </div>
+                    <div class="slider__item__img">
+                        <img src="../assets/img/slider-img02.png" alt="이미지1">
+                    </div>
+                    <div class="slider__item__count">
+                        <!-- <span class="currentIndex"></span>
+                        <span class="sliderCount"></span> -->
+                    </div>
+                </div>
+                <div class="slider__item s7">
+                    <div class="slider__item__txt">
+                        <h2>portfolio</h2>
+                    </div>
+                    <div class="slider__item__img">
+                        <img src="../assets/img/slider-img03.png" alt="이미지1">
+                    </div>
+                    <div class="slider__item__count">
+                        <!-- <span class="currentIndex"></span>
+                        <span class="sliderCount"></span> -->
+                    </div>
+                </div>
+            </div>
+            <div class="slider__dot">
+                <!-- <a href="#" class="active">01</a>
+                <a href="#">02</a>
+                <a href="#">03</a>
+                <a href="#">04</a>
+                <a href="#">05</a>
+                <a href="#">06</a>
+                <a href="#">07</a> -->
+            </div>
+            <div class="slider__btn">
+                <a href="#" class="prev">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="56.4185" y="37.515" width="0.728253" height="18.2063" rx="0.364127" transform="rotate(45 56.4185 37.515)" fill="#C4C4C4" stroke="black" stroke-width="0.728253" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="57.4185" y="62.7691" width="1.45651" height="18.9346" rx="0.728253" transform="rotate(135 57.4185 62.7691)" fill="black"/>
+                    </svg>
+                </a>
+                <a href="#" class="next">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="44.0303" y="63.2841" width="0.728253" height="18.2063" rx="0.364127" transform="rotate(-135 44.0303 63.2841)" fill="#C4C4C4" stroke="black" stroke-width="0.728253" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="43.0303" y="38.0299" width="1.45651" height="18.9346" rx="0.728253" transform="rotate(-45 43.0303 38.0299)" fill="black"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script>
+        $(function(){
+            agentCheck();               //호환성 체크
+            gotoSlider(currentIndex);   //이미지 슬라이드
+            //autoPlay();                 //이미지 자동플레이
+            textSplit();                //글씨 쪼개기
+        });
+        
+        //이미지 슬라이드
+        const sliderWrap = $(".slider__wrap"),
+              sliderImg = $(".slider__img"),
+              sliderItem = $(".slider__item"),
+              sliderBtn = $(".slider__btn"),
+              sliderDot = $(".slider__dot"),
+              sliderItemTxt = $(".slider__item__txt h2"),
+              sliderItemImg = $(".slider__item__img img"),
+              sliderItemCount = $(".slider__item__count"),
+              sliderCurrentCount = sliderItemCount.find(".currentIndex"),
+              sliderTotalCount = sliderItemCount.find(".sliderCount");
+
+        let dotIndex = "",
+            countIndex = "",
+            duration = 800,
+            easing = "easeOutExpo",
+            currentIndex = 0,
+            sliderCount = sliderItem.length,
+            interval = 4000,
+            timer = "";
+
+        //이미지 위치 설정
+        sliderItem.each(function(index){
+            //"left: 0"
+            //"left: 100%"
+            //"left: 200%"
+            //"left: 300%"
+            //"left: 400%"
+            //"left: 500%"
+            //"left: 600%"
+            // $(this).eq(0).css("left","0");
+            // $(this).eq(1).css("left","100%");
+            // $(this).eq(2).css("left","200%");
+            // $(this).eq(3).css("left","300%");
+            // $(this).eq(4).css("left","400%");
+            // $(this).eq(5).css("left","500%");
+            // $(this).eq(6).css("left","600%");
+
+            $(this).css("left", 100 * index + "%");
+
+            //dot 설정
+            // dotIndex = "<a href='#'>01</a>";
+            // dotIndex = "<a href='#'>02</a>";
+            // dotIndex = "<a href='#'>03</a>";
+            // dotIndex = "<a href='#'>04</a>";
+            // dotIndex = "<a href='#'>05</a>";
+            // dotIndex = "<a href='#'>06</a>";
+            // dotIndex = "<a href='#'>07</a>";
+            dotIndex += "<a href='#'>0"+ (index+1) +"</a>";
+            countIndex = "<span class='currentIndex'></span><span class='sliderCount'></span>";
+        });
+
+        sliderDot.html(dotIndex);
+        sliderItemCount.html(countIndex);
+
+        function btnUpdate(){
+            //버튼 제거
+            let sliderBtnLeft = sliderBtn.find(".prev");
+            let sliderBtnRight = sliderBtn.find(".next");
+            
+            if( currentIndex == sliderCount - 1 ){
+                sliderBtnRight.addClass("lock");
+            } else {
+                sliderBtnRight.removeClass("lock");
+            }
+            if( currentIndex == 0 ){
+                sliderBtnLeft.addClass("lock");
+            } else {
+                sliderBtnLeft.removeClass("lock");
+            }
+        }
+
+
+
+        function activeUpdate(){
+            //닷 버튼 활성화
+            sliderDot.find("a").removeClass("active").eq(currentIndex).addClass("active");
+
+            //이미지 애니메이션 활성화
+            sliderItem.removeClass("active").eq(currentIndex).addClass("active");
+        }
+
+        function bgUpdate(){
+            //배경 컬러
+            if(currentIndex == 0){
+                cursor.css("background-color", "#ffc4f1")
+                follower.css({backgroundColor: "#ffc4f1", opactiy : 0.5})
+            }
+            if(currentIndex == 1){
+                cursor.css("background-color", "#aac3fd")
+                follower.css({backgroundColor: "#aac3fd", opactiy : 0.5})
+            }
+            if(currentIndex == 2){
+                cursor.css("background-color", "#fd9ce8")
+                follower.css({backgroundColor: "#fd9ce8", opactiy : 0.5})
+            }
+            if(currentIndex == 3){
+                cursor.css("background-color", "#fff2b1")
+                follower.css({backgroundColor: "#fff2b1", opactiy : 0.5})
+            }
+            if(currentIndex == 4){
+                cursor.css("background-color", "#36A29D")
+                follower.css({backgroundColor: "#36A29D", opactiy : 0.5})
+            }
+            if(currentIndex == 5){
+                cursor.css("background-color", "#6795ff")
+                follower.css({backgroundColor: "#6795ff", opactiy : 0.5})
+            }
+            if(currentIndex == 6){
+                cursor.css("background-color", "#ffdc71")
+                follower.css({backgroundColor: "#ffdc71", opactiy : 0.5})
+            }
+        }
+
+        function textSplit(){
+            sliderItemTxt.each(function(){
+                let text = $(this).text();
+                let split = text.split("").join("</span><span aria-hidden='true'>");
+                    split = "<span aria-hidden='true'>" + split + "</span>";
+                $(this).html(split).attr("aria-label", text);
+            });
+        }
+
+        function countUpdate(){
+            $(".currentIndex").text("0" + (currentIndex + 1));
+            $(".sliderCount").text("0" + sliderCount)
+        }
+
+        function gotoSlider(index){
+            sliderImg.animate({"left": -100 * index +"%"}, duration, easing);
+            currentIndex = index;
+
+            btnUpdate();
+            bgUpdate();
+            activeUpdate();
+            countUpdate()
+        }
+
+        //버튼 클릭
+        sliderBtn.on("click", "a", function(e){
+            e.preventDefault();
+            // let nextIndex = (currentIndex + 1) / sliderCount;
+            // let preIndex = (currentIndex - 1) / sliderCount;
+            // if(currentIndex == 0) preIndex = sliderCount -1;
+
+            let nextIndex = (currentIndex + 1);
+            let preIndex = (currentIndex - 1); 
+
+            if( $(this).hasClass("prev") ){
+                gotoSlider(preIndex);
+            } else {
+                gotoSlider(nextIndex);
+            }
+            //console.log(currentIndex)
+        });
+
+        //닷 버튼 클릭
+        sliderDot.on("click","a",function(e){
+            e.preventDefault();
+            if( !$(this).hasClass("active") ){
+                gotoSlider( $(this).index() );
+            }
+        });
+
+        //자동 플레이
+        function autoPlay(){
+            timer = setInterval(function(){
+                let autoIndex = (currentIndex + 1) % sliderCount;
+                gotoSlider(autoIndex);
+            }, interval);
+        }
+        function autoStop(){
+            clearInterval(timer);
+        }
+
+        // sliderWrap.mouseenter(function(){
+        //     autoStop();
+        // });
+        // sliderWrap.mouseleave(function(){
+        //     autoPlay();
+        // });
+
+        sliderWrap.on({mouseenter:autoStop, mouseleave:autoPlay})
+        
+
+
+        //마우스 이펙트
+        const cursor = $(".cursor"),
+              follower = $(".cursor-follower");
+
+        let x = 0,
+            y = 0,
+            mouseX = 0,
+            moustY = 0,
+            angleX = 0,
+            angleY = 0,
+            fmouseX = 0,
+            fmouseY = 0;
+ 
+        //마우스 움직임 효과
+        $(window).mousemove(function(e){
+
+            gsap.to(cursor, 0.3, {left: e.pageX - 5, top: e.pageY - 5 });
+            gsap.to(follower, 0.8, {left: e.pageX - 15 , top: e.pageY  - 15});
+
+            x = e.pageX;   
+            y = e.pageY;   
+
+            mouseX = Math.max(-150, Math.min(150, $(window).width()/2 - x));
+            mouseY = Math.max(-150, Math.min(150, $(window).height()/2 - y));
+
+            angleX = (12 * mouseX) / 100;
+            angleY = (12 * mouseY) / 100;
+
+            fmouseX += (angleX - fmouseX) * 1/10;
+            fmouseY += (angleY - fmouseY) * 1/10;
+
+            //sliderItemTxt.css({"transform": "translatex("+ fmouseX + "px) translateY("+ fmouseY + "px)" })
+            //sliderItemImg.css({"transform": "translatex("+ -fmouseX+ "px) translateY("+ -fmouseY+ "px)" })
+
+            gsap.to(sliderItemTxt, {x: fmouseX, y: fmouseY})
+            gsap.to(sliderItemImg, {x: -fmouseX, y: -fmouseY})
+        });
+
+        //오버 효과
+        sliderItemImg.hover(function(){
+            cursor.addClass("active");
+            follower.addClass("active");
+        }, function(){
+            cursor.removeClass("active");
+            follower.removeClass("active");
+        });
+
+
+        //호환성 체크
+        function agentCheck() {
+            let agent = navigator.userAgent.toLowerCase();
+            console.log(agent);
+
+            let browserList = {
+                mac: agent.match(/macintosh/i),
+                window: agent.match(/windows/i),
+                iphone: agent.match(/iphone/i),
+                android: agent.match(/android/i),
+                ipad: agent.match(/like Mac OS X/i),
+                ie7: agent.match(/msie 7.0/i),
+                ie8: agent.match(/msie 8.0/i),
+                ie9: agent.match(/msie 9.0/i),
+                ie10: agent.match(/msie 10.0/i),
+                ie11: agent.match(/rv:11.0/i),
+                edge: agent.match(/edge/i),
+                chrome: agent.match(/chrome/i),
+                safari: agent.match(/safari/i),
+                firefox: agent.match(/firefox/i),
+                opera: agent.match(/opera/i),
+                whale: agent.match(/whale/i),
+            };
+            for (prop in browserList) {
+                if (browserList[prop]) {
+                console.log(prop);
+                var classNames = prop + " ";
+                    document.getElementsByTagName("body")[0].className += classNames;
+                }
+            }
+        }
+    </script>
+</html>

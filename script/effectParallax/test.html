@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VanillaScroll</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-size: 5em;
+            font-family: 'Montserrat';
+            font-weight: bold;
+        }
+
+        section {
+            height: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            justify-content: center;
+            align-items: middle;
+            place-items: center;
+            height: 100vh;
+        }
+
+        span {
+            width: 110px;
+            height: 110px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: black;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <ul>
+            <li class="scroll" data-rate="-2" data-direction="vertical">par</li>
+            <li>al</li>
+            <li class="scroll" data-rate="2" data-direction="vertical">lax</li>
+        </ul>
+
+        <span class="scroll" data-rateY="1" data-rateX="2" data-direction="horizontal"></span>
+    </section>
+    <section></section>
+
+
+
+    <script>
+        window.addEventListener('scroll', function (e) {
+
+            const target = document.querySelectorAll('.scroll');
+
+            var index = 0,
+                length = target.length;
+            for (index; index < length; index++) {
+                var pos = window.pageYOffset * target[index].dataset.rate;
+
+                if (target[index].dataset.direction === 'vertical') {
+                    target[index].style.transform = 'translate3d(0px,' + pos + 'px, 0px)';
+                } else {
+                    var posX = window.pageYOffset * target[index].dataset.ratex;
+                    var posY = window.pageYOffset * target[index].dataset.ratey;
+
+                    target[index].style.transform = 'translate3d(' + posX + 'px, ' + posY + 'px, 0px)';
+                }
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="웹스토리보이와 함께 예제를 통해 배우는 스크립트 튜토리얼">
+    <meta name="keywords" content="mouse, animation, parallax, menu, slider, canvas, javascript, text, webs">
+    <meta name="author" content="webstoryboy">
+    <title>Parallax Effect</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* reset */
+        @font-face { 
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal; 
+            font-style: normal; 
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+        }
+        a {
+            text-decoration: none;
+            transition: all 0.2s;
+            color: #fff;
+        }
+        img {
+            width: 100%;
+            vertical-align: top; /* 여백 초기화 */
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* info */
+        .info {
+            position: absolute;
+            z-index: 1000;
+        }
+        .info h1 {
+            font-size: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 8px;
+        }
+        .info p, .info li {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 3px;
+        }
+        .info ul {
+            position: relative;
+            margin-bottom: 3px;
+        }
+        .info li {
+            display: inline;
+        }
+        .info li.active a:first-child {
+            background: #fff;
+            color: #000;
+        }
+        .info li a {
+            color: #fff;
+        }
+        .info.left {
+            left: 20px;
+            top: 20px;
+        }
+        .info.right {
+            right: 20px;
+            top: 20px;
+        }
+        .info.right a {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .info.right a:hover {
+            background: #fff;
+            color: #000;
+        }
+        .info.bottom {
+            left: 10px;
+            bottom: 10px;
+        }
+        .info.view {
+            right: 20px;
+            bottom: 20px;
+        }
+        .info.view a {
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 30px;
+            padding: 5px 30px;
+        }
+        #footer {
+            padding: 200px 0;
+        }
+        #footer h1 {
+            font-size: 8vw;
+            line-height: 1.2;
+            padding: 10vw 8vw 0 8vw;
+            text-transform: uppercase;
+            margin-bottom: 3vw;
+        }
+        #footer h1 em {
+            display: block;
+            font-family: 'Lato';
+            font-weight: 100;
+            padding-left: 18vw;
+        }
+        .FooterInfo {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            padding: 15px 20px;
+            margin-bottom: 2px;
+        }
+        .FooterInfo h2 {
+            padding-right: 20px;
+        }
+        .FooterInfo li {
+            display: inline;
+        }
+        .FooterInfo li.active a {
+            background: #fff;
+            color: #000;
+        }
+        .FooterInfo li a {
+            color: #fff;
+            border: 1px dashed #fff;
+            width: 30px; height: 30px;
+            display: inline-block;
+            border-radius: 50%;
+            line-height: 30px;
+        }
+        @media (max-width: 800px){
+            #footer h1 {font-size: 12vw;}
+            .info.bottom {display: none;}
+            .info.right {display: none;}
+        }
+
+        /* main */
+        body {
+            --color-bg : #222;
+            --color-title : #fff;
+            --font-basic : 'NEXON Lv1 Gothic OTF'; 
+            --font-lato : 'Lato';
+
+            font-size: 16px;
+            background: var(--color-bg);
+            color: var(--color-title);
+            font-family: var(--font-basic);
+        }
+        .scroll {
+            position: fixed;
+            left: 20px; bottom: 20px;
+            background: rgba(0,0,0,0.4);
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            z-index: 1000;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 12px;
+            padding: 0 20px;
+        }
+        #contents {
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .content-item {
+            position: relative;
+            width: 1000px;
+            max-width: 70vw;
+            margin: 300px 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .content-item:nth-child(even){
+            margin-left: auto;
+        }
+        .content-item-imgWrap {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56%;
+            overflow: hidden;
+        }
+        .content-item-img {
+            width: 120%;
+            height: 120%;
+            position: absolute;
+            left: -10%;
+            top: -10%;
+        }
+        .content-item:nth-child(1) .content-item-img {
+            background: url(../assets/img/su10.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item:nth-child(2) .content-item-img {
+            background: url(../assets/img/su09.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item:nth-child(3) .content-item-img {
+            background: url(../assets/img/su08.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item:nth-child(4) .content-item-img {
+            background: url(../assets/img/su07.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item:nth-child(5) .content-item-img {
+            background: url(../assets/img/su06.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item:nth-child(6) .content-item-img {
+            background: url(../assets/img/su05.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item:nth-child(7) .content-item-img {
+            background: url(../assets/img/su04.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item:nth-child(8) .content-item-img {
+            background: url(../assets/img/su03.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item:nth-child(9) .content-item-img {
+            background: url(../assets/img/su02.jpg) no-repeat;
+            background-size: cover;
+        }
+        .content-item-desc {
+            font-size: 4vw;
+            line-height: 1.4;
+            text-align: right;
+            margin-top: -6vw;
+            margin-right: -3vw;
+            z-index: 100;
+            position: relative;
+            word-break: keep-all;
+        }
+        .content-item:nth-child(even) .content-item-desc {
+            text-align: left;
+            margin-left: -3vw;
+            margin-right: 0;
+        }
+        .content-item-num {
+            font-size: 25vw;
+            text-align: right;
+            margin-right: -5vw;
+            margin-bottom: -10vw;
+            opacity: 0.07;
+            font-family: var(--font-lato);
+            font-weight: 100;
+        }
+        .content-item:nth-child(even) .content-item-num {
+            margin-right: auto;
+            margin-left: -5vw;
+        }
+        .content-item-title {
+            text-align: right;
+            padding-bottom: 5px;
+        }
+        .content-item:nth-child(even) .content-item-title {
+            text-align: left;
+        }
+        .nav {
+            position: fixed;
+            right: 20px; top: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.4);
+            padding: 15px 20px;
+            border-radius: 30px;
+        }
+        .nav li {
+            display: inline-block;
+        }
+        .nav li a {
+            color: var(--color-title);
+            display: inline-block;
+            padding: 5px;
+            transition: all 0.2s;
+            width: 30px; height: 30px;
+            text-align: center;
+            line-height: 23px;
+        }
+        .nav li.active a {
+            background: var(--color-title);
+            color: var(--color-bg);
+            border-radius: 50%;
+        }
+        @media (max-width: 800px){ 
+            .nav {left: 20px; border-radius: .3em;}
+        }
+        @media (max-width: 800px){
+            body {
+                font-size: 12px;
+            }
+            .content-item {
+                max-width: 90vw;
+                margin: 300px 0;
+                height: auto;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .content-item:nth-child(even) {
+                margin-right: auto;
+            }
+            .content-item-desc {
+                font-size: 8vw;
+            }
+            .content-item-desc {
+                font-size: 8vw;
+                margin-right: 0;
+            }
+            .content-item:nth-child(even) .content-item-desc {
+                margin-left: 0;
+            }
+            .content-item-num {
+                margin-right: 0;
+            }
+            .content-item:nth-child(even) .content-item-num {
+                margin-left: 0;
+            }
+        }
+
+        /* option */
+        
+    </style>
+</head>
+<body>
+
+    <!-- info -->
+    <div class="info left">
+        <h1><a href="parallaxEffect-cover.html">Parallax Effect06 - Javascript</a></h1>
+        <p>패랠랙스 스크로링 효과 - 이질감 효과</p>
+    </div>
+    <!-- //info -->
+    
+    <main id="parallax-wrap">
+
+        <div class="scroll">scrollTop() : <span>0</span></div>
+
+        <!-- <nav class="nav">
+            <ul>
+                <li><a href="#section1">s1</a></li>
+                <li><a href="#section2">s2</a></li>
+                <li><a href="#section3">s3</a></li>
+                <li><a href="#section4">s4</a></li>
+                <li><a href="#section5">s5</a></li>
+                <li><a href="#section6">s6</a></li>
+                <li><a href="#section7">s7</a></li>
+                <li><a href="#section8">s8</a></li>
+                <li><a href="#section9">s9</a></li>
+            </ul>
+        </nav> -->
+
+        <div id="contents">
+            <section id="section1" class="content-item">
+                <span class="content-item-num">01</span>
+                <h2 class="content-item-title">Section1</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">높은 목표를 세우고, 스스로 채찍질 한다.</p>
+            </section>
+            <!-- //section1 -->
+    
+            <section id="section2" class="content-item">
+                <span class="content-item-num">02</span>
+                <h2 class="content-item-title">Section2</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">결과도 중요하지만, 과정을 더 중요하게 생각한다.</p>
+            </section>
+            <!-- //section2 -->
+    
+            <section id="section3" class="content-item">
+                <span class="content-item-num">03</span>
+                <h2 class="content-item-title">Section3</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">매 순간에 최선을 다하고, 끊임없이 변화한다.</p>
+            </section>
+            <!-- //section3 -->
+    
+            <section id="section4" class="content-item">
+                <span class="content-item-num">04</span>
+                <h2 class="content-item-title">Section4</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">모든지 기본을 중요하게 생각한다.</p>
+            </section>
+            <!-- //section4 -->
+    
+            <section id="section5" class="content-item">
+                <span class="content-item-num">05</span>
+                <h2 class="content-item-title">Section5</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">천 마디 말보단 하나의 행동이 더 값지다.</p>
+            </section>
+            <!-- //section5 -->
+    
+            <section id="section6" class="content-item">
+                <span class="content-item-num">06</span>
+                <h2 class="content-item-title">Section6</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">조그만 성공에 만족하지 않으며, 방심을 경계한다.</p>
+            </section>
+            <!-- //section6 -->
+
+            <section id="section7" class="content-item">
+                <span class="content-item-num">07</span>
+                <h2 class="content-item-title">Section7</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">나는 내가 더 노력할수록 운이 더 좋아진다는 걸 발견했다.</p>
+            </section>
+            <!-- //section7 -->
+
+            <section id="section8" class="content-item">
+                <span class="content-item-num">08</span>
+                <h2 class="content-item-title">Section8</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.</p>
+            </section>
+            <!-- //section8 -->
+
+            <section id="section9" class="content-item">
+                <span class="content-item-num">09</span>
+                <h2 class="content-item-title">Section9</h2>
+                <figure class="content-item-imgWrap">
+                    <div class="content-item-img"></div>
+                </figure>
+                <p class="content-item-desc">열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.</p>
+            </section>
+            <!-- //section9 -->
+        </div>
+    </main>
+
+    <footer id="footer">
+        <h1>Parallax <em>Scrolling</em></h1>
+        <div class="FooterInfo">
+            <h2>제이쿼리</h2>
+            <ul>
+                <li><a href="parallaxEffect01-jquery.html">1</a></li>
+                <li><a href="parallaxEffect02-jquery.html">2</a></li>
+                <li><a href="parallaxEffect03-jquery.html">3</a></li>
+                <li><a href="parallaxEffect04-jquery.html">4</a></li>
+                <li><a href="parallaxEffect05-jquery.html">5</a></li>
+                <li><a href="parallaxEffect06-jquery.html">6</a></li>
+                <li><a href="parallaxEffect07-jquery.html">7</a></li>
+                <li><a href="parallaxEffect08-jquery.html">8</a></li>
+            </ul>
+        </div>
+        <div class="FooterInfo">
+            <h2>자바스크립트</h2>
+            <ul>
+                <li><a href="parallaxEffect21-javascript.html">1</a></li>
+                <li><a href="parallaxEffect22-javascript.html">2</a></li>
+                <li><a href="parallaxEffect23-javascript.html">3</a></li>
+                <li><a href="parallaxEffect24-javascript.html">4</a></li>
+                <li><a href="parallaxEffect25-javascript.html">5</a></li>
+                <li class="active"><a href="parallaxEffect26-javascript.html">6</a></li>
+                <li><a href="parallaxEffect27-javascript.html">7</a></li>
+                <li><a href="parallaxEffect28-javascript.html">8</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script>
+        const scrollProgress = function(){
+            let scroll = window.pageYOffset || document.documentElement.scrollTop;
+            document.querySelector(".scroll span").innerText = parseInt(scroll);
+
+            // let offset1 = scroll - document.getElementById("section1").offsetTop;
+            // let offset2 = scroll - document.getElementById("section2").offsetTop;
+            // let offset3 = scroll - document.getElementById("section3").offsetTop;
+            // let offset4 = scroll - document.getElementById("section4").offsetTop;
+            // let offset5 = scroll - document.getElementById("section5").offsetTop;
+            // let offset6 = scroll - document.getElementById("section6").offsetTop;
+            // let offset7 = scroll - document.getElementById("section7").offsetTop;
+            // let offset8 = scroll - document.getElementById("section8").offsetTop;
+            // let offset9 = scroll - document.getElementById("section9").offsetTop;
+
+            // document.getElementById("section1").style.transform = "translateX("+ offset1 +"px)";
+            // document.getElementById("section2").style.transform = "translateX("+ offset2 +"px)";
+            // document.getElementById("section3").style.transform = "translateX("+ offset3 +"px)";
+            // document.getElementById("section4").style.transform = "translateX("+ offset4 +"px)";
+            // document.getElementById("section5").style.transform = "translateX("+ offset5 +"px)";
+            // document.getElementById("section6").style.transform = "translateX("+ offset6 +"px)";
+            // document.getElementById("section7").style.transform = "translateX("+ offset7 +"px)";
+            // document.getElementById("section8").style.transform = "translateX("+ offset8 +"px)";
+            // document.getElementById("section9").style.transform = "translateX("+ offset9 +"px)";
+
+            document.querySelectorAll(".content-item").forEach(elem => {
+                let offset1 = (scroll - elem.offsetTop) * 0.1;
+                let offset2 = (scroll - elem.offsetTop) * 0.15;
+
+                let target1 = elem.querySelector(".content-item-img");
+                let target2 = elem.querySelector(".content-item-desc");
+
+                //target1.style.transform = "translateY("+ offset1 +"px)";
+                //target2.style.transform = "translateY("+ offset2 +"px)";
+
+                gsap.to(target1, {duration: .3, y: offset1});
+                gsap.to(target2, {duration: .3, y: offset2});
+            });
+        }
+
+        window.addEventListener("scroll", scrollProgress);
+    </script>
+</body>
+</html>

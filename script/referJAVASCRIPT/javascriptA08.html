@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font.css">
+    <link rel="stylesheet" href="https://tistory4.daumcdn.net/tistory/2933724/skin/images/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+        }
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+        h1 {
+            padding-bottom: 20px;
+        }
+        hr {
+            margin: 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+        .sample h2 {
+            position: relative;
+            font-size: 16px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px; 
+            top: 0;
+        }
+        .sample .ex {
+            padding: 20px;
+        }
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        .sample .problem {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+            line-height: 1.6;
+        }
+        .sample pre {margin: 0 !important; border-radius: 0;;}
+        .sample .desc {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .sample .desc dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+        .sample .desc dd {
+            padding: 3px 0 16px 0;
+            line-height: 1.6;
+        }
+        .sample .sam {
+            padding: 25px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .sample .sam dt {
+            padding: 3px 0;
+            margin-bottom: 6px;
+        }
+        .sample .sam dd {
+            padding: 3px 0 16px 0;
+        }
+        ol {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        ol li {
+            border: 1px solid #000;
+            display: inline-block;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+        }
+        ol li.active {
+            background: #000;
+        }
+        ol li.active a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1><a href="javascriptA.html">Javascript 알고리즘 공부하기</a></h1>
+    <ol>
+        <li><a href="javascriptA01.html">01</a></li>
+        <li><a href="javascriptA02.html">02</a></li>
+        <li><a href="javascriptA03.html">03</a></li>
+        <li><a href="javascriptA04.html">04</a></li>
+        <li><a href="javascriptA05.html">05</a></li>
+        <li><a href="javascriptA06.html">06</a></li>
+        <li><a href="javascriptA07.html">07</a></li>
+        <li class="active"><a href="javascriptA08.html">08</a></li>
+        <li><a href="javascriptA09.html">09</a></li>
+        <li><a href="javascriptA10.html">10</a></li>
+    </ol>
+
+
+    <div id="sample1" class="sample">
+        <h2>일곱 난쟁이 <span class="dot"></span></h2>
+        <p class="problem">Q : 왕비를 피해 일곱 난쟁이들과 함께 평화롭게 생활하고 있던 백설공주에게 위기가 찾아왔다. 일과를 마치고 돌아온 난쟁이가 일곱 명이 아닌 아홉 명이었던 것이다.
+            아홉 명의 난쟁이는 모두 자신이 "백설 공주와 일곱 난쟁이"의 주인공이라고 주장했다. 뛰어난 수학적 직관력을 가지고 있던 백설공주는, 다행스럽게도 일곱 난쟁이의 키의 합이 100이 됨을 기억해 냈다.
+            아홉 난쟁이의 키가 주어졌을 때, 백설공주를 도와 일곱 난쟁이를 찾는 프로그램을 작성하시오.
+        </p>
+        <div class="desc">
+            <dl>
+                <dt><i class="fa fa-bullhorn" aria-hidden="true"></i> 입력 설명</dt>
+                <dd>아홉 개의 줄에 걸쳐 난쟁이들의 키가 주어진다. 주어지는 키는 100을 넘지 않는 자연수이며, 아홉 난쟁이의 키는 모두 다르며, 가능한 정답이 여러 가지인 경우에는 아무거나 출력한다.</dd>
+                <dt><i class="fa fa-bullhorn" aria-hidden="true"></i> 출력 설명</dt>
+                <dd>입력된 순서대로 일곱 난쟁이의 키를 출력한다.</dd>
+            </dl>
+        </div>
+        <div class="sam">
+            <dl>
+                <dt><i class="fa fa-bar-chart" aria-hidden="true"></i> 입력예제 1</dt>
+                <dd>20 7 23 19 10 15 25 8 13</dd>
+                <dt><i class="fa fa-bar-chart" aria-hidden="true"></i> 출력예제 1</dt>
+                <dd>20 7 23 19 10 8 13</dd>
+            </dl>
+        </div>
+        
+
+        <div class="code">
+<pre class="line-numbers"><code class="language-js">function solution(arr){
+    let answer = arr;
+    let sum = arr.reduce((a,b) => a+b, 0);
+    //console.log(arr)
+    //console.log(sum)
+
+    for( let i=0; i&lt;8; i++){
+        for( let j=i+1; j&lt;9; j++){
+            //console.log(arr[i], arr[j]);
+            if( (sum - (arr[i] + arr[j])) === 100 ){
+                arr.splice(j, 1);
+                arr.splice(i, 1);
+            }
+        }
+    }
+    return answer;
+}
+    
+arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+
+console.log(solution(arr));
+</code></pre>
+        </div>
+    </div>
+    <hr>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/prism.min.js"></script>
+    <script>
+        //sample1
+        function solution(arr){
+            let answer = arr;
+            let sum = arr.reduce((a,b) => a+b, 0);
+            //console.log(arr)
+            //console.log(sum)
+
+            for( let i=0; i<8; i++){
+                for( let j=i+1; j<9; j++){
+                    //console.log(arr[i], arr[j]);
+                    if( (sum - (arr[i] + arr[j])) === 100 ){
+                        arr.splice(j, 1);
+                        arr.splice(i, 1);
+                    }
+                }
+            }
+            return answer;
+        }
+            
+        arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+
+        console.log(solution(arr));
+    </script>
+</body>
+</html>

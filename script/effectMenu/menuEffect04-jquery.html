@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="웹스토리보이와 함께 예제를 통해 배우는 스크립트 튜토리얼">
+	<meta name="keywords" content="mouse, animation, parallax, menu, slider, canvas, javascript, text, webs">
+    <meta name="author" content="webstoryboy">
+    <title>Menu Effect - jQuery</title>
+    <style>
+        /* reset */
+        @font-face { 
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal; 
+            font-style: normal; 
+        }
+        *, *::before, *::after {
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+        a {text-decoration: none; color: #fff;}
+        img {width: 100%; vertical-align: top;}
+        ul {list-style: none;}
+        body {
+            background: url(../assets/img/su09.jpg) no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            transition: all 0.2s;
+            overflow: hidden;
+            font-size: 16px;
+            line-height: 1.5;
+            font-family: 'NEXON Lv1 Gothic OTF'; 
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(11, 50, 47, 0.7);
+            z-index: -1;
+        }
+
+        /* info */
+        .info {
+            position: absolute;
+            z-index: 1000;
+        }
+        .info h1 {
+            font-size: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 8px;
+        }
+        .info p, .info li {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 3px;
+        }
+        .info ul {
+            position: relative;
+            margin-bottom: 3px;
+        }
+        .info ul:first-child::before {
+            content: 'jQuery';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info ul:last-child::before {
+            content: 'JavaScript';
+            position: absolute;
+            right: 108%; top: 0;
+        }
+        .info li {
+            display: inline;
+        }
+        .info li.active a:first-child {
+            background: #fff;
+            color: #000;
+        }
+        .info.left {
+            left: 20px;
+            top: 20px;
+        }
+        .info.right {
+            right: 20px;
+            top: 20px;
+        }
+        .info.right a {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .info.right a:hover {
+            background: #fff;
+            color: #000;
+        }
+        .info.bottom {
+            left: 10px;
+            bottom: 10px;
+        }
+        .info.view {
+            right: 20px;
+            bottom: 20px;
+        }
+        .info.view a {
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 30px;
+            padding: 5px 30px;
+        }
+
+        @media (max-width: 800px){
+            .info.bottom {display: none;}
+            .info.right {display: none;}
+        }
+
+        /* main */
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .ham {
+            position: relative;
+            width: 60px; height: 60px;
+            cursor: pointer;
+            /*   background: rgba(255,255,255,0.3); */
+            border-radius: 3px;
+            margin: 20px;
+        }
+
+        .ham .bar {
+            display: block;
+            width: 0px;
+            height: 4px;
+            border-radius: 3px;
+            background-color: #fff;
+            margin-top: 28px;
+            margin-left: 9px;
+            position: relative;
+        }
+        .ham .bar:before {
+            content:'';
+            width: 42px;
+            height: 4px;
+            border-radius: 3px;
+            background-color: #fff;
+            position: absolute; left: 0; bottom: 0;
+            transition: transform 0.3s;
+        }
+        .ham .bar:after {
+            content:'';
+            width: 42px;
+            height: 4px;
+            border-radius: 3px;
+            background-color: #fff;
+            position: absolute; left: 0; bottom: 0;
+            transition: transform 0.3s;
+        }
+
+        .ham.active span:before {
+            transform: rotate(45deg);
+            transition: transform 0.3s 0.8s
+        }
+
+        .ham.active span:after {
+            transform: rotate(-45deg);
+            transition: transform 0.3s 0.8s
+        }
+
+        .ham:before {
+            content:'';
+            width: 42px; height: 4px;
+            background-color: #fff;
+            border-radius: 3px;
+            position: absolute; right: 9px; bottom: 17px;
+            transition: width 0.3s 0.4s; 
+        }
+        .ham:after {
+            content:'';
+            width: 42px; height: 4px;
+            background-color: #fff;
+            border-radius: 3px;
+            position: absolute; left: 9px; top: 17px;
+            transition: width 0.3s 0.4s; 
+        }
+
+        .ham.active:before {
+            width: 0; right: 9px; bottom: 17px;
+        }
+        .ham.active:after {
+            width: 0; left: 9px; top: 17px;
+        }
+
+        /* ham2 */
+        .ham2 {
+            margin: 20px;
+        }
+        .ham2 span {
+            display: block;
+            background: #FFF;
+            width: 42px;
+            height: 4px;
+            border-radius: 3px;
+            transition: 0.25s margin 0.25s, 0.25s transform;
+        }
+        .ham2 span:nth-child(1) {
+            margin-bottom: 8px;
+        }
+        .ham2 span:nth-child(3) {
+            margin-top: 8px;
+        }
+        .ham2.active span {
+            transition: 0.25s margin, 0.25s transform 0.25s;
+        }
+        .ham2.active span:nth-child(1) {
+            margin-top: 8px;
+            margin-bottom: -4px;
+            transform: rotate(45deg);
+        }
+        .ham2.active span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+        .ham2.active span:nth-child(3) {
+            margin-top: -4px;
+            transform: rotate(135deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- main -->
+    <main>
+        <div class="ham">
+            <span class="bar"></span>
+        </div>
+
+        <div class="ham2">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <!-- info -->
+    <div class="info left">
+        <h1><a href="menuEffect-cover.html">jQuery Menu Effect04</a></h1>
+        <p>메뉴 이펙트 - 햄버그 메뉴</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li><a href="menuEffect01-jquery.html">1</a></li>
+            <li><a href="menuEffect02-jquery.html">2</a></li>
+            <li><a href="menuEffect03-jquery.html">3</a></li>
+            <li class="active"><a href="menuEffect04-jquery.html">4</a></li>
+        </ul>
+        <ul>
+            <li><a href="menuEffect01-javascript.html">1</a></li>
+        </ul>
+    </div>
+    <!-- //info -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(".ham").click(function(){
+            $(this).toggleClass('active');
+        });
+
+        $(".ham2").click(function(){
+            $(this).toggleClass('active');
+        });
+
+    </script>
+
+</body>
+
+</html>

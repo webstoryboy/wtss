@@ -1,0 +1,256 @@
+/* reset */
+blockquote,
+body,
+button,
+code,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+select,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    word-break: keep-all;
+    word-wrap: break-word
+}
+
+svg {
+    vertical-align: top
+}
+
+fieldset,
+img {
+    border: 0;
+    width: 100%;
+}
+
+dl,
+li,
+menu,
+ol,
+ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content: "";
+    content: none
+}
+
+button,
+input,
+select,
+textarea {
+    vertical-align: middle;
+    font-size: 100%
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+body {
+    -webkit-text-size-adjust: none
+}
+
+input:checked[type=checkbox] {
+    background-color: #666;
+    -webkit-appearance: checkbox
+}
+
+html input[type=button],
+input[type=email],
+input[type=password],
+input[type=reset],
+input[type=search],
+input[type=submit],
+input[type=tel],
+input[type=text] {
+    -webkit-appearance: none;
+    border-radius: 0
+}
+
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: none
+}
+
+body {
+    background: var(--baseBackground)
+}
+
+body,
+button,
+input,
+select,
+td,
+textarea,
+th {
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'NEXON Lv1 Gothic OTF', Apple SD Gothic Neo, Malgun Gothic, 맑은 고딕, sans-serif;
+    font-weight: 400;
+    color: #333;
+    padding-top: 3px;
+}
+
+a {
+    color: #333
+}
+
+a,
+a:active,
+a:hover {
+    text-decoration: none
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+var {
+    font-style: normal;
+    font-weight: 400
+}
+
+
+
+/* ir 효과 */
+.ir_pm {
+    font-size: 0;
+    text-indent: -9999px;
+    font-size: 1px;
+    line-height: 0;
+    color: transparent
+}
+
+.ir_pm,
+.ir_wa {
+    display: block;
+    overflow: hidden
+}
+
+.ir_wa {
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    height: 100%
+}
+
+.ir_caption {
+    width: 1px;
+    font-size: 1px
+}
+
+.ir_caption,
+.screen_out {
+    overflow: hidden;
+    line-height: 0;
+    text-indent: -9999px
+}
+
+.screen_out {
+    position: absolute;
+    width: 0;
+    height: 0
+}
+
+.caption_hide {
+    overflow: hidden;
+    width: 1px;
+    height: .1px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px
+}
+
+/* list */
+ul.list li, 
+ol.list li, 
+dl.list li {
+    position: relative;
+    padding-left: 10px;
+}
+ul.list li::before,
+ol.list li::before, 
+dl.list li::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: #000;
+    position: absolute;
+    left: 0; top: 9px;
+}
+
+/* h4  */
+section[class^="section-"] h4 {
+    font-size: 40px;
+    text-align: center;
+}
+section[class^="section-"] p {
+    text-align: center;
+    font-size: 18px;
+    color: var(--colorBg8);
+    margin-bottom: 50px;
+}
+
+/* margin */
+.mb10 {margin-bottom: 10px !important;}
+.mb20 {margin-bottom: 20px !important;}
+.mb30 {margin-bottom: 30px !important;}
+.mb40 {margin-bottom: 40px !important;}
+.mb50 {margin-bottom: 50px !important;}
+.mb60 {margin-bottom: 60px !important;}
+.mb70 {margin-bottom: 70px !important;}
+.mb80 {margin-bottom: 80px !important;}
+.mb90 {margin-bottom: 90px !important;}
+
+.mt10 {margin-top: 10px !important;}
+.mt20 {margin-top: 20px !important;}
+.mt30 {margin-top: 30px !important;}
+.mt40 {margin-top: 40px !important;}
+.mt50 {margin-top: 50px !important;}
+.mt60 {margin-top: 60px !important;}
+.mt70 {margin-top: 70px !important;}
+.mt80 {margin-top: 80px !important;}
+.mt90 {margin-top: 90px !important;}
+

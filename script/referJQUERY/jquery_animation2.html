@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery | animaition</title>
+    <style>
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'NEXON Lv1 Gothic OTF';
+        }
+        body {
+            padding: 5%;
+            margin-bottom: 400px;
+        }
+        h1 {
+            padding-bottom: 20px;
+        }
+        hr {
+            margin: 5% 0;
+            border-style: dashed;
+            border-color: #e6e6e6;
+            border-width: 1px;
+        }
+        img {
+            vertical-align: top;
+            border-radius: 5px;
+            width: 100%;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        em {
+            font-style: normal;
+        }
+        .sample {
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+        }
+        .sample h2 {
+            position: relative;
+            font-size: 14px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 5px 5px 0 0;
+        }
+        .sample h2 .dot {
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+        .sample h2 .dot::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+        .sample h2 .dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #989898;
+            position: absolute;
+            border-radius: 50%;
+            right: -15px; 
+            top: 0;
+        }
+
+        .sample .ex {
+            padding: 20px;
+        }
+        .sample .ex .text {
+            margin: 10px 0;
+        }
+        .sample .re {
+            padding: 20px;
+            border-top: 1px solid #e6e6e6;
+        }
+        .sample .re a {
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 30px;
+            padding: 10px 30px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .sample .re a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        .red {background-color: #ffebee;}
+        .blue {background-color: #e3f2fd;}
+
+        /* option */
+        .ex {
+            position: relative;
+            min-height: 300px;
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-image: linear-gradient(45deg, #fa709a 0%, #fee140 100%);
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+        .sample .ex3 {
+            min-height: auto;
+        }
+        .circle3 {
+            position: relative;
+            margin: 10px;
+            left: 0; top: 0;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+        }
+
+        .circle4 {
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>jQuery animation()</h1>
+
+    <div id="sample1" class="sample">
+        <h2>Sample01 : 애니메이션01 <span class="dot"></span></h2>
+        <div class="ex ex1">
+            <span class="circle circle1">01</span>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn1-1">클릭 : 원을 움직입니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample2" class="sample">
+        <h2>Sample02 : 애니메이션02 : easing <span class="dot"></span></h2>
+        <div class="ex ex2">
+            <span class="circle circle2">02</span>
+        </div>
+        <div class="re btn2">
+            <a href="#c">linear</a>
+            <a href="#c">swing</a>
+            <a href="#c">easeInQuad</a>
+            <a href="#c">easeOutQuad</a>
+            <a href="#c">easeInOutQuad</a>
+            <a href="#c">easeInCubic</a>
+            <a href="#c">easeOutCubic</a>
+            <a href="#c">easeInOutCubic</a>
+            <a href="#c">easeInQuart</a>
+            <a href="#c">easeOutQuart</a>
+            <a href="#c">easeInOutQuart</a>
+            <a href="#c">easeOutQuint</a>
+            <a href="#c">easeInOutQuart</a>
+            <a href="#c">easeInOutQuint</a>
+            <a href="#c">easeInExpo</a>
+            <a href="#c">easeOutExpo</a>
+            <a href="#c">easeInOutExpo</a>
+            <a href="#c">easeInSine</a>
+            <a href="#c">easeOutSine</a>
+            <a href="#c">easeInOutSine</a>
+            <a href="#c">easeOutCirc</a>
+            <a href="#c">easeInOutCirc</a>
+            <a href="#c">easeInCirc</a>
+            <a href="#c">easeInElastic</a>
+            <a href="#c">easeOutElastic</a>
+            <a href="#c">easeInOutElastic</a>
+            <a href="#c">easeInBack</a>
+            <a href="#c">easeOutBack</a>
+            <a href="#c">easeInOutBack</a>
+            <a href="#c">easeInBounce</a>
+            <a href="#c">easeOutBounce</a>
+            <a href="#c">easeInOutBounce</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample3" class="sample">
+        <h2>Sample03 : 애니메이션03 : delay <span class="dot"></span></h2>
+        <div class="ex ex3">
+            <span class="circle circle3">03</span>
+            <span class="circle circle3">03</span>
+            <span class="circle circle3">03</span>
+            <span class="circle circle3">03</span>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn3-0">리셋</a>
+            <a href="#c" class="btn3-1">클릭 : 원을 움직입니다.</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample4" class="sample">
+        <h2>Sample04 : 애니메이션04 : click <span class="dot"></span></h2>
+        <div class="ex ex4">
+            <span class="circle circle4">04</span>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn4-0">리셋</a>
+            <a href="#c" class="btn4-1">right</a>
+            <a href="#c" class="btn4-2">left</a>
+            <a href="#c" class="btn4-3">top</a>
+            <a href="#c" class="btn4-4">bottom</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample5" class="sample">
+        <h2>Sample05 : 무한 애니메이션 : 재귀함수<span class="dot"></span></h2>
+        <div class="ex ex5">
+            <span class="circle circle5">05</span>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn5-1">스타트</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample6" class="sample">
+        <h2>Sample06 : 애니메이션 : 콜백함수<span class="dot"></span></h2>
+        <div class="ex ex6">
+            <span class="circle circle6">06</span>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn6-1">스타트</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="sample7" class="sample">
+        <h2>Sample07 : 일정한 간격으로 움직이는 애니메이션<span class="dot"></span></h2>
+        <div class="ex ex7">
+            <span class="circle circle7">07</span>
+        </div>
+        <div class="re">
+            <a href="#c" class="btn7-1">스타트</a>
+        </div>
+    </div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        let exWidth = $(".ex").width() - 80;
+        let exHeight = $(".ex").height() - 80;
+
+        $(window).resize(function(){
+            exWidth = $(".ex").width() - 80;
+            exHeight = $(".ex").height() - 80;
+
+            console.log("exWidth : " + exWidth);
+            console.log("exHeight : " + exHeight);
+        });
+        
+        //sample01
+        $(".btn1-1").click(function(){
+            $(".circle1")
+                .animate({ left: exWidth }, 1000)
+                .animate({ top: exHeight }, 1000)
+                .animate({ left: "20px"}, 1000)
+                .animate({ top: "20px"}, 1000)
+        });
+
+        //sample02
+        $(".btn2 > a").click(function(){
+            let ease = $(this).text();
+            console.log(ease)
+            $(".circle2")
+                .animate({ left: exWidth }, 800, ease)
+                .animate({ top: exHeight }, 800, ease)
+                .animate({ left: "20px"}, 800, ease)
+                .animate({ top: "20px"}, 800, ease)
+        });
+
+        //sample03
+        $(".btn3-0").click(function(){
+            $(".circle3").animate({left:0});
+        });
+        $(".btn3-1").click(function(){
+            $(".circle3").eq(0).delay(100).animate({left:exWidth-20}, "easeOutElastic");
+            $(".circle3").eq(1).delay(200).animate({left:exWidth-20}, "easeOutElastic");
+            $(".circle3").eq(2).delay(300).animate({left:exWidth-20}, "easeOutElastic");
+            $(".circle3").eq(3).delay(400).animate({left:exWidth-20}, "easeOutElastic");
+        });
+        
+        //sample04
+        $(".btn4-0").click(function(){
+            $(".circle4").animate({left: "50%", top: "50%"}, 500);
+        });
+        $(".btn4-1").click(function(){
+            $(".circle4").stop().animate({left: "+=5%"}, "slow", "easeOutElastic");
+        });
+        $(".btn4-2").click(function(){
+            $(".circle4").stop().animate({left: "-=5%"}, "slow", "easeOutElastic");
+        });
+        $(".btn4-3").click(function(){
+            $(".circle4").stop().animate({top: "-=5%"}, "slow", "easeOutElastic");
+        });
+        $(".btn4-4").click(function(){
+            $(".circle4").stop().animate({top: "+=5%"}, "slow", "easeOutElastic");
+        });
+
+        //sample05
+        function loop(){
+            $(".circle5")
+                .animate({left: exWidth}, "fast")
+                .animate({top: exHeight}, "fast")
+                .animate({left: "20px"}, "fast")
+                .animate({top: "20px"}, "fast", loop)
+        }
+
+        $(".btn5-1").click(function(){
+            loop();
+        });
+
+        //sample06
+        $(".btn6-1").click(function(){
+            $(".circle6")
+                .animate({left: exWidth}, "slow", "easeOutQuint")
+                .animate({top: exHeight}, "slow", "easeOutQuint")
+                .animate({left: "20px"}, "slow", "easeOutQuint")
+                .animate({top: "20px"}, "slow", "easeOutQuint", function(){
+                    alert("도착했습니다.")
+                });
+        });
+
+        //sample07
+        $(".btn7-1").click(function(){
+            setInterval(function(){
+                $(".circle7")
+                    .animate({left: exWidth}, 500)
+                    .animate({top: exHeight}, 500)
+                    .animate({left: "20px"}, 500)
+                    .animate({top: "20px"}, 500)
+            }, 4000);
+        });
+
+    </script>
+</body>
+</html>

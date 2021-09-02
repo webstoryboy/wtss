@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Reference</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/themes/prism-okaidia.min.css" >
+
+</head>
+<body>
+    <div id="wrap">
+        <main id="contents">
+            <div class="title">
+                <h1><a href="index.html">데이터 저장하기</a></h1>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="active"><a href="javascriptRefer01.html">데이터 저장하기</a></li>
+                    <li><a href="javascriptRefer02.html">데이터 불러오기</a></li>
+                    <li><a href="javascriptRefer03.html">데이터 실행하기</a></li>
+                    <li><a href="javascriptRefer04.html">데이터 제어하기</a></li>
+                </ul>
+                <ul>
+                    <li><a href="javascriptRefer05.html">문자열 객체</a></li>
+                    <li><a href="javascriptRefer06.html">배열 객체</a></li>
+                    <li><a href="javascriptRefer07.html">날짜 객체</a></li>
+                    <li><a href="javascriptRefer08.html">수학 객체</a></li>
+                    <li><a href="javascriptRefer14.html">숫자 객체</a></li>
+                    <li><a href="javascriptRefer09.html">브라우저 객체</a></li>
+                    <li><a href="javascriptRefer10.html">요소 객체</a></li>
+                    <li><a href="javascriptRefer11.html">이벤트 객체</a></li>
+                </ul>
+                <ul>
+                    <li><a href="javascriptRefer12.html">샘플</a></li>
+                    <li><a href="javascriptRefer13.html">알고리즘</a></li>
+                </ul>
+            </nav>
+
+            <hr>
+
+            <div class="list">
+                <ol>
+                    <li><a href="#section01">변수 : 데이터 저장</a></li>
+                    <li><a href="#section02">변수 : 데이터 저장 + 데이터 변경</a></li>
+                    <li><a href="#section03">변수 : 데이터 저장 + 데이터 변경 + 데이터 추가</a></li>
+                    <li><a href="#section04">변수 : 변수의 종류 : 지역 변수 + 전역 변수 + 매개변수</a></li>
+                    <li><a href="#section05">변수 : 변수의 유형 : 데이터 타입</a></li>
+                    <li><a href="#section06">변수 : 변수의 변환 : 형변환</a></li>
+                    <li><a href="#section07">상수 : 데이터 저장(변하지 않음)</a></li>
+                    <li><a href="#section08">배열 : 데이터 저장(여러개) : 표현방법1</a></li>
+                    <li><a href="#section09">배열 : 데이터 저장(여러개) : 표현방법2</a></li>
+                    <li><a href="#section10">배열 : 데이터 저장(여러개) : 표현방법3</a></li>
+                    <li><a href="#section11">배열 : 데이터 저장(여러개) : 표현방법4</a></li>
+                    <li><a href="#section12">객체 : 데이터 저장(키와 값) : 표현방법1</a></li>
+                    <li><a href="#section13">객체 : 데이터 저장(키와 값) : 표현방법2</a></li>
+                    <li><a href="#section14">객체 : 데이터 저장(키와 값) : 표현방법3</a></li>
+                    <li><a href="#section15">객체 : 데이터 저장(키와 값) : 표현방법4</a></li>
+                    <li><a href="#section16">객체 : 데이터 저장(키와 값) : 표현방법5 : 배열 속에 객체</a></li>
+                    <li><a href="#section17">객체 : 데이터 저장(키와 값) : 표현방법6 : 객체 속에 배열</a></li>
+                    <li><a href="#section18">객체 : 데이터 저장(키와 값) : 표현방법7 : 객체 속에 변수</a></li>
+                    <li><a href="#section19">객체 : 데이터 저장(키와 값) : 표현방법8 : 객체 속에 함수</a></li>
+                </ol>
+            </div>
+
+            <hr>
+
+            <!-- sample01 -->
+            <div id="sample01" class="sample">
+                <h2>01. 변수 : 데이터 저장 <span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    var x = 100; 
+    var y = 200; 
+    var z = "javascript"; 
+
+    document.write(x);
+    document.write(y);
+    document.write(z);
+}
+</code></pre>
+                </div>
+                <div class="result">
+                    <h3><a href="#">결과보기</a></h3>
+                    <div>
+                        <span class="result1-1"></span>
+                        <span class="result1-2"></span>
+                        <span class="result1-3"></span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample01 -->
+
+            <!-- sample02 -->
+            <div id="sample02" class="sample">
+                <h2>02. 변수 : 데이터 저장 + 데이터 변경 <span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let x = 100;
+    let y = 200;
+    let z = "javascript";
+    x = 300;    
+    y = 400;
+    z = "jquery";
+
+    document.write("*** 02. 변수 : 데이터 저장 + 데이터 변경 ***");
+    document.write(x);
+    document.write(y);
+    document.write(z);
+}
+</code></pre>
+                </div> 
+                <div class="result">
+                    <h3><a href="#">결과보기</a></h3>
+                    <div>
+                        <span class="result1-1"></span>
+                        <span class="result1-2"></span>
+                        <span class="result1-3"></span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample02 -->
+
+            <!-- sample03 -->
+            <div id="sample03" class="sample">
+                <h2>03. 변수 : 데이터 저장 + 데이터 변경 + 데이터 추가<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let x = 100;
+    let y = 200;
+    let z = "javascript";
+    x += 300;       // x = x + 300; (대입연산자)
+    y += 400;       // y = y + 400;
+    z += "jquery";  // z = z + "jquery";
+
+    document.write(x);
+    document.write(y);
+    document.write(z);
+}
+</code></pre>
+                </div>
+                <div class="result">
+                    <h3><a href="#">결과보기</a></h3>
+                    <div>
+                        <span class="result3-1"></span>
+                        <span class="result3-2"></span>
+                        <span class="result3-3"></span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample03 -->
+
+            <!-- sample04 -->
+            <div id="sample04" class="sample">
+                <h2>04. <span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    let x = 100;    //변수 설정 : 전역 변수
+    let y = 200;
+    let z = "javascript";
+    let a = 300;
+
+    function func(){
+        let x = 100;    //변수 설정 : 지역 변수
+        let y = 200;
+        let z = "javascript";
+        a = 400;        //전역 변수 : 변수 값이 300 -> 400 변경
+        y = 500;        //지역 변수 : 변구 값이 200 -> 500 변경
+
+        document.write("함수 안");
+        document.write(x);
+        document.write(y);
+        document.write(z);
+        document.write(a);
+    }
+    func();
+
+    document.write("함수 밖");
+    document.write(x);
+    document.write(y);
+    document.write(z);
+    document.write(a);
+}
+</code></pre>
+                </div>
+                <div class="result">
+                    <h3><a href="#">결과보기</a></h3>
+                    <div>
+                        <span class="result4-1"></span>
+                        <span class="result4-2"></span>
+                        <span class="result4-3"></span>
+                        <span class="result4-4"></span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample04 -->
+
+            <!-- sample05 -->
+            <div id="sample05" class="sample">
+                <h2>05. <span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+   
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample05 -->
+
+            <!-- sample06 -->
+            <div id="sample06" class="sample">
+                <h2>06. <span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+   
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample06 -->
+
+            <!-- sample07 -->
+            <div id="sample07" class="sample">
+                <h2>07. 상수 : 변하지 않는 데이터 저장소<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const x = 100;
+    const y = 200;
+    const z = "javascript";
+    // x = 300;
+    // y = 400;
+    // z = "jquery";
+    //Uncaught TypeError: Assignment to constant variable.
+
+    document.write(x);
+    document.write(y);
+    document.write(z);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample07 -->
+
+            <!-- sample08 -->
+            <div id="sample08" class="sample">
+                <h2>08. 배열 : 여러개의 데이터 저장 : 표현방법1<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const arr = new Array();    
+    arr[0] = 100;              
+    arr[1] = 200;              
+    arr[2] = "javascript";      
+
+    document.write(arr[0]);
+    document.write(arr[1]);
+    document.write(arr[2]);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample08 -->
+
+            <!-- sample09 -->
+            <div id="sample09" class="sample">
+                <h2>09. 배열 : 표현방법2<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const arr = new Array(100, 200, "javascript");
+
+    document.write(arr[0]);
+    document.write(arr[1]);
+    document.write(arr[2]);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample09 -->
+
+            <!-- sample10 -->
+            <div id="sample10" class="sample">
+                <h2>10. 배열 : 표현방법3<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const arr = [];     
+    arr[0] = 100;              
+    arr[1] = 200;              
+    arr[2] = "javascript";   
+
+    document.write(arr[0]);
+    document.write(arr[1]);
+    document.write(arr[2]);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample10 -->
+
+            <!-- sample11 -->
+            <div id="sample11" class="sample">
+                <h2>11. 배열 : 표현방법4<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const arr = [100, 200, "javascript"];    
+
+    document.write(arr[0]);
+    document.write(arr[1]);
+    document.write(arr[2]);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample11 -->
+
+            <!-- sample12 -->
+            <div id="sample12" class="sample">
+                <h2>12. 객체 : 데이터 저장(키와 값) : 표현방법1<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = new Object();
+
+    obj[0] = 100;
+    obj[1] = 200;
+    obj[2] = "javascript";
+
+    document.write(obj[0]);
+    document.write(obj[1]);
+    document.write(obj[2]);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample12 -->
+
+            <!-- sample13 -->
+            <div id="sample13" class="sample">
+                <h2>13. 객체 : 데이터 저장(키와 값) : 표현방법2<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = new Object();
+
+    obj.a = 100;
+    obj.b = 200;
+    obj.c = "javascript";
+
+    document.write(obj.a);
+    document.write(obj.b);
+    document.write(obj.c);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample13 -->
+
+            <!-- sample14 -->
+            <div id="sample14" class="sample">
+                <h2>14. 객체 : 데이터 저장(키와 값) : 표현방법3<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = {};
+
+    obj.a = 100;
+    obj.b = 200;
+    obj.c = "javascript";
+
+    document.write(obj.a);
+    document.write(obj.b);
+    document.write(obj.c);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample14 -->
+
+            <!-- sample15 -->
+            <div id="sample15" class="sample">
+                <h2>15. 객체 : 데이터 저장(키와 값) : 표현방법4<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = {
+        a: 100,
+        b: 200,
+        c: "javascript"
+    };
+
+    document.write(obj.a);
+    document.write(obj.b);
+    document.write(obj.c);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample15 -->
+
+            <!-- sample16 -->
+            <div id="sample16" class="sample">
+                <h2>16. 객체 : 데이터 저장(키와 값) : 표현방법5 : 배열 속에 객체<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = [
+        {a: 100, b: 200},
+        {c: "javascript"}
+    ];
+
+    document.write(obj[0].a);
+    document.write(obj[0].b);
+    document.write(obj[1].c);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample16 -->
+
+            <!-- sample17 -->
+            <div id="sample17" class="sample">
+                <h2>17. 객체 : 데이터 저장(키와 값) : 표현방법6 : 객체 속에 배열<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = {
+        a: 100,
+        b: [200, 300],
+        c: {x: 400, y: 500},
+        d: "javascript"
+    }
+
+    document.write(obj.a);
+    document.write(obj.b);
+    document.write(obj.b[0]);
+    document.write(obj.b[1]);
+    document.write(obj.c.x);
+    document.write(obj.c.y);
+    document.write(obj.d);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample17 -->
+
+            <!-- sample18 -->
+            <div id="sample18" class="sample">
+                <h2>18. 객체 : 데이터 저장(키와 값) : 표현방법7 : 객체 속에 변수<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const a = 100;
+    const b = 200;
+    const c = "javascript";
+
+    const obj = { a, b, c }
+
+    document.write(obj.a);
+    document.write(obj.b);
+    document.write(obj.c);
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample18 -->
+
+            <!-- sample19 -->
+            <div id="sample18" class="sample">
+                <h2>19. 객체 : 데이터 저장(키와 값) : 표현방법8 : 객체 속에 함수<span class="dot"></span></h2>
+                <div class="code">
+<pre class="line-numbers"><code class="language-js">{
+    const obj = {
+        a: 100,
+        b: [200, 300],
+        c: "javascript",
+        d: function(){
+            document.write("javascript가 실행되었습니다.")
+        },
+        e: function(){
+            document.write( obj.c + "가 실행되었습니다.");
+        },
+        f: function(){
+            document.write( this.c + "가 실행되었습니다.");
+        }
+    }
+    document.write(obj.a);
+    document.write(obj.b);
+    document.write(obj.b[0]);
+    document.write(obj.b[1]);
+    document.write(obj.c);
+    obj.d();
+    obj.e();
+}
+</code></pre>
+                </div>
+            </div>
+            <hr>
+            <!-- //sample19 -->
+
+            
+        </main>
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.0/prism.min.js"></script>
+    <script>
+        document.querySelectorAll(".result h3").forEach(el => {
+            el.addEventListener("click", function(e){
+                e.preventDefault();
+                this.parentNode.classList.toggle("show");
+            })
+        })
+        
+        // document.querySelector(".result2 h3").addEventListener("click", function(){
+        //     document.querySelector(".result2 div").classList.toggle("show");
+        // })
+    
+
+
+
+        //01. 변수 : 데이터 저장소
+        {
+            var x = 100;          //변수 x에 숫자 100을 저장
+            var y = 200;          //변수 y에 숫자 200을 저장
+            var z = "javascript"; //변수 z에 문자 javascript 저장
+
+            document.write("*** 01. 변수 ***<br>");
+            document.write(x, "<br>");
+            document.write(y, "<br>");
+            document.write(z, "<br><br>");
+
+            document.querySelector(".result1-1").innerHTML = x;
+            document.querySelector(".result1-2").innerHTML = y;
+            document.querySelector(".result1-3").innerHTML = z;
+        }
+
+        //
+        {
+            let x = 100;
+            let y = 200;
+            let z = "javascript";
+            x = 300;    
+            y = 400;
+            z = "jquery";
+
+            document.write("*** 02. 변수 : 데이터 저장 + 데이터 변경 ***");
+            document.write(x);
+            document.write(y);
+            document.write(z);
+
+            document.querySelector(".result2-1").innerHTML = x;
+            document.querySelector(".result2-2").innerHTML = y;
+            document.querySelector(".result2-3").innerHTML = z;
+        }
+
+        
+    </script>
+</body>
+</html>

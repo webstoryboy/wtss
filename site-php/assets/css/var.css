@@ -1,0 +1,16 @@
+:root {
+    font-size: 16px;
+    --baseBackground: #fff;
+    --baseForeground: #000;
+    --colorBg1: #eee;
+    --colorBg2: #333;
+    --colorBg3: #dfdfdf;
+    --colorBg4: #fcfcfc;
+    --colorBg5: #f7f7f7;
+    --colorBg6: #f4f4f4;
+    --colorBg7: #c6c6c6;
+    --colorBg8: #666;
+    --colorBg9: #f7f6ff;
+    --colorBg10: #d3cef8;
+
+}
