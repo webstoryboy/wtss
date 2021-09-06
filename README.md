@@ -8,3 +8,8 @@ wtss.tistory.com
 
 자바스크립트1 : https://webstoryboy.github.io/wtss/refer-effect/menuEffect/javascriptME01.html<br> 
 제이쿼리1 : https://webstoryboy.github.io/wtss/refer-effect/menuEffect/jqueryME01.html<br>
+
+패랠랙스 이펙트<br> https://webstoryboy.github.io/wtss/refer-effect/parallaxEffect/index.html <br>
+
+패랠랙스 레이아웃 <br> 
+https://webstoryboy.github.io/wtss/refer-effect/parallaxEffect/parallaxLayout.html <br>
