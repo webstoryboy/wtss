@@ -4,487 +4,256 @@
     &lt;meta charset="UTF-8"&gt;
     &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Parallax Effect&lt;/title&gt;
+    &lt;title&gt;Menu Effect&lt;/title&gt;
 
-    &lt;link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet"&gt;
     &lt;style&gt;
         @font-face {
-            font-family: 'NEXONLv1Gothic';
+            font-family: "NEXONLv2Gothic";
             font-weight: 300;
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Light.woff") format("woff");
             font-style: normal;
         }
         @font-face {
-            font-family: 'NEXONLv1Gothic';
+            font-family: "NEXONLv2Gothic";
             font-weight: 400;
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff") format("woff");
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "NEXONLv1Gothic";
+            font-weight: 300;
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff") format("woff");
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "NEXONLv1Gothic";
+            font-weight: 400;
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
             font-style: normal;
         }
         * {
             margin: 0; padding: 0;
         }
-        .parallax {
-            background: #222;
-            color: #fff;
-            font-family: 'NEXONLv1Gothic';
-            font-weight: 400;
-        }
-        .paraHeader {
-            padding: 20px;
-        }
-        .paraHeader h1 a {
-            display: inline-block;
-            font-size: 20px;
-            border-bottom: 1px dashed #fff;
-            margin-bottom: 8px;
-            color: #fff;
-            text-decoration: none;
-        }
-        .paraCont {
-            max-width: 1600px;
-            margin: 0 auto;
-            width: 100%;
-            overflow: hidden;
-        }
-        .content__item {
-            width: 1000px;
-            max-width: 70vw;
-            /* background: rgba(255,255,255,0.3); */
-            margin: 30vw 0;
-            padding-top: 10vw;
-            text-align: right;
+        .bg {
             position: relative;
-        }
-        .content__item:nth-child(even){
-            margin-left: auto;
-            text-align: left;
-        }
-        .content__item__num {
-            font-family: 'Lato';
-            font-weight: 100;
-            font-size: 25vw;
-            opacity: 0.07;
-            position: absolute;
-            right: -5vw; top: -10vw;
-        }
-        .content__item:nth-child(even) .content__item__num {
-            right: auto;
-            left: -5vw;
-        }
-        .content__item__title {
-            padding-bottom: 10px;
-        }
-        .content__item__imgWrap {
-            width: 100%;
-            padding-bottom: 56%;
-            background: #000;
-            position: relative;
-        }
-        .content__item__img {
-            position: absolute;
-            left: 0; top: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            filter: saturate(0%);
-            transition: all 1s;
-        }
-        .content__item__img:hover {
-            filter: saturate(100%);
-        }
-        .content__item__desc {
-            font-size: 4vw;
-            line-height: 1.4;
-            margin-top: -6vw;
-            margin-right: -3vw;
-            position: relative;
-            z-index: 100;
-            word-break: keep-all;
-        }
-        .content__item:nth-child(even) .content__item__desc {
-            margin-right: 0;
-            margin-left: -3vw;
-        }
-        .content__item:nth-child(1) .content__item__img {
+            height: 100vh;
             background-image: url(../assets/img/bg1.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
-        .content__item:nth-child(2) .content__item__img {
-            background-image: url(../assets/img/bg2.jpg);
+        .bg::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
         }
-        .content__item:nth-child(3) .content__item__img {
-            background-image: url(../assets/img/bg3.jpg);
+        .info {
+            color: #fff;
+            font-family: "NEXONLv1Gothic";
+            padding: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
-        .content__item:nth-child(4) .content__item__img {
-            background-image: url(../assets/img/bg4.jpg);
+        .info.right {
+            left: auto;
+            right: 0px;
+            top: 0px;
         }
-        .content__item:nth-child(5) .content__item__img {
-            background-image: url(../assets/img/bg5.jpg);
-        }
-        .content__item:nth-child(6) .content__item__img {
-            background-image: url(../assets/img/bg6.jpg);
-        }
-        .content__item:nth-child(7) .content__item__img {
-            background-image: url(../assets/img/bg7.jpg);
-        }
-        .content__item:nth-child(8) .content__item__img {
-            background-image: url(../assets/img/bg8.jpg);
-        }
-        .content__item:nth-child(9) .content__item__img {
-            background-image: url(../assets/img/bg9.jpg);
-        }
-        /* nav */
-        .paraNav {
-            position: fixed;
-            right: 20px; top: 20px;
-            z-index: 1000;
-            background: rgba(0,0,0,.4);
-            padding: 15px 20px;
-            border-radius: 50px;
-        }
-        .paraNav li {
+        .info h1 {
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 1.6;
+            border-bottom: 1px dashed #fff;
             display: inline-block;
-            list-style: none;
+            margin-bottom: 10px;
         }
-        .paraNav li a {
+        .info h1 a {
             color: #fff;
             text-decoration: none;
-            display: inline-block;
-            padding: 5px;
-            width: 30px; height: 30px;
-            text-align: center;
-            line-height: 30px;
         }
-        .paraNav li.active a {
-            background: #fff;
-            color: #000;
-            border-radius: 50%;
+        .info p {
+            font-weight: 300;
+            font-size: 16px;
         }
-        /* paraFooter */
-        .paraFooter {
-            padding: 10vw 0;
-        }
-        .paraFooter h2 {
-            font-size: 8vw;
-            line-height: 1.2;
-            padding: 10vw 8vw 0 8vw;
-            text-transform: uppercase;
-            margin-bottom: 3vw;
-        }
-        .paraFooter h2 em {
-            display: block;
-            font-family: 'Lato';
-            font-weight: 100;
-            padding-left: 18vw;
-        }
-        .paraFooter .info {
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000;
-            padding: 15px 20px;
-            margin-bottom: 2px;
-        }
-        .paraFooter .info h3 {
-            padding: 0 10px;
-        }
-        .paraFooter .info li {
-            display: inline;
+        .info li {
             list-style: none;
+            display: inline;
         }
-        .paraFooter .info li a {
+        .info li a {
+            display: inline-block;
+            text-decoration: none;
             color: #fff;
             border: 1px dashed #fff;
-            width: 30px; height: 30px;
-            display: inline-block;
             border-radius: 50%;
-            line-height: 32px;
-            text-decoration: none;
+            width: 20px;
+            height: 20px;
+            line-height: 21px;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 5px;
         }
-        .paraFooter .info li.active a,
-        .paraFooter .info li a:hover {
+        .info li.active a {
             background: #fff;
             color: #000;
         }
-        /* info */
-        .paraScroll {
-            position: fixed;
-            left: 20px;
-            bottom: 20px;
-            z-index: 1000;
-            background: rgba(0,0,0,.4);
+
+        /* tab-menu */
+        #tab__menu {
+            max-width: 600px;
+            background: rgb(173, 173, 173);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+            overflow: hidden;
+            font-family: 'NEXONLv2Gothic';
             color: #fff;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 12px;
-            padding: 0px 20px;
         }
-        .paraInfo2 {
-            position: fixed;
-            left: 20px;
-            bottom: 70px;
-            z-index: 1000;
-            background: rgba(0,0,0,.4);
-            color: #fff;
-            padding: 20px;
-            font-size: 12px;
-            line-height: 1.8;
-            border-radius: 10px;
+        .tab__btn ul {
+            display: flex;
         }
-        .paraInfo2 li {
+        .tab__btn li {
+            width: 20%;
             list-style: none;
+            text-align: center;
+        }
+        .tab__btn li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 15px 15px 15px;
+            display: block;
+        }
+        .tab__btn li.active a {
+            border-bottom: 3px solid #000;
+            color: #000;
+        }
+        .tab__cont {
+            background: #fff;
+            padding: 20px;
+            color: #222;
+        }
+        .tab__cont &gt; div {
+            display: none;
+        } 
+        .tab__cont &gt; div:first-child {
+            display: block;
+        }
+        .tab__cont &gt; div h2 {
+            margin-bottom: 10px; 
+        }
+        .tab__cont &gt; div p {
+            line-height: 1.6;
+        }
+        @media (max-width: 800px){
+            #tab__menu {
+                width: 90%;
+            }
+            .tab__btn li a {
+                padding: 13px 10px 10px 10px;
+                font-size: 14px;
+            }
+            .tab__cont &gt; div h2 {
+                font-size: 16px;
+            }
+            .tab__cont &gt; div p {
+                font-size: 14px;
+            }
         }
     &lt;/style&gt;
 &lt;/head&gt;
-&lt;body class="parallax"&gt;
+&lt;body class="bg"&gt;
 
-    &lt;!-- header --&gt;
-    &lt;header class="paraHeader"&gt;
-        &lt;h1&gt;&lt;a href="index.html"&gt;Parallax Effect01 - jQuery&lt;/a&gt;&lt;/h1&gt;
-        &lt;p&gt;패랠랙스 스크로링 효과 - 메뉴 이동&lt;/p&gt;
-    &lt;/header&gt;
-    &lt;!-- //header --&gt;
-
-    &lt;!-- nav --&gt;
-    &lt;nav class="paraNav"&gt;
-        &lt;ul&gt;
-            &lt;li class="active"&gt;&lt;a href="#section1"&gt;s1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section2"&gt;s2&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section3"&gt;s3&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section4"&gt;s4&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section5"&gt;s5&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section6"&gt;s6&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section7"&gt;s7&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section8"&gt;s8&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section9"&gt;s9&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/nav&gt;
-    &lt;!-- //nav --&gt;
+    &lt;!-- contents --&gt;
+    &lt;main&gt;
+        &lt;div id="tab__menu"&gt;
+            &lt;div class="tab__btn"&gt;
+                &lt;ul&gt;
+                    &lt;li class="active"&gt;&lt;a href="#"&gt;원칙1&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;원칙2&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;원칙3&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;원칙4&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;원칙5&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class="tab__cont"&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;품위 없는 모든 버릇을 버려라.&lt;/h2&gt;
+                    &lt;p&gt;욕을 하고 투덜거릴는 것, 경박한 자세로 앉아 있는 것, 남을 비웃는 것, 지저분한 차림, 약속에 늦거나 변경하는 일 등의 모든 행동은 품위 없는 것이다.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;도움을 구하는 데 망설이지 마라.&lt;/h2&gt;
+                    &lt;p&gt;묻고 요청하고 찾아가고 부탁하라. 반드시 물에 답을 주고 도움을 주고 반기는 사람이 있다.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;희생을 할 각오를 해라.&lt;/h2&gt;
+                    &lt;p&gt;작은 목표에는 작은 희생이 따르고 큰 목표에는 큰 희생이 따른다. 공부를 위해서는 잠을 포기해야 하고 돈을 모으기 위해서 더 많은 시간을 일해야 한다.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;기록하고 정리하라.&lt;/h2&gt;
+                    &lt;p&gt;투자내역, 정보, 갑자기 생각나 아이디어, 명함, 사이트 암호들, 구매 기록 등을 모두 정리하거나 기억하라, 이것은 재산이여 동시에 당신을 보호한다.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;제발 모두에게 사랑받을 생각을 버려라.&lt;/h2&gt;
+                    &lt;p&gt;눈치를 보지 말고 비난에 의연하고 무리와 어울리는 것에 목숨을 걸지 마라. 진정한 친구는 두명도 많고 가족의 지지기 모든 것의 기초다. 부정적인 사람과 결별하고 당신보다 나은 사람들과 어울려라.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+    &lt;!-- //contents --&gt;
 
     &lt;!-- info --&gt;
-    &lt;div class="paraScroll"&gt;scrollTop() : &lt;span&gt;0&lt;/span&gt;px&lt;/div&gt;
-    &lt;div class="paraInfo2"&gt;
+    &lt;div class="info"&gt;
+        &lt;h1&gt;&lt;a href="index.html"&gt;jQuery Menu Effect01&lt;/a&gt;&lt;/h1&gt;
+        &lt;p&gt;메뉴 이펙트 - 탭 메뉴&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="info right"&gt;
         &lt;ul&gt;
-            &lt;li&gt;#section1 offset() : &lt;span class="offset1"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section2 offset() : &lt;span class="offset2"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section3 offset() : &lt;span class="offset3"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section4 offset() : &lt;span class="offset4"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section5 offset() : &lt;span class="offset5"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section6 offset() : &lt;span class="offset6"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section7 offset() : &lt;span class="offset7"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section8 offset() : &lt;span class="offset8"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section9 offset() : &lt;span class="offset9"&gt;0&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME09.html"&gt;9&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul&gt;
+            &lt;li class="active"&gt;&lt;a href="jqueryME01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME09.html"&gt;9&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
     &lt;/div&gt;
     &lt;!-- //info --&gt;
 
-    &lt;!-- main --&gt;
-    &lt;main&gt;
-        &lt;div class="paraCont"&gt;
-            &lt;section id="section1" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;01&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section1&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;높은 목표를 세우고, 스스로 채찍질 한다.&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section1 --&gt;
-
-            &lt;section id="section2" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;02&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section2&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;결과도 중요하지만, 과정을 더 중요하게 생각한다.&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section2 --&gt;
-
-            &lt;section id="section3" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;03&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section3&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;매 순간에 최선을 다하고, 끊임없이 변화한다.&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section3 --&gt;
-
-            &lt;section id="section4" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;04&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section4&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;모든지 기본을 중요하게 생각한다.&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section4 --&gt;
-
-            &lt;section id="section5" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;05&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section5&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section5 --&gt;
-
-            &lt;section id="section6" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;06&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section6&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;천 마디 말보단 하나의 행동이 더 값지다.&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section6 --&gt;
-
-            &lt;section id="section7" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;07&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section7&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;조그만 성공에 만족하지 않으며, 방심을 경계한다.&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section7 --&gt;
-
-            &lt;section id="section8" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;08&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section8&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;나는 내가 더 노력할수록 운이 더 좋아진다는 걸 발견했다&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section8 --&gt;
-
-            &lt;section id="section9" class="content__item"&gt;
-                &lt;span class="content__item__num"&gt;09&lt;/span&gt;
-                &lt;h2 class="content__item__title"&gt;Section9&lt;/h2&gt;
-                &lt;figure class="content__item__imgWrap"&gt;
-                    &lt;div class="content__item__img"&gt;&lt;/div&gt;
-                &lt;/figure&gt;
-                &lt;p class="content__item__desc"&gt;꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.&lt;/p&gt;
-            &lt;/section&gt;
-            &lt;!-- //section9 --&gt;
-        &lt;/div&gt;
-        &lt;!-- //contents --&gt;
-    &lt;/main&gt;
-    &lt;!-- //main --&gt;
-
-    &lt;!-- footer --&gt;
-    &lt;footer class="paraFooter"&gt;
-        &lt;h2&gt;Parallax &lt;em&gt;Scrolling&lt;/em&gt;&lt;/h2&gt;
-        &lt;div class="info"&gt;
-            &lt;h3&gt;제이쿼리&lt;/h3&gt;
-            &lt;ul&gt;
-                &lt;li class="active"&gt;&lt;a href="parallaxEffect01-jquery.html"&gt;1&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect02-jquery.html"&gt;2&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect03-jquery.html"&gt;3&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect04-jquery.html"&gt;4&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect05-jquery.html"&gt;5&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect06-jquery.html"&gt;6&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect07-jquery.html"&gt;7&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect08-jquery.html"&gt;8&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-        &lt;div class="info"&gt;
-            &lt;h3&gt;자바스크립트&lt;/h3&gt;
-            &lt;ul&gt; 
-                &lt;li&gt;&lt;a href="parallaxEffect21-javascript.html"&gt;1&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect22-javascript.html"&gt;2&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect23-javascript.html"&gt;3&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect24-javascript.html"&gt;4&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect25-javascript.html"&gt;5&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect26-javascript.html"&gt;6&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect27-javascript.html"&gt;7&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect28-javascript.html"&gt;8&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/footer&gt;
-    &lt;!-- //footer --&gt;
-
-
+    &lt;!-- script --&gt;
     &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"&gt;&lt;/script&gt;
     &lt;script&gt;
-        $(".paraNav ul li").click(function(e){
-            e.preventDefault();
+        const tabBtn = $(".tab__btn ul li");     
+        const tabCont = $(".tab__cont &gt; div");  
+
+        tabBtn.click(function(){
             let target = $(this);
+            tabBtn.removeClass("active");
+            target.addClass("active");
+
             let index = target.index();
-            let section = $(".paraCont &gt; section").eq(index);
-            let offset = section.offset().top;
-            $("html, body").animate({ scrollTop : offset }, 600);
-        });
-
-        $(window).scroll(function(){
-            let scrollTop = $(window).scrollTop();
-
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(0).offset().top ){
-            //     $(".paraNav ul li").eq(0).addClass("active").siblings().removeClass("active");
-            // }
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(1).offset().top - 2){
-            //     $(".paraNav ul li").eq(1).addClass("active").siblings().removeClass("active");
-            // }
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(2).offset().top - 2){
-            //     $(".paraNav ul li").eq(2).addClass("active").siblings().removeClass("active");
-            // }
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(3).offset().top - 2){
-            //     $(".paraNav ul li").eq(3).addClass("active").siblings().removeClass("active");
-            // }
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(4).offset().top - 2){
-            //     $(".paraNav ul li").eq(4).addClass("active").siblings().removeClass("active");
-            // }
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(5).offset().top - 2){
-            //     $(".paraNav ul li").eq(5).addClass("active").siblings().removeClass("active");
-            // }
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(6).offset().top - 2){
-            //     $(".paraNav ul li").eq(6).addClass("active").siblings().removeClass("active");
-            // }
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(7).offset().top - 2){
-            //     $(".paraNav ul li").eq(7).addClass("active").siblings().removeClass("active");
-            // }
-            // if( scrollTop &gt;= $(".paraCont &gt; section").eq(8).offset().top - 2 ){
-            //     $(".paraNav ul li").eq(8).addClass("active").siblings().removeClass("active");
-            // }
-
-            //for문
-            // for(let i=0; i&lt;9; i++){
-            //     if( scrollTop &gt;= $(".content-item").eq(i).offset().top - 2 ){
-            //         $(".paraNav ul li").eq(i).addClass("active").siblings().removeClass("active");
-            //     }
-            // }
-
-            //each() 
-            $(".content__item").each(function(index){
-                if( scrollTop &gt;= $(this).offset().top - 2 ){
-                    $(".paraNav ul li").eq(index).addClass("active").siblings().removeClass("active");
-                }
-            });
-
-            // info
-            $(".paraScroll span").text(parseInt(scrollTop));
-
-            // $(".offset1").text(parseInt($("#section1").offset().top) + "px");
-            // $(".offset2").text(parseInt($("#section2").offset().top) + "px");
-            // $(".offset3").text(parseInt($("#section3").offset().top) + "px");
-            // $(".offset4").text(parseInt($("#section4").offset().top) + "px");
-            // $(".offset5").text(parseInt($("#section5").offset().top) + "px");
-            // $(".offset6").text(parseInt($("#section6").offset().top) + "px");
-            // $(".offset7").text(parseInt($("#section7").offset().top) + "px");
-            // $(".offset8").text(parseInt($("#section8").offset().top) + "px");
-            // $(".offset9").text(parseInt($("#section9").offset().top) + "px");
-
-            for( let i=1; i&lt;10; i++ ){
-                $(".offset"+i).text(parseInt($("#section"+i).offset().top) + "px");
-            }
+            tabCont.css("display","none");
+            tabCont.eq(index).css("display","block");
         });
     &lt;/script&gt;
 &lt;/body&gt;
