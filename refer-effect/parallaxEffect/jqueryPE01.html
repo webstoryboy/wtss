@@ -6,140 +6,372 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parallax Effect</title>
 
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/highlight.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 300;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-style: normal;
+        }
+        * {
+            margin: 0; padding: 0;
+        }
+        .parallax {
+            background: #222;
+            color: #fff;
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+        }
+        .paraHeader {
+            padding: 20px;
+        }
+        .paraHeader h1 a {
+            display: inline-block;
+            font-size: 20px;
+            border-bottom: 1px dashed #fff;
+            margin-bottom: 8px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .paraCont {
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            overflow: hidden;
+        }
+        .content__item {
+            width: 1000px;
+            max-width: 70vw;
+            /* background: rgba(255,255,255,0.3); */
+            margin: 30vw 0;
+            padding-top: 10vw;
+            text-align: right;
+            position: relative;
+        }
+        .content__item:nth-child(even){
+            margin-left: auto;
+            text-align: left;
+        }
+        .content__item__num {
+            font-family: 'Lato';
+            font-weight: 100;
+            font-size: 25vw;
+            opacity: 0.07;
+            position: absolute;
+            right: -5vw; top: -10vw;
+        }
+        .content__item:nth-child(even) .content__item__num {
+            right: auto;
+            left: -5vw;
+        }
+        .content__item__title {
+            padding-bottom: 10px;
+        }
+        .content__item__imgWrap {
+            width: 100%;
+            padding-bottom: 56%;
+            background: #000;
+            position: relative;
+        }
+        .content__item__img {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: saturate(0%);
+            transition: all 1s;
+        }
+        .content__item__img:hover {
+            filter: saturate(100%);
+        }
+        .content__item__desc {
+            font-size: 4vw;
+            line-height: 1.4;
+            margin-top: -6vw;
+            margin-right: -3vw;
+            position: relative;
+            z-index: 100;
+            word-break: keep-all;
+        }
+        .content__item:nth-child(even) .content__item__desc {
+            margin-right: 0;
+            margin-left: -3vw;
+        }
+        .content__item:nth-child(1) .content__item__img {
+            background-image: url(../assets/img/bg1.jpg);
+        }
+        .content__item:nth-child(2) .content__item__img {
+            background-image: url(../assets/img/bg2.jpg);
+        }
+        .content__item:nth-child(3) .content__item__img {
+            background-image: url(../assets/img/bg3.jpg);
+        }
+        .content__item:nth-child(4) .content__item__img {
+            background-image: url(../assets/img/bg4.jpg);
+        }
+        .content__item:nth-child(5) .content__item__img {
+            background-image: url(../assets/img/bg5.jpg);
+        }
+        .content__item:nth-child(6) .content__item__img {
+            background-image: url(../assets/img/bg6.jpg);
+        }
+        .content__item:nth-child(7) .content__item__img {
+            background-image: url(../assets/img/bg7.jpg);
+        }
+        .content__item:nth-child(8) .content__item__img {
+            background-image: url(../assets/img/bg8.jpg);
+        }
+        .content__item:nth-child(9) .content__item__img {
+            background-image: url(../assets/img/bg9.jpg);
+        }
+        /* nav */
+        .paraNav {
+            position: fixed;
+            right: 20px; top: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,.4);
+            padding: 15px 20px;
+            border-radius: 50px;
+        }
+        .paraNav li {
+            display: inline-block;
+            list-style: none;
+        }
+        .paraNav li a {
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px;
+            width: 30px; height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        .paraNav li.active a {
+            background: #fff;
+            color: #000;
+            border-radius: 50%;
+        }
+        /* paraFooter */
+        .paraFooter {
+            padding: 10vw 0;
+        }
+        .paraFooter h2 {
+            font-size: 8vw;
+            line-height: 1.2;
+            padding: 10vw 8vw 0 8vw;
+            text-transform: uppercase;
+            margin-bottom: 3vw;
+        }
+        .paraFooter h2 em {
+            display: block;
+            font-family: 'Lato';
+            font-weight: 100;
+            padding-left: 18vw;
+        }
+        .paraFooter .info {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            padding: 15px 20px;
+            margin-bottom: 2px;
+        }
+        .paraFooter .info h3 {
+            padding: 0 10px;
+        }
+        .paraFooter .info li {
+            display: inline;
+            list-style: none;
+        }
+        .paraFooter .info li a {
+            color: #fff;
+            border: 1px dashed #fff;
+            width: 30px; height: 30px;
+            display: inline-block;
+            border-radius: 50%;
+            line-height: 32px;
+            text-decoration: none;
+        }
+        .paraFooter .info li.active a,
+        .paraFooter .info li a:hover {
+            background: #fff;
+            color: #000;
+        }
+        /* info */
+        .paraScroll {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,.4);
+            color: #fff;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 12px;
+            padding: 0px 20px;
+        }
+        .paraInfo2 {
+            position: fixed;
+            left: 20px;
+            bottom: 70px;
+            z-index: 1000;
+            background: rgba(0,0,0,.4);
+            color: #fff;
+            padding: 20px;
+            font-size: 12px;
+            line-height: 1.8;
+            border-radius: 10px;
+        }
+        .paraInfo2 li {
+            list-style: none;
+        }
+    </style>
 </head>
 <body class="parallax">
 
     <!-- header -->
-    <header class="paraInfo">
+    <header class="paraHeader">
         <h1><a href="index.html">Parallax Effect01 - jQuery</a></h1>
         <p>패랠랙스 스크로링 효과 - 메뉴 이동</p>
     </header>
     <!-- //header -->
 
+    <!-- nav -->
+    <nav class="paraNav">
+        <ul>
+            <li class="active"><a href="#section1">s1</a></li>
+            <li><a href="#section2">s2</a></li>
+            <li><a href="#section3">s3</a></li>
+            <li><a href="#section4">s4</a></li>
+            <li><a href="#section5">s5</a></li>
+            <li><a href="#section6">s6</a></li>
+            <li><a href="#section7">s7</a></li>
+            <li><a href="#section8">s8</a></li>
+            <li><a href="#section9">s9</a></li>
+        </ul>
+    </nav>
+    <!-- //nav -->
+
+    <!-- info -->
+    <div class="paraScroll">scrollTop() : <span>0</span>px</div>
+    <div class="paraInfo2">
+        <ul>
+            <li>#section1 offset() : <span class="offset1">0</span></li>
+            <li>#section2 offset() : <span class="offset2">0</span></li>
+            <li>#section3 offset() : <span class="offset3">0</span></li>
+            <li>#section4 offset() : <span class="offset4">0</span></li>
+            <li>#section5 offset() : <span class="offset5">0</span></li>
+            <li>#section6 offset() : <span class="offset6">0</span></li>
+            <li>#section7 offset() : <span class="offset7">0</span></li>
+            <li>#section8 offset() : <span class="offset8">0</span></li>
+            <li>#section9 offset() : <span class="offset9">0</span></li>
+        </ul>
+    </div>
+    <!-- //info -->
+
     <!-- main -->
     <main>
-        <div class="paraScroll">scrollTop() : <span>0</span></div><!-- //scroll -->
-        <div class="paraInfo2">
-            <ul>
-                <li>section1 offset() : <span class="offset1">0</span></li>
-                <li>section2 offset() : <span class="offset2">0</span></li>
-                <li>section3 offset() : <span class="offset3">0</span></li>
-                <li>section4 offset() : <span class="offset4">0</span></li>
-                <li>section5 offset() : <span class="offset5">0</span></li>
-                <li>section6 offset() : <span class="offset6">0</span></li>
-                <li>section7 offset() : <span class="offset7">0</span></li>
-                <li>section8 offset() : <span class="offset8">0</span></li>
-                <li>section9 offset() : <span class="offset9">0</span></li>
-            </ul>
-        </div>
-
-        <nav class="paraNav">
-            <ul>
-                <li class="active"><a href="#section1">s1</a></li>
-                <li><a href="#section2">s2</a></li>
-                <li><a href="#section3">s3</a></li>
-                <li><a href="#section4">s4</a></li>
-                <li><a href="#section5">s5</a></li>
-                <li><a href="#section6">s6</a></li>
-                <li><a href="#section7">s7</a></li>
-                <li><a href="#section8">s8</a></li>
-                <li><a href="#section9">s9</a></li>
-            </ul>
-        </nav>
-        <!-- //nav -->
-
         <div class="paraCont">
-            <section id="section1" class="content-item">
-                <span class="num">01</span>
-                <h2 class="title">Section1</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section1" class="content__item">
+                <span class="content__item__num">01</span>
+                <h2 class="content__item__title">Section1</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">높은 목표를 세우고, 스스로 채찍질 한다.</p>
+                <p class="content__item__desc">높은 목표를 세우고, 스스로 채찍질 한다.</p>
             </section>
             <!-- //section1 -->
 
-            <section id="section2" class="content-item">
-                <span class="num">02</span>
-                <h2 class="title">Section2</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section2" class="content__item">
+                <span class="content__item__num">02</span>
+                <h2 class="content__item__title">Section2</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">결과도 중요하지만, 과정을 더 중요하게 생각한다.</p>
+                <p class="content__item__desc">결과도 중요하지만, 과정을 더 중요하게 생각한다.</p>
             </section>
             <!-- //section2 -->
 
-            <section id="section3" class="content-item">
-                <span class="num">03</span>
-                <h2 class="title">Section3</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section3" class="content__item">
+                <span class="content__item__num">03</span>
+                <h2 class="content__item__title">Section3</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">매 순간에 최선을 다하고, 끊임없이 변화한다.</p>
+                <p class="content__item__desc">매 순간에 최선을 다하고, 끊임없이 변화한다.</p>
             </section>
             <!-- //section3 -->
 
-            <section id="section4" class="content-item">
-                <span class="num">04</span>
-                <h2 class="title">Section4</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section4" class="content__item">
+                <span class="content__item__num">04</span>
+                <h2 class="content__item__title">Section4</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">모든지 기본을 중요하게 생각한다.</p>
+                <p class="content__item__desc">모든지 기본을 중요하게 생각한다.</p>
             </section>
             <!-- //section4 -->
 
-            <section id="section5" class="content-item">
-                <span class="num">05</span>
-                <h2 class="title">Section5</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section5" class="content__item">
+                <span class="content__item__num">05</span>
+                <h2 class="content__item__title">Section5</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">천 마디 말보단 하나의 행동이 더 값지다.</p>
+                <p class="content__item__desc">열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.</p>
             </section>
             <!-- //section5 -->
 
-            <section id="section6" class="content-item">
-                <span class="num">06</span>
-                <h2 class="title">Section6</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section6" class="content__item">
+                <span class="content__item__num">06</span>
+                <h2 class="content__item__title">Section6</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">조그만 성공에 만족하지 않으며, 방심을 경계한다.</p>
+                <p class="content__item__desc">천 마디 말보단 하나의 행동이 더 값지다.</p>
             </section>
             <!-- //section6 -->
 
-            <section id="section7" class="content-item">
-                <span class="num">07</span>
-                <h2 class="title">Section7</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section7" class="content__item">
+                <span class="content__item__num">07</span>
+                <h2 class="content__item__title">Section7</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">나는 내가 더 노력할수록 운이 더 좋아진다는 걸 발견했다.</p>
+                <p class="content__item__desc">조그만 성공에 만족하지 않으며, 방심을 경계한다.</p>
             </section>
             <!-- //section7 -->
 
-            <section id="section8" class="content-item">
-                <span class="num">08</span>
-                <h2 class="title">Section8</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section8" class="content__item">
+                <span class="content__item__num">08</span>
+                <h2 class="content__item__title">Section8</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.</p>
+                <p class="content__item__desc">나는 내가 더 노력할수록 운이 더 좋아진다는 걸 발견했다</p>
             </section>
             <!-- //section8 -->
 
-            <section id="section9" class="content-item">
-                <span class="num">09</span>
-                <h2 class="title">Section9</h2>
-                <figure class="img-Wrap">
-                    <div class="img"></div>
+            <section id="section9" class="content__item">
+                <span class="content__item__num">09</span>
+                <h2 class="content__item__title">Section9</h2>
+                <figure class="content__item__imgWrap">
+                    <div class="content__item__img"></div>
                 </figure>
-                <p class="desc">열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.</p>
+                <p class="content__item__desc">꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.</p>
             </section>
             <!-- //section9 -->
         </div>
@@ -149,78 +381,110 @@
 
     <!-- footer -->
     <footer class="paraFooter">
-
+        <h2>Parallax <em>Scrolling</em></h2>
+        <div class="info">
+            <h3>제이쿼리</h3>
+            <ul>
+                <li class="active"><a href="parallaxEffect01-jquery.html">1</a></li>
+                <li><a href="parallaxEffect02-jquery.html">2</a></li>
+                <li><a href="parallaxEffect03-jquery.html">3</a></li>
+                <li><a href="parallaxEffect04-jquery.html">4</a></li>
+                <li><a href="parallaxEffect05-jquery.html">5</a></li>
+                <li><a href="parallaxEffect06-jquery.html">6</a></li>
+                <li><a href="parallaxEffect07-jquery.html">7</a></li>
+                <li><a href="parallaxEffect08-jquery.html">8</a></li>
+            </ul>
+        </div>
+        <div class="info">
+            <h3>자바스크립트</h3>
+            <ul> 
+                <li><a href="parallaxEffect21-javascript.html">1</a></li>
+                <li><a href="parallaxEffect22-javascript.html">2</a></li>
+                <li><a href="parallaxEffect23-javascript.html">3</a></li>
+                <li><a href="parallaxEffect24-javascript.html">4</a></li>
+                <li><a href="parallaxEffect25-javascript.html">5</a></li>
+                <li><a href="parallaxEffect26-javascript.html">6</a></li>
+                <li><a href="parallaxEffect27-javascript.html">7</a></li>
+                <li><a href="parallaxEffect28-javascript.html">8</a></li>
+            </ul>
+        </div>
     </footer>
     <!-- //footer -->
 
-    <!-- source -->
-    <div class="source">
-        <button>소스 보기</button>
-    </div>
-    <!-- //source -->
 
-    <!-- modal -->
-    <div id="modal">
-        <div class="modal-bg">
-            <div class="modal-cont">
-                <div class="code-view">
-                    <div class="view-header">
-                        <div class="dot" aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="view-title">
-                        <ul>
-                            <li class="active"><a href="#">Html</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">Javascript</a></li>
-                        </ul>
-                    </div>
-                    <div class="view-cont">
-                        <div class="html">
-<pre><code class="language-html">&lt;div id="tab-menu"&gt;
-    
-</code></pre> 
-                        </div>
-                        <div class="css">
-<pre><code class="language-css"></code></pre> 
-                        </div>
-                        <div class="javascript">
-<pre><code class="language-javascript"></code></pre> 
-                        </div>
-                    </div>
-                </div>
-                
-                <button>닫기</button>
-            </div>
-        </div>
-    </div>
-    <!-- //modal -->
-
-    <!-- script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="../assets/js/custom.js"></script>
-    <script src="../assets/js/highlight.min.js"></script>
     <script>
+        $(".paraNav ul li").click(function(e){
+            e.preventDefault();
+            let target = $(this);
+            let index = target.index();
+            let section = $(".paraCont > section").eq(index);
+            let offset = section.offset().top;
+            $("html, body").animate({ scrollTop : offset }, 600);
+        });
+
         $(window).scroll(function(){
             let scrollTop = $(window).scrollTop();
 
+            // if( scrollTop >= $(".paraCont > section").eq(0).offset().top ){
+            //     $(".paraNav ul li").eq(0).addClass("active").siblings().removeClass("active");
+            // }
+            // if( scrollTop >= $(".paraCont > section").eq(1).offset().top - 2){
+            //     $(".paraNav ul li").eq(1).addClass("active").siblings().removeClass("active");
+            // }
+            // if( scrollTop >= $(".paraCont > section").eq(2).offset().top - 2){
+            //     $(".paraNav ul li").eq(2).addClass("active").siblings().removeClass("active");
+            // }
+            // if( scrollTop >= $(".paraCont > section").eq(3).offset().top - 2){
+            //     $(".paraNav ul li").eq(3).addClass("active").siblings().removeClass("active");
+            // }
+            // if( scrollTop >= $(".paraCont > section").eq(4).offset().top - 2){
+            //     $(".paraNav ul li").eq(4).addClass("active").siblings().removeClass("active");
+            // }
+            // if( scrollTop >= $(".paraCont > section").eq(5).offset().top - 2){
+            //     $(".paraNav ul li").eq(5).addClass("active").siblings().removeClass("active");
+            // }
+            // if( scrollTop >= $(".paraCont > section").eq(6).offset().top - 2){
+            //     $(".paraNav ul li").eq(6).addClass("active").siblings().removeClass("active");
+            // }
+            // if( scrollTop >= $(".paraCont > section").eq(7).offset().top - 2){
+            //     $(".paraNav ul li").eq(7).addClass("active").siblings().removeClass("active");
+            // }
+            // if( scrollTop >= $(".paraCont > section").eq(8).offset().top - 2 ){
+            //     $(".paraNav ul li").eq(8).addClass("active").siblings().removeClass("active");
+            // }
+
+            //for문
+            // for(let i=0; i<9; i++){
+            //     if( scrollTop >= $(".content-item").eq(i).offset().top - 2 ){
+            //         $(".paraNav ul li").eq(i).addClass("active").siblings().removeClass("active");
+            //     }
+            // }
+
+            //each() 
+            $(".content__item").each(function(index){
+                if( scrollTop >= $(this).offset().top - 2 ){
+                    $(".paraNav ul li").eq(index).addClass("active").siblings().removeClass("active");
+                }
+            });
+
+            // info
             $(".paraScroll span").text(parseInt(scrollTop));
 
-            $(".offset1").text(parseInt($("#section1").offset().top) + "px");
-            $(".offset2").text(parseInt($("#section2").offset().top) + "px");
-            $(".offset3").text(parseInt($("#section3").offset().top) + "px");
-            $(".offset4").text(parseInt($("#section4").offset().top) + "px");
-            $(".offset5").text(parseInt($("#section5").offset().top) + "px");
-            $(".offset6").text(parseInt($("#section6").offset().top) + "px");
-            $(".offset7").text(parseInt($("#section7").offset().top) + "px");
-            $(".offset8").text(parseInt($("#section8").offset().top) + "px");
-            $(".offset9").text(parseInt($("#section9").offset().top) + "px");
+            // $(".offset1").text(parseInt($("#section1").offset().top) + "px");
+            // $(".offset2").text(parseInt($("#section2").offset().top) + "px");
+            // $(".offset3").text(parseInt($("#section3").offset().top) + "px");
+            // $(".offset4").text(parseInt($("#section4").offset().top) + "px");
+            // $(".offset5").text(parseInt($("#section5").offset().top) + "px");
+            // $(".offset6").text(parseInt($("#section6").offset().top) + "px");
+            // $(".offset7").text(parseInt($("#section7").offset().top) + "px");
+            // $(".offset8").text(parseInt($("#section8").offset().top) + "px");
+            // $(".offset9").text(parseInt($("#section9").offset().top) + "px");
 
-
+            for( let i=1; i<10; i++ ){
+                $(".offset"+i).text(parseInt($("#section"+i).offset().top) + "px");
+            }
         });
     </script>
 </body>
