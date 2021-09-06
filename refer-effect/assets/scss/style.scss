@@ -7,7 +7,7 @@
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
     font-style: normal;
 }
-@font-face {
+@font-face { 
     font-family: 'NEXONLv1Gothic';
     font-weight: 400;
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
@@ -169,9 +169,11 @@ $gradient6: linear-gradient(to bottom, #F0CF77 0%, #F0A688 100%);
 }
 
 #nav {
-    @include positionCenter;
-    bottom: 10px;
-    top: auto;
+    position: absolute;
+    bottom: 20px;
+    top: auto;  
+    left: 50%;
+    transform: translateX(-50%);
 
     li {
         list-style: none;

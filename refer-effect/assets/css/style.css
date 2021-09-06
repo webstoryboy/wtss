@@ -209,11 +209,10 @@ figcaption {
 
 #nav {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  bottom: 10px;
+  bottom: 20px;
   top: auto;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #nav li {
   list-style: none;
@@ -533,7 +532,7 @@ figcaption {
   overflow-y: scroll;
   background: #F8F8F9;
 }
-.code-view .view-cont > div { 
+.code-view .view-cont > div {
   display: none;
 }
 .code-view .view-cont > div:nth-child(1) {
