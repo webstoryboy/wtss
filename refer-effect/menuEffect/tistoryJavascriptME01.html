@@ -1,0 +1,391 @@
+<div class="info-output">
+    <p class="bubble">
+        메뉴 튜토리얼입니다.<br><br>
+
+        이 강의는 기본적인 HTML, CSS, JavaScript, JQuery를 알고 있어야 배울 수 있는 강의입니다. <br>
+        웹표준 강의, 반응형 강의, 메가박스 강의를 보고 오시면 도움이 됩니다.^^<br><br>
+
+        모든 강의는 소스를 보면서 따라하는 튜토리얼입니다.
+    </p>
+
+    <div class="code-youtube">
+        <h2>Code Youtube</h2>
+        <iframe src="https://www.youtube.com/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <!-- //code-youtube -->
+
+    <div class="code-reference">
+        <h2>Code Sample</h2>
+        <p class="bubble info">전체 소스는 여기서 다운 받을 수 있습니다. </p>
+        <p class="bubble info"><a class="color-values" href="https://github.com/webstoryboy/wtss" target="_blank">바로가기</a></p>
+        <p class="bubble warning">샘플 소스는 여기서 확인 할 수 있습니다. </p>
+        <p class="bubble warning"><a class="color-values" href="https://webstoryboy.github.io/wtss/refer-effect/menuEffect/javascriptME01.html" target="_blank">바로가기</a></p>
+    </div>
+    <!-- //code-reference -->
+
+    <div class="code-reference">
+        <h2>Sourece Reference</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Value</td>
+                    <td>link</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>이미지1</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg1.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지2</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg2.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지3</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg3.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지4</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg4.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지5</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg5.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지6</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg6.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지7</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg7.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지8</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg8.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지9</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg9.jpg</td>
+                </tr>
+                <tr>
+                    <td>jquery</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/js/jquery.min.js</td>
+                </tr>
+            </table>  
+        </table>
+    </div>
+
+    <div class="code-preview">
+        <h2>Code example</h2>
+
+        <div class="tab-menu">
+            <div class="tab-btn">
+                <ul>
+                    <li class="active"><a href="#">index.html</a></li>
+                    <li><a href="#">style.css</a></li>
+                    <li><a href="#">script.js</a></li>
+                </ul>
+            </div>
+            <div class="tab-cont">
+                <div>
+<pre class="line-numbers language-html xml"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Menu Effect&lt;/title&gt;
+&lt;/head&gt;
+&lt;body class="bg"&gt;
+
+    &lt;!-- contents --&gt;
+    &lt;main&gt;
+        &lt;div id="tab__menu"&gt;
+            &lt;div class="tab__btn"&gt;
+                &lt;ul&gt;
+                    &lt;li class="active"&gt;&lt;a href="#"&gt;원칙1&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;원칙2&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;원칙3&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;원칙4&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;원칙5&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class="tab__cont"&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;품위 없는 모든 버릇을 버려라.&lt;/h2&gt;
+                    &lt;p&gt;욕을 하고 투덜거릴는 것, 경박한 자세로 앉아 있는 것, 남을 비웃는 것, 지저분한 차림, 약속에 늦거나 변경하는 일 등의 모든 행동은 품위 없는 것이다.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;도움을 구하는 데 망설이지 마라.&lt;/h2&gt;
+                    &lt;p&gt;묻고 요청하고 찾아가고 부탁하라. 반드시 물에 답을 주고 도움을 주고 반기는 사람이 있다.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;희생을 할 각오를 해라.&lt;/h2&gt;
+                    &lt;p&gt;작은 목표에는 작은 희생이 따르고 큰 목표에는 큰 희생이 따른다. 공부를 위해서는 잠을 포기해야 하고 돈을 모으기 위해서 더 많은 시간을 일해야 한다.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;기록하고 정리하라.&lt;/h2&gt;
+                    &lt;p&gt;투자내역, 정보, 갑자기 생각나 아이디어, 명함, 사이트 암호들, 구매 기록 등을 모두 정리하거나 기억하라, 이것은 재산이여 동시에 당신을 보호한다.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h2&gt;제발 모두에게 사랑받을 생각을 버려라.&lt;/h2&gt;
+                    &lt;p&gt;눈치를 보지 말고 비난에 의연하고 무리와 어울리는 것에 목숨을 걸지 마라. 진정한 친구는 두명도 많고 가족의 지지기 모든 것의 기초다. 부정적인 사람과 결별하고 당신보다 나은 사람들과 어울려라.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+    &lt;!-- //contents --&gt;
+
+    &lt;!-- info --&gt;
+    &lt;div class="info"&gt;
+        &lt;h1&gt;&lt;a href="index.html"&gt;javascript Menu Effect01&lt;/a&gt;&lt;/h1&gt;
+        &lt;p&gt;메뉴 이펙트 - 탭 메뉴&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="info right"&gt;
+        &lt;ul&gt;
+            &lt;li class="active"&gt;&lt;a href="javascriptME01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME09.html"&gt;9&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="jqueryME01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME09.html"&gt;9&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- //info --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+                </div>
+                <!--//tab-cont1 -->
+
+                <div>
+<pre class="line-numbers language-css"><code>&lt;style&gt;
+    @font-face {
+        font-family: "NEXONLv2Gothic";
+        font-weight: 300;
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Light.woff") format("woff");
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "NEXONLv2Gothic";
+        font-weight: 400;
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff") format("woff");
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "NEXONLv1Gothic";
+        font-weight: 300;
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff") format("woff");
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "NEXONLv1Gothic";
+        font-weight: 400;
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+        font-style: normal;
+    }
+    * {
+        margin: 0; padding: 0;
+    }
+    .bg {
+        position: relative;
+        height: 100vh;
+        background-image: url(../assets/img/bg0.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    .bg::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: -1;
+    }
+    .info {
+        color: #fff;
+        font-family: "NEXONLv1Gothic";
+        padding: 20px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .info.right {
+        left: auto;
+        right: 0px;
+        top: 0px;
+    }
+    .info h1 {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 1.6;
+        border-bottom: 1px dashed #fff;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    .info h1 a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .info p {
+        font-weight: 300;
+        font-size: 16px;
+    }
+    .info li {
+        list-style: none;
+        display: inline;
+    }
+    .info li a {
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        border: 1px dashed #fff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 21px;
+        text-align: center;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+    .info li.active a {
+        background: #fff;
+        color: #000;
+    }
+
+    /* tab-menu */
+    #tab__menu {
+        max-width: 600px;
+        background: rgb(173, 173, 173);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+        overflow: hidden;
+        font-family: 'NEXONLv2Gothic';
+        color: #fff;
+    }
+    .tab__btn ul {
+        display: flex;
+    }
+    .tab__btn li {
+        width: 20%;
+        list-style: none;
+        text-align: center;
+    }
+    .tab__btn li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 18px 15px 15px 15px;
+        display: block;
+    }
+    .tab__btn li.active a {
+        border-bottom: 3px solid #000;
+        color: #000;
+    }
+    .tab__cont {
+        background: #fff;
+        padding: 20px;
+        color: #222;
+    }
+    .tab__cont &gt; div {
+        display: none;
+    } 
+    .tab__cont &gt; div:first-child {
+        display: block;
+    }
+    .tab__cont &gt; div h2 {
+        margin-bottom: 10px; 
+    }
+    .tab__cont &gt; div p {
+        line-height: 1.6;
+    }
+    @media (max-width: 800px){
+        #tab__menu {
+            width: 90%;
+        }
+        .tab__btn li a {
+            padding: 13px 10px 10px 10px;
+            font-size: 14px;
+        }
+        .tab__cont &gt; div h2 {
+            font-size: 16px;
+        }
+        .tab__cont &gt; div p {
+            font-size: 14px;
+        }
+    }
+&lt;/style&gt;
+</code></pre>
+                </div>
+                <!--//tab-cont2 -->
+
+                <div>
+<pre class="line-numbers language-js"><code>&lt;!-- script --&gt;
+&lt;script&gt;
+    const tabBtn = document.querySelectorAll(".tab__btn ul li");
+    const tabCont = document.querySelectorAll(".tab__cont &gt; div");
+
+    tabBtn.forEach((element, index) =&gt; {
+        element.addEventListener("click", function(){
+            
+            tabBtn.forEach( el =&gt; {
+                el.classList.remove("active");
+            });
+            element.classList.add("active");
+
+            tabCont.forEach( el =&gt; {
+                el.style.display = "none";
+            })
+            tabCont[index].style.display = "block";
+        });
+    })
+&lt;/script&gt;
+</code></pre>
+                </div>
+                <!--//tab-cont3 -->
+            </div>
+        </div>
+        <!-- //tab-munu -->
+    </div>
+    <!-- //code-preview -->
+
+    <div class="code-reference">
+        <h2>Site Reference</h2>
+        <p class="bubble warning">INSTAGRAM <a class="color-values" href="https://www.instagram.com/webstoryboy" target="_blank"> 바로가기</a></p>
+        <p class="bubble warning">STUDY <a class="color-values" href="https://cafe.naver.com/crossbrowsing" target="_blank"> 바로가기</a></p>
+        <p class="bubble warning">YOUTUBE <a class="color-values" href="https://www.youtube.com/webstoryboy"target="_blank"> 바로가기</a></p>
+        <p class="bubble warning">INFLUENCER <a class="color-values" href="https://in.naver.com/webstoryboy"target="_blank"> 바로가기</a></p>
+    </div>
+
+    <p class="bubble">
+        도움이 되셨다면 구독과 좋아요 버튼을 꾸욱~~!!<br>
+        여러분의 댓글은 영상을 제작하는데 많은 힘이 됩니다.<br>
+        모르시거나 궁금한 사항은 언제든지 댓글로 남겨주세요.<br>
+        최대한 힘이 되어 드리겠습니다.<br>
+        오늘도 수고하셨습니다.
+    </p>
+</div>
