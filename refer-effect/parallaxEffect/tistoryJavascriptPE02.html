@@ -77,9 +77,73 @@
         </table>
     </div>
 
+    <div class="code-reference">
+        <h2>Code Reference</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Value</td>
+                    <td>Description</td>
+                    <td>View</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.scrollTop()</code></td>
+                    <td>.scrollTop() 메서드는 선택한 요소의 세로 스크롤 값을 설정하거나 반환합니다.</td>
+                    <td><a href="https://webzz.tistory.com/129">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.scrollLeft()</code></td>
+                    <td>.addClass() 메서드는 선택한 요소의 가로 스크롤 값을 설정하거나 반환합니다.</td>
+                    <td><a class="color-view" href="https://webzz.tistory.com/128">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.offset()</code></td>
+                    <td>.addClass() 메서드는 선택한 요소의 위치 좌표 값(문서 기준)을 설정하거나 반환합니다.</td>
+                    <td><a class="color-view" href="https://webzz.tistory.com/125">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.width()</code></td>
+                    <td>.width() 메서드는 선택한 요소의 가로(패딩/마진/보더 불포함)를 설정합니다.</td>
+                    <td><a href="https://webzz.tistory.com/123">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.height()</code></td>
+                    <td>.height() 메서드는 선택한 요소의 높이(패딩/마진/보더 불포함)를 설정합니다.</td>
+                    <td><a href="https://webzz.tistory.com/118">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.text()</code></td>
+                    <td>.text() 메서드는 선택한 요소에 텍스트를 가져오거나 변경합니다.</td>
+                    <td><a href="https://webzz.tistory.com/149">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.addClass()</code></td>
+                    <td>.addClass() 메서드는 선택한 요소에 클래스를 추가하는 메서드입니다.</td>
+                    <td><a class="color-view" href="https://webzz.tistory.com/112">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.removeClass()</code></td>
+                    <td>.removeClass() 메서드는 선택한 요소에 클래스를 삭제하는 메서드입니다.</td>
+                    <td><a href="https://webzz.tistory.com/115">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.css()</code></td>
+                    <td>.css() 메서드는 선택한 요소에 CSS 속성 값을 설정합니다.</td>
+                    <td><a href="https://webzz.tistory.com/113">View</a></td>
+                </tr>
+                <tr>
+                    <td><code>.each()</code></td>
+                    <td>.hover() 메서드는 선택한 요소에 각각 함수를 실행합니다.</td>
+                    <td><a href="https://webzz.tistory.com/102">View</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <div class="code-preview">
         <h2>Code example</h2>
-
         <div class="tab-menu">
             <div class="tab-btn">
                 <ul>
@@ -104,42 +168,29 @@
 
     &lt;!-- header --&gt;
     &lt;header class="paraHeader"&gt;
-        &lt;h1&gt;&lt;a href="index.html"&gt;Parallax Effect01 - JavaScript&lt;/a&gt;&lt;/h1&gt;
-        &lt;p&gt;패랠랙스 스크로링 효과 - 메뉴 이동&lt;/p&gt;
+        &lt;h1&gt;&lt;a href="index.html"&gt;Parallax Effect02 - JavaScript&lt;/a&gt;&lt;/h1&gt;
+        &lt;p&gt;패랠랙스 스크로링 효과 - 닷 메뉴&lt;/p&gt;
     &lt;/header&gt;
     &lt;!-- //header --&gt;
 
     &lt;!-- nav --&gt;
-    &lt;nav class="paraNav"&gt;
+    &lt;nav class="paraDot"&gt;
         &lt;ul&gt;
-            &lt;li class="active"&gt;&lt;a href="#section1"&gt;s1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section2"&gt;s2&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section3"&gt;s3&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section4"&gt;s4&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section5"&gt;s5&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section6"&gt;s6&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section7"&gt;s7&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section8"&gt;s8&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section9"&gt;s9&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="active"&gt;&lt;a href="#section1"&gt;&lt;span&gt;section1&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section2"&gt;&lt;span&gt;section2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section3"&gt;&lt;span&gt;section3&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section4"&gt;&lt;span&gt;section4&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section5"&gt;&lt;span&gt;section5&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section6"&gt;&lt;span&gt;section6&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section7"&gt;&lt;span&gt;section7&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section8"&gt;&lt;span&gt;section8&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section9"&gt;&lt;span&gt;section9&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
     &lt;/nav&gt;
     &lt;!-- //nav --&gt;
 
     &lt;!-- info --&gt;
     &lt;div class="paraScroll"&gt;scrollTop() : &lt;span&gt;0&lt;/span&gt;px&lt;/div&gt;
-    &lt;div class="paraInfo"&gt;
-        &lt;ul&gt;
-            &lt;li&gt;#section1 offset() : &lt;span class="offset1"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section2 offset() : &lt;span class="offset2"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section3 offset() : &lt;span class="offset3"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section4 offset() : &lt;span class="offset4"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section5 offset() : &lt;span class="offset5"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section6 offset() : &lt;span class="offset6"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section7 offset() : &lt;span class="offset7"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section8 offset() : &lt;span class="offset8"&gt;0&lt;/span&gt;&lt;/li&gt;
-            &lt;li&gt;#section9 offset() : &lt;span class="offset9"&gt;0&lt;/span&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
     &lt;!-- //info --&gt;
 
     &lt;!-- main --&gt;
@@ -258,8 +309,8 @@
         &lt;div class="info"&gt;
             &lt;h3&gt;자바스크립트&lt;/h3&gt;
             &lt;ul&gt; 
-                &lt;li class="active"&gt;&lt;a href="javascriptPE01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="javascriptPE02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascriptPE01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="active"&gt;&lt;a href="javascriptPE02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href="javascriptPE03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href="javascriptPE04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
                 &lt;li&gt;&lt;a href="javascriptPE05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
@@ -270,6 +321,7 @@
         &lt;/div&gt;
     &lt;/footer&gt;
     &lt;!-- //footer --&gt;
+
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -403,33 +455,6 @@
     .content__item:nth-child(9) .content__item__img {
         background-image: url(../assets/img/bg19.jpg);
     }
-    /* nav */
-    .paraNav {
-        position: fixed;
-        right: 20px; top: 20px;
-        z-index: 1000;
-        background: rgba(0,0,0,.4);
-        padding: 15px 20px;
-        border-radius: 50px;
-    }
-    .paraNav li {
-        display: inline-block;
-        list-style: none;
-    }
-    .paraNav li a {
-        color: #fff;
-        text-decoration: none;
-        display: inline-block;
-        padding: 5px;
-        width: 30px; height: 30px;
-        text-align: center;
-        line-height: 30px;
-    }
-    .paraNav li.active a {
-        background: #fff;
-        color: #000;
-        border-radius: 50%;
-    }
     /* paraFooter */
     .paraFooter {
         padding: 10vw 0;
@@ -508,6 +533,47 @@
     .paraInfo li {
         list-style: none;
     }
+    .paraDot {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        z-index: 1000;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.4);
+        padding: 20px 10px;
+        border-radius: 30px;
+    }
+    .paraDot li {
+        list-style: none;
+    }
+    .paraDot li a {
+        width: 20px; 
+        height: 20px;
+        display: block;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        margin: 8px;
+        position: relative;
+        text-decoration: none;
+    }
+    .paraDot li a span {
+        position: absolute;
+        left: -105px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        color: #000;
+        display: block;
+        padding: 2px 15px;
+        border-radius: 30px;
+        opacity: 0;
+    }
+    .paraDot li.active a {
+        background: #fff;
+    }
+    .paraDot li.active a span {
+        opacity: 1;
+    }
 &lt;/style&gt;
 </code></pre>
                 </div>
@@ -516,7 +582,7 @@
                 <div>
 <pre class="line-numbers language-js"><code>&lt;!-- script --&gt;
 &lt;script&gt;
-    document.querySelectorAll(".paraNav ul li a").forEach(el =&gt; {
+    document.querySelectorAll(".paraDot ul li a").forEach(el =&gt; {
         el.addEventListener("click", e =&gt; {
             e.preventDefault();
             document.querySelector(el.getAttribute("href")).scrollIntoView({
@@ -529,71 +595,62 @@
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop || window.scrollY;
 
         if( scrollTop &gt;= document.getElementById("section1").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(1)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(1)").classList.add("active");
         }
         if( scrollTop &gt;= document.getElementById("section2").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(2)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(2)").classList.add("active");
         }
         if( scrollTop &gt;= document.getElementById("section3").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(3)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(3)").classList.add("active");
         }
         if( scrollTop &gt;= document.getElementById("section4").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(4)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(4)").classList.add("active");
         }
         if( scrollTop &gt;= document.getElementById("section5").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(5)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(5)").classList.add("active");
         }
         if( scrollTop &gt;= document.getElementById("section6").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(6)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(6)").classList.add("active");
         }
         if( scrollTop &gt;= document.getElementById("section7").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(7)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(7)").classList.add("active");
         }
         if( scrollTop &gt;= document.getElementById("section8").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(8)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(8)").classList.add("active");
         }
         if( scrollTop &gt;= document.getElementById("section9").offsetTop -2 ){
-            document.querySelectorAll(".paraNav ul li").forEach( el =&gt; {
+            document.querySelectorAll(".paraDot ul li").forEach( el =&gt; {
                 el.classList.remove("active")
             });
-            document.querySelector(".paraNav ul li:nth-child(9)").classList.add("active");
+            document.querySelector(".paraDot ul li:nth-child(9)").classList.add("active");
         }
 
         //info
         document.querySelector(".paraScroll span").innerText = parseInt(scrollTop) + "px";
-        document.querySelector(".offset1").innerText = parseInt(document.getElementById("section1").offsetTop) + "px";
-        document.querySelector(".offset2").innerText = parseInt(document.getElementById("section2").offsetTop) + "px";
-        document.querySelector(".offset3").innerText = parseInt(document.getElementById("section3").offsetTop) + "px";
-        document.querySelector(".offset4").innerText = parseInt(document.getElementById("section4").offsetTop) + "px";
-        document.querySelector(".offset5").innerText = parseInt(document.getElementById("section5").offsetTop) + "px";
-        document.querySelector(".offset6").innerText = parseInt(document.getElementById("section6").offsetTop) + "px";
-        document.querySelector(".offset7").innerText = parseInt(document.getElementById("section7").offsetTop) + "px";
-        document.querySelector(".offset8").innerText = parseInt(document.getElementById("section8").offsetTop) + "px";
-        document.querySelector(".offset9").innerText = parseInt(document.getElementById("section9").offsetTop) + "px";
     });
 &lt;/script&gt;
 </code></pre>
