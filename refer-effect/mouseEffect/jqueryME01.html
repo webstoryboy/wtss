@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Layout</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 300;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-style: normal;
+        }
+        * {
+            margin: 0; padding: 0;
+        }
+
+        /* mouse */
+        .mouse {
+            background: #222;
+            color: #fff;
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+        }
+        .bg {
+            position: relative;
+            height: 100vh;
+            background-image: url(../assets/img/bg11.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .bg::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(52, 5, 70, 0.6);
+            z-index: -1;
+        }
+
+        /* info */
+        .info {
+            color: #fff;
+            font-family: "NEXONLv1Gothic";
+            padding: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .info.right {
+            left: auto;
+            right: 0px;
+            top: 0px;
+        }
+        .info h1 {
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 1.6;
+            border-bottom: 1px dashed #fff;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .info h1 a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        .info p {
+            font-weight: 300;
+            font-size: 16px;
+        }
+        .info li {
+            list-style: none;
+            display: inline;
+        }
+        .info li a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            line-height: 21px;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .info li.active a {
+            background: #fff;
+            color: #000;
+        }
+        .info.left {
+            top: auto;
+            right: 0px;
+            bottom: 0px;
+        }
+        .info.left li {
+            display: block;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* mouseCont */
+        .mouseCont {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #fff;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'NEXONLv1Gothic';
+            cursor: none;
+        }
+        .mouseCont p {
+            font-size: 2.5vw;
+            line-height: 2;
+            font-weight: 300;
+        }
+        .mouseCont p:last-child {
+            font-size: 3vw;
+            font-weight: normal;
+            font-weight: 400;
+        }
+        .mouseCont span {
+            font-style: normal;
+            border-bottom: 0.15vw dashed #fff;
+        }
+        .cursor {
+            position: absolute;
+            left: 0; top: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            z-index: 9999;
+            background-color: rgba(255,255,255,0.1);
+            user-select: none;
+            pointer-events: none;
+            transition: 
+                background-color .2s,
+                border-color .2s,
+                border-radius .2s,
+                transform .6s
+        }
+        .cursor.style1 {
+            background-color: rgba(255, 165, 0, 0.4);
+            border-color: orange
+        }
+        .cursor.style2 {
+            background-color: rgb(140, 0, 255, 0.4);
+            border-color: rgb(140, 0, 255);
+            transform: rotateY(720deg) scale(2);
+        }
+        .cursor.style3 {
+            background-color: rgb(0, 47, 255, 0.4);
+            border-color: rgb(0, 47, 255);
+            transform: scale(1.5) rotate(45deg);
+            border-radius: 10px;
+        }
+        .cursor.style4 {
+            background-color: rgb(121, 235, 197, 0.4);
+            border-color: rgb(121, 235, 197);
+            transform: scale(10) rotateY(360deg);
+        }
+        .cursor.style5 {
+            background-color: rgb(255, 0, 85, 0.4);
+            border-color: rgb(255, 0, 85);
+            transform: rotateY(720deg) scale(0.1);
+        }
+        .cursor.style6 {
+            background-color: rgb(255, 81, 0, 0.4);
+            border-color: rgb(255, 81, 0);
+            transform: scale(1.5) rotate(-720deg);
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body class="mouse bg">
+
+    <!-- main -->
+    <main id="mouseCont">
+        <div class="cursor"></div>
+
+        <div class="mouseCont">
+            <p>To climb <span class="style1">steep</span> hills requires <span class="style2">slow</span> pace at <span class="style3">first.</span></p>
+            <p><span class="style4">험준한</span> 산을 <span class="style5">오르기</span> 위해선 먼저 <span class="style6">천천히</span> 걸어야 한다.</p>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <!-- info -->
+    <div class="info">
+        <h1><a href="index.html">Mouse Effect01 - jQuery</a></h1>
+        <p>마우스 이펙트 - 따라다니기</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li><a href="javascriptME01.html">1</a></li>
+            <li><a href="javascriptME02.html">2</a></li>
+            <li><a href="javascriptME03.html">3</a></li>
+            <li><a href="javascriptME04.html">4</a></li>
+            <li><a href="javascriptME05.html">5</a></li>
+            <li><a href="javascriptME06.html">6</a></li>
+            <li><a href="javascriptME07.html">7</a></li>
+            <li><a href="javascriptME08.html">8</a></li>
+            <li><a href="javascriptME09.html">9</a></li>
+        </ul>
+        <ul>
+            <li class="active"><a href="jqueryME01.html">1</a></li>
+            <li><a href="jqueryME02.html">2</a></li>
+            <li><a href="jqueryME03.html">3</a></li>
+            <li><a href="jqueryME04.html">4</a></li>
+            <li><a href="jqueryME05.html">5</a></li>
+            <li><a href="jqueryME06.html">6</a></li>
+            <li><a href="jqueryME07.html">7</a></li>
+            <li><a href="jqueryME08.html">8</a></li>
+            <li><a href="jqueryME09.html">9</a></li>
+        </ul>
+    </div>
+
+    <div class="info left">
+        <ul>
+            <li>clientX : <span class="clientX">0</span>px</li>
+            <li>clientY : <span class="clientY">0</span>px</li>
+            <li>offsetX : <span class="offsetX">0</span>px</li>
+            <li>offsetY : <span class="offsetY">0</span>px</li>
+            <li>pageX : <span class="pageX">0</span>px</li>
+            <li>pageY : <span class="pageY">0</span>px</li>
+            <li>screenX : <span class="screenX">0</span>px</li>
+            <li>screenY : <span class="screenY">0</span>px</li>
+        </ul>
+    </div>
+    <!-- //info -->
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        // 출력용
+        $(window).mousemove(function(e){
+            $(".clientX").text(e.clientX);   //브라우저 X좌표 기준
+            $(".clientY").text(e.clientY);   //브라우저 Y좌표 기준
+            $(".offsetX").text(e.offsetX);   //요소 X좌표 기준
+            $(".offsetY").text(e.offsetY);   //요소 Y좌표 기준
+            $(".pageX").text(e.pageX);       //페이지 X좌표 기준
+            $(".pageY").text(e.pageY);       //페이지 Y좌표 기준
+            $(".screenX").text(e.screenX);   //디바이스 X좌표 기준
+            $(".screenY").text(e.screenY);   //디바이스 Y좌표 기준
+        });
+
+        //마우스 움직이기
+        $(window).mousemove(function(e){
+            // $(".cursor").css("left","100px");
+            // $(".cursor").css("top","100px");
+            // $(".cursor").css({"left":"100px", "top":"100px"});
+            // $(".cursor").css({left:"100px", top:"100px"});
+            // $(".cursor").css({left:100, "background-color":100});
+            // $(".cursor").css({left:100, backgroundColor:100});
+            
+            $(".cursor").css({ left: e.clientX - 25, top: e.clientY - 25});
+        });
+
+        // $(".mouseCont .style1").hover(function(){
+        //     $(".cursor").addClass("style1");
+        // }, function(){
+        //     $(".cursor").removeClass("style1");
+        // });
+        // $(".mouseCont .style2").hover(function(){
+        //     $(".cursor").addClass("style2");
+        // }, function(){
+        //     $(".cursor").removeClass("style2");
+        // });
+        // $(".mouseCont .style3").hover(function(){
+        //     $(".cursor").addClass("style3");
+        // }, function(){
+        //     $(".cursor").removeClass("style3");
+        // });
+        // $(".mouseCont .style4").hover(function(){
+        //     $(".cursor").addClass("style4");
+        // }, function(){
+        //     $(".cursor").removeClass("style4");
+        // });
+        // $(".mouseCont .style5").hover(function(){
+        //     $(".cursor").addClass("style5");
+        // }, function(){
+        //     $(".cursor").removeClass("style5");
+        // });
+        // $(".mouseCont .style6").hover(function(){
+        //     $(".cursor").addClass("style6");
+        // }, function(){
+        //     $(".cursor").removeClass("style6");
+        // });
+
+        //for문
+        // for( let i=1; i<=6; i++ ){
+        //     $(".mouseCont .style"+i).hover(function(){
+        //         $(".cursor").addClass("style"+i);
+        //     }, function(){
+        //         $(".cursor").removeClass("style"+i);
+        //     });
+        // }
+
+        //each()
+        // $(".mouseCont span").each((index, element) => {
+        //     $(element).hover(function(){
+        //         $(".cursor").addClass("style"+ (index+1));
+        //     }, function(){
+        //         $(".cursor").removeClass("style"+(index+1));
+        //     });
+        // });
+
+        //attr()
+        $(".mouseCont span").hover(function(){
+            $(".cursor").addClass($(this).attr("class"));
+        }, function(){
+            $(".cursor").removeClass($(this).attr("class"));
+        });
+    </script>
+</body>
+</html>

@@ -10,7 +10,7 @@
 
     <div class="code-youtube">
         <h2>Code Youtube</h2>
-        <iframe src="https://www.youtube.com/embed/ZnpuO1uA2Yo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <!-- //code-youtube -->
 
@@ -19,7 +19,7 @@
         <p class="bubble info">전체 소스는 여기서 다운 받을 수 있습니다. </p>
         <p class="bubble info"><a class="color-values" href="https://github.com/webstoryboy/wtss" target="_blank">바로가기</a></p>
         <p class="bubble warning">샘플 소스는 여기서 확인 할 수 있습니다. </p>
-        <p class="bubble warning"><a class="color-values" href="https://webstoryboy.github.io/wtss/refer-effect/parallaxEffect/jqueryPE02.html" target="_blank">바로가기</a></p>
+        <p class="bubble warning"><a class="color-values" href="https://webstoryboy.github.io/wtss/refer-effect/parallaxEffect/javascriptPE08.html" target="_blank">바로가기</a></p>
     </div>
     <!-- //code-reference -->
 
@@ -79,7 +79,6 @@
 
     <div class="code-preview">
         <h2>Code example</h2>
-
         <div class="tab-menu">
             <div class="tab-btn">
                 <ul>
@@ -99,6 +98,7 @@
     &lt;title&gt;Parallax Effect&lt;/title&gt;
 
     &lt;link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet"&gt;
+    
 &lt;/head&gt;
 &lt;body class="parallax"&gt;
 
@@ -107,23 +107,23 @@
     &lt;!-- //info --&gt;
 
     &lt;header id="paraHeader"&gt;
-        &lt;h1&gt;Parallax Effect02 - jQuery&lt;/h1&gt;
-        &lt;p&gt;패럴랙스 스크롤링 효과 - 닷 메뉴&lt;/p&gt;
+        &lt;h1&gt;Parallax Effect08 - Javascript&lt;/h1&gt;
+        &lt;p&gt;패럴랙스 스크롤링 효과 - 리빌 효과&lt;/p&gt;
     &lt;/header&gt;
     &lt;!-- //header --&gt;
 
     &lt;!-- nav --&gt;
-    &lt;nav class="paraDot"&gt;
+    &lt;nav class="paraNav"&gt;
         &lt;ul&gt;
-            &lt;li class="active"&gt;&lt;a href="#section1"&gt;&lt;span&gt;section1&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section2"&gt;&lt;span&gt;section2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section3"&gt;&lt;span&gt;section3&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section4"&gt;&lt;span&gt;section4&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section5"&gt;&lt;span&gt;section5&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section6"&gt;&lt;span&gt;section6&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section7"&gt;&lt;span&gt;section7&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section8"&gt;&lt;span&gt;section8&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#section9"&gt;&lt;span&gt;section9&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="active"&gt;&lt;a href="#section1"&gt;메뉴1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section2"&gt;메뉴2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section3"&gt;메뉴3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section4"&gt;메뉴4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section5"&gt;메뉴5&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section6"&gt;메뉴6&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section7"&gt;메뉴7&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section8"&gt;메뉴8&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#section9"&gt;메뉴9&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
     &lt;/nav&gt;
     &lt;!-- //nav --&gt;
@@ -132,90 +132,90 @@
         &lt;section id="section1" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;01&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section1&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;높은 목표를 세우고, 스스로 채찍질 한다.&lt;/p&gt;
+            &lt;p class="content__item__desc reveal" data-delay="500"&gt;&lt;span&gt;높은 목표를 세우고, 스스로 채찍질 한다.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section1 --&gt;
 
         &lt;section id="section2" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;02&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section2&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal reveal-RTL"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;결과도 중요하지만, 과정을 더 중요하게 생각한다.&lt;/p&gt;
+            &lt;p class="content__item__desc reveal reveal-RTL" data-delay="500"&gt;&lt;span&gt;결과도 중요하지만, 과정을 더 중요하게 생각한다.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section2 --&gt;
 
         &lt;section id="section3" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;03&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section3&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal reveal-TTB"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;매 순간에 최선을 다하고, 끊임없이 변화한다.&lt;/p&gt;
+            &lt;p class="content__item__desc reveal reveal-TTB" data-delay="500"&gt;&lt;span&gt;매 순간에 최선을 다하고, 끊임없이 변화한다.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section3 --&gt;
 
         &lt;section id="section4" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;04&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section4&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal reveal-BTT"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;모든지 기본을 중요하게 생각하고 행동한다.&lt;/p&gt;
+            &lt;p class="content__item__desc reveal reveal-BTT" data-delay="500"&gt;&lt;span&gt;모든지 기본을 중요하게 생각하고 행동한다.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section4 --&gt;
 
         &lt;section id="section5" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;05&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section5&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal reveal-two"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.&lt;/p&gt;
+            &lt;p class="content__item__desc reveal reveal-two" data-delay="500"&gt;&lt;span&gt;열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section5 --&gt;
 
         &lt;section id="section6" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;06&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section6&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal reveal-two reveal-RTL"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;천 마디 말보단 하나의 행동이 더 값지다.&lt;/p&gt;
+            &lt;p class="content__item__desc reveal reveal-two reveal-RTL" data-delay="500"&gt;&lt;span&gt;천 마디 말보단 하나의 행동이 더 값지다.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section6 --&gt;
 
         &lt;section id="section7" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;07&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section7&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal reveal-two reveal-TTB"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;조그만 성공에 만족하지 않으며, 방심을 경계한다.&lt;/p&gt;
+            &lt;p class="content__item__desc reveal reveal-two reveal-TTB" data-delay="500"&gt;&lt;span&gt;조그만 성공에 만족하지 않으며, 방심을 경계한다.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section7 --&gt;
 
         &lt;section id="section8" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;08&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section8&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal reveal-two reveal-BTT"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;나는 내가 더 노력할수록 운이 더 좋아진다는 걸 발견했다&lt;/p&gt;
+            &lt;p class="content__item__desc reveal reveal-two reveal-BTT" data-delay="500"&gt;&lt;span&gt;나는 내가 더 노력할수록 운이 더 좋아진다는 걸 발견했다.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section8 --&gt;
 
         &lt;section id="section9" class="content__item"&gt;
             &lt;span class="content__item__num"&gt;09&lt;/span&gt;
             &lt;h2 class="content__item__title"&gt;Section9&lt;/h2&gt;
-            &lt;figure class="content__item__imgWrap"&gt;
+            &lt;figure class="content__item__imgWrap reveal reveal-two reveal-BTT"&gt;
                 &lt;div class="content__item__img"&gt;&lt;/div&gt;
             &lt;/figure&gt;
-            &lt;p class="content__item__desc"&gt;꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.&lt;/p&gt;
+            &lt;p class="content__item__desc reveal reveal-two reveal-RTL" data-delay="500"&gt;&lt;span&gt;꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.&lt;/span&gt;&lt;/p&gt;
         &lt;/section&gt;
         &lt;!-- //section9 --&gt;
     &lt;/main&gt;
@@ -226,27 +226,27 @@
         &lt;div class="footerInfo"&gt;
             &lt;h3&gt;제이쿼리&lt;/h3&gt;
             &lt;ul&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect01-jquery.html"&gt;1&lt;/a&gt;&lt;/li&gt;
-                &lt;li class="active"&gt;&lt;a href="parallaxEffect02-jquery.html"&gt;2&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect03-jquery.html"&gt;3&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect04-jquery.html"&gt;4&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect05-jquery.html"&gt;5&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect06-jquery.html"&gt;6&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect07-jquery.html"&gt;7&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect08-jquery.html"&gt;8&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="jqueryPE01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="jqueryPE02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="jqueryPE03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="jqueryPE04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="jqueryPE05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="jqueryPE06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="jqueryPE07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="jqueryPE08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
         &lt;/div&gt;
         &lt;div class="footerInfo"&gt;
             &lt;h3&gt;자바스크립트&lt;/h3&gt;
             &lt;ul&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect01-javascript.html"&gt;1&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect02-javascript.html"&gt;2&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect03-javascript.html"&gt;3&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect04-javascript.html"&gt;4&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect05-javascript.html"&gt;5&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect06-javascript.html"&gt;6&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect07-javascript.html"&gt;7&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="parallaxEffect08-javascript.html"&gt;8&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascriptPE01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascriptPE02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascriptPE03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascriptPE04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascriptPE05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascriptPE06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="javascriptPE07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="active"&gt;&lt;a href="javascriptPE08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
         &lt;/div&gt;
     &lt;/footer&gt;
@@ -375,21 +375,17 @@
     .content__item__imgWrap {
         width: 100%;
         padding-bottom: 56%;
-        background: #000;
         position: relative;
+        overflow: hidden;
     }
     .content__item__img {
         position: absolute;
-        left: 0; top: 0;
-        width: 100%;
-        height: 100%;
+        left: -10%; top: -10%;
+        width: 120%;
+        height: 120%;
         background-repeat: no-repeat;
         background-size: cover;
         filter: saturate(0%);
-        transition: all 1s;
-    }
-    .content__item__img:hover {
-        filter: saturate(100%);
     }
     .content__item__desc {
         font-size: 4vw;
@@ -432,47 +428,33 @@
         background-image: url(https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg9.jpg);
     }
 
-    /* paraDot */
-    .paraDot {
+    /* nav */
+    .paraNav {
         position: fixed;
-        right: 20px;
-        top: 50%;
+        right: 20px; top: 20px;
         z-index: 1000;
-        transform: translateY(-50%);
-        background: rgba(0,0,0,0.4);
-        padding: 20px 10px;
-        border-radius: 30px;
+        background: rgba(0,0,0,.4);
+        padding: 15px 20px;
+        border-radius: 50px;
+        transition: top 0.4s ease;
     }
-    .paraDot li {
+    .paraNav li {
+        display: inline-block;
         list-style: none;
     }
-    .paraDot li a {
-        width: 20px; 
-        height: 20px;
-        display: block;
-        border: 2px solid #fff;
-        border-radius: 50%;
-        margin: 8px;
-        position: relative;
+    .paraNav li a {
+        color: #fff;
         text-decoration: none;
+        display: inline-block;
+        padding: 5px 20px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 30px;
     }
-    .paraDot li a span {
-        position: absolute;
-        left: -105px;
-        top: 50%;
-        transform: translateY(-50%);
+    .paraNav li.active a {
         background: #fff;
         color: #000;
-        display: block;
-        padding: 2px 15px;
-        border-radius: 30px;
-        opacity: 0;
-    }
-    .paraDot li.active a {
-        background: #fff;
-    }
-    .paraDot li.active a span {
-        opacity: 1;
     }
 
     /* info */
@@ -490,6 +472,95 @@
         font-size: 12px;
         padding: 0px 20px;
     }
+
+    /* 애니메이션 */
+    .reveal &gt; div,
+    .reveal &gt; span {
+        opacity: 0;
+    }
+    .reveal.show &gt; div,
+    .reveal.show &gt; span {
+        animation: opacity 1000ms 200ms linear forwards;
+    }
+    .reveal {
+        position: relative;
+    }
+    .reveal::before {
+        content: '';
+        position: absolute;
+        right: 0; top: 0;
+        width: 0;
+        height: 100%;
+        z-index: 100;
+        background: #fff;
+    }
+    .reveal.reveal-two::after {
+        content: '';
+        position: absolute;
+        right: 0; top: 0;
+        width: 0;
+        height: 100%;
+        z-index: 100;
+        background: orange;
+    }
+    /* 기본값 */
+    .reveal.show::before {
+        animation: reveal 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+    .reveal.reveal-RTL.show::before {
+        animation: reveal-RTL 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+    .reveal.reveal-TTB.show::before {
+        animation: reveal-TTB 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+    .reveal.reveal-BTT.show::before {
+        animation: reveal-BTT 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    /* 두가지 */
+    .reveal.show::after {
+        animation: reveal 1000ms 300ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+    .reveal.reveal-RTL.show::after {
+        animation: reveal-RTL 1000ms 300ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+    .reveal.reveal-TTB.show::after {
+        animation: reveal-TTB 1000ms 300ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+    .reveal.reveal-BTT.show::after {
+        animation: reveal-BTT 1000ms 300ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    @keyframes opacity {
+        0%   {opacity: 0;}
+        60%  {opacity: 0;}
+        70%  {opacity: 1;}
+        100% {opacity: 1;}
+    }
+    @keyframes reveal {
+        0%   {width: 0;    left: 0;}
+        50%  {width: 100%; left: 0;}
+        80%  {width: 100%; left: 0;}
+        100% {width: 0;    left: 100%;}
+    }
+    @keyframes reveal-RTL {
+        0%   {width: 0;    right: 0;}
+        50%  {width: 100%; right: 0;}
+        80%  {width: 100%; right: 0;}
+        100% {width: 0;    right: 100%;}
+    }
+    @keyframes reveal-TTB {
+        0%   {width: 100%; height: 0;    top: 0;}
+        50%  {width: 100%; height: 100%; top: 0;}
+        80%  {width: 100%; height: 100%; top: 0;}
+        100% {width: 100%; height: 0;    top: 100%;}
+    }
+    @keyframes reveal-BTT {
+        0%   {width: 100%; height: 0;    top: auto; bottom: 0;}
+        50%  {width: 100%; height: 100%; top: auto; bottom: 0;}
+        80%  {width: 100%; height: 100%; top: auto; bottom: 0;}
+        100% {width: 100%; height: 0;    top: auto; bottom: 100%;}
+    }
 &lt;/style&gt;
 </code></pre>
                 </div>
@@ -497,67 +568,32 @@
 
                 <div>
 <pre class="line-numbers language-js"><code>&lt;!-- script --&gt;
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"&gt;&lt;/script&gt;
 &lt;script&gt;
-    $(".paraDot ul li").click(function(e){
-        e.preventDefault();
-        let target = $(this);       //타겟 설정 : 사용자가 클릭한 버튼을 저장
-        let index = target.index()  //인덱스 설정
-        //alert(index)
-        let section = $(".content__item").eq(index);
-        let offset = section.offset().top;
-        //alert(offset);
-        $("html, body").animate({scrollTop: offset}, 600, "easeInQuint");
-    });
+    function scrollReveal(){
+        let scrollTop = document.documentElement.scrollTop + window.innerHeight;
 
-    $(window).scroll(function(){
-        let scrollTop = $(this).scrollTop();
+        document.querySelectorAll(".reveal").forEach(elem =&gt; {
+            let delay = elem.getAttribute("data-delay");
 
-        $(".paraScroll span").text(parseInt(scrollTop));
-
-        // if( scrollTop &gt;= $(".content-item").eq(0).offset().top -2 ){
-        //     $(".paraDot ul li").eq(0).addClass("active").siblings().removeClass("active");
-        // }
-        // if( scrollTop &gt;= $(".content-item").eq(1).offset().top -2 ){
-        //     $(".paraDot ul li").eq(1).addClass("active").siblings().removeClass("active");
-        // }
-        // if( scrollTop &gt;= $(".content-item").eq(2).offset().top -2 ){
-        //     $(".paraDot ul li").eq(2).addClass("active").siblings().removeClass("active");
-        // }
-        // if( scrollTop &gt;= $(".content-item").eq(3).offset().top -2 ){
-        //     $(".paraDot ul li").eq(3).addClass("active").siblings().removeClass("active");
-        // }
-        // if( scrollTop &gt;= $(".content-item").eq(4).offset().top -2 ){
-        //     $(".paraDot ul li").eq(4).addClass("active").siblings().removeClass("active");
-        // }
-        // if( scrollTop &gt;= $(".content-item").eq(5).offset().top -2 ){
-        //     $(".paraDot ul li").eq(5).addClass("active").siblings().removeClass("active");
-        // }
-        // if( scrollTop &gt;= $(".content-item").eq(6).offset().top -2 ){
-        //     $(".paraDot ul li").eq(6).addClass("active").siblings().removeClass("active");
-        // }
-        // if( scrollTop &gt;= $(".content-item").eq(7).offset().top -2 ){
-        //     $(".paraDot ul li").eq(7).addClass("active").siblings().removeClass("active");
-        // }
-        // if( scrollTop &gt;= $(".content-item").eq(8).offset().top -2 ){
-        //     $(".paraDot ul li").eq(8).addClass("active").siblings().removeClass("active");
-        // }
-
-        //for문
-        // for(let i=0; i&lt;$(".content-item").length; i++){
-        //     if( scrollTop &gt;= $(".content-item").eq(i).offset().top -2 ){
-        //         $(".paraDot ul li").eq(i).addClass("active").siblings().removeClass("active");
-        //     }
-        // }
-
-        //each()
-        $(".content__item").each(function(i){
-            if( scrollTop &gt;= $(".content__item").eq(i).offset().top -2 ){
-                $(".paraDot ul li").eq(i).addClass("active").siblings().removeClass("active");
+            if(scrollTop &gt; elem.parentElement.offsetTop){
+                setTimeout(function(){
+                    elem.classList.add("show");
+                }, delay);
             }
         });
-    });
+
+        //메뉴
+        document.querySelectorAll(".content__item").forEach((item, idx) =&gt; {
+            if( scrollTop &gt;= item.offsetTop -2 ){
+                document.querySelectorAll(".paraNav ul li").forEach(li =&gt; {
+                    li.classList.remove("active");
+                });
+                document.querySelector(".paraNav ul li:nth-child("+(idx+1)+")").classList.add("active");
+            }
+        });
+    }
+    window.addEventListener("scroll", scrollReveal);
 &lt;/script&gt;
 </code></pre>
                 </div>

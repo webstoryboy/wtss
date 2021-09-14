@@ -248,7 +248,7 @@
         } */
 
         /* animate css */
-        .content__item__desc span {
+        /* .content__item__desc span {
             display: inline-block;
             min-width: 20px;
             opacity: 0;
@@ -283,7 +283,6 @@
                 -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
                 animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
             }
-
             60% {
                 opacity: 1;
                 -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
@@ -291,17 +290,21 @@
                 -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
                 animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
             }
+        } */
+
+        /* GSAP 한글자씩 나타나기 */
+        .content__item__desc span {
+            opacity: 0;
+            display: inline-block;
+            transform: translate(50px, 100px) skewX(-30deg) rotate(-90deg);
+            min-width: 20px
         }
     </style>
 </head>
 <body class="parallax">
 
-    <!-- info -->
-    <div class="paraScroll">scrollTop() : <span>0</span>px</div>
-    <!-- //info -->
-
     <header id="paraHeader">
-        <h1>Parallax Effect07 - Javascript</h1>
+        <h1>Parallax Effect07 - jQuery</h1>
         <p>패럴랙스 스크롤링 효과 - 텍스트 효과</p>
     </header>
     <!-- //header -->
@@ -426,7 +429,7 @@
                 <li><a href="parallaxEffect04-jquery.html">4</a></li>
                 <li><a href="parallaxEffect05-jquery.html">5</a></li>
                 <li><a href="parallaxEffect06-jquery.html">6</a></li>
-                <li><a href="parallaxEffect07-jquery.html">7</a></li>
+                <li class="active"><a href="parallaxEffect07-jquery.html">7</a></li>
                 <li><a href="parallaxEffect08-jquery.html">8</a></li>
             </ul>
         </div>
@@ -439,7 +442,7 @@
                 <li><a href="parallaxEffect04-javascript.html">4</a></li>
                 <li><a href="parallaxEffect05-javascript.html">5</a></li>
                 <li><a href="parallaxEffect06-javascript.html">6</a></li>
-                <li class="active"><a href="parallaxEffect07-javascript.html">7</a></li>
+                <li><a href="parallaxEffect07-javascript.html">7</a></li>
                 <li><a href="parallaxEffect08-javascript.html">8</a></li>
             </ul>
         </div>
@@ -447,111 +450,147 @@
     <!-- //footer -->
 
     <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script>
         //글씨 쪼개기
-        // let text = document.querySelector("#section1 .content-item-desc")
-        // let splitText = text.innerText;
-        // let splitWrap = splitText.split("").join("</span><span>");
-        //     splitWrap = "<span>" + splitWrap + "</span>";
-        //     text.innerHTML = splitWrap;
-        
-        //한번에 글씨 쪼개기
-        document.querySelectorAll(".content__item__desc").forEach(elem => {
-            let splitText = elem.innerText;
-            let splitWrap = splitText.split("").join("</span><span aria-hidden='true'>");
-                splitWrap = "<span aria-hidden='true'>" + splitWrap + "</span>";
-            elem.innerHTML = splitWrap;
-            elem.setAttribute("aria-label", splitText);
+        // let text = $("#section1 .content__item__desc").text();
+        // let split = text.split("").join("</span><span>");
+        //     split = "<span>" + split + "</span>";
+
+        // $("#section1 .content__item__desc").html(split);
+
+        //다중 글씨 쪼개기
+        $(".content__item__desc").each(function(){
+            let text = $(this).text();
+            let split = text.split("").join("</span><span aria-hidden='true'>");
+                split = "<span aria-hidden='true'>" + split + "</span>";
+            $(this).html(split).attr("aria-label", text);
         });
 
-        window.addEventListener("scroll", () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            // if( scrollTop >= document.getElementById("section1").offsetTop ){
-            //     document.querySelectorAll("#section1 .content__item__desc span").forEach((elem, index) => {
+        $(window).scroll(function(){
+            // if( $(window).scrollTop() > $("#section1").offset().top ){
+            //     $("#section1 .content__item__desc").addClass("show");
+            // } else {
+            //     $("#section1 .content__item__desc").removeClass("show");
+            // }
+            // if( $(window).scrollTop() > $("#section1").offset().top ){
+            //     $("#section1 .content__item__desc").addClass("show");
+            // } else {
+            //     $("#section1 .content__item__desc").removeClass("show");
+            // }
+            // if( $(window).scrollTop() > $("#section1").offset().top ){
+            //     $("#section1 .content__item__desc").addClass("show");
+            // } else {
+            //     $("#section1 .content__-item__desc").removeClass("show");
+            // }
+            //.......
+
+            //each문 변경
+            // $(".content__item__desc").each(function(){
+            //     if( $(window).scrollTop() > $(this).offset().top - $(window).height()/2 ){
+            //         $(this).addClass("show");
+            //     } else {
+            //         $(this).removeClass("show");
+            //     }
+            // });
+
+            //한글자씩 나타나기
+            // if( $(window).scrollTop() >= $("#section1").offset().top ){
+            //     $("#section1 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section1 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
-            // if( scrollTop >= document.getElementById("section2").offsetTop ){
-            //     document.querySelectorAll("#section2 .content__item__desc span").forEach((elem, index) => {
+            // if( $(window).scrollTop() >= $("#section2").offset().top ){
+            //     $("#section2 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section2 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
-            // if( scrollTop >= document.getElementById("section3").offsetTop ){
-            //     document.querySelectorAll("#section3 .content__item__desc span").forEach((elem, index) => {
+            // if( $(window).scrollTop() >= $("#section3").offset().top ){
+            //     $("#section3 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section3 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
-            // if( scrollTop >= document.getElementById("section4").offsetTop ){
-            //     document.querySelectorAll("#section4 .content__item__desc span").forEach((elem, index) => {
+            // if( $(window).scrollTop() >= $("#section4").offset().top ){
+            //     $("#section4 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section4 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
-            // if( scrollTop >= document.getElementById("section5").offsetTop ){
-            //     document.querySelectorAll("#section5 .content__item__desc span").forEach((elem, index) => {
+            // if( $(window).scrollTop() >= $("#section5").offset().top ){
+            //     $("#section5 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section5 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
-            // if( scrollTop >= document.getElementById("section6").offsetTop ){
-            //     document.querySelectorAll("#section6 .content__item__desc span").forEach((elem, index) => {
+            // if( $(window).scrollTop() >= $("#section6").offset().top ){
+            //     $("#section6 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section6 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
-            // if( scrollTop >= document.getElementById("section7").offsetTop ){
-            //     document.querySelectorAll("#section7 .content__item__desc span").forEach((elem, index) => {
+            // if( $(window).scrollTop() >= $("#section7").offset().top ){
+            //     $("#section7 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section7 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
-            // if( scrollTop >= document.getElementById("section8").offsetTop ){
-            //     document.querySelectorAll("#section8 .content__item__desc span").forEach((elem, index) => {
+            // if( $(window).scrollTop() >= $("#section8").offset().top ){
+            //     $("#section8 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section8 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
-            // if( scrollTop >= document.getElementById("section9").offsetTop ){
-            //     document.querySelectorAll("#section9 .content__item__desc span").forEach((elem, index) => {
+            // if( $(window).scrollTop() >= $("#section9").offset().top ){
+            //     $("#section9 .content__item__desc span").each((i) => {
             //         setTimeout(() => {
-            //             elem.classList.add("show");
-            //         }, 50 * (index + 1))
+            //             $("#section9 .content__item__desc span").eq(i).addClass("show");
+            //         }, 50 * (i + 1));
             //     })
             // }
 
-            document.querySelectorAll(".content__item").forEach(elem => {
-                if( scrollTop >= elem.offsetTop ){
-                    elem.querySelectorAll(".content__item__desc span").forEach((el, index) => {
-                        setTimeout(() => {
-                            el.classList.add("show");
-                        }, 50 * (index + 1))
-                    })
-                }
-            });
+            // for( let i=1; i<=9; i++ ){
+            //     if( $(window).scrollTop() >= $("#section"+i).offset().top ){
+            //         $("#section"+i+" .content__item__desc span").each((index) => {
+            //             setTimeout(() => {
+            //                 $("#section"+i+" .content__item__desc span").eq(index).addClass("show");
+            //             }, 50 * (index + 1));
+            //         })
+            //     }
+            // }
 
-            //메뉴
-            document.querySelectorAll(".content__item").forEach((item, idx) => {
-                if( scrollTop >= item.offsetTop -2 ){
-                    document.querySelectorAll(".paraNav ul li").forEach(li => {
-                        li.classList.remove("active");
+            $(".content__item").each(function(index){
+                if( $(window).scrollTop() >= $(this).offset().top ){
+                    gsap.to( $(this).find(".content__item__desc span"), {
+                        duration: 1,
+                        stagger: .05,
+                        opacity: 1,
+                        y: 0,
+                        skewX: 0,
+                        rotation: 0,
+                        scale: 1,
+                        ease: "power4.out"
                     });
-                    document.querySelector(".paraNav ul li:nth-child("+(idx+1)+")").classList.add("active");
+
+                    //nav
+                    $(".paraNav ul li").eq(index).addClass("active").siblings().removeClass("active");
                 }
-            });
-        })
+
+            })
+        });
     </script>
 </body>
 </html>
