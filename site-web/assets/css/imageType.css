@@ -1,0 +1,84 @@
+/* imageType */
+body {
+    background-color: #f3f3f3;
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.imageType {
+    margin: 150px 0;
+    background-color: #fff;
+    box-shadow: 0 0 50px rgba(0,0,0,0.1);
+}
+
+/* imageTypee01 */
+.imageType01 {
+    font-family: 'GmarketSans';
+    padding: 100px 0;
+}
+.imageType01 h2 {
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 36px;
+    line-height: 1;
+}
+.imageType01 .image-wrap {
+    overflow: hidden;
+}
+.imageType01 .image {
+    position: relative;
+    float: left;
+    width: 590px;
+    height: 385px;
+}
+.imageType01 .image:first-child {
+    margin-right: 20px;
+}
+.imageType01 .image .image-cont {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    color: #fff;
+}
+.imageType01 .image .image-title {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    line-height: 1;
+}
+.imageType01 .image .image-desc {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    padding-right: 30%;
+    word-break: keep-all;
+}
+.imageType01 .image .image-btn {
+    padding: 8px 18px;
+    display: inline-block;
+    background-color: #777;
+    color: #fff;
+    margin-top: 10px;
+}
+.imageType01 .image .image-btn.red {
+    background-color: #9a481d;
+}
+.imageType01 .image .image-btn.yellow {
+    background-color: #b59140;
+}
+.imageType01 .image .image-cont.s2 {
+    background-color: #b59240e0;
+    width: 400px;
+    padding: 20px;
+}
+.imageType01 .image .image-cont.s2 .image-desc {
+    padding-right: 0;
+}
+.imageType01 .image .image-cont.s2 .image-btn {
+    padding: 0;
+    border-bottom: 1px solid #fff;;
+}
+
+

@@ -1,0 +1,397 @@
+<div class="info-output">
+    <p class="bubble">
+        패럴랙스 배우기 튜토리얼입니다.<br><br>
+
+        이 강의는 기본적인 HTML, CSS, JavaScript, JQuery를 알고 있어야 배울 수 있는 강의입니다. <br>
+        웹표준 강의, 반응형 강의, 메가박스 강의를 보고 오시면 도움이 됩니다.^^<br><br>
+
+        모든 강의는 소스를 보면서 따라하는 튜토리얼입니다.
+    </p>
+
+    <div class="code-youtube">
+        <h2>Code Youtube</h2>
+        <iframe src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <!-- //code-youtube -->
+
+    <div class="code-reference">
+        <h2>Code Sample</h2>
+        <p class="bubble info">전체 소스는 여기서 다운 받을 수 있습니다. </p>
+        <p class="bubble info"><a class="color-values" href="https://github.com/webstoryboy/wtss" target="_blank">바로가기</a></p>
+        <p class="bubble warning">샘플 소스는 여기서 확인 할 수 있습니다. </p>
+        <p class="bubble warning"><a class="color-values" href="https://webstoryboy.github.io/wtss/refer-effect/mouseEffect/javascriptME01.html" target="_blank">바로가기</a></p>
+    </div>
+    <!-- //code-reference -->
+
+    <div class="code-reference">
+        <h2>Sourece Reference</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Value</td>
+                    <td>link</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>이미지1</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg1.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지2</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg2.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지3</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg3.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지4</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg4.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지5</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg5.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지6</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg6.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지7</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg7.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지8</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg8.jpg</td>
+                </tr>
+                <tr>
+                    <td>이미지9</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/img/bg9.jpg</td>
+                </tr>
+                <tr>
+                    <td>jquery</td>
+                    <td>https://webstoryboy.github.io/wtss/refer-effect/assets/js/jquery.min.js</td>
+                </tr>
+            </table>  
+        </table>
+    </div>
+
+    <div class="code-preview">
+        <h2>Code example</h2>
+
+        <div class="tab-menu">
+            <div class="tab-btn">
+                <ul>
+                    <li class="active"><a href="#">index.html</a></li>
+                    <li><a href="#">style.css</a></li>
+                    <li><a href="#">script.js</a></li>
+                </ul>
+            </div>
+            <div class="tab-cont">
+                <div>
+<pre class="line-numbers language-html xml"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Parallax Layout&lt;/title&gt;
+
+    &lt;link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet"&gt;
+    
+&lt;/head&gt;
+&lt;body class="mouse bg"&gt;
+
+    &lt;!-- main --&gt;
+    &lt;main&gt;
+        &lt;div class="cursor"&gt;&lt;/div&gt;
+
+        &lt;article class="mouseCont"&gt;
+            &lt;p&gt;Never &lt;em&gt;underestimate&lt;/em&gt; your own ignorance.&lt;/p&gt;
+            &lt;p&gt;네 자신의 무지를 절대 &lt;em&gt;과소평가&lt;/em&gt; 하지 마라.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+    &lt;!-- //main --&gt;
+
+    &lt;!-- info --&gt;
+    &lt;div class="info"&gt;
+        &lt;h1&gt;&lt;a href="index.html"&gt;Mouse Effect03 - Javascript&lt;/a&gt;&lt;/h1&gt;
+        &lt;p&gt;마우스 이펙트 - 브랜딩 이펙트&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="info right"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="javascriptME01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="active"&gt;&lt;a href="javascriptME03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptME09.html"&gt;9&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="jqueryME01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jqueryME09.html"&gt;9&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;div class="info left"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;multiply&lt;/li&gt;
+            &lt;li&gt;screen&lt;/li&gt;
+            &lt;li&gt;overlay&lt;/li&gt;
+            &lt;li&gt;darken&lt;/li&gt;
+            &lt;li&gt;lighten&lt;/li&gt;
+            &lt;li&gt;color-dodge&lt;/li&gt;
+            &lt;li&gt;color-burn&lt;/li&gt;
+            &lt;li&gt;hard-light&lt;/li&gt;
+            &lt;li&gt;soft-light&lt;/li&gt;
+            &lt;li class="active"&gt;difference&lt;/li&gt;
+            &lt;li&gt;exclusion&lt;/li&gt;
+            &lt;li&gt;hue&lt;/li&gt;
+            &lt;li&gt;saturation&lt;/li&gt;
+            &lt;li&gt;color&lt;/li&gt;
+            &lt;li&gt;luminosity&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- //info --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                </div>
+                <!--//tab-cont1 -->
+
+                <div>
+<pre class="line-numbers language-css"><code>&lt;style&gt;
+    @font-face {
+        font-family: 'NEXONLv1Gothic';
+        font-weight: 300;
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'NEXONLv1Gothic';
+        font-weight: 400;
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-style: normal;
+    }
+    * {
+        margin: 0; padding: 0;
+    }
+
+    /* mouse */
+    .mouse {
+        background: #222;
+        color: #fff;
+        font-family: 'NEXONLv1Gothic';
+        font-weight: 400;
+    }
+    .bg {
+        position: relative;
+        height: 100vh;
+        background-image: url(../assets/img/bg4.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    .bg::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(5, 36, 70, 0.7);
+        z-index: -1;
+    }
+
+    /* info */
+    .info {
+        color: #fff;
+        font-family: "NEXONLv1Gothic";
+        padding: 20px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .info.right {
+        left: auto;
+        right: 0px;
+        top: 0px;
+    }
+    .info h1 {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 1.6;
+        border-bottom: 1px dashed #fff;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    .info h1 a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 400;
+    }
+    .info p {
+        font-weight: 300;
+        font-size: 16px;
+    }
+    .info li {
+        list-style: none;
+        display: inline;
+    }
+    .info li a {
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        border: 1px dashed #fff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 21px;
+        text-align: center;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+    .info li.active a {
+        background: #fff;
+        color: #000;
+    }
+    .info.left {
+        top: auto;
+        right: 0px;
+        bottom: 0px;
+        width: 200px;
+    }
+    .info.left li {
+        display: block;
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 300;
+    }
+
+    /* mouseCont */
+    .mouseCont {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #fff;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        font-family: 'NEXONLv1Gothic';
+        cursor: none;
+    }
+    .mouseCont p {
+        font-size: 2.5vw;
+        line-height: 2;
+        font-weight: 300;
+    }
+    .mouseCont p:last-child {
+        font-size: 3vw;
+        font-weight: normal;
+        font-weight: 400;
+    }
+    .mouseCont em {
+        font-style: normal;
+        border-bottom: 0.2vw dashed orange;
+        color: orange
+    }
+    .cursor {
+        position: absolute;
+        left: 0; top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        z-index: 9999;
+        background-color: #fff;
+        user-select: none;
+        pointer-events: none;
+        transition: transform 0.3s;
+        mix-blend-mode: difference;
+    }
+    .cursor.active {
+        transform: scale(20);
+    }
+    .info.left li.active {
+        text-decoration: underline;
+        color: orange;
+    }
+&lt;/style&gt;
+</code></pre>
+                </div>
+                <!--//tab-cont2 -->
+
+                <div>
+<pre class="line-numbers language-js"><code>&lt;!-- script --&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    const w = document.querySelector(".cursor").clientWidth;
+    const h = document.querySelector(".cursor").clientHeight;
+
+    //움직임 효과
+    document.addEventListener("mousemove", e =&gt; {
+        gsap.to(".cursor", {duration: .5, left: e.pageX - w, top: e.pageY - h});
+    });
+
+    //오버 효과
+    document.querySelectorAll(".mouseCont em").forEach( em =&gt; {
+        em.addEventListener("mouseenter", () =&gt; {
+            document.querySelector(".cursor").classList.add("active");
+        });
+        em.addEventListener("mouseleave", () =&gt; {
+            document.querySelector(".cursor").classList.remove("active");
+        });
+    });
+
+    //출력용
+    document.querySelectorAll(".info.left li").forEach(info =&gt; {
+        info.addEventListener("click", function(){
+
+            document.querySelectorAll(".info.left li").forEach(li =&gt; {
+                li.classList.remove("active");
+                this.classList.add("active");
+            });
+
+            let text = info.textContent || info.innerText;
+            document.querySelector(".cursor").style.mixBlendMode = text;
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+                </div>
+                <!--//tab-cont3 -->
+            </div>
+        </div>
+        <!-- //tab-munu -->
+    </div>
+    <!-- //code-preview -->
+
+    <div class="code-reference">
+        <h2>Site Reference</h2>
+        <p class="bubble warning">INSTAGRAM <a class="color-values" href="https://www.instagram.com/webstoryboy" target="_blank"> 바로가기</a></p>
+        <p class="bubble warning">STUDY <a class="color-values" href="https://cafe.naver.com/crossbrowsing" target="_blank"> 바로가기</a></p>
+        <p class="bubble warning">YOUTUBE <a class="color-values" href="https://www.youtube.com/webstoryboy"target="_blank"> 바로가기</a></p>
+        <p class="bubble warning">INFLUENCER <a class="color-values" href="https://in.naver.com/webstoryboy"target="_blank"> 바로가기</a></p>
+    </div>
+
+    <p class="bubble">
+        도움이 되셨다면 구독과 좋아요 버튼을 꾸욱~~!!<br>
+        여러분의 댓글은 영상을 제작하는데 많은 힘이 됩니다.<br>
+        모르시거나 궁금한 사항은 언제든지 댓글로 남겨주세요.<br>
+        최대한 힘이 되어 드리겠습니다.<br>
+        오늘도 수고하셨습니다.
+    </p>
+</div>
