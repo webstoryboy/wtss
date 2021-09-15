@@ -4,258 +4,45 @@
     &lt;meta charset="UTF-8"&gt;
     &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Parallax Layout&lt;/title&gt;
+    &lt;title&gt;사이트 제작 : 이미지 유형(ImageType)&lt;/title&gt;
 
-    &lt;link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet"&gt;
-    &lt;style&gt;
-        @font-face {
-            font-family: 'NEXONLv1Gothic';
-            font-weight: 300;
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'NEXONLv1Gothic';
-            font-weight: 400;
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-            font-style: normal;
-        }
-        * {
-            margin: 0; padding: 0;
-        }
+    &lt;!-- CSS --&gt;
+    &lt;link rel="stylesheet" href="../assets/css/fonts.css"&gt;
+    &lt;link rel="stylesheet" href="../assets/css/reset.css"&gt;
 
-        /* mouse */
-        .mouse {
-            background: #222;
-            color: #fff;
-            font-family: 'NEXONLv1Gothic';
-            font-weight: 400;
-        }
-        .bg {
-            position: relative;
-            height: 100vh;
-            background-image: url(../assets/img/bg4.jpg);
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-        }
-        .bg::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(52, 5, 70, 0.7);
-            z-index: -1;
-        }
+    &lt;!-- Image Type CSS --&gt;
+    &lt;link rel="stylesheet" href="../assets/css/imageType.css"&gt;
 
-        /* info */
-        .info {
-            color: #fff;
-            font-family: "NEXONLv1Gothic";
-            padding: 20px;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .info.right {
-            left: auto;
-            right: 0px;
-            top: 0px;
-        }
-        .info h1 {
-            font-weight: 300;
-            font-size: 20px;
-            line-height: 1.6;
-            border-bottom: 1px dashed #fff;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        .info h1 a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 400;
-        }
-        .info p {
-            font-weight: 300;
-            font-size: 16px;
-        }
-        .info li {
-            list-style: none;
-            display: inline;
-        }
-        .info li a {
-            display: inline-block;
-            text-decoration: none;
-            color: #fff;
-            border: 1px dashed #fff;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            line-height: 21px;
-            text-align: center;
-            font-size: 12px;
-            margin-bottom: 5px;
-        }
-        .info li.active a {
-            background: #fff;
-            color: #000;
-        }
-        .info.left {
-            top: auto;
-            right: 0px;
-            bottom: 0px;
-            width: 200px;
-        }
-        .info.left li {
-            display: block;
-            font-size: 14px;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        /* mouseCont */
-        .mouseCont {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: #fff;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'NEXONLv1Gothic';
-            cursor: none;
-        }
-        .mouseCont p {
-            font-size: 2.5vw;
-            line-height: 2;
-            font-weight: 300;
-        }
-        .mouseCont p:last-child {
-            font-size: 3vw;
-            font-weight: normal;
-            font-weight: 400;
-        }
-        .mouseCont em {
-            font-style: normal;
-            border-bottom: 0.2vw dashed orange;
-            color: orange
-        }
-        .cursor {
-            position: absolute;
-            left: 0; top: 0;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            z-index: 9999;
-            background-color: #fff;
-            user-select: none;
-            pointer-events: none;
-            transition: transform 0.3s;
-            mix-blend-mode: difference;
-        }
-        .cursor.active {
-            transform: scale(20);
-        }
-        .info.left li.active {
-            text-decoration: underline;
-            color: orange;
-        }
-    &lt;/style&gt;
 &lt;/head&gt;
-&lt;body class="mouse bg"&gt;
+&lt;body&gt;
 
-    &lt;!-- main --&gt;
-    &lt;main&gt;
-        &lt;div class="cursor"&gt;&lt;/div&gt;
+    &lt;!-- imageType01 --&gt;
+    &lt;section class="imageType"&gt;
+        &lt;div class="container"&gt;
+            &lt;div class="imageType01"&gt;
+                &lt;h2&gt;동물공감 인터뷰&lt;/h2&gt;
+                &lt;div class="image-wrap"&gt;
+                    &lt;div class="image"&gt;
+                        &lt;img class="image-img" src="../assets/img/imagetype01.jpg" alt="웰시코기 이미지입니다."&gt;
+                        &lt;div class="image-cont"&gt;
+                            &lt;h3 class="image-title"&gt;애교만점 웰시코기&lt;/h3&gt;
+                            &lt;p class="image-desc"&gt;포메라니안은 작고 귀여운 체구에 비해 대범한 성격을 가지고 있으며 호기심이 많은 견종입니다. &lt;/p&gt;
+                            &lt;a class="image-btn red" href="#"&gt;자세히 보기&lt;/a&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="image"&gt;
+                        &lt;img class="image-img" src="../assets/img/imagetype02.jpg" alt="비숑프리제 이미지입니다."&gt;
+                        &lt;div class="image-cont s2"&gt;
+                            &lt;h3 class="image-title"&gt;강아지계의 연예인, 비숑프리제&lt;/h3&gt;
+                            &lt;p class="image-desc"&gt;최근 연예인들 사이에서 키우는 강아지로 유명해진 비숑프리제는 생김새가 아주 작은 바빗과 매우 흡사하여 바비숑이라는 이름...&lt;/p&gt;
+                            &lt;a class="image-btn yellow" href="#"&gt;자세히 보기&lt;/a&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;!-- //imageType01 --&gt;
 
-        &lt;article class="mouseCont"&gt;
-            &lt;p&gt;Never &lt;em&gt;underestimate&lt;/em&gt; your own ignorance.&lt;/p&gt;
-            &lt;p&gt;네 자신의 무지를 절대 &lt;em&gt;과소평가&lt;/em&gt; 하지 마라.&lt;/p&gt;
-        &lt;/article&gt;
-    &lt;/main&gt;
-    &lt;!-- //main --&gt;
-
-    &lt;!-- info --&gt;
-    &lt;div class="info"&gt;
-        &lt;h1&gt;&lt;a href="index.html"&gt;Mouse Effect03 - jQuery&lt;/a&gt;&lt;/h1&gt;
-        &lt;p&gt;마우스 이펙트 - 브랜딩 이펙트&lt;/p&gt;
-    &lt;/div&gt;
-
-    &lt;div class="info right"&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="javascriptME01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="javascriptME02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="javascriptME03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="javascriptME04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="javascriptME05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="javascriptME06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="javascriptME07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="javascriptME08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="javascriptME09.html"&gt;9&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="jqueryME01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="jqueryME02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
-            &lt;li class="active"&gt;&lt;a href="jqueryME03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="jqueryME04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="jqueryME05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="jqueryME06.html"&gt;6&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="jqueryME07.html"&gt;7&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="jqueryME08.html"&gt;8&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="jqueryME09.html"&gt;9&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-
-    &lt;div class="info left"&gt;
-        &lt;ul&gt;
-            &lt;li&gt;multiply&lt;/li&gt;
-            &lt;li&gt;screen&lt;/li&gt;
-            &lt;li&gt;overlay&lt;/li&gt;
-            &lt;li&gt;darken&lt;/li&gt;
-            &lt;li&gt;lighten&lt;/li&gt;
-            &lt;li&gt;color-dodge&lt;/li&gt;
-            &lt;li&gt;color-burn&lt;/li&gt;
-            &lt;li&gt;hard-light&lt;/li&gt;
-            &lt;li&gt;soft-light&lt;/li&gt;
-            &lt;li class="active"&gt;difference&lt;/li&gt;
-            &lt;li&gt;exclusion&lt;/li&gt;
-            &lt;li&gt;hue&lt;/li&gt;
-            &lt;li&gt;saturation&lt;/li&gt;
-            &lt;li&gt;color&lt;/li&gt;
-            &lt;li&gt;luminosity&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-    &lt;!-- //info --&gt;
-
-    &lt;!-- script --&gt;
-    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"&gt;&lt;/script&gt;
-    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"&gt;&lt;/script&gt;
-    &lt;script&gt;
-        const w = $(".cursor").width() / 2;
-        const h = $(".cursor").height() / 2;
-
-        //움직임 효과
-        $(window).mousemove(function(e){
-            gsap.to(".cursor", {duration: 0.4, left: e.pageX - w, top: e.pageY - h});
-        });
-
-        //오버 효과
-        $(".mouseCont em").hover(function(){
-            $(".cursor").addClass("active");
-        }, function(){
-            $(".cursor").removeClass("active");
-        });
-
-        // 출력용
-        $(".info.left li").click(function(){
-            $(".info.left li").removeClass();
-            $(this).addClass("active");
-            $(".cursor").css("mix-blend-mode", $(this).text());
-        });
-    &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
