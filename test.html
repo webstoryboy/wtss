@@ -5,38 +5,133 @@
     &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
     &lt;title&gt;사이트 제작 : 이미지 유형(ImageType)&lt;/title&gt;
-
-    &lt;!-- CSS --&gt;
-    &lt;link rel="stylesheet" href="../assets/css/fonts.css"&gt;
-    &lt;link rel="stylesheet" href="../assets/css/reset.css"&gt;
-
-    &lt;!-- Image Type CSS --&gt;
-    &lt;link rel="stylesheet" href="../assets/css/imageType.css"&gt;
-
+    &lt;style&gt;
+        @font-face {
+            font-family: 'GmarketSans';
+            font-weight: 300;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'GmarketSans';
+            font-weight: 500;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'GmarketSans';
+            font-weight: 700;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+            font-style: normal;
+        }
+        * {
+            margin: 0; padding: 0;
+        }
+        body {
+            background-color: #f3f3f3;
+        }
+        a {
+            text-decoration: none;
+        }
+        
+        /* imageTypee01 */
+        .imageType01 {
+            margin: 150px 0;
+            background-color: #fff;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+            font-family: 'GmarketSans';
+            padding: 100px 0;
+        }
+        .image-inner {
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .imageType01 h2 {
+            font-size: 50px;
+            font-weight: 500;
+            margin-bottom: 36px;
+            line-height: 1;
+        }
+        .imageType01 .image-wrap {
+            overflow: hidden;
+        }
+        .imageType01 .image {
+            position: relative;
+            float: left;
+            width: 590px;
+            height: 385px;
+        }
+        .imageType01 .image:first-child {
+            margin-right: 20px;
+        }
+        .imageType01 .image .image-cont {
+            position: absolute;
+            left: 30px;
+            bottom: 30px;
+            color: #fff;
+        }
+        .imageType01 .image .image-title {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            line-height: 1;
+        }
+        .imageType01 .image .image-desc {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+            padding-right: 30%;
+            word-break: keep-all;
+        }
+        .imageType01 .image .image-btn {
+            padding: 8px 18px;
+            display: inline-block;
+            background-color: #777;
+            color: #fff;
+            margin-top: 10px;
+        }
+        .imageType01 .image .image-btn.red {
+            background-color: #9a481d;
+        }
+        .imageType01 .image .image-btn.yellow {
+            background-color: #b59140;
+        }
+        .imageType01 .image .image-cont.s2 {
+            background-color: #b59240e0;
+            width: 400px;
+            padding: 20px;
+        }
+        .imageType01 .image .image-cont.s2 .image-desc {
+            padding-right: 0;
+        }
+        .imageType01 .image .image-cont.s2 .image-btn {
+            padding: 0;
+            border-bottom: 1px solid #fff;;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
     &lt;!-- imageType01 --&gt;
-    &lt;section class="imageType"&gt;
-        &lt;div class="container"&gt;
-            &lt;div class="imageType01"&gt;
-                &lt;h2&gt;동물공감 인터뷰&lt;/h2&gt;
-                &lt;div class="image-wrap"&gt;
-                    &lt;div class="image"&gt;
-                        &lt;img class="image-img" src="../assets/img/imagetype01.jpg" alt="웰시코기 이미지입니다."&gt;
-                        &lt;div class="image-cont"&gt;
-                            &lt;h3 class="image-title"&gt;애교만점 웰시코기&lt;/h3&gt;
-                            &lt;p class="image-desc"&gt;포메라니안은 작고 귀여운 체구에 비해 대범한 성격을 가지고 있으며 호기심이 많은 견종입니다. &lt;/p&gt;
-                            &lt;a class="image-btn red" href="#"&gt;자세히 보기&lt;/a&gt;
-                        &lt;/div&gt;
+    &lt;section class="imageType imageType01"&gt;     
+        &lt;div class="image-inner"&gt;
+            &lt;h2&gt;동물공감 인터뷰&lt;/h2&gt;
+            &lt;div class="image-wrap"&gt;
+                &lt;div class="image"&gt;
+                    &lt;img class="image-img" src="../assets/img/imagetype01.jpg" alt="웰시코기 이미지입니다."&gt;
+                    &lt;div class="image-cont"&gt;
+                        &lt;h3 class="image-title"&gt;애교만점 웰시코기&lt;/h3&gt;
+                        &lt;p class="image-desc"&gt;포메라니안은 작고 귀여운 체구에 비해 대범한 성격을 가지고 있으며 호기심이 많은 견종입니다. &lt;/p&gt;
+                        &lt;a class="image-btn red" href="#"&gt;자세히 보기&lt;/a&gt;
                     &lt;/div&gt;
-                    &lt;div class="image"&gt;
-                        &lt;img class="image-img" src="../assets/img/imagetype02.jpg" alt="비숑프리제 이미지입니다."&gt;
-                        &lt;div class="image-cont s2"&gt;
-                            &lt;h3 class="image-title"&gt;강아지계의 연예인, 비숑프리제&lt;/h3&gt;
-                            &lt;p class="image-desc"&gt;최근 연예인들 사이에서 키우는 강아지로 유명해진 비숑프리제는 생김새가 아주 작은 바빗과 매우 흡사하여 바비숑이라는 이름...&lt;/p&gt;
-                            &lt;a class="image-btn yellow" href="#"&gt;자세히 보기&lt;/a&gt;
-                        &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="image"&gt;
+                    &lt;img class="image-img" src="../assets/img/imagetype02.jpg" alt="비숑프리제 이미지입니다."&gt;
+                    &lt;div class="image-cont s2"&gt;
+                        &lt;h3 class="image-title"&gt;강아지계의 연예인, 비숑프리제&lt;/h3&gt;
+                        &lt;p class="image-desc"&gt;최근 연예인들 사이에서 키우는 강아지로 유명해진 비숑프리제는 생김새가 아주 작은 바빗과 매우 흡사하여 바비숑이라는 이름...&lt;/p&gt;
+                        &lt;a class="image-btn yellow" href="#"&gt;자세히 보기&lt;/a&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
