@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Effect</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 300;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-style: normal;
+        }
+        * {
+            margin: 0; padding: 0;
+        }
+        body {
+            background: #222;
+            color: #fff;
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+            position: relative;
+            height: 100vh;
+            background-image: url(../assets/img/bg13.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(50, 37, 11, 0.9);
+            z-index: -1;
+        }
+
+        /* info */
+        .info {
+            color: #fff;
+            font-family: "NEXONLv1Gothic";
+            padding: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .info.right {
+            left: auto;
+            right: 0px;
+            top: 0px;
+        }
+        .info h1 {
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 1.6;
+            border-bottom: 1px dashed #fff;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .info h1 a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        .info p {
+            font-weight: 300;
+            font-size: 16px;
+        }
+        .info li {
+            list-style: none;
+            display: inline;
+        }
+        .info li a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            line-height: 21px;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .info li.active a {
+            background: #fff;
+            color: #000;
+        }
+        .info.left {
+            top: auto;
+            right: 0px;
+            bottom: 0px;
+        }
+        .info.left li {
+            display: block;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* slider */
+        .slider-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .slider-img {
+            position: relative;
+            width: 800px;
+            height: 480px;
+        }
+        .slider-img img {
+            width: 100%;
+        }
+        .slider {
+            position: absolute;
+            left: 0; top: 0;
+        }
+        .slider::before {
+            position: absolute;
+            left: 5px; top: 5px;
+            background: rgba(0,0,0,.4);
+            color: #fff;
+            padding: 5px 10px 3px;
+            font-family: "NEXONLv1Gothic";
+        }
+        .slider:nth-child(1)::before {content: "이미지1";}
+        .slider:nth-child(2)::before {content: "이미지2";}
+        .slider:nth-child(3)::before {content: "이미지3";}
+        .slider:nth-child(4)::before {content: "이미지4";}
+        .slider:nth-child(5)::before {content: "이미지5";}
+        .slider:nth-child(1){z-index: 5;}
+        .slider:nth-child(2){z-index: 4;}
+        .slider:nth-child(3){z-index: 3;}
+        .slider:nth-child(4){z-index: 2;}
+        .slider:nth-child(5){z-index: 1;}
+    </style>
+</head>
+<body>
+    <!-- main -->
+    <main>
+        <div class="slider-wrap">
+            <div class="slider-img">
+                <div class="slider"><img src="../assets/img/bg19.jpg" alt="이미지1"></div>
+                <div class="slider"><img src="../assets/img/bg18.jpg" alt="이미지2"></div>
+                <div class="slider"><img src="../assets/img/bg17.jpg" alt="이미지3"></div>
+                <div class="slider"><img src="../assets/img/bg16.jpg" alt="이미지4"></div>
+                <div class="slider"><img src="../assets/img/bg15.jpg" alt="이미지5"></div>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <!-- info -->
+    <div class="info">
+        <h1><a href="index.html">Slider Effect01 - jQuery</a></h1>
+        <p>이미지 슬라이드 - 페이드 효과</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li><a href="javascriptSE01.html">1</a></li>
+            <li><a href="javascriptSE02.html">2</a></li>
+            <li><a href="javascriptSE03.html">3</a></li>
+            <li><a href="javascriptSE04.html">4</a></li>
+            <li><a href="javascriptSE05.html">5</a></li>
+        </ul>
+        <ul>
+            <li class="active"><a href="jquerySE01.html">1</a></li>
+            <li><a href="jquerySE02.html">2</a></li>
+            <li><a href="jquerySE03.html">3</a></li>
+            <li><a href="jquerySE04.html">4</a></li>
+            <li><a href="jquerySE05.html">5</a></li>
+        </ul>
+    </div>
+    <!-- //info -->
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        const sliderWrap = $(".slider-wrap");
+        const sliderImg = $(".slider-img");
+        const slider = $(".slider");
+
+        let currentIndex = 0;               //현재 보이는 이미지(첫 번째 이미지)
+        let sliderCount = slider.length;    //이미지 갯수
+
+        setInterval(function(){
+            let nextIndex = (currentIndex + 1) % sliderCount;
+            
+            slider.eq(currentIndex).fadeOut()         //현재 이미지를 사라지게
+            slider.eq(nextIndex).fadeIn()            //다음 이미지를 나타나게
+
+            currentIndex = nextIndex;
+
+            console.log("currentIndex :" + currentIndex);
+            console.log("nextIndex :" + nextIndex);
+
+            // slider.eq(1).hide()         //현재 이미지를 사라지게
+            // slider.eq(2).show()         //다음 이미지를 나타나게
+
+            // slider.eq(2).hide()         //현재 이미지를 사라지게
+            // slider.eq(3).show()         //다음 이미지를 나타나게
+
+            // slider.eq(3).hide()         //현재 이미지를 사라지게
+            // slider.eq(4).show()         //다음 이미지를 나타나게
+
+            // slider.eq(4).hide()         //현재 이미지를 사라지게
+            // slider.eq(0).show()         //다음 이미지를 나타나게
+
+            // slider.eq(0).hide()         //현재 이미지를 사라지게
+            // slider.eq(1).show()         //다음 이미지를 나타나게
+
+            //0 1 2 3 4 0 1 2 3 4 0 
+        }, 2000);
+    </script>
+</body>
+</html>
