@@ -4,140 +4,253 @@
     &lt;meta charset="UTF-8"&gt;
     &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;사이트 제작 : 이미지 유형(ImageType)&lt;/title&gt;
+    &lt;title&gt;Slider Effect&lt;/title&gt;
+
+    &lt;link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet"&gt;
     &lt;style&gt;
         @font-face {
-            font-family: 'GmarketSans';
+            font-family: 'NEXONLv1Gothic';
             font-weight: 300;
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
             font-style: normal;
         }
         @font-face {
-            font-family: 'GmarketSans';
-            font-weight: 500;
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'GmarketSans';
-            font-weight: 700;
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
             font-style: normal;
         }
         * {
             margin: 0; padding: 0;
         }
         body {
-            background-color: #f3f3f3;
-        }
-        a {
-            text-decoration: none;
-        }
-        
-        /* imageTypee01 */
-        .imageType01 {
-            margin: 150px 0;
-            background-color: #fff;
-            box-shadow: 0 0 50px rgba(0,0,0,0.1);
-            font-family: 'GmarketSans';
-            padding: 100px 0;
-        }
-        .image-inner {
-            width: 1200px;
-            margin: 0 auto;
+            background: #222;
+            color: #fff;
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
             position: relative;
+            height: 100vh;
+            background-image: url(../assets/img/bg13.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
-        .imageType01 h2 {
-            font-size: 50px;
-            font-weight: 500;
-            margin-bottom: 36px;
-            line-height: 1;
+        body::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(50, 37, 11, 0.9);
+            z-index: -1;
         }
-        .imageType01 .image-wrap {
+
+        /* info */
+        .info {
+            color: #fff;
+            font-family: "NEXONLv1Gothic";
+            padding: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .info.right {
+            left: auto;
+            right: 0px;
+            top: 0px;
+        }
+        .info h1 {
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 1.6;
+            border-bottom: 1px dashed #fff;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .info h1 a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        .info p {
+            font-weight: 300;
+            font-size: 16px;
+        }
+        .info li {
+            list-style: none;
+            display: inline;
+        }
+        .info li a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            line-height: 21px;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .info li.active a {
+            background: #fff;
+            color: #000;
+        }
+        .info.left {
+            top: auto;
+            right: 0px;
+            bottom: 0px;
+        }
+        .info.left li {
+            display: block;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* slider */
+        .slider-wrap {
+            height: 100vh;
+        }
+        .slider-img img {
+            width: 100%;
+        }
+        .slider-img {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 480px;
             overflow: hidden;
         }
-        .imageType01 .image {
+        .slider-inner {
             position: relative;
+            width: 4000px;
+            height: 480px;
+            overflow: hidden;
+            transition: all 0.6s;
+            left: 0;
+        }
+        .slider-inner .slider {
             float: left;
-            width: 590px;
-            height: 385px;
+            width: 800px;
+            height: 480px;
+            position: relative;
         }
-        .imageType01 .image:first-child {
-            margin-right: 20px;
-        }
-        .imageType01 .image .image-cont {
+        .slider-inner .slider::before {
             position: absolute;
-            left: 30px;
-            bottom: 30px;
+            left: 5px; top: 5px;
+            background: rgba(0,0,0,.4);
             color: #fff;
+            padding: 5px 10px 3px;
+            font-family: "NEXONLv1Gothic";
         }
-        .imageType01 .image .image-title {
-            font-size: 30px;
-            font-weight: 500;
-            margin-bottom: 6px;
-            line-height: 1;
-        }
-        .imageType01 .image .image-desc {
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.4;
-            padding-right: 30%;
-            word-break: keep-all;
-        }
-        .imageType01 .image .image-btn {
-            padding: 8px 18px;
-            display: inline-block;
-            background-color: #777;
-            color: #fff;
-            margin-top: 10px;
-        }
-        .imageType01 .image .image-btn.red {
-            background-color: #9a481d;
-        }
-        .imageType01 .image .image-btn.yellow {
-            background-color: #b59140;
-        }
-        .imageType01 .image .image-cont.s2 {
-            background-color: #b59240e0;
-            width: 400px;
-            padding: 20px;
-        }
-        .imageType01 .image .image-cont.s2 .image-desc {
-            padding-right: 0;
-        }
-        .imageType01 .image .image-cont.s2 .image-btn {
-            padding: 0;
-            border-bottom: 1px solid #fff;;
-        }
+        .slider-inner .slider:nth-child(1)::before {content: "이미지1";}
+        .slider-inner .slider:nth-child(2)::before {content: "이미지2";}
+        .slider-inner .slider:nth-child(3)::before {content: "이미지3";}
+        .slider-inner .slider:nth-child(4)::before {content: "이미지4";}
+        .slider-inner .slider:nth-child(5)::before {content: "이미지5";}
+        .slider-inner .slider:nth-child(1){z-index: 5;}
+        .slider-inner .slider:nth-child(2){z-index: 4;}
+        .slider-inner .slider:nth-child(3){z-index: 3;}
+        .slider-inner .slider:nth-child(4){z-index: 2;}
+        .slider-inner .slider:nth-child(5){z-index: 1;}
     &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-
-    &lt;!-- imageType01 --&gt;
-    &lt;section class="imageType imageType01"&gt;     
-        &lt;div class="image-inner"&gt;
-            &lt;h2&gt;동물공감 인터뷰&lt;/h2&gt;
-            &lt;div class="image-wrap"&gt;
-                &lt;div class="image"&gt;
-                    &lt;img class="image-img" src="../assets/img/imagetype01.jpg" alt="웰시코기 이미지입니다."&gt;
-                    &lt;div class="image-cont"&gt;
-                        &lt;h3 class="image-title"&gt;애교만점 웰시코기&lt;/h3&gt;
-                        &lt;p class="image-desc"&gt;포메라니안은 작고 귀여운 체구에 비해 대범한 성격을 가지고 있으며 호기심이 많은 견종입니다. &lt;/p&gt;
-                        &lt;a class="image-btn red" href="#"&gt;자세히 보기&lt;/a&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class="image"&gt;
-                    &lt;img class="image-img" src="../assets/img/imagetype02.jpg" alt="비숑프리제 이미지입니다."&gt;
-                    &lt;div class="image-cont s2"&gt;
-                        &lt;h3 class="image-title"&gt;강아지계의 연예인, 비숑프리제&lt;/h3&gt;
-                        &lt;p class="image-desc"&gt;최근 연예인들 사이에서 키우는 강아지로 유명해진 비숑프리제는 생김새가 아주 작은 바빗과 매우 흡사하여 바비숑이라는 이름...&lt;/p&gt;
-                        &lt;a class="image-btn yellow" href="#"&gt;자세히 보기&lt;/a&gt;
-                    &lt;/div&gt;
+    &lt;!-- main --&gt;
+    &lt;main&gt;
+        &lt;div class="slider-wrap"&gt;
+            &lt;div class="slider-img"&gt;
+                &lt;div class="slider-inner"&gt;
+                    &lt;div class="slider"&gt;&lt;img src="../assets/img/bg19.jpg" alt="이미지1"&gt;&lt;/div&gt;
+                    &lt;div class="slider"&gt;&lt;img src="../assets/img/bg18.jpg" alt="이미지2"&gt;&lt;/div&gt;
+                    &lt;div class="slider"&gt;&lt;img src="../assets/img/bg17.jpg" alt="이미지3"&gt;&lt;/div&gt;
+                    &lt;div class="slider"&gt;&lt;img src="../assets/img/bg16.jpg" alt="이미지4"&gt;&lt;/div&gt;
+                    &lt;div class="slider"&gt;&lt;img src="../assets/img/bg15.jpg" alt="이미지5"&gt;&lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/section&gt;
-    &lt;!-- //imageType01 --&gt;
+    &lt;/main&gt;
+    &lt;!-- //main --&gt;
 
+    &lt;!-- info --&gt;
+    &lt;div class="info"&gt;
+        &lt;h1&gt;&lt;a href="index.html"&gt;Slider Effect02 - jQuery&lt;/a&gt;&lt;/h1&gt;
+        &lt;p&gt;이미지 슬라이드 - 좌로 움직이기&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="info right"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="javascriptSE01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptSE02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptSE03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptSE04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="javascriptSE05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="jquerySE01.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="active"&gt;&lt;a href="jquerySE02.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jquerySE03.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jquerySE04.html"&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="jquerySE05.html"&gt;5&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- //info --&gt;
+
+    &lt;!-- script --&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        const sliderWrap = $(".slider-wrap");
+        const sliderImg = $(".slider-img");
+        const sliderInner = $(".slider-inner");
+        const slider = $(".slider");
+
+        let currentIndex = 0;
+        let sliderCount = slider.length;   
+        let sliderWidth = slider.width();
+        let sliderDuration = 400;
+        let sliderEasing = "easeInElastic";
+
+        setInterval(function(){
+            //3초에 한번씩 왼쪽으로 800px을 이동 시켜야 함
+            // sliderInner.animate({ left: "-800px" });
+            // sliderInner.animate({ left: "-1600px" });
+            // sliderInner.animate({ left: "-2400px" });
+            // sliderInner.animate({ left: "-3200px" });
+            // sliderInner.animate({ left: "-4000px" });
+            // sliderInner.animate({ left: "-0px" });    0 * 800
+            // sliderInner.animate({ left: "-800px" });  1 * 800
+            // sliderInner.animate({ left: "-1600px" }); 2 * 800
+            // sliderInner.animate({ left: "-2400px" }); 3 * 800
+            // sliderInner.animate({ left: "-3200px" }); 4 * 800
+            // sliderInner.animate({ left: "-0px" });    0 * 800
+            // sliderInner.animate({ left: "-800px" });  1 * 800
+            // sliderInner.animate({ left: "-1600px" }); 2 * 800
+            // sliderInner.animate({ left: "-2400px" }); 3 * 800
+            // sliderInner.animate({ left: "-3200px" }); 4 * 800
+
+            //0 1 2 3 4 0 1 2 3 4
+            // currentIndex++; 
+            // currentIndex = currentIndex % 5;
+
+            // if( currentIndex &lt; 4) {
+            //     currentIndex++; 
+            // } else {
+            //     currentIndex = 0;
+            // }
+
+            (currentIndex &lt; sliderCount - 1) ? currentIndex++ : currentIndex = 0
+
+            let sliderPosition = currentIndex * -sliderWidth;
+            sliderInner.animate({ left: sliderPosition }, sliderDuration, sliderEasing);
+            
+            console.log(currentIndex);
+            console.log(sliderPosition);
+        }, 2000);
+    &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;

@@ -194,7 +194,6 @@
             <li><a href="javascriptME06.html">6</a></li>
             <li><a href="javascriptME07.html">7</a></li>
             <li><a href="javascriptME08.html">8</a></li>
-            <li><a href="javascriptME09.html">9</a></li>
         </ul>
         <ul>
             <li><a href="jqueryME01.html">1</a></li>
@@ -205,27 +204,13 @@
             <li><a href="jqueryME06.html">6</a></li>
             <li><a href="jqueryME07.html">7</a></li>
             <li><a href="jqueryME08.html">8</a></li>
-            <li><a href="jqueryME09.html">9</a></li>
         </ul>
     </div>
 
     <div class="info left">
         <ul>
-            <li>multiply</li>
-            <li>screen</li>
-            <li>overlay</li>
-            <li>darken</li>
-            <li>lighten</li>
-            <li>color-dodge</li>
-            <li>color-burn</li>
-            <li>hard-light</li>
-            <li>soft-light</li>
-            <li class="active">difference</li>
-            <li>exclusion</li>
-            <li>hue</li>
-            <li>saturation</li>
-            <li>color</li>
-            <li>luminosity</li>
+            <li>pageX : <span class="pageX">0</span></li>
+            <li>pageY : <span class="pageY">0</span></li>
         </ul>
     </div>
     <!-- //info -->
@@ -239,6 +224,10 @@
         //움직임 효과
         document.addEventListener("mousemove", e => {
             gsap.to(".cursor", {duration: .5, left: e.pageX - w, top: e.pageY - h});
+            
+            //출력용
+            document.querySelector(".pageX").innerText = e.pageX;
+            document.querySelector(".pageY").innerText = e.pageY;
         });
 
         //오버 효과
@@ -251,19 +240,7 @@
             });
         });
 
-        //출력용
-        document.querySelectorAll(".info.left li").forEach(info => {
-            info.addEventListener("click", function(){
-
-                document.querySelectorAll(".info.left li").forEach(li => {
-                    li.classList.remove("active");
-                    this.classList.add("active");
-                });
-
-                let text = info.textContent || info.innerText;
-                document.querySelector(".cursor").style.mixBlendMode = text;
-            });
-        });
+        
     </script>
 </body>
 </html>

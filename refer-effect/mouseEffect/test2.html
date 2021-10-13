@@ -34,7 +34,7 @@
         .bg {
             position: relative;
             height: 100vh;
-            background-image: url(../assets/img/bg4.jpg);
+            background-image: url(../assets/img/bg0@2.jpg);
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -46,7 +46,7 @@
             top: 0;
             width: 100%;
             height: 100vh;
-            background-color: rgba(52, 5, 70, 0.7);
+            background-color: rgba(5, 36, 70, 0.7);
             z-index: -1;
         }
 
@@ -126,10 +126,10 @@
             height: 100vh;
             overflow: hidden;
             font-family: 'NEXONLv1Gothic';
-            cursor: none;
+            /* cursor: none; */
         }
         .mouseCont p {
-            font-size: 2vw;
+            font-size: 2.5vw;
             line-height: 2;
             font-weight: 300;
         }
@@ -143,25 +143,23 @@
             border-bottom: 0.2vw dashed orange;
             color: orange
         }
-        .cursor {
+        .wrapper {
             position: absolute;
-            left: 0; top: 0;
-            width: 10px;
-            height: 10px;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 100px;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .wrapper .square {
+            background: rgba(255,255,255, 0.9);
             border-radius: 50%;
-            z-index: 9999;
-            background-color: #fff;
-            user-select: none;
-            pointer-events: none;
-            transition: transform 0.3s;
-            mix-blend-mode: difference;
-        }
-        .cursor.active {
-            transform: scale(20);
-        }
-        .info.left li.active {
-            text-decoration: underline;
-            color: orange;
+            transform: scale(0.2);
+            will-change: transform;
+            width: 100px; height: 100px;
         }
     </style>
 </head>
@@ -169,19 +167,93 @@
 
     <!-- main -->
     <main>
-        <div class="cursor"></div>
-
-        <article class="mouseCont">
-            <p>Never <em>underestimate</em> your own ignorance.</p>
-            <p>네 자신의 무지를 절대 <em>과소평가</em> 하지 마라.</p>
-        </article>
+        <div class="contents">
+            <article class="mouseCont">
+                <p>When money speaks, the <em>truth</em> keeps silent.</p>
+                <p>돈이 말할 때는 <em>진실</em>은 입을 다문다</p>
+            </article>
+            <div class='wrapper'>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+                <div class='square'></div>
+              </div>
+        </div>
     </main>
     <!-- //main -->
 
     <!-- info -->
     <div class="info">
-        <h1><a href="index.html">Mouse Effect03 - jQuery</a></h1>
-        <p>마우스 이펙트 - 브랜딩 이펙트</p>
+        <h1><a href="index.html">Mouse Effect08 - Javascript</a></h1>
+        <p>마우스 이펙트 - 텍스트 효과</p>
     </div>
 
     <div class="info right">
@@ -193,12 +265,12 @@
             <li><a href="javascriptME05.html">5</a></li>
             <li><a href="javascriptME06.html">6</a></li>
             <li><a href="javascriptME07.html">7</a></li>
-            <li><a href="javascriptME08.html">8</a></li>
+            <li class="active"><a href="javascriptME08.html">8</a></li>
         </ul>
         <ul>
             <li><a href="jqueryME01.html">1</a></li>
             <li><a href="jqueryME02.html">2</a></li>
-            <li class="active"><a href="jqueryME03.html">3</a></li>
+            <li><a href="jqueryME03.html">3</a></li>
             <li><a href="jqueryME04.html">4</a></li>
             <li><a href="jqueryME05.html">5</a></li>
             <li><a href="jqueryME06.html">6</a></li>
@@ -211,34 +283,48 @@
         <ul>
             <li>pageX : <span class="pageX">0</span></li>
             <li>pageY : <span class="pageY">0</span></li>
+            <li>positionSlow : <span class="positionSlow">0</span></li>
+            <li>positionFast : <span class="positionFast">0</span></li>
         </ul>
     </div>
     <!-- //info -->
 
     <!-- script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script>
-        const w = $(".cursor").width() / 2;
-        const h = $(".cursor").height() / 2;
+        // document.addEventListener('mousemove', e => {
+        //     const x = e.pageX;
+        //     const y = e.pageY;
 
-        //움직임 효과
+        //     document.querySelectorAll('.square').forEach(sqr => {
+        //         const dx = sqr.offsetLeft + 70 - x;
+        //         const dy = sqr.offsetTop + 100 - y;
+        //         const dist = Math.sqrt(dx * dx + dy * dy);
+
+        //         const score = Math.exp(dist * -0.015);
+
+        //         sqr.style.transform = `scale(${score})`;
+        //     });
+        // });
+
         $(window).mousemove(function(e){
-            gsap.to(".cursor", {duration: 0.4, left: e.pageX - w, top: e.pageY - h});
-        });
+            const x = e.pageX;
+            const y = e.pageY;
 
-        //오버 효과
-        $(".mouseCont em").hover(function(){
-            $(".cursor").addClass("active");
-        }, function(){
-            $(".cursor").removeClass("active");
-        });
+            $(".square").each(function(){
+                const dx = $(this).offset().left - x;
+                const dy = $(this).offset().top - y;
 
-        // 출력용
-        $(window).mousemove(function(e){
-            $(".pageX").text(e.pageX + "px");       
-            $(".pageY").text(e.pageY + "px");      
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const score = Math.exp(dist * -0.015);
+
+                $(".square").css("transform", "scale("+score+")");
+            });
+
+   
+
+            
         });
     </script>
 </body>

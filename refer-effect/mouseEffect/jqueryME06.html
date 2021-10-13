@@ -34,7 +34,7 @@
         .bg {
             position: relative;
             height: 100vh;
-            background-image: url(../assets/img/bg5@2.jpg);
+            background-image: url(../assets/img/bg12@2.jpg);
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -116,57 +116,52 @@
         }
 
         /* mouseCont */
-        .contents {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%; height: 100vh;
-            flex-direction: column;
-            overflow: hidden;
+        .moveImage { 
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%) perspective(600px) rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
+            will-change: transform;
         }
-        .move-image {
+        .moveImage .mImg img {
+            border-radius: 5px;
+            width: 100%;
+        }
+        .moveImage .mImg {
             position: relative;
-            cursor: none;
-        }
-        .move-image .mimg {
             width: 50vw;
-            height: 60vh;
-            background: #ccc;
-            position: relative;
-            overflow: hidden;
-            transition: transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
         }
-        .move-image:hover .mimg {
-            transform: scale(1.025);
+        .moveImage .mImg::before {
+            content: '';
+            position: absolute; 
+            z-index: -1;
+            left: 5%; bottom: -20px;
+            width: 90%; height: 40px;
+            background: url(../assets/img/bg12.jpg) no-repeat;
+            background-size: 100% 40px;
+            filter: blur(15px);
+            opacity: 0.9;
         }
-        .move-image .mimg img {
+        .moveImage .mText {
+            font-size: 1vw;
             position: absolute;
-            left: -5%; top: -5%;
-            width: 110%;
-            height: 110%;
-            object-fit: cover;
-            transition: transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
-        }
-        .move-image:hover .mimg img {
-            filter: grayscale(0%)
-        }
-        .move-image .mtext {
-            position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-50%, -50%);
+            left: 50%; bottom: 50%;
+            transform: translate3d(-50%, 68%, 150px);
+            background: rgba(0,0,0,0.3);
+            padding: 2vw;
             text-align: center;
-            font-size: 1.3vw;
-            line-height: 1.6;
+            border-radius: 2px;
             white-space: nowrap;
         }
         .cursor {
             position: absolute;
-            width: 20px; height: 20px;
+            width: 10px; height: 10px;
             background: #fff;
             border-radius: 50%;
             z-index: 1000;
             user-select: none;
             pointer-events: none;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -177,13 +172,13 @@
         <div class="cursor"></div>
 
         <div class="contents">
-            <div class="move-image">
-                <div class="mimg">
-                    <img src="../assets/img/bg5.jpg" alt="이미지">
+            <div class="moveImage">
+                <div class="mImg">
+                    <img src="../assets/img/bg12.jpg" alt="이미지">
                 </div>
-                <div class="mtext">
-                    <p>I never dreamed about success, I worked for it.</p>
-                    <p>나는 결코 성공에 대해 꿈꾸지 않았다, 나는 꿈을 위해 행동했다.</p>
+                <div class="mText">
+                    <p>Luck is when preparedness meets opportunity.</p>
+                    <p>운이란 준비가 기회를 만나는 것이다.</p>
                 </div>
             </div>
         </div>
@@ -192,8 +187,8 @@
 
     <!-- info -->
     <div class="info">
-        <h1><a href="index.html">Mouse Effect05 - jQuery</a></h1>
-        <p>마우스 이펙트 - 이미지 효과</p>
+        <h1><a href="index.html">Mouse Effect06 - jQuery</a></h1>
+        <p>마우스 이펙트 - 이미지 효과2</p>
     </div>
 
     <div class="info right">
@@ -212,8 +207,8 @@
             <li><a href="jqueryME02.html">2</a></li>
             <li><a href="jqueryME03.html">3</a></li>
             <li><a href="jqueryME04.html">4</a></li>
-            <li class="active"><a href="jqueryME05.html">5</a></li>
-            <li><a href="jqueryME06.html">6</a></li>
+            <li><a href="jqueryME05.html">5</a></li>
+            <li class="active"><a href="jqueryME06.html">6</a></li>
             <li><a href="jqueryME07.html">7</a></li>
             <li><a href="jqueryME08.html">8</a></li>
         </ul>
@@ -223,30 +218,59 @@
         <ul>
             <li>pageX : <span class="pageX">0</span></li>
             <li>pageY : <span class="pageY">0</span></li>
+            <li>standardX : <span class="standardX">0</span></li>
+            <li>standardY : <span class="standardY">0</span></li>
         </ul>
     </div>
     <!-- //info -->
 
     <!-- script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script>
-        $(".move-image").mousemove(function(e){
-            gsap.to(".cursor", {duration: .2, left: e.pageX -10, top: e.pageY -10})
-            
-            let pageX = e.pageX;
-            let pageY = e.pageY;
+        let pageX = 0,
+            pageY = 0,
+            standardX = 0,
+            standardY = 0,
+            maxX = 0,
+            maxY = 0,
+            angleX = 0,
+            angleY = 0,
+            softX = 0,
+            softY = 0;
 
-            let standardX = $(window).width()/2 - pageX;
-            let standardY = $(window).height()/2 - pageY;
+        $(window).mousemove(function(e){
+            pageX = e.pageX;    //마우스 X축 좌표값
+            pageY = e.pageY;    //마우스 Y축 좌표값
 
-            $(".mimg img").attr({"style" : "transform : translate(" + standardX/20 + "px," + standardY/20 +"px)" });
+            standardX = $(window).width()/2 - pageX    //마우스의 X축 좌표값을 가운데로 설정
+            standardY = $(window).height()/2 - pageY   //마우스의 Y축 좌표값을 가운데로 설정
 
-            //출력
-            $(".pageX").text(pageX + "px");
-            $(".pageY").text(pageY + "px");
-            $(".standardX").text(standardX + "px");
-            $(".standardY").text(standardY + "px");
+            //마우스의 x축 y축 쵯소값 -50 쵯대값 50으로 설정
+            maxX = Math.max(-50, Math.min(50, standardX));
+            maxY = Math.max(-50, Math.min(50, standardY));
+
+            //각도를 줄이는 설정
+            angleX = maxX * 0.12;
+            angleY = maxY * 0.12;
+
+            //부드럽게 설정
+            softX += (angleX - softX) * 0.1;
+            softY += (angleY - softY) * 0.1;
+
+            //커서 
+            gsap.to(".cursor", { duration: 0.3, left: pageX, top: pageY });
+
+            //움직임
+            $(".moveImage").css({"transform": "translate(-50%, -50%) perspective(600px) rotateX("+softY+"deg) rotateY("+ -softX+"deg)" });
+        })
+
+        //출력용
+        $(window).mousemove(function(e){ 
+            $(".pageX").text(pageX);
+            $(".pageY").text(pageY); 
+            $(".standardX").text(standardX);
+            $(".standardY").text(standardY); 
         });
     </script>
 </body>

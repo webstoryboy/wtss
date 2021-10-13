@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Effect</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 300;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+            font-style: normal;
+        }
+        * {
+            margin: 0; padding: 0;
+        }
+        body {
+            background: #222;
+            color: #fff;
+            font-family: 'NEXONLv1Gothic';
+            font-weight: 400;
+            position: relative;
+            height: 100vh;
+            background-image: url(../assets/img/bg13.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(50, 37, 11, 0.9);
+            z-index: -1;
+        }
+
+        /* info */
+        .info {
+            color: #fff;
+            font-family: "NEXONLv1Gothic";
+            padding: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .info.right {
+            left: auto;
+            right: 0px;
+            top: 0px;
+        }
+        .info h1 {
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 1.6;
+            border-bottom: 1px dashed #fff;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .info h1 a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        .info p {
+            font-weight: 300;
+            font-size: 16px;
+        }
+        .info li {
+            list-style: none;
+            display: inline;
+        }
+        .info li a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            line-height: 21px;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .info li.active a {
+            background: #fff;
+            color: #000;
+        }
+        .info.left {
+            top: auto;
+            right: 0px;
+            bottom: 0px;
+        }
+        .info.left li {
+            display: block;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* slider */
+        .slider-wrap {
+            height: 100vh;
+        }
+        .slider-img img {
+            width: 100%;
+        }
+        .slider-img {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 480px;
+            overflow: hidden;
+        }
+        .slider-inner {
+            position: relative;
+            width: 4000px;
+            height: 480px;
+            overflow: hidden;
+        }
+        .slider-inner .slider {
+            float: left;
+            width: 800px;
+            height: 480px;
+            position: relative;
+        }
+        .slider-inner .slider::before {
+            position: absolute;
+            left: 5px; top: 5px;
+            background: rgba(0,0,0,.4);
+            color: #fff;
+            padding: 5px 10px 3px;
+            font-family: "NEXONLv1Gothic";
+        }
+        .slider-inner .slider::before {content: attr(data-name);}
+        .slider-inner .slider:nth-child(1){z-index: 5;}
+        .slider-inner .slider:nth-child(2){z-index: 4;}
+        .slider-inner .slider:nth-child(3){z-index: 3;}
+        .slider-inner .slider:nth-child(4){z-index: 2;}
+        .slider-inner .slider:nth-child(5){z-index: 1;}
+    </style>
+</head>
+<body>
+    <!-- main -->
+    <main>
+        <div class="slider-wrap">
+            <div class="slider-img">
+                <div class="slider-inner">
+                    <div class="slider" data-name="이미지1"><img src="../assets/img/bg19.jpg" alt="이미지1"></div>
+                    <div class="slider" data-name="이미지2"><img src="../assets/img/bg18.jpg" alt="이미지2"></div>
+                    <div class="slider" data-name="이미지3"><img src="../assets/img/bg17.jpg" alt="이미지3"></div>
+                    <div class="slider" data-name="이미지4"><img src="../assets/img/bg16.jpg" alt="이미지4"></div>
+                    <div class="slider" data-name="이미지5"><img src="../assets/img/bg15.jpg" alt="이미지5"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <!-- info -->
+    <div class="info">
+        <h1><a href="index.html">Slider Effect03 - jQuery</a></h1>
+        <p>이미지 슬라이드 - 좌로 움직이기(연속적으로)</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li><a href="javascriptSE01.html">1</a></li>
+            <li><a href="javascriptSE02.html">2</a></li>
+            <li><a href="javascriptSE03.html">3</a></li>
+            <li><a href="javascriptSE04.html">4</a></li>
+            <li><a href="javascriptSE05.html">5</a></li>
+        </ul>
+        <ul>
+            <li><a href="jquerySE01.html">1</a></li>
+            <li><a href="jquerySE02.html">2</a></li>
+            <li class="active"><a href="jquerySE03.html">3</a></li>
+            <li><a href="jquerySE04.html">4</a></li>
+            <li><a href="jquerySE05.html">5</a></li>
+        </ul>
+    </div>
+    <!-- //info -->
+
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        const sliderWrap = $(".slider-wrap");
+        const sliderImg = $(".slider-img");
+        const sliderInner = $(".slider-inner");
+        const slider = $(".slider");
+
+        let currentIndex = 0;
+        let sliderWidth = slider.width();
+
+        setInterval(function(){
+            sliderInner.animate({ left: -sliderWidth }, 400, function(){
+                $(".slider:first-child").appendTo(sliderInner);
+                sliderInner.css("left","");
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
