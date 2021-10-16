@@ -34,7 +34,7 @@
         .bg {
             position: relative;
             height: 100vh;
-            background-image: url(../assets/img/bg0@2.jpg);
+            background-image: url(../assets/img/bg10@2.jpg);
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -46,7 +46,7 @@
             top: 0;
             width: 100%;
             height: 100vh;
-            background-color: rgba(5, 36, 70, 0.7);
+            background-color: rgba(5, 36, 70, 0.9);
             z-index: -1;
         }
 
@@ -126,10 +126,10 @@
             height: 100vh;
             overflow: hidden;
             font-family: 'NEXONLv1Gothic';
-            /* cursor: none; */
+            cursor: none;
         }
         .mouseCont p {
-            font-size: 2.5vw;
+            font-size: 2vw;
             line-height: 2;
             font-weight: 300;
         }
@@ -143,23 +143,21 @@
             border-bottom: 0.2vw dashed orange;
             color: orange
         }
-        .wrapper {
+        .cursor {
             position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: 100px;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .wrapper .square {
-            background: rgba(255,255,255, 0.9);
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            transform: scale(0.2);
-            will-change: transform;
-            width: 100px; height: 100px;
+            background: url(../assets/img/bg10@2.jpg) center center;
+            background-attachment: fixed;
+            background-size: cover;
+            border: 5px solid #fff;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .info.left li.active {
+            text-decoration: underline;
+            color: orange;
         }
     </style>
 </head>
@@ -167,85 +165,85 @@
 
     <!-- main -->
     <main>
-        <div class="contents">
-            <article class="mouseCont">
-                <p>When money speaks, the <em>truth</em> keeps silent.</p>
-                <p>돈이 말할 때는 <em>진실</em>은 입을 다문다</p>
-            </article>
-            <div class='wrapper'>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-                <div class='square'></div>
-              </div>
+        <div class="cursor"></div>
+
+        <article class="mouseCont">
+            <p>The best way to predict the futrue is to invent it</p>
+            <p><em>미래</em>를 예측하는 최선의 방법은 <em>미래</em>를 창조하는 것이다.</p>
+        </article>
+        <div class="box-item">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
         </div>
     </main>
     <!-- //main -->
@@ -253,7 +251,7 @@
     <!-- info -->
     <div class="info">
         <h1><a href="index.html">Mouse Effect08 - Javascript</a></h1>
-        <p>마우스 이펙트 - 텍스트 효과</p>
+        <p>마우스 이펙트 - 오버 효과</p>
     </div>
 
     <div class="info right">
@@ -283,47 +281,14 @@
         <ul>
             <li>pageX : <span class="pageX">0</span></li>
             <li>pageY : <span class="pageY">0</span></li>
-            <li>positionSlow : <span class="positionSlow">0</span></li>
-            <li>positionFast : <span class="positionFast">0</span></li>
         </ul>
     </div>
     <!-- //info -->
 
     <!-- script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script>
-        document.addEventListener('mousemove', e => {
-            const x = e.pageX;
-            const y = e.pageY;
-            document.querySelectorAll('.square').forEach(sqr => {
-                const dx = sqr.offsetLeft + 70 - x;
-                const dy = sqr.offsetTop + 100 - y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                const score = Math.exp(dist * -0.015);
-
-                sqr.style.transform = `scale(${score})`;
-                
-            });
-        });
-
-        // $(window).mousemove(function(e){
-        //     const x = e.pageX;
-        //     const y = e.pageY;
-            
-        //     $(".square").each(function(index, square){
-        //         const dx = square.offsetLeft + 70 - x;
-        //         const dy = square.offsetTop + 100 - y;
-
-        //         const dist = Math.sqrt(dx * dx + dy * dy);
-        //         const score = Math.exp(dist * -0.015);
-          
-        //         console.log(score)
-        //         $(".square").eq(0).css("transform", "scale("+score+")")
-        //     })
-
-
-        // });
+        
     </script>
 </body>
 </html>
