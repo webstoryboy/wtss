@@ -196,6 +196,7 @@
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
+
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
@@ -206,6 +207,7 @@
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
+
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
@@ -216,6 +218,7 @@
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
+
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
@@ -226,38 +229,7 @@
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
+            
         </div>
     </main>
     <!-- //main -->
@@ -307,14 +279,14 @@
             const mouseX = e.clientX;
             const mouseY = e.clientY;
 
-            $(".item").each(function(index, ele){
-                const sqrX = $(this).offset().left + 20;
-                const sqrY = $(this).offset().top + 20;
-                const diffX = mouseX - sqrX;
-                const diffY = mouseY - sqrY;
+            $(".item").each(function(index, item){
+                const itemX = $(this).offset().left + 20;
+                const itemY = $(this).offset().top + 20;
+                const diffX = mouseX - itemX;
+                const diffY = mouseY - itemY;
                 const radians = Math.atan2(diffY, diffX);
                 const angle = radians * 180 / Math.PI;
-                
+               
                 $(this).css({"transform" : "rotate("+ angle +"deg)"})
             });
 
@@ -322,8 +294,8 @@
             gsap.to(".cursor", {duration: 0.1, x: e.clientX - 20, y: e.clientY - 20});
 
             //출력용
-            $(".pageX").text(parseInt(e.pageX));
-            $(".pageY").text(parseInt(e.pageY)); 
+            $(".pageX").text(parseInt(mouseX));
+            $(".pageY").text(parseInt(mouseY)); 
         });
     </script>
 </body>

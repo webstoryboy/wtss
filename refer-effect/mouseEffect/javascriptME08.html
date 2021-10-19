@@ -30,6 +30,7 @@
             color: #fff;
             font-family: 'NEXONLv1Gothic';
             font-weight: 400;
+            cursor: none;
         }
         .bg {
             position: relative;
@@ -58,6 +59,7 @@
             position: absolute;
             left: 0;
             top: 0;
+            z-index: 10;
         }
         .info.right {
             left: auto;
@@ -126,7 +128,6 @@
             height: 100vh;
             overflow: hidden;
             font-family: 'NEXONLv1Gothic';
-            cursor: none;
         }
         .mouseCont p {
             font-size: 2vw;
@@ -145,19 +146,34 @@
         }
         .cursor {
             position: absolute;
-            width: 200px;
-            height: 200px;
+            width: 40px;
+            height: 40px;
+            background: rgba(17, 69, 128, 0.9);
             border-radius: 50%;
-            background: url(../assets/img/bg10@2.jpg) center center;
-            background-attachment: fixed;
-            background-size: cover;
-            border: 5px solid #fff;
             overflow: hidden;
             z-index: -1;
         }
-        .info.left li.active {
-            text-decoration: underline;
-            color: orange;
+        .box-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%;
+            height: 100vh;
+        }
+        .box-item {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            grid-template-rows: repeat(4, 50px);
+            grid-gap: 30px;
+        }
+        .box-item .item {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .box-item.two .item {
+            border-radius: 50%;
+            transform: scale(0.2);
         }
     </style>
 </head>
@@ -171,80 +187,55 @@
             <p>The best way to predict the futrue is to invent it</p>
             <p><em>미래</em>를 예측하는 최선의 방법은 <em>미래</em>를 창조하는 것이다.</p>
         </article>
-        <div class="box-item">
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
+        <div class="box-wrap">
+            <div class="box-item two">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+    
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+    
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+    
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                
+            </div>
         </div>
+        
     </main>
     <!-- //main -->
 
@@ -288,6 +279,38 @@
     <!-- script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script>
+        document.addEventListener("mousemove", (e) => {	
+	        const item = document.querySelectorAll(".item");
+
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            item.forEach(item => {
+                // const itemX = item.offsetLeft + 20;
+                // const itemY = item.offsetTop + 20;
+                // const diffX = mouseX - itemX;
+                // const diffY = mouseY - itemY;
+                // const radians = Math.atan2(diffY, diffX);
+                // const angle = radians * 180 / Math.PI;
+
+                // item.style.transform = "rotate("+ angle +"deg)";
+
+                const itemX = item.offsetLeft - mouseX;
+                const itemY = item.offsetTop - mouseY;
+                const dist = Math.sqrt(itemX * itemX + itemY * itemY);
+                const score = Math.exp(dist * -0.003);
+
+                item.style.transform = `scale(${score})`;
+            });
+
+            //커서
+            const cursor = document.querySelector(".cursor");
+            gsap.to( cursor, { duration: 0.3, left: mouseX - 20, top: mouseY - 20 });
+
+            //출력
+            document.querySelector(".pageX").textContent = e.pageX;
+            document.querySelector(".pageY").textContent = e.pageY;
+        });
         
     </script>
 </body>
